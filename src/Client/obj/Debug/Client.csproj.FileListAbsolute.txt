@@ -1,0 +1,1 @@
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\Client\bin\Debug\Client.exe.config

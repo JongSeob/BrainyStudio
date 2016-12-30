@@ -1,0 +1,6 @@
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\doc\examples_DotNet\build\Debug\DotNetEmotivSDKTest_vs2010.exe.config
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\doc\examples_DotNet\build\Debug\DotNetEmotivSDKTest_vs2010.exe
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\doc\examples_DotNet\build\Debug\DotNetEmotivSDKTest_vs2010.pdb
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\doc\examples_DotNet\DotNetEmotivSDKTest\obj\x86\Debug\DotNetEmotivSDKTest-vs2010.csprojResolveAssemblyReference.cache
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\doc\examples_DotNet\DotNetEmotivSDKTest\obj\x86\Debug\DotNetEmotivSDKTest_vs2010.exe
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\doc\examples_DotNet\DotNetEmotivSDKTest\obj\x86\Debug\DotNetEmotivSDKTest_vs2010.pdb
