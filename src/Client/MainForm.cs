@@ -4,6 +4,7 @@ using rtChart;
 using Shared;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -16,7 +17,9 @@ namespace Client
         /// </summary>
         private EmoEngine _engine = EmoEngine.Instance;
         EmoState _es;
-        double currentime;
+
+        // Recorder stopwatch
+        Stopwatch recorder_stopwatch = new Stopwatch();
 
         private int _userID;
 
@@ -46,7 +49,7 @@ namespace Client
             InitializeComponent();
             statusBar.Text = "Ready";
 
-            prepareSensorGraphSeries();
+            prepareGraphSeries_Sensors();
 
             //Events
             _engine.EmoStateUpdated +=
@@ -92,7 +95,7 @@ namespace Client
                 for (int i = 0; i < buffer; i++)
                 {
                     //Append time
-                    _ondra.AppendTimestamp(data[EdkDll.EE_DataChannel_t.TIMESTAMP][i]);
+                    _ondra.AppendTimestamp(recorder_stopwatch.Elapsed);
 
                     //Append raw sensor data
                     _ondra.AppendRaw(data[EdkDll.EE_DataChannel_t.AF3][i],
@@ -140,7 +143,7 @@ namespace Client
                 if (data != null)
                 {
                     //Update raw sensor graph
-                    updateSensorGraphSeries(data);
+                    updateGraphSeries_Sensors(data);
                 }
             }
             catch
@@ -292,7 +295,7 @@ namespace Client
         /// <summary>
         /// Prepares graph for raw sensor data
         /// </summary>
-        private void prepareSensorGraphSeries()
+        private void prepareGraphSeries_Sensors()
         {
             _kChart_af3 = new kayChart(channel_graph, 120);
             _kChart_af3.serieName = "AF3";
@@ -344,7 +347,7 @@ namespace Client
         /// Updates graph with latest data from emoengine
         /// </summary>
         /// <param name="data">Input data in DataChannel form</param>
-        private void updateSensorGraphSeries(Dictionary<EdkDll.EE_DataChannel_t, double[]> data)
+        private void updateGraphSeries_Sensors(Dictionary<EdkDll.EE_DataChannel_t, double[]> data)
         {
             new Thread(() =>
                        {
@@ -441,22 +444,41 @@ namespace Client
 
         private void RecorderTimer_Tick(object sender, EventArgs e)
         {
+            timeLabel.Text = recorder_stopwatch.Elapsed.ToString();
             Record(1);
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        { 
-            RecorderTimer.Enabled = true;
+ 
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            //Disable Controls
+            poolingSpeedSlider.Enabled = false;
+            rec.Enabled = false;
+            pause.Enabled = true;
+            stop.Enabled = true;
+            rec.Text = "Record";
+
+            //Set timer interval
+            recorderTimer.Interval = poolingSpeedSlider.Value;
+
+            // Begin timing.
+            recorder_stopwatch.Start();
+            // Enable recording timer.
+            recorderTimer.Enabled = true;
         }
 
-        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void pause_Click(object sender, EventArgs e)
         {
+            //Switch Controls
+            rec.Enabled = true;
+            pause.Enabled = false;
+            rec.Text = "Continue";
 
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
+            // Stop timing.
+            recorder_stopwatch.Stop();
+            // Stop recording timer
+            recorderTimer.Enabled = false;
         }
     }
 }

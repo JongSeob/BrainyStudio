@@ -47,6 +47,7 @@
             System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.topMenu = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.localToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.remoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,24 +63,20 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusBar = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.signalLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.poolerTimer = new System.Windows.Forms.Timer(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.graphingPanel = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.movement_switch = new System.Windows.Forms.RadioButton();
-            this.expressions_switch = new System.Windows.Forms.RadioButton();
             this.emotions_switch = new System.Windows.Forms.RadioButton();
             this.raw_switch = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.previewLabel = new System.Windows.Forms.Label();
             this.raweeg = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
             this.af3_check = new System.Windows.Forms.CheckBox();
             this.f7_check = new System.Windows.Forms.CheckBox();
             this.f3_check = new System.Windows.Forms.CheckBox();
@@ -104,21 +101,24 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.headImage = new System.Windows.Forms.PictureBox();
             this.statusBox = new System.Windows.Forms.GroupBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.timeLabel = new System.Windows.Forms.Label();
+            this.recordBufferSlider = new System.Windows.Forms.TrackBar();
             this.poolingSpeedSlider = new System.Windows.Forms.TrackBar();
             this.bufferLabel = new System.Windows.Forms.Label();
             this.labelPooling = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.recordBufferSlider = new System.Windows.Forms.TrackBar();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.RecorderTimer = new System.Windows.Forms.Timer(this.components);
+            this.menuStrip = new System.Windows.Forms.ToolStrip();
+            this.rec = new System.Windows.Forms.ToolStripButton();
+            this.pause = new System.Windows.Forms.ToolStripButton();
+            this.stop = new System.Windows.Forms.ToolStripButton();
+            this.recorderTimer = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.topMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -144,9 +144,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.headImage)).BeginInit();
             this.statusBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.poolingSpeedSlider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recordBufferSlider)).BeginInit();
-            this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.poolingSpeedSlider)).BeginInit();
+            this.menuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // topMenu
@@ -155,6 +156,7 @@
             resources.ApplyResources(this.topMenu, "topMenu");
             this.topMenu.ImageScalingSize = new System.Drawing.Size(28, 28);
             this.topMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem1,
             this.fileToolStripMenuItem,
             this.viewToolStripMenuItem,
             this.editToolStripMenuItem,
@@ -163,6 +165,12 @@
             this.helúToolStripMenuItem});
             this.topMenu.Name = "topMenu";
             this.topMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            // 
+            // fileToolStripMenuItem1
+            // 
+            this.fileToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
+            this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
+            resources.ApplyResources(this.fileToolStripMenuItem1, "fileToolStripMenuItem1");
             // 
             // fileToolStripMenuItem
             // 
@@ -174,7 +182,6 @@
             this.fileToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
-            this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
             // 
             // localToolStripMenuItem
             // 
@@ -251,9 +258,7 @@
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(40, 40);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
-            this.statusBar,
-            this.toolStripStatusLabel2,
-            this.signalLabel});
+            this.statusBar});
             resources.ApplyResources(this.statusStrip, "statusStrip");
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.SizingGrip = false;
@@ -268,17 +273,6 @@
             this.statusBar.ForeColor = System.Drawing.Color.White;
             this.statusBar.Name = "statusBar";
             resources.ApplyResources(this.statusBar, "statusBar");
-            // 
-            // toolStripStatusLabel2
-            // 
-            resources.ApplyResources(this.toolStripStatusLabel2, "toolStripStatusLabel2");
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            // 
-            // signalLabel
-            // 
-            this.signalLabel.ForeColor = System.Drawing.Color.White;
-            this.signalLabel.Name = "signalLabel";
-            resources.ApplyResources(this.signalLabel, "signalLabel");
             // 
             // poolerTimer
             // 
@@ -322,15 +316,19 @@
             // tableLayoutPanel2
             // 
             resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
-            this.tableLayoutPanel2.Controls.Add(this.button1, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label4, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             // 
-            // button1
+            // label4
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
             // 
             // graphingPanel
             // 
@@ -343,11 +341,9 @@
             // 
             resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
             this.flowLayoutPanel1.Controls.Add(this.movement_switch);
-            this.flowLayoutPanel1.Controls.Add(this.expressions_switch);
             this.flowLayoutPanel1.Controls.Add(this.emotions_switch);
             this.flowLayoutPanel1.Controls.Add(this.raw_switch);
             this.flowLayoutPanel1.Controls.Add(this.radioButton1);
-            this.flowLayoutPanel1.Controls.Add(this.previewLabel);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
             // movement_switch
@@ -356,13 +352,6 @@
             this.movement_switch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.movement_switch.Name = "movement_switch";
             this.movement_switch.UseVisualStyleBackColor = true;
-            // 
-            // expressions_switch
-            // 
-            resources.ApplyResources(this.expressions_switch, "expressions_switch");
-            this.expressions_switch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.expressions_switch.Name = "expressions_switch";
-            this.expressions_switch.UseVisualStyleBackColor = true;
             // 
             // emotions_switch
             // 
@@ -374,25 +363,19 @@
             // raw_switch
             // 
             resources.ApplyResources(this.raw_switch, "raw_switch");
-            this.raw_switch.Checked = true;
             this.raw_switch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.raw_switch.Name = "raw_switch";
-            this.raw_switch.TabStop = true;
             this.raw_switch.UseVisualStyleBackColor = true;
             // 
             // radioButton1
             // 
             resources.ApplyResources(this.radioButton1, "radioButton1");
+            this.radioButton1.Checked = true;
             this.radioButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.radioButton1.Name = "radioButton1";
+            this.radioButton1.TabStop = true;
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // previewLabel
-            // 
-            resources.ApplyResources(this.previewLabel, "previewLabel");
-            this.previewLabel.ForeColor = System.Drawing.Color.Gray;
-            this.previewLabel.Name = "previewLabel";
             // 
             // raweeg
             // 
@@ -404,7 +387,6 @@
             // flowLayoutPanel2
             // 
             resources.ApplyResources(this.flowLayoutPanel2, "flowLayoutPanel2");
-            this.flowLayoutPanel2.Controls.Add(this.label3);
             this.flowLayoutPanel2.Controls.Add(this.af3_check);
             this.flowLayoutPanel2.Controls.Add(this.f7_check);
             this.flowLayoutPanel2.Controls.Add(this.f3_check);
@@ -421,11 +403,6 @@
             this.flowLayoutPanel2.Controls.Add(this.af4_check);
             this.flowLayoutPanel2.ForeColor = System.Drawing.Color.Gray;
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
             // 
             // af3_check
             // 
@@ -720,15 +697,66 @@
             // 
             resources.ApplyResources(this.statusBox, "statusBox");
             this.statusBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.statusBox.Controls.Add(this.checkBox4);
+            this.statusBox.Controls.Add(this.checkBox3);
+            this.statusBox.Controls.Add(this.checkBox2);
+            this.statusBox.Controls.Add(this.checkBox1);
+            this.statusBox.Controls.Add(this.timeLabel);
+            this.statusBox.Controls.Add(this.recordBufferSlider);
             this.statusBox.Controls.Add(this.poolingSpeedSlider);
             this.statusBox.Controls.Add(this.bufferLabel);
             this.statusBox.Controls.Add(this.labelPooling);
             this.statusBox.Controls.Add(this.label2);
             this.statusBox.Controls.Add(this.label1);
-            this.statusBox.Controls.Add(this.recordBufferSlider);
             this.statusBox.ForeColor = System.Drawing.Color.Gray;
             this.statusBox.Name = "statusBox";
             this.statusBox.TabStop = false;
+            // 
+            // checkBox4
+            // 
+            resources.ApplyResources(this.checkBox4, "checkBox4");
+            this.checkBox4.Checked = true;
+            this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            resources.ApplyResources(this.checkBox3, "checkBox3");
+            this.checkBox3.Checked = true;
+            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            resources.ApplyResources(this.checkBox2, "checkBox2");
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            resources.ApplyResources(this.checkBox1, "checkBox1");
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // timeLabel
+            // 
+            resources.ApplyResources(this.timeLabel, "timeLabel");
+            this.timeLabel.Name = "timeLabel";
+            // 
+            // recordBufferSlider
+            // 
+            resources.ApplyResources(this.recordBufferSlider, "recordBufferSlider");
+            this.recordBufferSlider.Minimum = 1;
+            this.recordBufferSlider.Name = "recordBufferSlider";
+            this.recordBufferSlider.SmallChange = 100;
+            this.recordBufferSlider.Value = 1;
+            this.recordBufferSlider.Scroll += new System.EventHandler(this.trackBar2_Scroll);
             // 
             // poolingSpeedSlider
             // 
@@ -737,8 +765,8 @@
             this.poolingSpeedSlider.Minimum = 100;
             this.poolingSpeedSlider.Name = "poolingSpeedSlider";
             this.poolingSpeedSlider.SmallChange = 100;
-            this.poolingSpeedSlider.TickFrequency = 100;
-            this.poolingSpeedSlider.Value = 1000;
+            this.poolingSpeedSlider.TickFrequency = 50;
+            this.poolingSpeedSlider.Value = 500;
             this.poolingSpeedSlider.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // bufferLabel
@@ -761,91 +789,67 @@
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
-            // recordBufferSlider
+            // menuStrip
             // 
-            resources.ApplyResources(this.recordBufferSlider, "recordBufferSlider");
-            this.recordBufferSlider.Minimum = 1;
-            this.recordBufferSlider.Name = "recordBufferSlider";
-            this.recordBufferSlider.SmallChange = 100;
-            this.recordBufferSlider.Value = 10;
-            this.recordBufferSlider.Scroll += new System.EventHandler(this.trackBar2_Scroll);
+            this.menuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.menuStrip.GripMargin = new System.Windows.Forms.Padding(11);
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(50, 50);
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rec,
+            this.pause,
+            this.stop,
+            this.toolStripSeparator2});
+            resources.ApplyResources(this.menuStrip, "menuStrip");
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.menuStrip.Stretch = true;
             // 
-            // toolStrip1
+            // rec
             // 
-            this.toolStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.toolStrip1.GripMargin = new System.Windows.Forms.Padding(11);
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(50, 50);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripSeparator,
-            this.toolStripButton2,
-            this.toolStripSeparator1,
-            this.openToolStripButton,
-            this.saveToolStripButton});
-            resources.ApplyResources(this.toolStrip1, "toolStrip1");
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Stretch = true;
+            this.rec.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.rec, "rec");
+            this.rec.Name = "rec";
+            this.rec.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
-            // toolStripButton1
+            // pause
             // 
-            this.toolStripButton1.ForeColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.toolStripButton1, "toolStripButton1");
-            this.toolStripButton1.Name = "toolStripButton1";
+            this.pause.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.pause, "pause");
+            this.pause.Name = "pause";
+            this.pause.Click += new System.EventHandler(this.pause_Click);
             // 
-            // toolStripSeparator
+            // stop
             // 
-            this.toolStripSeparator.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
-            resources.ApplyResources(this.toolStripSeparator, "toolStripSeparator");
+            this.stop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.stop, "stop");
+            this.stop.Name = "stop";
             // 
-            // toolStripButton2
+            // recorderTimer
             // 
-            this.toolStripButton2.ForeColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.toolStripButton2, "toolStripButton2");
-            this.toolStripButton2.Name = "toolStripButton2";
+            this.recorderTimer.Interval = 500;
+            this.recorderTimer.Tick += new System.EventHandler(this.RecorderTimer_Tick);
             // 
-            // toolStripSeparator1
+            // pictureBox1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Padding = new System.Windows.Forms.Padding(20);
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.TabStop = false;
             // 
-            // openToolStripButton
+            // toolStripSeparator2
             // 
-            this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.openToolStripButton, "openToolStripButton");
-            this.openToolStripButton.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
-            this.openToolStripButton.Name = "openToolStripButton";
-            // 
-            // saveToolStripButton
-            // 
-            this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.saveToolStripButton, "saveToolStripButton");
-            this.saveToolStripButton.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
-            this.saveToolStripButton.Name = "saveToolStripButton";
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 500;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // RecorderTimer
-            // 
-            this.RecorderTimer.Interval = 250;
-            this.RecorderTimer.Tick += new System.EventHandler(this.RecorderTimer_Tick);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
             // RecorderForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.topMenu);
-            this.DoubleBuffered = true;
             this.MainMenuStrip = this.topMenu;
             this.Name = "RecorderForm";
             this.topMenu.ResumeLayout(false);
@@ -863,6 +867,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.graphingPanel.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
@@ -883,10 +888,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.headImage)).EndInit();
             this.statusBox.ResumeLayout(false);
             this.statusBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.poolingSpeedSlider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.recordBufferSlider)).EndInit();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.poolingSpeedSlider)).EndInit();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -899,19 +905,12 @@
         private System.Windows.Forms.ToolStripStatusLabel statusBar;
         private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helúToolStripMenuItem;
-        private System.Windows.Forms.ToolStripStatusLabel signalLabel;
         private System.Windows.Forms.Timer poolerTimer;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.MenuStrip topMenu;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton openToolStripButton;
-        private System.Windows.Forms.ToolStripButton saveToolStripButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStrip menuStrip;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.GroupBox headsetSetupBox;
         private System.Windows.Forms.PictureBox headImage;
         private System.Windows.Forms.Label labelPooling;
@@ -919,10 +918,8 @@
         private System.Windows.Forms.Label batteryLabel;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.GroupBox statusBox;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TrackBar poolingSpeedSlider;
         private System.Windows.Forms.Label bufferLabel;
@@ -932,7 +929,6 @@
         private System.Windows.Forms.TableLayoutPanel graphingPanel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Label previewLabel;
         private System.Windows.Forms.TableLayoutPanel raweeg;
         private System.Windows.Forms.DataVisualization.Charting.Chart channel_graph;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
@@ -950,14 +946,11 @@
         private System.Windows.Forms.CheckBox f4_check;
         private System.Windows.Forms.CheckBox f8_check;
         private System.Windows.Forms.CheckBox af4_check;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RadioButton movement_switch;
-        private System.Windows.Forms.RadioButton expressions_switch;
         private System.Windows.Forms.RadioButton emotions_switch;
         private System.Windows.Forms.RadioButton raw_switch;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Timer RecorderTimer;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Timer recorderTimer;
         private System.Windows.Forms.ToolStripMenuItem debugToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem emoEngineToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rawToolStripMenuItem;
@@ -966,6 +959,19 @@
         private System.Windows.Forms.ToolStripMenuItem localToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem remoteToolStripMenuItem;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label timeLabel;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripButton rec;
+        private System.Windows.Forms.ToolStripButton pause;
+        private System.Windows.Forms.ToolStripButton stop;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }
 

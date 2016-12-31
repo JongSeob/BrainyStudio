@@ -28,7 +28,7 @@ namespace Shared
 
         #region Timestamp
         [JsonProperty]
-        public List<Double> Timestamp = new List<double>();
+        public List<TimeSpan> Timestamp = new List<TimeSpan>();
         #endregion Timestamp
 
         #region Subject Info
@@ -92,7 +92,7 @@ namespace Shared
         /// <summary>
         /// Append global timestamp (in seconds)
         /// </summary>
-        public void AppendTimestamp(Double timestamp)
+        public void AppendTimestamp(TimeSpan timestamp)
         {
             this.Timestamp.Add(timestamp);
         }
