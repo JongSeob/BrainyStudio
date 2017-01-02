@@ -1,10 +1,11 @@
 ﻿using Emotiv;
 using Newtonsoft.Json;
 using rtChart;
-using Shared;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Net.Sockets;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -479,6 +480,22 @@ namespace Client
             recorder_stopwatch.Stop();
             // Stop recording timer
             recorderTimer.Enabled = false;
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            string jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(_ondra);
+
+            using (StreamWriter writer =
+                new StreamWriter("json.txt"))
+            {
+                writer.Write(jsonString);
+            }
+        }
+
+        private void toolStripButton1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

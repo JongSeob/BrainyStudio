@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
-using Shared;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
