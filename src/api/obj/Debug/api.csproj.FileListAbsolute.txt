@@ -50,3 +50,5 @@ C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\api\bin\Microsoft.Azure.AppServi
 C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\api\bin\Swashbuckle.Core.dll
 C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\api\bin\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\api\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\api\bin\Sdk.dll
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\api\bin\Sdk.pdb

@@ -63,7 +63,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EEGRecording.cs" />
     <Compile Include="LaunchScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +113,10 @@
     <ProjectReference Include="..\DotNetEmotivSDK\Lib.csproj">
       <Project>{23b51742-efca-4343-a43b-263b5a3eab22}</Project>
       <Name>Lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sdk\Sdk.csproj">
+      <Project>{88be0ffc-39e1-4d40-bb79-b9e84e91d29f}</Project>
+      <Name>Sdk</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

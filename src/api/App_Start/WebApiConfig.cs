@@ -1,4 +1,5 @@
-﻿using System;
+﻿using api.MessageHandlers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
@@ -11,6 +12,8 @@ namespace api
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            GlobalConfiguration.Configuration.MessageHandlers.Add(new APIKeyHandler());
+            GlobalConfiguration.Configuration.MessageHandlers.Add(new AuthHandler());
 
             // Web API routes
             config.MapHttpAttributeRoutes();

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using api.Models;
 using Newtonsoft.Json;
 using api;
 using System.Data.SqlClient;
 using api.Helpers;
+using Sdk.Models;
 
 namespace api.Controllers
 {
@@ -25,24 +25,24 @@ namespace api.Controllers
         }
 
         // GET: api/Record/5
-        public EEGRecording Get(int id)
+        public Recording Get(int id)
         {
-            EEGRecording test = new EEGRecording(1, "ppeik");
+            Recording test = new Recording("Test", DateTime.Now);
             test.Name = "hey";
             return test;
         }
 
         // POST: api/Record
-        public void Post([FromBody]EEGRecording value)
+        public void Post([FromBody]Recording value)
         {
             SqlConnection myConnection = new SqlConnection(connection.ConnString());
 
-            string test = s.Ser<List<Double>>(value.F3);
-            List<Double> test2 = s.Deser<List<Double>>(test);
+            string test = s.Ser<Raw>(value.RawData);
+            Raw test2 = s.Deser<Raw>(test);
         }
 
         // PUT: api/Record/5
-        public void Put(int id, [FromBody]EEGRecording value)
+        public void Put(int id, [FromBody]Recording value)
         {
         }
 

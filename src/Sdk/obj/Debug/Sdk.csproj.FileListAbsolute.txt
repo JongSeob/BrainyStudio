@@ -1,0 +1,9 @@
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\Sdk\obj\Debug\Sdk.csprojResolveAssemblyReference.cache
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\Sdk\bin\Debug\Sdk.dll
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\Sdk\bin\Debug\Sdk.pdb
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\Sdk\bin\Debug\Newtonsoft.Json.dll
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\Sdk\bin\Debug\Newtonsoft.Json.xml
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\Sdk\obj\Debug\Sdk.dll
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\Sdk\obj\Debug\Sdk.pdb
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\Sdk\bin\Debug\DotNetEmotivSDK-vs2010.dll
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\Sdk\bin\Debug\DotNetEmotivSDK-vs2010.pdb

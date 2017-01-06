@@ -1,13 +1,14 @@
 ﻿using api.Helpers;
-using api.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.Http;
+using Sdk.Models;
 
 namespace api.Controllers
 {
+    [Authorize]
     public class RepositoryController : ApiController
     {
         /// Global helpers for Database configuration, connection and data serialization

@@ -8,6 +8,8 @@ using System.IO;
 using System.Net.Sockets;
 using System.Threading;
 using System.Windows.Forms;
+using Sdk.Models;
+
 
 namespace Client
 {
@@ -43,7 +45,7 @@ namespace Client
 
         #endregion Raw sensor data charts
 
-        public EEGRecording _ondra = new EEGRecording(0, "Test Recordidng");
+        public Recording _ondra = new Recording("Test", DateTime.Now);
 
         public RecorderForm()
         {
@@ -95,8 +97,6 @@ namespace Client
             {
                 for (int i = 0; i < buffer; i++)
                 {
-                    //Append time
-                    _ondra.AppendTimestamp(recorder_stopwatch.Elapsed);
 
                     //Append raw sensor data
                     _ondra.AppendRaw(data[EdkDll.EE_DataChannel_t.AF3][i],
@@ -465,6 +465,7 @@ namespace Client
 
             // Begin timing.
             recorder_stopwatch.Start();
+            _ondra.Timing = recorderTimer.Interval;
             // Enable recording timer.
             recorderTimer.Enabled = true;
         }
@@ -484,6 +485,8 @@ namespace Client
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
+            _ondra.subject = new Subject("Petra", "Řeháčková", 11, "Female", "Toto je tesovací subjekt");
+
             string jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(_ondra);
 
             using (StreamWriter writer =
