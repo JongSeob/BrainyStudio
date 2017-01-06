@@ -3,27 +3,28 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+using System.Web;
 
-namespace api.Controllers
+namespace api.Helpers
 {
-    public class DatabaseController
+    public class DatabaseHelper
     {
         public string DbServer;
         public string DbDatabase;
         public string DbUser;
         public string DbPassword;
 
-        public DatabaseController()
+        /// <summary>
+        /// Generate DatabaseHelper from configuration file
+        /// </summary>
+        public DatabaseHelper()
         {
             DbServer = ConfigurationManager.AppSettings["DBserver"];
             DbDatabase = ConfigurationManager.AppSettings["DBdatabase"];
             DbUser = ConfigurationManager.AppSettings["DBuser"];
             DbPassword = ConfigurationManager.AppSettings["DBpassword"];
 
-            ValidateDB();
+            Validate();
         }
 
         /// <summary>
@@ -38,7 +39,7 @@ namespace api.Controllers
         /// <summary>
         /// Validates database connection
         /// </summary>
-        private void ValidateDB()
+        private void Validate()
         {
             SqlConnection databaseConn;
             databaseConn = new SqlConnection();
@@ -56,8 +57,5 @@ namespace api.Controllers
             }
             Console.WriteLine();
         }
-
-
-  
     }
 }

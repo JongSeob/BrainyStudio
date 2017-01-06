@@ -4,11 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Web;
 
 namespace api.Models
 {
-       [JsonObject(MemberSerialization.OptIn)]
+    [JsonObject(MemberSerialization.OptIn)]
     public class EEGRecording
     {
         #region BasicInfo
@@ -22,21 +21,24 @@ namespace api.Models
         [JsonProperty("Description")]
         public string Description;
 
-        [JsonProperty]
+        [JsonProperty("Date")]
         [JsonConverter(typeof(JavaScriptDateTimeConverter))]
         public DateTime Date;
 
         #endregion BasicInfo
 
         #region Timestamp
+
         [JsonProperty]
         public List<TimeSpan> Timestamp = new List<TimeSpan>();
+
         #endregion Timestamp
 
         #region Subject Info
 
         [JsonProperty("Subject")]
-        Dictionary<string, string> subject_dictionary = new Dictionary<string, string>();
+        private Dictionary<string, string> subject_dictionary = new Dictionary<string, string>();
+
         private string FirstName;
         private string LastName;
         private int Age;
@@ -44,39 +46,47 @@ namespace api.Models
         #endregion Subject Info
 
         #region Raw Data
+
         [JsonProperty("Raw")]
-        Dictionary<string, List<double>> rawEEG_dictionary = new Dictionary<string, List<double>>();
-        private List<Double> AF3 = new List<double>();
-        private List<Double> F7 = new List<double>();
-        private List<Double> F3 = new List<double>();
-        private List<Double> FC5 = new List<double>();
-        private List<Double> T7 = new List<double>();
-        private List<Double> P7 = new List<double>();
-        private List<Double> O1 = new List<double>();
-        private List<Double> O2 = new List<double>();
-        private List<Double> P8 = new List<double>();
-        private List<Double> T8 = new List<double>();
-        private List<Double> FC6 = new List<double>();
-        private List<Double> F4 = new List<double>();
-        private List<Double> F8 = new List<double>();
-        private List<Double> AF42 = new List<double>();
+        private Dictionary<string, List<double>> rawEEG_dictionary = new Dictionary<string, List<double>>();
+
+        public List<Double> AF3 = new List<double>();
+        public List<Double> F7 = new List<double>();
+        public List<Double> F3 = new List<double>();
+        public List<Double> FC5 = new List<double>();
+        public List<Double> T7 = new List<double>();
+        public List<Double> P7 = new List<double>();
+        public List<Double> O1 = new List<double>();
+        public List<Double> O2 = new List<double>();
+        public List<Double> P8 = new List<double>();
+        public List<Double> T8 = new List<double>();
+        public List<Double> FC6 = new List<double>();
+        public List<Double> F4 = new List<double>();
+        public List<Double> F8 = new List<double>();
+        public List<Double> AF42 = new List<double>();
+
         #endregion Raw Data
 
         #region Affectiv
+
         private List<Double> Excitement = new List<double>();
         private List<Double> Engagement = new List<double>();
         private List<Double> Meditation = new List<double>();
         private List<Double> Frustration = new List<double>();
+
         #endregion Affectiv
 
         #region Expressiv
+
         //TODO
+
         #endregion Expressiv
 
         #region Markers
-        //TODO
-        #endregion Markers
 
+        //TODO
+
+        #endregion Markers
 
         /// <summary>
         /// Construct a new EEG Recording
@@ -95,6 +105,7 @@ namespace api.Models
         [OnDeserialized]
         public void Unpack(StreamingContext context)
         {
+            //Unpack Raw EEG into separate Lists
             foreach (KeyValuePair<string, List<double>> entry in rawEEG_dictionary)
             {
                 if (entry.Key == "AF3") AF3 = entry.Value.ToList();
@@ -112,7 +123,7 @@ namespace api.Models
                 if (entry.Key == "F8") F8 = entry.Value.ToList();
                 if (entry.Key == "AF4") AF42 = entry.Value.ToList();
             }
-
+            rawEEG_dictionary.Clear();
         }
-}
+    }
 }

@@ -8,11 +8,16 @@ using api.Models;
 using Newtonsoft.Json;
 using api;
 using System.Data.SqlClient;
+using api.Helpers;
 
 namespace api.Controllers
 {
     public class RecordingController : ApiController
     {
+
+        DatabaseHelper connection = new DatabaseHelper();
+        SerializationHelper s = new SerializationHelper();
+
         // GET: api/Record
         public IEnumerable<string> Get()
         {
@@ -30,9 +35,10 @@ namespace api.Controllers
         // POST: api/Record
         public void Post([FromBody]EEGRecording value)
         {
-            DatabaseController connection = new DatabaseController();
             SqlConnection myConnection = new SqlConnection(connection.ConnString());
 
+            string test = s.Ser<List<Double>>(value.F3);
+            List<Double> test2 = s.Deser<List<Double>>(test);
         }
 
         // PUT: api/Record/5

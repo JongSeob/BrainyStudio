@@ -59,6 +59,8 @@
     <Folder Include="Properties" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Recordings.sql" />
+    <Build Include="Recording.sql" />
+    <Build Include="Repository.sql" />
+    <Build Include="User.sql" />
   </ItemGroup>
 </Project>

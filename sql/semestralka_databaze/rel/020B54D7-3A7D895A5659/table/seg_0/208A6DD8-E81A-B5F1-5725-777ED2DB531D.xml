@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="208A6DD8-E81A-B5F1-5725-777ED2DB531D" name="Contributor">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:14:13 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<ordsAlias>table_11</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="User_Id" id="673D1B3A-8CB8-2B89-7689-791BBF21D59A">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:14:23 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AAAE1742-8DCB-6D35-F5F4-E40873E3810D" referredColumn="8355FA53-4A31-A4D8-50FC-C03A8C623FF6"/>
+</associations>
+</Column>
+<Column name="Repository_Id" id="A333B91C-701C-0147-A7B7-87BA2553D0A2">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:14:36 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="84E5C8BD-55DA-7E4C-E41C-87396FD9700D" referredColumn="FA2FB507-2014-4779-C2A1-9369AAE79C8C"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="01021B00-8514-AF29-56CC-811BBF46FAD8" name="Contributor_PK">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:24:20 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="673D1B3A-8CB8-2B89-7689-791BBF21D59A"/>
+<colUsage columnID="A333B91C-701C-0147-A7B7-87BA2553D0A2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C059F8BF-3850-20BF-9380-468E61F91975" name="ContributorId">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:14:23 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="673D1B3A-8CB8-2B89-7689-791BBF21D59A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E0F51592-926B-661A-A5D3-1BFA0C71D85C" name="RepositoryId">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:14:36 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A333B91C-701C-0147-A7B7-87BA2553D0A2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

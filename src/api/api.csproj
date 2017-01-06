@@ -161,15 +161,18 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
-    <Compile Include="Controllers\DatabaseController.cs" />
     <Compile Include="Controllers\RecordingController.cs" />
+    <Compile Include="Controllers\RepositoryController.cs" />
+    <Compile Include="Controllers\SetController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\DatabaseHelper.cs" />
+    <Compile Include="Helpers\SerializationHelper.cs" />
     <Compile Include="Models\Recording.cs" />
+    <Compile Include="Models\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
