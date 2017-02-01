@@ -2,13 +2,14 @@
 <Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="189A02F6-F494-A483-8FCC-39161CF73C4E" name="Repository">
 <createdBy>olire</createdBy>
 <createdTime>2017-01-05 12:06:31 UTC</createdTime>
+<comment>REPOSITORY&lt;br/&gt;A group of recordings.</comment>
 <ownerDesignName>semestralka_databaze</ownerDesignName>
 <ordsAlias>table_3</ordsAlias>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="Id" id="FA2FB507-2014-4779-C2A1-9369AAE79C8C">
+<Column name="ID" id="FA2FB507-2014-4779-C2A1-9369AAE79C8C">
 <createdBy>olire</createdBy>
 <createdTime>2017-01-05 12:07:15 UTC</createdTime>
 <ownerDesignName>semestralka_databaze</ownerDesignName>
@@ -18,6 +19,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementColumn>true</autoIncrementColumn>
 <identityColumn>true</identityColumn>
+<autoIncrementGenerateAlways>true</autoIncrementGenerateAlways>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="Name" id="C1B6A27B-3882-3EF9-208F-2CB2152A6A3C">
@@ -35,7 +37,6 @@
 <createdBy>olire</createdBy>
 <createdTime>2017-01-05 12:07:15 UTC</createdTime>
 <ownerDesignName>semestralka_databaze</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -43,15 +44,16 @@
 <ownDataTypeParameters>1000,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Picture" id="1EE60F7D-5643-0E13-F27E-9199088EE345">
+<Column name="Image_URL" id="9266DA67-D703-7E84-E8A8-7B6409AB8416">
 <createdBy>olire</createdBy>
-<createdTime>2017-01-05 12:07:15 UTC</createdTime>
+<createdTime>2017-01-30 14:44:53 UTC</createdTime>
 <ownerDesignName>semestralka_databaze</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT029</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200</dataTypeSize>
+<ownDataTypeParameters>200,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>

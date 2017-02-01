@@ -1,0 +1,173 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="87AA17CC-99BB-AC45-88AF-29445E2B52D4" name="Recording">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-30 15:03:16 UTC</createdTime>
+<generatorID>D509AED1-51B7-7F53-D276-F11B3244513F</generatorID>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<engineerTo>
+<item key="020B54D7-5D56-6395-DCDF-3A7D895A5659" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Recording ID" id="54E82807-755C-EEA2-F4B7-F70FE613F61A">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-30 15:03:16 UTC</createdTime>
+<generatorID>5C46F47D-C0CF-658E-B88D-0ED3E3D79D1D</generatorID>
+<notes>&lt;br/&gt;&lt;br/&gt;</notes>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<engineerTo>
+<item key="020B54D7-5D56-6395-DCDF-3A7D895A5659" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Repository ID" id="185FAB32-8339-63FE-739D-9E6349F37498">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-30 15:03:16 UTC</createdTime>
+<generatorID>F344C8D1-6F24-9B7B-D9C5-FB0299ED42FD</generatorID>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<engineerTo>
+<item key="020B54D7-5D56-6395-DCDF-3A7D895A5659" value="true"/>
+</engineerTo>
+<referedAttribute>212F650E-74C8-1A96-1B17-0076AA8B2960</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Owner ID" id="D1C21E17-A8A3-D00F-C126-9442502A3977">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-30 15:03:16 UTC</createdTime>
+<generatorID>85C9E5A6-8DE4-2D1A-CCC4-7FA6CC3677C4</generatorID>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<engineerTo>
+<item key="020B54D7-5D56-6395-DCDF-3A7D895A5659" value="true"/>
+</engineerTo>
+<referedAttribute>2B340092-3363-9456-D1C7-E558D2E16F41</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Name" id="CE86D30D-A3BE-0EBA-3589-C5549BD489C9">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-30 15:03:16 UTC</createdTime>
+<generatorID>21AB548B-1107-5C81-264C-01A4636A05FC</generatorID>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<engineerTo>
+<item key="020B54D7-5D56-6395-DCDF-3A7D895A5659" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Description" id="6AC44690-362A-A598-7E51-ED6AE22435A6">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-30 15:03:16 UTC</createdTime>
+<generatorID>6FD9B639-B3BB-25F7-EF75-DDAB0FDA0B7A</generatorID>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<engineerTo>
+<item key="020B54D7-5D56-6395-DCDF-3A7D895A5659" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>150</dataTypeSize>
+<ownDataTypeParameters>150,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Date" id="E6E0C4E2-1892-941A-2AB4-AF97F24F133E">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-30 15:03:16 UTC</createdTime>
+<generatorID>2ADA9804-D28C-1372-3215-FA8BEEAE521E</generatorID>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<engineerTo>
+<item key="020B54D7-5D56-6395-DCDF-3A7D895A5659" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Subject Name" id="45A4E653-B6B7-D647-16ED-CFD1CF46082D">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-30 15:03:16 UTC</createdTime>
+<generatorID>114B1498-6AB6-54A9-2F59-688F88C5BB96</generatorID>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<engineerTo>
+<item key="020B54D7-5D56-6395-DCDF-3A7D895A5659" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Subject Gender" id="DBC6034D-0877-AEF7-F02E-E947C2E810B6">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-30 15:03:16 UTC</createdTime>
+<generatorID>53524FF9-E08D-96BD-A6B7-16B3F37F5BD9</generatorID>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<engineerTo>
+<item key="020B54D7-5D56-6395-DCDF-3A7D895A5659" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Subject Age" id="658DC2E9-DEDB-8E36-A404-DA6E2D239D04">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-30 15:03:16 UTC</createdTime>
+<generatorID>7ED83E3C-CA84-F9DB-76D1-2C9F6F1641CA</generatorID>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<engineerTo>
+<item key="020B54D7-5D56-6395-DCDF-3A7D895A5659" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Subject Description" id="8BBA3D9A-1D01-618F-ADB4-BC99A0B9BBC5">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-30 15:03:16 UTC</createdTime>
+<generatorID>112D0543-C52E-3AA2-1392-7364D9D6139C</generatorID>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<engineerTo>
+<item key="020B54D7-5D56-6395-DCDF-3A7D895A5659" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>150</dataTypeSize>
+<ownDataTypeParameters>150,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="C5FCDC4B-E23F-739D-C9C0-A1E0C1248ABC" name="Recording PK">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-30 15:03:16 UTC</createdTime>
+<generatorID>5AA47AE5-FE65-DB50-65C9-485443F03884</generatorID>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<engineerTo>
+<item key="020B54D7-5D56-6395-DCDF-3A7D895A5659" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>54E82807-755C-EEA2-F4B7-F70FE613F61A</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

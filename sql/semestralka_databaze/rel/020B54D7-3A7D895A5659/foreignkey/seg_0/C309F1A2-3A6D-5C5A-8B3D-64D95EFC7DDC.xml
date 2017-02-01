@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="C309F1A2-3A6D-5C5A-8B3D-64D95EFC7DDC" containerWithKeyObject="D509AED1-51B7-7F53-D276-F11B3244513F" localFKIndex="26D56CD1-4BBC-A86A-F340-D37054D87F1B" name="Data_of_recording">
+<createdBy>olire</createdBy>
+<createdTime>2017-02-01 15:08:49 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<referredTableLongName>Data</referredTableLongName>
+<deleteRule>CASCADE</deleteRule>
+<referredTableID>46E225AE-2A7B-49DE-EEBB-A03166BBDA0E</referredTableID>
+<keyObject>823B0B88-37D7-F76B-5DEA-F3867E20E41A</keyObject>
+<referredKeyID>823B0B88-37D7-F76B-5DEA-F3867E20E41A</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

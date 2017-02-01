@@ -2,15 +2,17 @@
 <Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D509AED1-51B7-7F53-D276-F11B3244513F" name="Recording">
 <createdBy>olire</createdBy>
 <createdTime>2017-01-05 11:54:36 UTC</createdTime>
+<comment>RECORDING&lt;br/&gt;Meta data of the recording with keys to recording data.</comment>
 <ownerDesignName>semestralka_databaze</ownerDesignName>
 <ordsAlias>table_1</ordsAlias>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="Id" id="5C46F47D-C0CF-658E-B88D-0ED3E3D79D1D">
+<Column name="Recording_ID" id="5C46F47D-C0CF-658E-B88D-0ED3E3D79D1D">
 <createdBy>olire</createdBy>
 <createdTime>2017-01-05 11:55:04 UTC</createdTime>
+<notes>&lt;br/&gt;&lt;br/&gt;</notes>
 <ownerDesignName>semestralka_databaze</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -18,9 +20,11 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementColumn>true</autoIncrementColumn>
 <identityColumn>true</identityColumn>
+<autoIncrementGenerateAlways>true</autoIncrementGenerateAlways>
 <autoIncrementCycle>false</autoIncrementCycle>
+<notNullConstraintName>NNC_Recording_Id</notNullConstraintName>
 </Column>
-<Column name="Repository_Id" id="39CA2687-B6C8-E059-6AB6-19815445256A">
+<Column name="Repository_ID" id="39CA2687-B6C8-E059-6AB6-19815445256A">
 <createdBy>olire</createdBy>
 <createdTime>2017-01-05 12:08:11 UTC</createdTime>
 <ownerDesignName>semestralka_databaze</ownerDesignName>
@@ -30,11 +34,12 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
+<notNullConstraintName>NNC_Recording_Repository_Id</notNullConstraintName>
 <associations>
 <colAssociation fkAssociation="B88EF797-2977-DC98-D61C-FE410CCC3337" referredColumn="FA2FB507-2014-4779-C2A1-9369AAE79C8C"/>
 </associations>
 </Column>
-<Column name="User_Id" id="C585F3E0-0F2C-BEE7-99E2-36F00E713D2A">
+<Column name="Owner_ID" id="C585F3E0-0F2C-BEE7-99E2-36F00E713D2A">
 <createdBy>olire</createdBy>
 <createdTime>2017-01-05 12:15:08 UTC</createdTime>
 <ownerDesignName>semestralka_databaze</ownerDesignName>
@@ -44,13 +49,14 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
+<notNullConstraintName>NNC_Recording_User_Id</notNullConstraintName>
 <associations>
 <colAssociation fkAssociation="E664934A-72B7-623D-0875-DA8F6580D01A" referredColumn="8355FA53-4A31-A4D8-50FC-C03A8C623FF6"/>
 </associations>
 </Column>
-<Column name="Subject_Id" id="FF04BBDB-3650-C0E8-455F-395CDD0203EF">
+<Column name="Data_ID" id="0DEA3FDC-2447-73ED-F436-BD56D1A68FA4">
 <createdBy>olire</createdBy>
-<createdTime>2017-01-05 12:17:01 UTC</createdTime>
+<createdTime>2017-02-01 15:08:49 UTC</createdTime>
 <ownerDesignName>semestralka_databaze</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -59,7 +65,7 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="77622B0B-BA46-2E32-C8DF-2F73170BE6F0" referredColumn="72A4F40A-4DAF-15F1-D3EF-35B5253E015C"/>
+<colAssociation fkAssociation="C309F1A2-3A6D-5C5A-8B3D-64D95EFC7DDC" referredColumn="ABD1C214-6FD8-7B41-6930-A4242F330A85"/>
 </associations>
 </Column>
 <Column name="Name" id="21AB548B-1107-5C81-264C-01A4636A05FC">
@@ -72,6 +78,7 @@
 <dataTypeSize>50</dataTypeSize>
 <ownDataTypeParameters>50,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
+<notNullConstraintName>NNC_Recording_Name</notNullConstraintName>
 </Column>
 <Column name="Description" id="6FD9B639-B3BB-25F7-EF75-DDAB0FDA0B7A">
 <createdBy>olire</createdBy>
@@ -81,195 +88,66 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>150</dataTypeSize>
-<ownDataTypeParameters>150,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="Timing" id="259544F6-7A16-74F1-BE8D-583B2E065236">
-<createdBy>olire</createdBy>
-<createdTime>2017-01-05 12:02:19 UTC</createdTime>
-<ownerDesignName>semestralka_databaze</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>1000</dataTypeSize>
+<ownDataTypeParameters>1000,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="Date" id="2ADA9804-D28C-1372-3215-FA8BEEAE521E">
 <createdBy>olire</createdBy>
 <createdTime>2017-01-05 12:02:19 UTC</createdTime>
 <ownerDesignName>semestralka_databaze</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
+<notNullConstraintName>NNC_Recording_Date</notNullConstraintName>
 </Column>
-<Column name="Markers" id="38600389-3898-14F8-5402-C78A8250A377">
+<Column name="Subject_Name" id="114B1498-6AB6-54A9-2F59-688F88C5BB96">
 <createdBy>olire</createdBy>
-<createdTime>2017-01-05 12:21:12 UTC</createdTime>
+<createdTime>2017-01-30 13:14:08 UTC</createdTime>
 <ownerDesignName>semestralka_databaze</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT029</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
+<notNullConstraintName>NNC_Recording_Subject_Name</notNullConstraintName>
 </Column>
-<Column name="Raw_AF3" id="712DAAB8-8598-3FEF-1AEB-65B0F881B014">
+<Column name="Subject_Gender" id="53524FF9-E08D-96BD-A6B7-16B3F37F5BD9">
 <createdBy>olire</createdBy>
-<createdTime>2017-01-05 12:05:45 UTC</createdTime>
+<createdTime>2017-01-30 13:15:10 UTC</createdTime>
 <ownerDesignName>semestralka_databaze</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT029</logicalDatatype>
+<logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
+<notNullConstraintName>NNC_Recording_Subject_Gender</notNullConstraintName>
 </Column>
-<Column name="Raw_F7" id="98101688-8FE5-3B27-CEE5-B780EFE45C3A">
+<Column name="Subject_Age" id="7ED83E3C-CA84-F9DB-76D1-2C9F6F1641CA">
 <createdBy>olire</createdBy>
-<createdTime>2017-01-05 12:05:45 UTC</createdTime>
+<createdTime>2017-01-30 13:15:10 UTC</createdTime>
 <ownerDesignName>semestralka_databaze</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT029</logicalDatatype>
+<logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
+<notNullConstraintName>NNC_Recording_Subject_Age</notNullConstraintName>
 </Column>
-<Column name="Raw_F3" id="6892AA20-A9C7-4724-8A63-D8602CE85E93">
+<Column name="Subject_Description" id="112D0543-C52E-3AA2-1392-7364D9D6139C">
 <createdBy>olire</createdBy>
-<createdTime>2017-01-05 12:05:45 UTC</createdTime>
+<createdTime>2017-01-30 13:15:10 UTC</createdTime>
 <ownerDesignName>semestralka_databaze</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT029</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1000</dataTypeSize>
+<ownDataTypeParameters>1000,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="Raw_FC5" id="9D0167DC-E6AA-2E1F-9D91-452F8C41E883">
-<createdBy>olire</createdBy>
-<createdTime>2017-01-05 12:05:45 UTC</createdTime>
-<ownerDesignName>semestralka_databaze</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT029</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="Raw_T7" id="9DF8F199-B70F-A401-6F6D-99873C59F015">
-<createdBy>olire</createdBy>
-<createdTime>2017-01-05 12:05:45 UTC</createdTime>
-<ownerDesignName>semestralka_databaze</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT029</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="Raw_P7" id="231AB5EF-28EE-505A-81B4-E96FA49FB856">
-<createdBy>olire</createdBy>
-<createdTime>2017-01-05 12:05:45 UTC</createdTime>
-<ownerDesignName>semestralka_databaze</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT029</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="Raw_O1" id="34BD98B0-616D-D247-FB31-E4A063CCBC53">
-<createdBy>olire</createdBy>
-<createdTime>2017-01-05 12:05:45 UTC</createdTime>
-<ownerDesignName>semestralka_databaze</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT029</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="Raw_O2" id="C5305D61-FF90-8AC4-D17E-5D5358222E35">
-<createdBy>olire</createdBy>
-<createdTime>2017-01-05 12:05:45 UTC</createdTime>
-<ownerDesignName>semestralka_databaze</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT029</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="Raw_P8" id="35F4BF1C-09B8-3BC1-5AF3-1E4BC475D96E">
-<createdBy>olire</createdBy>
-<createdTime>2017-01-05 12:05:45 UTC</createdTime>
-<ownerDesignName>semestralka_databaze</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT029</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="Raw_T8" id="A7D783AD-0635-28AC-49C9-65FD698EE2EF">
-<createdBy>olire</createdBy>
-<createdTime>2017-01-05 12:05:45 UTC</createdTime>
-<ownerDesignName>semestralka_databaze</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT029</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="Raw_FC6" id="A11E2B59-8FDE-902C-3CDD-583CA51EEC77">
-<createdBy>olire</createdBy>
-<createdTime>2017-01-05 12:05:45 UTC</createdTime>
-<ownerDesignName>semestralka_databaze</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT029</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="Raw_F4" id="F26BFE64-174C-243D-E72A-A69084E97A42">
-<createdBy>olire</createdBy>
-<createdTime>2017-01-05 12:05:45 UTC</createdTime>
-<ownerDesignName>semestralka_databaze</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT029</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="Raw_F8" id="3545B0A3-2A6A-B666-C9FD-75D8E2C21724">
-<createdBy>olire</createdBy>
-<createdTime>2017-01-05 12:05:45 UTC</createdTime>
-<ownerDesignName>semestralka_databaze</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT029</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="Raw_AF4" id="A864B943-9C94-0EB8-F0F4-95C44286608A">
-<createdBy>olire</createdBy>
-<createdTime>2017-01-05 12:05:45 UTC</createdTime>
-<ownerDesignName>semestralka_databaze</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT029</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
+<notNullConstraintName>NNC_Recording_Subject_Description</notNullConstraintName>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -284,7 +162,7 @@
 <colUsage columnID="5C46F47D-C0CF-658E-B88D-0ED3E3D79D1D"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="11D52F68-9803-BC76-4019-D8C962A3380A" name="Recording_Repository">
+<ind_PK_UK id="11D52F68-9803-BC76-4019-D8C962A3380A" name="Part_of_repository">
 <createdBy>olire</createdBy>
 <createdTime>2017-01-05 12:08:11 UTC</createdTime>
 <ownerDesignName>semestralka_databaze</ownerDesignName>
@@ -294,7 +172,7 @@
 <colUsage columnID="39CA2687-B6C8-E059-6AB6-19815445256A"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="26275355-5314-0162-E769-9861AA5296C0" name="UserId">
+<ind_PK_UK id="26275355-5314-0162-E769-9861AA5296C0" name="Owner_of_recording">
 <createdBy>olire</createdBy>
 <createdTime>2017-01-05 12:15:08 UTC</createdTime>
 <ownerDesignName>semestralka_databaze</ownerDesignName>
@@ -304,14 +182,14 @@
 <colUsage columnID="C585F3E0-0F2C-BEE7-99E2-36F00E713D2A"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="3CB27D23-BABF-C3E1-4ED3-1DC93D4DA7AE" name="Subject_Id">
+<ind_PK_UK id="26D56CD1-4BBC-A86A-F340-D37054D87F1B" name="Data_of_recording">
 <createdBy>olire</createdBy>
-<createdTime>2017-01-05 12:17:01 UTC</createdTime>
+<createdTime>2017-02-01 15:08:49 UTC</createdTime>
 <ownerDesignName>semestralka_databaze</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="FF04BBDB-3650-C0E8-455F-395CDD0203EF"/>
+<colUsage columnID="0DEA3FDC-2447-73ED-F436-BD56D1A68FA4"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

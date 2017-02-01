@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="4F07151E-9EDF-DF96-3B5E-3496A27A6A9B" containerWithKeyObject="85EAA360-B7BA-09F8-586B-1AB69EE27CF5" localFKIndex="D6464A9F-1F15-B1A9-A5B6-951E7FC26791" name="Attached_to_recording">
+<createdBy>olire</createdBy>
+<createdTime>2017-02-01 15:02:38 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<referredTableLongName>Recording</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>D509AED1-51B7-7F53-D276-F11B3244513F</referredTableID>
+<keyObject>5AA47AE5-FE65-DB50-65C9-485443F03884</keyObject>
+<referredKeyID>5AA47AE5-FE65-DB50-65C9-485443F03884</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Recording_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

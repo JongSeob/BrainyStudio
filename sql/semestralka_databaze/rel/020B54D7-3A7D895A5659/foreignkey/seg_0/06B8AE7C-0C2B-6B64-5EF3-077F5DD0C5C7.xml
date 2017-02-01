@@ -1,13 +1,16 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="06B8AE7C-0C2B-6B64-5EF3-077F5DD0C5C7" containerWithKeyObject="F78B4E78-EE42-2EAA-1C28-7F0E39C06CCE" localFKIndex="0B4869C1-AE95-ED1F-BD42-5AFC1719CE7C" name="RecordingId">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="06B8AE7C-0C2B-6B64-5EF3-077F5DD0C5C7" containerWithKeyObject="F78B4E78-EE42-2EAA-1C28-7F0E39C06CCE" localFKIndex="0B4869C1-AE95-ED1F-BD42-5AFC1719CE7C" name="Comment_To">
 <createdBy>olire</createdBy>
 <createdTime>2017-01-05 12:22:41 UTC</createdTime>
+<comment>Comment is assigned to recording.</comment>
 <ownerDesignName>semestralka_databaze</ownerDesignName>
+<referredTableLongName>Recording</referredTableLongName>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>D509AED1-51B7-7F53-D276-F11B3244513F</referredTableID>
 <keyObject>5AA47AE5-FE65-DB50-65C9-485443F03884</keyObject>
 <referredKeyID>5AA47AE5-FE65-DB50-65C9-485443F03884</referredKeyID>
 <mandatory>true</mandatory>
+<refColNames>Recording_ID</refColNames>
 <transferable>true</transferable>
 <rely>false</rely>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>

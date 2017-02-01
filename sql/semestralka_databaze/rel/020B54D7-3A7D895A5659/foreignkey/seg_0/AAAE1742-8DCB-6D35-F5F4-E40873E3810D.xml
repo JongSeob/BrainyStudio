@@ -1,13 +1,16 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="AAAE1742-8DCB-6D35-F5F4-E40873E3810D" containerWithKeyObject="208A6DD8-E81A-B5F1-5725-777ED2DB531D" localFKIndex="C059F8BF-3850-20BF-9380-468E61F91975" name="ContributorId">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="AAAE1742-8DCB-6D35-F5F4-E40873E3810D" containerWithKeyObject="208A6DD8-E81A-B5F1-5725-777ED2DB531D" localFKIndex="C059F8BF-3850-20BF-9380-468E61F91975" name="User_Contributor">
 <createdBy>olire</createdBy>
 <createdTime>2017-01-05 12:14:23 UTC</createdTime>
+<comment>User is a contributor to certain reposiory.</comment>
 <ownerDesignName>semestralka_databaze</ownerDesignName>
+<referredTableLongName>User</referredTableLongName>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>303BC958-A048-DFA3-4AD4-A4EB9BF953F4</referredTableID>
 <keyObject>0A15FB6E-9E34-E087-955A-811CD614652C</keyObject>
 <referredKeyID>0A15FB6E-9E34-E087-955A-811CD614652C</referredKeyID>
 <mandatory>true</mandatory>
+<refColNames>User_ID</refColNames>
 <transferable>true</transferable>
 <rely>false</rely>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
