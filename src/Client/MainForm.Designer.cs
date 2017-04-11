@@ -94,24 +94,13 @@
             this.channel_graph = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.headsetSetupBox = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.batteryLabel = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.headImage = new System.Windows.Forms.PictureBox();
             this.statusBox = new System.Windows.Forms.GroupBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.timeLabel = new System.Windows.Forms.Label();
-            this.recordBufferSlider = new System.Windows.Forms.TrackBar();
-            this.poolingSpeedSlider = new System.Windows.Forms.TrackBar();
-            this.bufferLabel = new System.Windows.Forms.Label();
-            this.labelPooling = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip = new System.Windows.Forms.ToolStrip();
             this.rec = new System.Windows.Forms.ToolStripButton();
             this.pause = new System.Windows.Forms.ToolStripButton();
@@ -146,8 +135,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.headImage)).BeginInit();
             this.statusBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.recordBufferSlider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.poolingSpeedSlider)).BeginInit();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -293,6 +280,7 @@
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.splitContainer1.Panel1.Controls.Add(this.splitContainer3);
+            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
             // splitContainer1.Panel2
             // 
@@ -533,73 +521,59 @@
             this.channel_graph.Legends.Add(legend1);
             this.channel_graph.Name = "channel_graph";
             this.channel_graph.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series1.BorderWidth = 5;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series1.CustomProperties = "LabelStyle=Top";
             series1.Legend = "Legend1";
             series1.Name = "AF3";
-            series2.BorderWidth = 5;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series2.Legend = "Legend1";
             series2.Name = "F7";
-            series3.BorderWidth = 5;
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series3.Legend = "Legend1";
             series3.Name = "F3";
-            series4.BorderWidth = 5;
             series4.ChartArea = "ChartArea1";
             series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series4.Legend = "Legend1";
             series4.Name = "FC5";
-            series5.BorderWidth = 5;
             series5.ChartArea = "ChartArea1";
             series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series5.Legend = "Legend1";
             series5.Name = "T7";
-            series6.BorderWidth = 5;
             series6.ChartArea = "ChartArea1";
             series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series6.Legend = "Legend1";
             series6.Name = "P7";
-            series7.BorderWidth = 5;
             series7.ChartArea = "ChartArea1";
             series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series7.Legend = "Legend1";
             series7.Name = "O1";
-            series8.BorderWidth = 5;
             series8.ChartArea = "ChartArea1";
             series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series8.Legend = "Legend1";
             series8.Name = "O2";
-            series9.BorderWidth = 5;
             series9.ChartArea = "ChartArea1";
             series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series9.Legend = "Legend1";
             series9.Name = "P8";
-            series10.BorderWidth = 5;
             series10.ChartArea = "ChartArea1";
             series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series10.Legend = "Legend1";
             series10.Name = "T8";
-            series11.BorderWidth = 5;
             series11.ChartArea = "ChartArea1";
             series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series11.Legend = "Legend1";
             series11.Name = "FC6";
-            series12.BorderWidth = 5;
             series12.ChartArea = "ChartArea1";
             series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series12.Legend = "Legend1";
             series12.Name = "F4";
-            series13.BorderWidth = 5;
             series13.ChartArea = "ChartArea1";
             series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series13.Legend = "Legend1";
             series13.Name = "F8";
-            series14.BorderWidth = 5;
             series14.ChartArea = "ChartArea1";
             series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series14.Legend = "Legend1";
@@ -642,7 +616,6 @@
             // 
             resources.ApplyResources(this.headsetSetupBox, "headsetSetupBox");
             this.headsetSetupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.headsetSetupBox.Controls.Add(this.comboBox1);
             this.headsetSetupBox.Controls.Add(this.label6);
             this.headsetSetupBox.Controls.Add(this.batteryLabel);
             this.headsetSetupBox.Controls.Add(this.pictureBox3);
@@ -652,17 +625,6 @@
             this.headsetSetupBox.ForeColor = System.Drawing.Color.Gray;
             this.headsetSetupBox.Name = "headsetSetupBox";
             this.headsetSetupBox.TabStop = false;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            resources.GetString("comboBox1.Items"),
-            resources.GetString("comboBox1.Items1"),
-            resources.GetString("comboBox1.Items2"),
-            resources.GetString("comboBox1.Items3")});
-            resources.ApplyResources(this.comboBox1, "comboBox1");
-            this.comboBox1.Name = "comboBox1";
             // 
             // label6
             // 
@@ -699,102 +661,21 @@
             // 
             resources.ApplyResources(this.statusBox, "statusBox");
             this.statusBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.statusBox.Controls.Add(this.checkBox4);
-            this.statusBox.Controls.Add(this.checkBox3);
-            this.statusBox.Controls.Add(this.checkBox2);
-            this.statusBox.Controls.Add(this.checkBox1);
             this.statusBox.Controls.Add(this.timeLabel);
-            this.statusBox.Controls.Add(this.recordBufferSlider);
-            this.statusBox.Controls.Add(this.poolingSpeedSlider);
-            this.statusBox.Controls.Add(this.bufferLabel);
-            this.statusBox.Controls.Add(this.labelPooling);
-            this.statusBox.Controls.Add(this.label2);
-            this.statusBox.Controls.Add(this.label1);
             this.statusBox.ForeColor = System.Drawing.Color.Gray;
             this.statusBox.Name = "statusBox";
             this.statusBox.TabStop = false;
-            // 
-            // checkBox4
-            // 
-            resources.ApplyResources(this.checkBox4, "checkBox4");
-            this.checkBox4.Checked = true;
-            this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            resources.ApplyResources(this.checkBox3, "checkBox3");
-            this.checkBox3.Checked = true;
-            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            resources.ApplyResources(this.checkBox2, "checkBox2");
-            this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            resources.ApplyResources(this.checkBox1, "checkBox1");
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // timeLabel
             // 
             resources.ApplyResources(this.timeLabel, "timeLabel");
             this.timeLabel.Name = "timeLabel";
             // 
-            // recordBufferSlider
-            // 
-            resources.ApplyResources(this.recordBufferSlider, "recordBufferSlider");
-            this.recordBufferSlider.Minimum = 1;
-            this.recordBufferSlider.Name = "recordBufferSlider";
-            this.recordBufferSlider.SmallChange = 100;
-            this.recordBufferSlider.Value = 1;
-            this.recordBufferSlider.Scroll += new System.EventHandler(this.trackBar2_Scroll);
-            // 
-            // poolingSpeedSlider
-            // 
-            resources.ApplyResources(this.poolingSpeedSlider, "poolingSpeedSlider");
-            this.poolingSpeedSlider.Maximum = 2000;
-            this.poolingSpeedSlider.Minimum = 100;
-            this.poolingSpeedSlider.Name = "poolingSpeedSlider";
-            this.poolingSpeedSlider.SmallChange = 100;
-            this.poolingSpeedSlider.TickFrequency = 50;
-            this.poolingSpeedSlider.Value = 500;
-            this.poolingSpeedSlider.Scroll += new System.EventHandler(this.trackBar1_Scroll);
-            // 
-            // bufferLabel
-            // 
-            resources.ApplyResources(this.bufferLabel, "bufferLabel");
-            this.bufferLabel.Name = "bufferLabel";
-            // 
-            // labelPooling
-            // 
-            resources.ApplyResources(this.labelPooling, "labelPooling");
-            this.labelPooling.Name = "labelPooling";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
             // menuStrip
             // 
             this.menuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.menuStrip.GripMargin = new System.Windows.Forms.Padding(11);
+            this.menuStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(50, 50);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.rec,
@@ -807,6 +688,7 @@
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.menuStrip.Stretch = true;
+            this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip_ItemClicked);
             // 
             // rec
             // 
@@ -827,6 +709,7 @@
             this.stop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.stop, "stop");
             this.stop.Name = "stop";
+            this.stop.Click += new System.EventHandler(this.stop_Click);
             // 
             // toolStripSeparator2
             // 
@@ -849,7 +732,7 @@
             // 
             // recorderTimer
             // 
-            this.recorderTimer.Interval = 500;
+            this.recorderTimer.Interval = 1000;
             this.recorderTimer.Tick += new System.EventHandler(this.RecorderTimer_Tick);
             // 
             // pictureBox1
@@ -906,8 +789,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.headImage)).EndInit();
             this.statusBox.ResumeLayout(false);
             this.statusBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.recordBufferSlider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.poolingSpeedSlider)).EndInit();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -931,18 +812,12 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.GroupBox headsetSetupBox;
         private System.Windows.Forms.PictureBox headImage;
-        private System.Windows.Forms.Label labelPooling;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label batteryLabel;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.GroupBox statusBox;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TrackBar poolingSpeedSlider;
-        private System.Windows.Forms.Label bufferLabel;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TrackBar recordBufferSlider;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.TableLayoutPanel graphingPanel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
@@ -976,12 +851,7 @@
         private System.Windows.Forms.ToolStripMenuItem expressivToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem localToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem remoteToolStripMenuItem;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label timeLabel;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;

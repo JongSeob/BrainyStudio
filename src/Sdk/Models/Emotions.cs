@@ -11,6 +11,9 @@ namespace Sdk.Models
     [JsonObject(MemberSerialization.OptIn)]
     public class Affectiv
     {
+        [JsonProperty("Timing")]
+        public List<Double> Timing = new List<double>();
+
         [JsonProperty("Excitement")]
         public List<Double> Excitement = new List<double>();
 

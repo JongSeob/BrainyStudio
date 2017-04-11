@@ -9,7 +9,7 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Windows.Forms;
 using Sdk.Models;
-
+using EmoEngineClientLibrary;
 
 namespace Client
 {
@@ -21,10 +21,13 @@ namespace Client
         private EmoEngine _engine = EmoEngine.Instance;
         EmoState _es;
 
+      
+      
         // Recorder stopwatch
         Stopwatch recorder_stopwatch = new Stopwatch();
 
         private int _userID;
+        public bool recording;
 
         #region Raw sensor data charts
 
@@ -45,8 +48,20 @@ namespace Client
 
         #endregion Raw sensor data charts
 
+        // Sample recording
         public Recording _ondra = new Recording("Test", DateTime.Now);
 
+        /// <summary>
+        /// Main tick for updating data from emoengine
+        /// </summary>
+        private void refreshdata_Tick(object sender, EventArgs e)
+        {
+            _engine.ProcessEvents();
+        }
+
+        /// <summary>
+        /// Initilzation function
+        /// </summary>
         public RecorderForm()
         {
             InitializeComponent();
@@ -58,7 +73,8 @@ namespace Client
             _engine.EmoStateUpdated +=
              new EmoEngine.EmoStateUpdatedEventHandler(engine_EmoStateUpdated);
 
-            _engine.UserAdded += new EmoEngine.UserAddedEventHandler(engine_UserAdded_Event);
+            _engine.UserAdded += 
+                new EmoEngine.UserAddedEventHandler(engine_UserAdded_Event);
 
             _engine.EmoEngineDisconnected +=
                 new EmoEngine.EmoEngineDisconnectedEventHandler(engine_EmoEngineDisconnected);
@@ -66,10 +82,8 @@ namespace Client
             _engine.UserRemoved +=
                  new EmoEngine.UserRemovedEventHandler(engine_UserRemoved);
 
-
-           //Test Events
-           // _engine.AffectivEmoStateUpdated +=
-           //     new EmoEngine.AffectivEmoStateUpdatedEventHandler(engine_AffectivEmoStateUpdated);
+            _engine.AffectivEmoStateUpdated +=
+                new EmoEngine.AffectivEmoStateUpdatedEventHandler(engine_AffectivEmoStateUpdated);
 
             //Connect to headset
             statusBar.Text = "EMOTIV Dongle not found.";
@@ -79,53 +93,8 @@ namespace Client
             _engine.Connect();
         }
 
-
         /// <summary>
-        /// Record latest raw sensor data from headset
-        /// </summary>
-        /// <param name="buffer">How many from buffer shold be recorded</param>
-        private void Record(int buffer)
-        {
-            //Get latest status from emo engine
-            EmoState es = _es;
-
-            //Fetch latest sensor data from engine
-            Dictionary<EdkDll.EE_DataChannel_t, double[]> data = _engine.GetData((uint)_userID);
-
-            //Write into EEG Recording structure
-            if (data != null)
-            {
-                for (int i = 0; i < buffer; i++)
-                {
-
-                    //Append raw sensor data
-                    _ondra.AppendRaw(data[EdkDll.EE_DataChannel_t.AF3][i],
-                    data[EdkDll.EE_DataChannel_t.F7][i],
-                    data[EdkDll.EE_DataChannel_t.F3][i],
-                    data[EdkDll.EE_DataChannel_t.FC5][i],
-                    data[EdkDll.EE_DataChannel_t.T7][i],
-                    data[EdkDll.EE_DataChannel_t.P7][i],
-                    data[EdkDll.EE_DataChannel_t.O1][i],
-                    data[EdkDll.EE_DataChannel_t.O2][i],
-                    data[EdkDll.EE_DataChannel_t.P8][i],
-                    data[EdkDll.EE_DataChannel_t.T8][i],
-                    data[EdkDll.EE_DataChannel_t.FC6][i],
-                    data[EdkDll.EE_DataChannel_t.F4][i],
-                    data[EdkDll.EE_DataChannel_t.F8][i],
-                    data[EdkDll.EE_DataChannel_t.AF4][i]);
-
-                    //Append affectiv values
-                    _ondra.AppendAffectiv(es.AffectivGetExcitementShortTermScore(),
-                        es.AffectivGetEngagementBoredomScore(),
-                        es.AffectivGetMeditationScore(),
-                        es.AffectivGetFrustrationScore());
-                }
-            }
-        }
-
-
-        /// <summary>
-        /// Main update event
+        /// Main update event for RAW data
         /// </summary>
         private void engine_EmoStateUpdated(object sender, EmoStateUpdatedEventArgs e)
         {
@@ -145,6 +114,29 @@ namespace Client
                 {
                     //Update raw sensor graph
                     updateGraphSeries_Sensors(data);
+
+                    //Recording RAW data
+                    if (this.recording)
+                    {
+                        for (int i = 0; i < data[EdkDll.EE_DataChannel_t.F3].Length; i++)
+                        {
+                            //Append raw sensor data
+                            _ondra.AppendRaw(data[EdkDll.EE_DataChannel_t.AF3][i],
+                            data[EdkDll.EE_DataChannel_t.F7][i],
+                            data[EdkDll.EE_DataChannel_t.F3][i],
+                            data[EdkDll.EE_DataChannel_t.FC5][i],
+                            data[EdkDll.EE_DataChannel_t.T7][i],
+                            data[EdkDll.EE_DataChannel_t.P7][i],
+                            data[EdkDll.EE_DataChannel_t.O1][i],
+                            data[EdkDll.EE_DataChannel_t.O2][i],
+                            data[EdkDll.EE_DataChannel_t.P8][i],
+                            data[EdkDll.EE_DataChannel_t.T8][i],
+                            data[EdkDll.EE_DataChannel_t.FC6][i],
+                            data[EdkDll.EE_DataChannel_t.F4][i],
+                            data[EdkDll.EE_DataChannel_t.F8][i],
+                            data[EdkDll.EE_DataChannel_t.AF4][i]);
+                        }
+                    }
                 }
             }
             catch
@@ -152,14 +144,12 @@ namespace Client
         }
 
         /// <summary>
-        /// Affection state updated event 
+        /// Main update event for AFFECTION data
         /// </summary>
         private void engine_AffectivEmoStateUpdated(object sender, EmoStateUpdatedEventArgs e)
         {
+
             EmoState es = e.emoState;
-
-            Single timeFromStart = es.GetTimeFromStart();
-
             EdkDll.EE_AffectivAlgo_t[] affAlgoList = { 
                                                       EdkDll.EE_AffectivAlgo_t.AFF_ENGAGEMENT_BOREDOM,
                                                       EdkDll.EE_AffectivAlgo_t.AFF_EXCITEMENT,
@@ -218,8 +208,9 @@ namespace Client
                 {
                     scaledScoreEg = (rawScoreEg - minScaleEg) / (maxScaleEg - minScaleEg);
                 }
-                Console.WriteLine("Affectiv Engagement : Raw Score {0:f5}  Min Scale {1:f5} max Scale {2:f5} Scaled Score {3:f5}\n", rawScoreEg, minScaleEg, maxScaleEg, scaledScoreEg);
+                //Console.WriteLine("Affectiv Engagement : Raw Score {0:f5}  Min Scale {1:f5} max Scale {2:f5} Scaled Score {3:f5}\n", rawScoreEg, minScaleEg, maxScaleEg, scaledScoreEg);
             }
+
             es.AffectivGetMeditationModelParams(out rawScoreMd, out minScaleMd, out maxScaleMd);
             if (minScaleMd != maxScaleMd)
             {
@@ -235,8 +226,9 @@ namespace Client
                 {
                     scaledScoreMd = (rawScoreMd - minScaleMd) / (maxScaleMd - minScaleMd);
                 }
-                Console.WriteLine("Affectiv Meditation : Raw Score {0:f5} Min Scale {1:f5} max Scale {2:f5} Scaled Score {3:f5}\n", rawScoreMd, minScaleMd, maxScaleMd, scaledScoreMd);
+                //Console.WriteLine("Affectiv Meditation : Raw Score {0:f5} Min Scale {1:f5} max Scale {2:f5} Scaled Score {3:f5}\n", rawScoreMd, minScaleMd, maxScaleMd, scaledScoreMd);
             }
+
             es.AffectivGetFrustrationModelParams(out rawScoreFt, out minScaleFt, out maxScaleFt);
             if (maxScaleFt != minScaleFt)
             {
@@ -252,44 +244,19 @@ namespace Client
                 {
                     scaledScoreFt = (rawScoreFt - minScaleFt) / (maxScaleFt - minScaleFt);
                 }
-                Console.WriteLine("Affectiv Frustration : Raw Score {0:f5} Min Scale {1:f5} max Scale {2:f5} Scaled Score {3:f5}\n", rawScoreFt, minScaleFt, maxScaleFt, scaledScoreFt);
+                //Console.WriteLine("Affectiv Frustration : Raw Score {0:f5} Min Scale {1:f5} max Scale {2:f5} Scaled Score {3:f5}\n", rawScoreFt, minScaleFt, maxScaleFt, scaledScoreFt);
             }
 
-            //affLog.Write(
-            //    "{0},{1},{2},{3},{4},{5},",
-            //    timeFromStart,
-            //    longTermExcitementScore, shortTermExcitementScore, meditationScore, frustrationScore, boredomScore);
-          
-            //for (int i = 0; i < affAlgoList.Length; ++i)
-            //{
-            //    affLog.Write("{0},", isAffActiveList[i]);
-            //}
-            //affLog.WriteLine("");
-            //affLog.Flush();
+            if (this.recording)
+            {
+               
+                //Append affectiv values
+                _ondra.AppendAffectiv(recorder_stopwatch.Elapsed.TotalSeconds, scaledScoreEc,
+                scaledScoreEg, scaledScoreMd, scaledScoreFt);
+            } 
         }
 
-        private void refreshdata_Tick(object sender, EventArgs e)
-        {
-            _engine.ProcessEvents();
 
-
-        }
-
-        #region Minor UI code
-
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-            poolerTimer.Interval = poolingSpeedSlider.Value;
-            labelPooling.Text = poolingSpeedSlider.Value.ToString() + " ms";
-        }
-
-        private void trackBar2_Scroll(object sender, EventArgs e)
-        {
-            Double percentage = (recordBufferSlider.Value * 100 / 100) * 10;
-            bufferLabel.Text = percentage.ToString() + " %";
-        }
-
-        #endregion Minor UI code
 
         #region Graphing
 
@@ -446,7 +413,6 @@ namespace Client
         private void RecorderTimer_Tick(object sender, EventArgs e)
         {
             timeLabel.Text = recorder_stopwatch.Elapsed.ToString();
-            Record(1);
         }
 
  
@@ -454,20 +420,21 @@ namespace Client
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             //Disable Controls
-            poolingSpeedSlider.Enabled = false;
+            this.recording = true;
             rec.Enabled = false;
             pause.Enabled = true;
             stop.Enabled = true;
             rec.Text = "Record";
 
-            //Set timer interval
-            recorderTimer.Interval = poolingSpeedSlider.Value;
+
 
             // Begin timing.
             recorder_stopwatch.Start();
             _ondra.Timing = recorderTimer.Interval;
+
             // Enable recording timer.
             recorderTimer.Enabled = true;
+            
         }
 
         private void pause_Click(object sender, EventArgs e)
@@ -497,6 +464,21 @@ namespace Client
         }
 
         private void toolStripButton1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void stop_Click(object sender, EventArgs e)
+        {
+            this.recording = false;
+        }
+
+        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

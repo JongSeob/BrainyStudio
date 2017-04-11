@@ -4,3 +4,9 @@ C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\build\Debug\DotNetEmotivSDK-vs20
 C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\DotNetEmotivSDK\obj\x86\Debug\Lib.csprojResolveAssemblyReference.cache
 C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\DotNetEmotivSDK\obj\x86\Debug\DotNetEmotivSDK-vs2010.dll
 C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\DotNetEmotivSDK\obj\x86\Debug\DotNetEmotivSDK-vs2010.pdb
+E:\GitHub\Emotiv-Epoc\src\build\Debug\DotNetEmotivSDK-vs2010.dll.config
+E:\GitHub\Emotiv-Epoc\src\build\Debug\DotNetEmotivSDK-vs2010.dll
+E:\GitHub\Emotiv-Epoc\src\build\Debug\DotNetEmotivSDK-vs2010.pdb
+E:\GitHub\Emotiv-Epoc\src\DotNetEmotivSDK\obj\x86\Debug\Lib.csprojResolveAssemblyReference.cache
+E:\GitHub\Emotiv-Epoc\src\DotNetEmotivSDK\obj\x86\Debug\DotNetEmotivSDK-vs2010.dll
+E:\GitHub\Emotiv-Epoc\src\DotNetEmotivSDK\obj\x86\Debug\DotNetEmotivSDK-vs2010.pdb

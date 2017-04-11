@@ -1,0 +1,784 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EmoEngineClientLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:EmoEngineClientLibrary.ChannelContext">
+            <summary>
+            Provides a collection of properties for a data channel.
+            </summary>
+            <remarks>
+            <para>
+            Use the <see cref="T:EmoEngineClientLibrary.ChannelContext"/> class to specify properties 
+            that apply to realtime electrode data channels. The <see cref="T:EmoEngineClientLibrary.ChannelContext"/> class
+            is a simple property bag implementation that maps a property name to an
+            object. The property value can be a value type, but boxing semantics apply.
+            </para>
+            <para>
+            The following list shows the default properties that are available for a
+            channel context.
+            <list type="bullet">
+            <item>AddToBuffer: Boolean indicating that the data channel is included in the <see cref="T:EmoEngineClientLibrary.SampleBuffer"/>.</item>
+            <item>RemoveDCBias: Boolean indicating that any DC bias in the data channel is removed.</item>
+            <item>IsElectrodeChannel: Boolean indicating that the data channel holds electrode data. </item>
+            <item>ComputeFFT: Boolean indicating that a Fast Fourier Transform (FFT) is computed for the data channel.</item>
+            <item>ContactQuality: A <see cref="T:Emotiv.EdkDll.EE_EEG_ContactQuality_t"/> that indicates the signal quality of the data channel.</item>
+            </list>
+            </para>
+            <para>
+            Type safety is not a fgeature of this class; it should probably be re-implemented with the 
+            new <c>dynamic</c> keyword, which enables building "expando" types, with dynamically created properties. 
+            </para>
+            </remarks>
+        </member>
+        <member name="M:EmoEngineClientLibrary.ChannelContext.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EmoEngineClientLibrary.ChannelContext"/> class.
+            </summary>
+        </member>
+        <member name="M:EmoEngineClientLibrary.ChannelContext.#ctor(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:EmoEngineClientLibrary.ChannelContext"/> class with the specified dictionary.
+            </summary>
+        </member>
+        <member name="M:EmoEngineClientLibrary.ChannelContext.AddBooleanProperty(System.String,System.Boolean)">
+            <summary>
+            Adds a boolean property to the channel context.
+            </summary>
+            <param name="name">The name of the property to add.</param>
+            <param name="initialValue">The initial value of the property.</param>
+        </member>
+        <member name="M:EmoEngineClientLibrary.ChannelContext.AddDoubleProperty(System.String,System.Double)">
+            <summary>
+            Adds a double property to the channel context.
+            </summary>
+            <param name="name">The name of the property to add.</param>
+            <param name="initialValue">The initial value of the property.</param>
+        </member>
+        <member name="M:EmoEngineClientLibrary.ChannelContext.AddIntegerProperty(System.String,System.Int32)">
+            <summary>
+            Adds an integer property to the channel context.
+            </summary>
+            <param name="name">The name of the property to add.</param>
+            <param name="initialValue">The initial value of the property.</param>
+        </member>
+        <member name="M:EmoEngineClientLibrary.ChannelContext.AddTypeProperty(System.String,System.Type)">
+            <summary>
+            Adds a <see cref="T:System.Type"/> property to the channel context.
+            </summary>
+            <param name="name">The name of the property to add.</param>
+            <param name="initialValue">The initial value of the property.</param>
+        </member>
+        <member name="T:EmoEngineClientLibrary.ChannelList">
+            <summary>
+            Provides a list of neurodata channels.
+            </summary>
+        </member>
+        <member name="T:EmoEngineClientLibrary.EmoEngineClient">
+            <summary>
+            Provides event-driven access to the <see cref="T:Emotiv.EmoEngine"/> class.
+            </summary>
+            <remarks>
+            <para>
+            Use the <see cref="T:EmoEngineClientLibrary.EmoEngineClient"/> class to interact with the <see cref="T:Emotiv.EmoEngine"/> class
+            provided by Emotiv in the managed assembly, DotNetEmotivSDK.dll.
+            </para>
+            <para>
+            The <see cref="T:EmoEngineClientLibrary.EmoEngineClient"/> class interacts with the <see cref="T:Emotiv.EmoEngine"/> class in two distinct ways.
+            <list type="bullet">
+            <item>Polling for neuroheadset device state, which is reported in <see cref="T:Emotiv.EmoState"/> instances. 
+            A worker thread polls the <see cref="M:Emotiv.EmoEngine.ProcessEvents(System.Int32)"/> method. </item>
+            <item>Polling for realtime electrode data from the neuroheadset device, which is reported in dictionaries. 
+            A worker thread polls the <see cref="M:Emotiv.EmoEngine.GetData(System.UInt32)"/> method. </item>
+            </list>
+            
+            </para>
+            </remarks>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmoEngineClient.CurrentEmotivState">
+            <summary>
+            Gets the most recent EmotivState from the EmotivEngine.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmoEngineClient.Buffer">
+            <summary>
+            Gets the circular buffer that holds realtime electrode data.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmoEngineClient.BufferSize">
+            <summary>
+            Gets the size of the circular buffer, in samples.
+            </summary>
+            <remarks>Set the <see cref="P:EmoEngineClientLibrary.EmoEngineClient.BufferSizeFactor"/> property to change the value
+            of <see cref="P:EmoEngineClientLibrary.EmoEngineClient.BufferSize"/>. </remarks>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmoEngineClient.BufferSizeFactor">
+            <summary>
+            Gets or sets the factor (in seconds) by which to scale the 
+            <see cref="P:EmoEngineClientLibrary.EmoEngineClient.BufferSize"/> property.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmoEngineClient.EmoComposerPort">
+            <summary>
+            Gets the port for connecting to the EmoComposer application.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmoEngineClient.ControlPanelPort">
+            <summary>
+            Gets the port for connecting to the Emotiv Control Panel application.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmoEngineClient.EmoEngineTargetIP">
+            <summary>
+            Gets the IP address of the EmotivEngine.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmoEngineClient.UserID">
+            <summary>
+            Gets or sets the ID for the current user.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmoEngineClient.CanStartPolling">
+            <summary>
+            Gets a value indicating whether electrode data from the EmoEngine can be polled.
+            </summary>
+            <remarks>
+            The <see cref="P:EmoEngineClientLibrary.EmoEngineClient.CanStartPolling"/> property is useful for displaying device state 
+            in the user interface.
+            </remarks>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmoEngineClient.CanStopPolling">
+            <summary>
+            Gets a value indicating whether a stop request for electrode data polling is valid.
+            </summary>
+            <remarks>
+            The <see cref="P:EmoEngineClientLibrary.EmoEngineClient.CanStopPolling"/> property is useful for displaying device state 
+            in the user interface.
+            </remarks>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmoEngineClient.IsPolling">
+            <summary>
+            Gets a value indicating whether the worker threads are active.
+            </summary>
+            <summary>
+            Gets a value indicating whether a stop request for electrode data polling is valid.
+            </summary>
+            <remarks>
+            The <see cref="P:EmoEngineClientLibrary.EmoEngineClient.IsPolling"/> property is useful for displaying device state 
+            in the user interface.
+            </remarks>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmoEngineClient.CanStartEmoEngine">
+            <summary>
+            Gets a value indicating whether the <see cref="T:Emotiv.EmoEngine"/> can be polled.
+            </summary>
+            <remarks>
+            The <see cref="P:EmoEngineClientLibrary.EmoEngineClient.CanStartEmoEngine"/> property is useful for displaying device state 
+            in the user interface.
+            </remarks>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmoEngineClient.CanStopEmoEngine">
+            <summary>
+            Gets a value indicating whether the <see cref="T:Emotiv.EmoEngine"/> is currently polling.
+            </summary>
+            <remarks>
+            The <see cref="P:EmoEngineClientLibrary.EmoEngineClient.CanStopEmoEngine"/> property is useful for displaying device state 
+            in the user interface.
+            </remarks>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmoEngineClient.IsEmoEngineRunning">
+            <summary>
+            Gets a value indicating whether the <see cref="T:Emotiv.EmoEngine"/> is initialized and active.
+            </summary>
+            <remarks>
+            The <see cref="P:EmoEngineClientLibrary.EmoEngineClient.IsEmoEngineRunning"/> property is useful for displaying device state 
+            in the user interface.
+            </remarks>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmoEngineClient.ActivePort">
+            <summary>
+            Gets or sets the port for connecting to the EmotivEngine.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmoEngineClient.EmoEnginePollingPeriod">
+            <summary>
+            Gets or sets the period, in milliseconds, at which the EmoEngine is polled. 
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmoEngineClient.SamplingRate">
+            <summary>
+            Gets the period, in Hertz, at which data frames are polled. 
+            </summary>
+            <remarks>
+            <para>
+            Setting the <see cref="P:EmoEngineClientLibrary.EmoEngineClient.SamplingRate"/> property also sets the
+            <see cref="P:EmoEngineClientLibrary.EmoEngineClient.DataPollingPeriod"/> property, which is computed by using
+            the following formula.
+            </para>
+            <para>
+            DataPollingPeriod = 1 / SamplingRate * 1000
+            </para>
+            The <see cref="P:EmoEngineClientLibrary.EmoEngineClient.SamplingRate"/> property is specified by the headset
+            and usually is set by calling the <see cref="M:Emotiv.EmoEngine.DataGetSamplingRate(System.UInt32)"/> method.
+            </remarks>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmoEngineClient.DataPollingPeriod">
+            <summary>
+            Gets or sets the period, in milliseconds, at which data frames are polled. 
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmoEngineClient.ChannelContexts">
+            <summary>
+            Gets a dictionary that maps data channels to corresponding <see cref="T:EmoEngineClientLibrary.ChannelContext"/> objects.
+            </summary>
+        </member>
+        <member name="M:EmoEngineClientLibrary.EmoEngineClient.StartEmoEngine">
+            <summary>
+            Starts the engine's <see cref="M:Emotiv.EmoEngine.ProcessEvents(System.Int32)"/> worker thread.
+            </summary>
+        </member>
+        <member name="M:EmoEngineClientLibrary.EmoEngineClient.StartDataPolling">
+            <summary>
+            Starts the engine's <see cref="M:Emotiv.EmoEngine.GetData(System.UInt32)"/> worker thread.
+            </summary>
+        </member>
+        <member name="M:EmoEngineClientLibrary.EmoEngineClient.StopDataPolling">
+            <summary>
+            Cancels the worker threads.
+            </summary>
+        </member>
+        <member name="M:EmoEngineClientLibrary.EmoEngineClient.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EmoEngineClientLibrary.EmoEngineClient"/> class.
+            </summary>
+        </member>
+        <member name="M:EmoEngineClientLibrary.EmoEngineClient.#cctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EmoEngineClientLibrary.EmoEngineClient"/> class.
+            </summary>
+        </member>
+        <member name="M:EmoEngineClientLibrary.EmoEngineClient.PopulateChannelContexts">
+            <summary>
+            Defines metadata for each data channel.
+            </summary>
+        </member>
+        <member name="M:EmoEngineClientLibrary.EmoEngineClient.InitializeProcessEventsWorker">
+            <summary>
+            Creates the worker thread that polls the engine's <see cref="M:Emotiv.EmoEngine.ProcessEvents(System.Int32)"/> method.
+            </summary>
+            <remarks>
+            The worker thread sleeps for <see cref="P:EmoEngineClientLibrary.EmoEngineClient.EmoEnginePollingPeriod"/> milliseconds and 
+            calls the engine's <see cref="M:Emotiv.EmoEngine.ProcessEvents(System.Int32)"/> method.
+            </remarks>
+        </member>
+        <member name="M:EmoEngineClientLibrary.EmoEngineClient.InitializeDataPollingWorker">
+            <summary>
+            Creates the worker thread that polls the engine's <see cref="M:Emotiv.EmoEngine.GetData(System.UInt32)"/> method.
+            </summary>
+            <remarks>
+            The worker thread sleeps for <see cref="P:EmoEngineClientLibrary.EmoEngineClient.DataPollingPeriod"/> milliseconds and 
+            calls the engine's <see cref="M:Emotiv.EmoEngine.GetData(System.UInt32)"/> method.
+            </remarks>
+        </member>
+        <member name="M:EmoEngineClientLibrary.EmoEngineClient.InitializeEmotivEngine">
+            <summary>
+            Attaches event handlers for <see cref="T:Emotiv.EmoEngine"/> events and connects to the neuroheadset. 
+            </summary>
+        </member>
+        <member name="E:EmoEngineClientLibrary.EmoEngineClient.PropertyChanged">
+            <summary>
+            Notifies clients that a property value has changed.
+            </summary>
+        </member>
+        <member name="M:EmoEngineClientLibrary.EmoEngineClient.NotifyPropertyChanged(System.String)">
+            <summary>
+            Raises the <see cref="E:EmoEngineClientLibrary.EmoEngineClient.PropertyChanged"/> event.
+            </summary>
+            <param name="propertyName"></param>
+        </member>
+        <member name="M:EmoEngineClientLibrary.EmoEngineClient.Dispose">
+            <summary>
+            Releases unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:EmoEngineClientLibrary.EmoEngineClient.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged resources.
+            </summary>
+            <param name="disposing"><c>true </c>to release both managed and unmanaged 
+            resources; <c>false</c>to release only unmanaged resources. </param>
+            <remarks>
+            The <see cref="M:EmoEngineClientLibrary.EmoEngineClient.DisconnectEmotivEngine"/> method is called. If the 
+            <see cref="M:Emotiv.EmoEngine.ProcessEvents(System.Int32)"/> and the <see cref="M:Emotiv.EmoEngine.GetData(System.UInt32)"/> 
+            worker threads are running, they are canceled.
+            </remarks>
+        </member>
+        <member name="M:EmoEngineClientLibrary.EmoEngineClient.Finalize">
+            <summary>
+            Finalizer.
+            </summary>
+        </member>
+        <member name="T:EmoEngineClientLibrary.EmotivState">
+            <summary>
+            Provides property wrappers around the <see cref="T:Emotiv.EmoState"/> methods.
+            </summary>
+            <remarks>
+            The <see cref="T:EmoEngineClientLibrary.EmotivState"/> class wraps <see cref="T:Emotiv.EmoState"/> methods 
+            with CLR properties, which enables data binding in the visualization layer.
+            </remarks>
+        </member>
+        <member name="M:EmoEngineClientLibrary.EmotivState.#ctor(Emotiv.EmoState)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EmoEngineClientLibrary.EmotivState"/> class.
+            </summary>
+            <param name="emoState">An <see cref="T:Emotiv.EmoState"/> to back the <see cref="T:EmoEngineClientLibrary.EmotivState"/> properties.</param>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.AffectivEngagementBoredomScore">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.AffectivGetEngagementBoredomScore"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.AffectivExcitementLongTermScore">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.AffectivGetExcitementLongTermScore"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.AffectivExcitementShortTermScore">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.AffectivGetExcitementShortTermScore"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.AffectivFrustrationScore">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.AffectivGetFrustrationScore"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.AffectivMeditationScore">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.AffectivGetMeditationScore"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.CognitivCurrentAction">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.CognitivGetCurrentAction"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.CognitivCurrentActionPower">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.CognitivGetCurrentActionPower"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.CognitivIsActive">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.CognitivIsActive"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.ExpressivClenchExtent">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.ExpressivGetClenchExtent"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.ExpressivEyebrowExtent">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.ExpressivGetEyebrowExtent"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.ExpressivLeftEyelidState">
+            <summary>
+            Gets the left-eye output param from the <see cref="M:Emotiv.EmoState.ExpressivGetEyelidState(System.Single@,System.Single@)"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.ExpressivRightEyelidState">
+            <summary>
+            Gets the right-eye output param from the <see cref="M:Emotiv.EmoState.ExpressivGetEyelidState(System.Single@,System.Single@)"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.ExpressivLowerFaceAction">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.ExpressivGetLowerFaceAction"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.ExpressivLowerFaceActionPower">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.ExpressivGetLowerFaceActionPower"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.ExpressivSmileExtent">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.ExpressivGetSmileExtent"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.ExpressivUpperFaceAction">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.ExpressivGetUpperFaceAction"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.ExpressivUpperFaceActionPower">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.ExpressivGetUpperFaceActionPower"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.ExpressivIsBlink">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.ExpressivIsBlink"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.ExpressivIsEyesOpen">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.ExpressivIsEyesOpen"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.ExpressivIsLeftWink">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.ExpressivIsLeftWink"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.ExpressivIsLookingDown">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.ExpressivIsLookingDown"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.ExpressivIsLookingLeft">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.ExpressivIsLookingLeft"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.ExpressivIsLookingRight">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.ExpressivIsLookingRight"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.ExpressivIsLookingUp">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.ExpressivIsLookingUp"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.ExpressivIsRightWink">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.ExpressivIsRightWink"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.HeadsetOn">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.GetHeadsetOn"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.NumContactQualityChannels">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.GetNumContactQualityChannels"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.TimeFromStart">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.GetTimeFromStart"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.WirelessSignalStatus">
+            <summary>
+            Gets the value returned by the <see cref="M:Emotiv.EmoState.GetWirelessSignalStatus"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.BatteryChargeLevel">
+            <summary>
+            Gets the Battery Charge Level output param from the <see cref="M:Emotiv.EmoState.GetBatteryChargeLevel(System.Int32@,System.Int32@)"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.EmotivState.MaxBatteryChargeLevel">
+            <summary>
+            Gets the Max Charge Level output param from the <see cref="M:Emotiv.EmoState.GetBatteryChargeLevel(System.Int32@,System.Int32@)"/> method.
+            </summary>
+        </member>
+        <member name="T:EmoEngineClientLibrary.EmotivStateBuffer">
+            <summary>
+            Provides a synchronized collection of EmotivState instances from the Emotiv neuroheadset.
+            </summary>
+        </member>
+        <member name="T:EmoEngineClientLibrary.SampleBuffer">
+            <summary>
+            Contains samples of electrode data from the Emotiv neuroheadset.
+            </summary>
+            <remarks>
+            <para>The <see cref="T:EmoEngineClientLibrary.SampleBuffer"/> class collects electrode data from the 
+            neuroheadset and saves them in a <see cref="T:EmoEngineClientLibrary.SampleBufferDictionary"/>.</para>
+            <para>
+            The neuroheadset periodically sends data frames of electrode measurements and 
+            reference signals. The engine's <see cref="M:Emotiv.EmoEngine.DataGetSamplingRate(System.UInt32)"/> property 
+            determines how fast data frames arrive. This value is typically 128Hz. 
+            </para>
+            <para>
+            Each frame contains data for the channels specified in the <see cref="T:Emotiv.EdkDll.EE_DataChannel_t"/> 
+            enumeration. Currently, each data frame comprises 14 channels of electrode data
+            and 11 channels of reference and other signals. 
+            </para>
+            <para>
+            Use the <see cref="M:EmoEngineClientLibrary.SampleBuffer.AddFrame(System.Collections.Generic.Dictionary{Emotiv.EdkDll.EE_DataChannel_t,System.Double[]})"/> method to insert a data frame into the <see cref="T:EmoEngineClientLibrary.SampleBuffer"/>.
+            </para>
+            <para>
+            Use the <see cref="P:EmoEngineClientLibrary.SampleBuffer.ChannelData"/> property to access data frames in the sample buffer. 
+            Synchronize access to the <see cref="T:EmoEngineClientLibrary.SampleBufferDictionary"/> class by using
+            the <c>lock</c> statement and the <see cref="P:EmoEngineClientLibrary.SampleBufferDictionary.SyncRoot"/> property. 
+            </para>
+            </remarks>
+        </member>
+        <member name="M:EmoEngineClientLibrary.SampleBuffer.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EmoEngineClientLibrary.SampleBuffer"/> class that
+            contains the specified number of data frames.
+            </summary>
+            <param name="frameCapacity">The number of data frames that 
+            the <see cref="T:EmoEngineClientLibrary.SampleBuffer"/> contains.</param>
+        </member>
+        <member name="P:EmoEngineClientLibrary.SampleBuffer.FrameCapacity">
+            <summary>
+            Gets the size of the buffer, in data frames. 
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.SampleBuffer.CurrentFrameIndex">
+            <summary>
+            Gets the index of the current frame. 
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.SampleBuffer.CurrentSampleIndex">
+            <summary>
+            /// Gets the index of the current sample. 
+            </summary>
+            <remarks>
+            The <see cref="M:EmoEngineClientLibrary.SampleBuffer.AddFrame(System.Collections.Generic.Dictionary{Emotiv.EdkDll.EE_DataChannel_t,System.Double[]})"/> method inserts a new data frame at this index.
+            </remarks>
+        </member>
+        <member name="P:EmoEngineClientLibrary.SampleBuffer.SampleBufferSize">
+            <summary>
+            Gets the size of the buffer, in samples.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.SampleBuffer.ChannelData">
+            <summary>
+            Gets the buffer of channel data. 
+            </summary>
+            <remarks>  
+            Synchronize access to the <see cref="P:EmoEngineClientLibrary.SampleBuffer.ChannelData"/> property by using
+            the <c>lock</c> statement and the <see cref="P:EmoEngineClientLibrary.SampleBufferDictionary.SyncRoot"/> property. 
+            </remarks>
+        </member>
+        <member name="P:EmoEngineClientLibrary.SampleBuffer.ChannelAverages">
+            <summary>
+            Gets a dictionary that contains the running averages for each data channel.
+            </summary>
+        </member>
+        <member name="M:EmoEngineClientLibrary.SampleBuffer.AddFrame(System.Collections.Generic.Dictionary{Emotiv.EdkDll.EE_DataChannel_t,System.Double[]})">
+            <summary>
+            Adds a new data frame to the <see cref="T:EmoEngineClientLibrary.SampleBuffer"/>. 
+            </summary>
+            <param name="dataFrame">A dictionary that contains the new sample data.</param>
+            <remarks>
+            For more information, see <see cref="M:EmoEngineClientLibrary.SampleBufferDictionary.Add(System.Collections.Generic.Dictionary{Emotiv.EdkDll.EE_DataChannel_t,System.Double[]})"/>.
+            </remarks>
+        </member>
+        <member name="T:EmoEngineClientLibrary.SampleBufferDictionary">
+            <summary>
+            Provides a synchronized collection of electrode data from the Emotiv neuroheadset.
+            </summary>
+            <remarks>
+            <para>
+            Use the <see cref="T:EmoEngineClientLibrary.SampleBufferDictionary"/> class to buffer realtime electrode data 
+            from the Emotiv neuroheadset. The <see cref="T:EmoEngineClientLibrary.SampleBufferDictionary"/> class is a 
+            dictionary that maps the <see cref="T:Emotiv.EmoEngine"/> data channels enum to electrode data 
+            from the neuroheadset.  
+            </para>
+            <para>
+            Data channels are denoted throughout the <see cref="N:EmoEngineClientLibrary"/> by 
+            using the <see cref="T:Emotiv.EdkDll.EE_DataChannel_t"/> enumeration. Realtime data samples from the 
+            neuroheadset arrive in arrays of type <c>double</c>. A data frame comprises
+            all of the channels defined in the <see cref="T:Emotiv.EdkDll.EE_DataChannel_t"/> enumeration mapped 
+            to corresponding arrays of sample data.
+            </para>
+            <para>
+            The <see cref="T:EmoEngineClientLibrary.SampleBufferDictionary"/> class implements a circular buffer that holds 
+            data frames. You specify the size of the buffer in the <see cref="T:EmoEngineClientLibrary.SampleBufferDictionary"/>
+            constructor. Access the size of the buffer, in data frames, by using the 
+            <see cref="P:EmoEngineClientLibrary.SampleBufferDictionary.FrameCapacity"/> property. Access the size of the buffer, in data samples, 
+            by using the <see cref="P:EmoEngineClientLibrary.SampleBufferDictionary.BufferSize"/> property. 
+            </para>
+            Synchronize access to the <see cref="T:EmoEngineClientLibrary.SampleBufferDictionary"/> class by using
+            the <c>lock</c> statement and the <see cref="P:EmoEngineClientLibrary.SampleBufferDictionary.SyncRoot"/> property. 
+            <para>
+            Call the <see cref="M:EmoEngineClientLibrary.SampleBufferDictionary.Add(System.Collections.Generic.Dictionary{Emotiv.EdkDll.EE_DataChannel_t,System.Double[]})"/> method to insert a data frame into the dictionary. 
+            Synchronization is automatic, so you do not need to synchronize calls to the 
+            <see cref="M:EmoEngineClientLibrary.SampleBufferDictionary.Add(System.Collections.Generic.Dictionary{Emotiv.EdkDll.EE_DataChannel_t,System.Double[]})"/> method explicitly.  
+            </para>
+            <para>
+            Simple signal processing is supported, such as removing DC bias and computing
+            Fast Fourier Transform (FFT) for a channel. 
+            </para>
+            <para>
+            If the <see cref="T:EmoEngineClientLibrary.ChannelContext"/> for a data channel has "RemoveDCBias" 
+            set to <c>true</c>, the corresponding value in the <see cref="P:EmoEngineClientLibrary.SampleBufferDictionary.ChannelAverages"/>
+            dictionary is subtracted from each of the channel's new samples.
+            </para>
+            <para>
+            If the <see cref="T:EmoEngineClientLibrary.ChannelContext"/> for a data channel has "ComputeFFT" 
+            set to <c>true</c>, the corresponding value in the <see cref="!:FastFourierTransforms"/>
+            dictionary is calculated for the channel's buffer, including the channel's new samples.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:EmoEngineClientLibrary.SampleBufferDictionary.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EmoEngineClientLibrary.SampleBufferDictionary"/> class that
+            contains the specified number of data frames.
+            </summary>
+            <param name="frameCapacity">The number of data frames that 
+            the <see cref="T:EmoEngineClientLibrary.SampleBufferDictionary"/> contains.</param>
+        </member>
+        <member name="M:EmoEngineClientLibrary.SampleBufferDictionary.#ctor(EmoEngineClientLibrary.SampleBufferDictionary)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EmoEngineClientLibrary.SampleBufferDictionary"/> class that's a copy
+            of the specified <see cref="T:EmoEngineClientLibrary.SampleBufferDictionary"/> instance.
+            </summary>
+            <param name="dictionary">The <see cref="T:EmoEngineClientLibrary.SampleBufferDictionary"/> to copy.</param>
+        </member>
+        <member name="P:EmoEngineClientLibrary.SampleBufferDictionary.FrameCapacity">
+            <summary>
+            Gets the size of the buffer, in data frames. 
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.SampleBufferDictionary.BufferSize">
+            <summary>
+            Gets the size of the buffer, in samples.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.SampleBufferDictionary.CurrentFrameIndex">
+            <summary>
+            Gets the index of the current frame. 
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.SampleBufferDictionary.CurrentSampleIndex">
+            <summary>
+            /// Gets the index of the current sample. 
+            </summary>
+            <remarks>
+            The <see cref="M:EmoEngineClientLibrary.SampleBufferDictionary.Add(System.Collections.Generic.Dictionary{Emotiv.EdkDll.EE_DataChannel_t,System.Double[]})"/> method inserts a new data frame at this index.
+            </remarks>
+        </member>
+        <member name="P:EmoEngineClientLibrary.SampleBufferDictionary.TotalFrames">
+            <summary>
+            Gets the count of frames that have been added since the first
+            call to the <see cref="M:EmoEngineClientLibrary.SampleBufferDictionary.Add(System.Collections.Generic.Dictionary{Emotiv.EdkDll.EE_DataChannel_t,System.Double[]})"/> method.
+            </summary>
+            <remarks>
+            The <see cref="P:EmoEngineClientLibrary.SampleBufferDictionary.TotalFrames"/> property is used to compute the 
+            running average for each data channel.
+            </remarks>
+        </member>
+        <member name="P:EmoEngineClientLibrary.SampleBufferDictionary.TotalSamples">
+            <summary>
+            Gets the count of samples that have been added since the first
+            call to the <see cref="M:EmoEngineClientLibrary.SampleBufferDictionary.Add(System.Collections.Generic.Dictionary{Emotiv.EdkDll.EE_DataChannel_t,System.Double[]})"/> method.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.SampleBufferDictionary.SyncRoot">
+            <summary>
+            Gets an object that can be used to synchronize access to 
+            the <see cref="T:EmoEngineClientLibrary.SampleBufferDictionary"/>.
+            </summary>
+        </member>
+        <member name="P:EmoEngineClientLibrary.SampleBufferDictionary.IsSynchronized">
+            <summary>
+            Gets a value indicating whether access to the <see cref="T:EmoEngineClientLibrary.SampleBufferDictionary"/> is synchronized (thread safe).
+            </summary>
+            <remarks>
+            Always returns <c>true</c>.
+            </remarks>
+        </member>
+        <member name="P:EmoEngineClientLibrary.SampleBufferDictionary.ChannelAverages">
+            <summary>
+            Gets a dictionary that contains the running averages for each data channel.
+            </summary>
+        </member>
+        <member name="M:EmoEngineClientLibrary.SampleBufferDictionary.Add(System.Collections.Generic.Dictionary{Emotiv.EdkDll.EE_DataChannel_t,System.Double[]})">
+            <summary>
+            Adds a new data frame to the <see cref="T:EmoEngineClientLibrary.SampleBufferDictionary"/>. 
+            </summary>
+            <param name="dataFrame">A dictionary that contains the new sample data.</param>
+            <remarks>
+            <para>
+            Access to the <see cref="T:EmoEngineClientLibrary.SampleBufferDictionary"/> is synchronized.
+            </para>
+            <para>
+            The <paramref name="dataFrame"/> parameter is assumed to originate from the 
+            <see cref="T:Emotiv.EmoEngine"/>, which means that all data channels from the neuroheadset
+            are present. 
+            </para>
+            <para>
+            Only data channels with the "AddToBuffer" <see cref="T:EmoEngineClientLibrary.ChannelContext"/> set 
+            to <c>true</c> are added. Usually, signals that are not electrode data 
+            are excluded, but some signals, such as <see cref="F:Emotiv.EdkDll.EE_DataChannel_t.COUNTER"/>, 
+            are usually included for diagnostic purposes.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:EmoEngineClientLibrary.SampleBufferDictionary.ComputeRealFourierTransform(Emotiv.EdkDll.EE_DataChannel_t)">
+            <summary>
+            Calculates the real discrete Fourier transform for the specified data channel.
+            </summary>
+            <param name="channel">The data channel to calculate the Fourier transform for.</param>
+            <returns>An array that contains the magnitudes of samples in the frequency domain (spectrum)
+            of the real time-domain signal in <paramref name="channel"/>.</returns>
+            <remarks>
+            The <see cref="M:EmoEngineClientLibrary.SampleBufferDictionary.ComputeRealFourierTransform(Emotiv.EdkDll.EE_DataChannel_t)"/> method calls the <see cref="M:EmoEngineClientLibrary.SampleBufferDictionary.ComputeFourierTransform(Emotiv.EdkDll.EE_DataChannel_t,System.Double[])"/> method
+            and extracts the real part of the transformed signal from the returned <see cref="T:MathNet.Numerics.Complex"/> array. The real 
+            part is computed by using the <see cref="P:MathNet.Numerics.Complex.Magnitude"/> property. The <see cref="P:MathNet.Numerics.Complex.Phase"/> is 
+            ignored. The first N / 2 samples are returned, which comprise the positive frequencies.   
+            </remarks>
+        </member>
+        <member name="M:EmoEngineClientLibrary.SampleBufferDictionary.ComputeRealInverseFourierTransform(MathNet.Numerics.Complex[])">
+            <summary>
+            Calculates the real discrete inverse Fourier transform for the specified array of frequencies.
+            </summary>
+            <param name="complexDataArray">The frequencies to transform.</param>
+            <returns>An array that contains the real discrete inverse Fourier transform that corresponds 
+            with <paramref name="complexDataArray"/>. </returns>
+            <remarks>
+            The <paramref name="complexDataArray"/> is usually returned by a call to 
+            the <see cref="M:EmoEngineClientLibrary.SampleBufferDictionary.ComputeFourierTransform(Emotiv.EdkDll.EE_DataChannel_t,System.Double[])"/> method.
+            </remarks>
+        </member>
+        <member name="F:EmoEngineClientLibrary.SampleBufferDictionary._lockThis">
+            <summary>
+            The synchronization object that backs the <see cref="P:EmoEngineClientLibrary.SampleBufferDictionary.SyncRoot"/> property.
+            </summary>
+        </member>
+        <member name="F:EmoEngineClientLibrary.SampleBufferDictionary._channelAverages">
+            <summary>
+            The dictionary of contains the running averages for each channel.
+            </summary>
+        </member>
+        <member name="M:EmoEngineClientLibrary.Transforms.ComputeRealFourierTransform(System.Double[])">
+            <summary>
+            Calculates the real discrete Fourier transform for the specified data channel.
+            </summary>
+            <param name="channel">The data channel to calculate the Fourier transform for.</param>
+            <returns>An array that contains the magnitudes of samples in the frequency domain (spectrum)
+            of the real time-domain signal in <paramref name="channel"/>.</returns>
+            <remarks>
+            The <see cref="M:EmoEngineClientLibrary.Transforms.ComputeRealFourierTransform(System.Double[])"/> method calls the <see cref="M:EmoEngineClientLibrary.Transforms.ComputeFourierTransform(System.Double[])"/> method
+            and extracts the real part of the transformed signal from the returned <see cref="T:MathNet.Numerics.Complex"/> array. The real 
+            part is computed by using the <see cref="P:MathNet.Numerics.Complex.Magnitude"/> property. The <see cref="P:MathNet.Numerics.Complex.Phase"/> is 
+            ignored. The first N / 2 samples are returned, which comprise the positive frequencies.   
+            </remarks>
+        </member>
+        <member name="M:EmoEngineClientLibrary.Transforms.ComputeRealInverseFourierTransform(MathNet.Numerics.Complex[])">
+            <summary>
+            Calculates the real discrete inverse Fourier transform for the specified array of frequencies.
+            </summary>
+            <param name="complexDataArray">The frequencies to transform.</param>
+            <returns>An array that contains the real discrete inverse Fourier transform that corresponds 
+            with <paramref name="complexDataArray"/>. </returns>
+            <remarks>
+            The <paramref name="complexDataArray"/> is usually returned by a call to 
+            the <see cref="M:EmoEngineClientLibrary.Transforms.ComputeFourierTransform(System.Double[])"/> method.
+            </remarks>
+        </member>
+    </members>
+</doc>

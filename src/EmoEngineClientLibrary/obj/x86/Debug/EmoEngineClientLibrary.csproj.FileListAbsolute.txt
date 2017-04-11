@@ -1,0 +1,10 @@
+E:\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\bin\x86\Debug\MathNet.Numerics.dll
+E:\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\bin\x86\Debug\EmoEngineClientLibrary.dll
+E:\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\bin\x86\Debug\EmoEngineClientLibrary.pdb
+E:\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\bin\x86\Debug\EmoEngineClientLibrary.XML
+E:\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\bin\x86\Debug\DotNetEmotivSDK-vs2010.dll
+E:\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\bin\x86\Debug\DotNetEmotivSDK-vs2010.pdb
+E:\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\bin\x86\Debug\DotNetEmotivSDK-vs2010.dll.config
+E:\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\obj\x86\Debug\EmoEngineClientLibrary.csprojResolveAssemblyReference.cache
+E:\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\obj\x86\Debug\EmoEngineClientLibrary.dll
+E:\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\obj\x86\Debug\EmoEngineClientLibrary.pdb

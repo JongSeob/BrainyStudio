@@ -114,6 +114,10 @@
       <Project>{23b51742-efca-4343-a43b-263b5a3eab22}</Project>
       <Name>Lib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EmoEngineClientLibrary\EmoEngineClientLibrary.csproj">
+      <Project>{630d8a3e-6592-4648-b30e-02a38ad85f96}</Project>
+      <Name>EmoEngineClientLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Sdk\Sdk.csproj">
       <Project>{88be0ffc-39e1-4d40-bb79-b9e84e91d29f}</Project>
       <Name>Sdk</Name>

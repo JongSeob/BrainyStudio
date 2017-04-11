@@ -20,7 +20,7 @@ namespace Sdk.Models
         [JsonProperty("Description")]
         public string Description;
 
-        [JsonProperty("Timing_ms")]
+        [JsonProperty("Frequency")]
         public int Timing;
 
         [JsonProperty("Date")]
@@ -72,8 +72,9 @@ namespace Sdk.Models
         /// <summary>
         /// Append affectiv values
         /// </summary>
-        public void AppendAffectiv(Double Excitement, Double Engagement, Double Meditation, Double Frustration )
+        public void AppendAffectiv(Double Timing, Double Excitement, Double Engagement, Double Meditation, Double Frustration )
         {
+            emotions.Timing.Add(Timing);
             emotions.Excitement.Add(Excitement);
             emotions.Engagement.Add(Engagement);
             emotions.Meditation.Add(Meditation);
