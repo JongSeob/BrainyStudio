@@ -10,21 +10,21 @@
                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                       mc:Ignorable="d"
                       Title="Noe Studio 2017"
-                      GlowBrush="#252526"
+                      GlowBrush="#FF1E1E1E"
                       WindowTransitionsEnabled="False"
                       WindowStartupLocation="CenterScreen"
                       Height="554.86"
                       Width="664.419"
-                      WindowTitleBrush="#252526" Background="White">
+                      WindowTitleBrush="#FF1E1E1E" Background="#FF1E1E1E" controls:ControlsHelper.ContentCharacterCasing="Lower" Icon="icon.ico">
     <controls:MetroWindow.Effect>
         <DropShadowEffect/>
     </controls:MetroWindow.Effect>
 
-    <controls:MetroWindow.LeftWindowCommands>
+    <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
-            <Button Content="Reset" />
+            <Button Content="Ondrejrehacek@gmail.com" />
         </controls:WindowCommands>
-    </controls:MetroWindow.LeftWindowCommands>
+    </controls:MetroWindow.RightWindowCommands>
 
     <Grid d:IsLocked="True">
 
@@ -57,7 +57,7 @@
 
         <controls:HamburgerMenu x:Name="HamburgerMenuControl"
                                 Foreground="White"
-                                PaneBackground="#FF444444"
+                                PaneBackground="#2d2d30"
                                 IsPaneOpen="False"
                                 ItemTemplate="{StaticResource MenuItemTemplate}"
                                 OptionsItemTemplate="{StaticResource MenuItemTemplate}"
@@ -77,15 +77,15 @@
             <!--  Items  -->
             <controls:HamburgerMenu.ItemsSource>
                 <controls:HamburgerMenuItemCollection>
-                    <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=Scanner}"
-                                                 Label="Live">
+                    <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=HeadphonesSettings}"
+                                                 Label="Status">
                         <local:HamburgerMenuIconItem.Tag>
                             <views:HomeView />
                         </local:HamburgerMenuIconItem.Tag>
                     </local:HamburgerMenuIconItem>
 
-                    <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=Share}"
-                                                 Label="Subject">
+                    <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=TestTube}"
+                                                 Label="Subject Training">
                         <local:HamburgerMenuIconItem.Tag>
                             <views:PrivateView />
                         </local:HamburgerMenuIconItem.Tag>
@@ -94,9 +94,18 @@
                     <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=Record}"
                                                  Label="Recording">
                         <local:HamburgerMenuIconItem.Tag>
-                            <views:SettingsView />
+                            <views:PrivateView />
                         </local:HamburgerMenuIconItem.Tag>
                     </local:HamburgerMenuIconItem>
+
+                    <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=Database}"
+                                                 Label="Repositories">
+                        <local:HamburgerMenuIconItem.Tag>
+                            <views:PrivateView />
+                        </local:HamburgerMenuIconItem.Tag>
+                    </local:HamburgerMenuIconItem>
+
+
                 </controls:HamburgerMenuItemCollection>
             </controls:HamburgerMenu.ItemsSource>
 
@@ -104,7 +113,14 @@
             <controls:HamburgerMenu.OptionsItemsSource>
                 <controls:HamburgerMenuItemCollection>
                     <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=Settings}"
-                                                 Label="Settings">
+                                                 Label="Live View">
+                        <local:HamburgerMenuIconItem.Tag>
+                            <views:AboutView />
+                        </local:HamburgerMenuIconItem.Tag>
+                    </local:HamburgerMenuIconItem>
+
+                    <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=Help}"
+                                                 Label="About">
                         <local:HamburgerMenuIconItem.Tag>
                             <views:AboutView />
                         </local:HamburgerMenuIconItem.Tag>
@@ -121,7 +137,7 @@
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <Border Grid.Row="0"
-                                Background="#FF444044">
+                                Background="#2d2d30">
                             <TextBlock x:Name="Header"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"

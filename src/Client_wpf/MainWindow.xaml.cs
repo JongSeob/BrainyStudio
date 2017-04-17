@@ -47,7 +47,7 @@ namespace HamburgerMenuApp.V3
 
             //Set up update frequency
             HeartBeat.Tick += new EventHandler(HeartBeat_Tick);
-            HeartBeat.Interval = new TimeSpan(0, 0, 1);
+            HeartBeat.Interval = new TimeSpan(0, 0, 0, 0, 100);
             HeartBeat.Start();
 
             //Attach events

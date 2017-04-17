@@ -4,15 +4,39 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-             mc:Ignorable="d">
+             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="800"
+             d:DesignWidth="800">
     <Grid>
-        <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Right" >
-            <lvc:CartesianChart.AxisY>
-                <lvc:Axis Title="Sales" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
-            </lvc:CartesianChart.AxisY>
-            <lvc:CartesianChart.AxisX>
-                <lvc:Axis Title="Month" Labels="{Binding Labels}"></lvc:Axis>
-            </lvc:CartesianChart.AxisX>
-        </lvc:CartesianChart>
+        <!--Here we disable tooltips and hovering to get a better performance-->
+        <GroupBox Header="Live preview" Margin="10,10,10,226" Background="#CC151212" BorderBrush="#CC000000">
+            <lvc:CartesianChart AnimationsSpeed="0:0:0.5" Hoverable="True" DataTooltip="{x:Null}" Margin="4,-6,-2,3">
+                <lvc:CartesianChart.Series>
+                    <lvc:LineSeries Values="{Binding ChartValues}" 
+                                PointGeometry="{x:Null}" 
+                                LineSmoothness="20"
+                                StrokeThickness="2" 
+                                Stroke="#F34336"
+                                Fill="Transparent"/>
+                </lvc:CartesianChart.Series>
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis LabelFormatter="{Binding DateTimeFormatter}" 
+                          MaxValue="{Binding AxisMax}" 
+                          MinValue="{Binding AxisMin}"
+                          Unit="{Binding AxisUnit}">
+                        <lvc:Axis.Separator>
+                            <lvc:Separator Step="{Binding AxisStep}" />
+                        </lvc:Axis.Separator>
+                    </lvc:Axis>
+                </lvc:CartesianChart.AxisX>
+            </lvc:CartesianChart>
+        </GroupBox>
+
+
+
     </Grid>
+
+
+
 </UserControl>
