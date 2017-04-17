@@ -28,7 +28,7 @@ namespace api.Controllers
         public Recording Get(int id)
         {
             Recording test = new Recording("Test", DateTime.Now);
-            test.Name = "hey";
+            test._name = "hey";
             return test;
         }
 
@@ -37,7 +37,7 @@ namespace api.Controllers
         {
             SqlConnection myConnection = new SqlConnection(connection.ConnString());
 
-            string test = s.Ser<Raw>(value.RawData);
+            string test = s.Ser<Raw>(value._raw);
             Raw test2 = s.Deser<Raw>(test);
         }
 

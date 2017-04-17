@@ -52,3 +52,6 @@ C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\api\bin\System.IdentityModel.Tok
 C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\api\bin\System.IdentityModel.Tokens.Jwt.xml
 C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\api\bin\Sdk.dll
 C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\api\bin\Sdk.pdb
+E:\GitHub\Emotiv-Epoc\src\api\obj\Debug\api.csprojResolveAssemblyReference.cache
+E:\GitHub\Emotiv-Epoc\src\api\obj\Debug\api.dll
+E:\GitHub\Emotiv-Epoc\src\api\obj\Debug\api.pdb

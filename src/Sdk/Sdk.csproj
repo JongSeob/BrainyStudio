@@ -45,7 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\ConnectionHelper.cs" />
+    <Compile Include="Models\Configuration.cs" />
     <Compile Include="Models\Emotions.cs" />
+    <Compile Include="Models\Expressions.cs" />
+    <Compile Include="Models\Mark.cs" />
     <Compile Include="Models\Raw.cs" />
     <Compile Include="Models\Recording.cs" />
     <Compile Include="Models\Repository.cs" />
@@ -60,6 +63,9 @@
       <Project>{23b51742-efca-4343-a43b-263b5a3eab22}</Project>
       <Name>Lib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enum\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
