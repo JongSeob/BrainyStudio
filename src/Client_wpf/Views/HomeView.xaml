@@ -3,20 +3,58 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls" x:Class="HamburgerMenuApp.V3.Views.HomeView"
+             xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks" x:Class="HamburgerMenuApp.V3.Views.HomeView"
              mc:Ignorable="d"
-             d:DesignHeight="800"
-             d:DesignWidth="800">
+             d:DesignHeight="581.333"
+             d:DesignWidth="1109.333">
+
+
+    <UserControl.Resources>
+        <Thickness x:Key="ControlMargin">0 0 0 40</Thickness>
+        <Thickness x:Key="ControlMargin2">0 40 0 0</Thickness>
+        <Thickness x:Key="ControlMargin_icon">0 0 0 20</Thickness>
+        <Thickness x:Key="ControlMargin_settings">0 0 40 0</Thickness>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="240*"/>
+            <ColumnDefinition Width="869*"/>
+            <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Home View"
-                   FontSize="32"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="69,129,68,128" />
-        <GroupBox Header="GroupBox" Margin="10" Background="#CC313131" BorderBrush="#CC000000"/>
-        <GroupBox Header="GroupBox" Margin="10" Background="#CC313131" BorderBrush="#CC000000" Grid.Column="1"/>
+        <GroupBox Header="Headset Status" Margin="10,10,0,10.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="220">
+            <Grid Margin="0,0,-6,-1.667">
+                <Image Height="210" VerticalAlignment="Top" Source="/WPFapp;component/Resources/brain_status.png" Margin="0,26,0,0"/>
+            </Grid>
+        </GroupBox>
+
+
+        <GroupBox Header="General Settings" Margin="10,10,10.333,0" Background="#FF2D2D30" BorderBrush="#FF2D2D30" FontFamily="Segoe UI Light" Foreground="#FF1B1B1B" Height="281" VerticalAlignment="Top" Grid.Column="1">
+            <StackPanel Orientation="Vertical"  Margin="10,0,0,0">
+                <StackPanel Orientation="Vertical" />
+
+                <StackPanel/>
+                <StackPanel Orientation="Horizontal" />
+
+
+                <StackPanel Orientation="Vertical" />
+
+                <StackPanel Orientation="Vertical" />
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Recording Settings" Margin="10,305,10.333,10.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" FontFamily="Segoe UI Light" Foreground="#FF1B1B1B" Grid.Column="1">
+            <StackPanel Orientation="Vertical"  Margin="10,0,0,0">
+                <StackPanel Orientation="Vertical" />
+
+                <StackPanel/>
+                <StackPanel Orientation="Horizontal" />
+
+
+                <StackPanel Orientation="Vertical" />
+
+                <StackPanel Orientation="Vertical" />
+            </StackPanel>
+        </GroupBox>
     </Grid>
 </UserControl>

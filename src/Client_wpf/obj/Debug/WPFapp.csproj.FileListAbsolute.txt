@@ -37,13 +37,11 @@ E:\GitHub\Emotiv-Epoc\src\Client_wpf\bin\Debug\MahApps.Metro.xml
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\bin\Debug\MahApps.Metro.IconPacks.pdb
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\bin\Debug\MahApps.Metro.IconPacks.xml
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\WPFapp.csprojResolveAssemblyReference.cache
-E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\Views\AboutView.baml
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\Views\HomeView.baml
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\Views\PrivateView.baml
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\Views\SettingsView.baml
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\App.baml
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\MainWindow.g.cs
-E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\Views\AboutView.g.cs
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\Views\HomeView.g.cs
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\Views\PrivateView.g.cs
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\Views\SettingsView.g.cs
@@ -73,3 +71,5 @@ E:\GitHub\Emotiv-Epoc\src\Client_wpf\bin\Debug\DotNetEmotivSDK-vs2010.pdb
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\bin\Debug\DotNetEmotivSDK-vs2010.dll.config
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\bin\Debug\Sdk.pdb
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\bin\Debug\Newtonsoft.Json.xml
+E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\Views\LiveView.baml
+E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\Views\LiveView.g.cs

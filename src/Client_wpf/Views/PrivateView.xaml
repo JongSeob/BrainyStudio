@@ -3,26 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d"
-             d:DesignHeight="300"
-             d:DesignWidth="300">
-    <Grid Margin="0,0,-147,29">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="121*"/>
-            <ColumnDefinition Width="127*"/>
-            <ColumnDefinition Width="119*"/>
-            <ColumnDefinition Width="79*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="80*"/>
-            <RowDefinition Height="81*"/>
-            <RowDefinition Height="59*"/>
-            <RowDefinition Height="51*"/>
-        </Grid.RowDefinitions>
-        <Button Content="Button" HorizontalAlignment="Left" Height="33" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="80"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="33" Margin="10,48,0,0" Grid.Row="1" VerticalAlignment="Top" Width="80" Grid.RowSpan="2"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="33" Margin="10,48,0,0" Grid.Row="1" VerticalAlignment="Top" Width="80" Grid.RowSpan="2"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="33" Margin="19.667,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="80" Grid.Column="1"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="33" Margin="9.667,10.333,0,0" Grid.Row="2" VerticalAlignment="Top" Width="80" Grid.Column="1"/>
-    </Grid>
+             d:DesignHeight="1000"
+             d:DesignWidth="1000">
+
+
 </UserControl>

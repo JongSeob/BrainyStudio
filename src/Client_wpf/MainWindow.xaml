@@ -11,18 +11,57 @@
                       mc:Ignorable="d"
                       Title="Noe Studio 2017"
                       GlowBrush="#FF1E1E1E"
-                      WindowTransitionsEnabled="False"
+                      WindowTransitionsEnabled="True"
                       WindowStartupLocation="CenterScreen"
-                      Height="554.86"
-                      Width="664.419"
+                      Height="581.333"
+                      Width="1109.333"
+                      ShowIconOnTitleBar="False"
                       WindowTitleBrush="#FF1E1E1E" Background="#FF1E1E1E" controls:ControlsHelper.ContentCharacterCasing="Lower" Icon="icon.ico">
     <controls:MetroWindow.Effect>
         <DropShadowEffect/>
     </controls:MetroWindow.Effect>
 
+    <controls:MetroWindow.Flyouts>
+        <controls:FlyoutsControl>
+            
+            <!--  Headset Connected Flyout -->
+            <controls:Flyout Header="Headset Connected" 
+                             Theme="Inverse" 
+                             Position="Right" Width="355" FontFamily="Segoe UI Light" AnimateOpacity="True">
+
+                <GroupBox Header="Status" Margin="20,10,0,0" Background="#CC313131" BorderBrush="#CC000000" HorizontalAlignment="Left" Width="285" Height="526" VerticalAlignment="Top">
+                    <StackPanel Grid.Row="2">
+                        <Image Source="/WPFapp;component/Resources/brain_status.png"  Margin="0,0,0.333,20" Height="277"/>
+                        <StackPanel Grid.Row="5">
+                            <StackPanel.Resources>
+                                <BooleanToVisibilityConverter x:Key="btv" />
+                            </StackPanel.Resources>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                
+            </controls:Flyout>
+            
+            <!--  Headset Disconnected Flyout -->
+            <controls:Flyout Header="Headset Connected" AutoCloseInterval="3000"
+                             CloseButtonVisibility="Collapsed" IsAutoCloseEnabled="True" Theme="Inverse" 
+                             Position="Bottom" Width="600" FontFamily="Segoe UI Light" AnimateOpacity="True" Height="50">
+            </controls:Flyout>
+
+            <!--  Headset placement OK Flyout -->
+            <controls:Flyout Header="Headset Placement OK" AutoCloseInterval="3000"
+                             CloseButtonVisibility="Collapsed" IsAutoCloseEnabled="True" Theme="Inverse" 
+                             Position="Bottom" Width="900" FontFamily="Segoe UI Light" AnimateOpacity="True" Height="50">
+            </controls:Flyout>
+
+        </controls:FlyoutsControl>
+        
+    </controls:MetroWindow.Flyouts>
+
+
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
-            <Button Content="Ondrejrehacek@gmail.com" />
+            <Button Click="Button_Click" Content="Ondrejrehacek@gmail.com" />
         </controls:WindowCommands>
     </controls:MetroWindow.RightWindowCommands>
 
@@ -39,6 +78,7 @@
                         <ColumnDefinition Width="48" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
+
                     <ContentControl Grid.Column="0"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
@@ -78,32 +118,26 @@
             <controls:HamburgerMenu.ItemsSource>
                 <controls:HamburgerMenuItemCollection>
                     <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=HeadphonesSettings}"
-                                                 Label="Status">
+                                                 Label="Set Up">
                         <local:HamburgerMenuIconItem.Tag>
                             <views:HomeView />
                         </local:HamburgerMenuIconItem.Tag>
                     </local:HamburgerMenuIconItem>
 
-                    <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=TestTube}"
-                                                 Label="Subject Training">
+                    <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=Monitor}"
+                                                 Label="Monitor">
                         <local:HamburgerMenuIconItem.Tag>
-                            <views:PrivateView />
+                            <views:AboutView />
                         </local:HamburgerMenuIconItem.Tag>
                     </local:HamburgerMenuIconItem>
 
-                    <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=Record}"
+                    <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=RecordRec}"
                                                  Label="Recording">
                         <local:HamburgerMenuIconItem.Tag>
-                            <views:PrivateView />
+                            <views:SettingsView />
                         </local:HamburgerMenuIconItem.Tag>
                     </local:HamburgerMenuIconItem>
 
-                    <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=Database}"
-                                                 Label="Repositories">
-                        <local:HamburgerMenuIconItem.Tag>
-                            <views:PrivateView />
-                        </local:HamburgerMenuIconItem.Tag>
-                    </local:HamburgerMenuIconItem>
 
 
                 </controls:HamburgerMenuItemCollection>
@@ -112,15 +146,25 @@
             <!--  Options  -->
             <controls:HamburgerMenu.OptionsItemsSource>
                 <controls:HamburgerMenuItemCollection>
-                    <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=Settings}"
-                                                 Label="Live View">
+                    <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=Account}"
+                                                 Label="My Subjects"
+                                                 IsEnabled="False">
                         <local:HamburgerMenuIconItem.Tag>
-                            <views:AboutView />
+                            <views:PrivateView />
                         </local:HamburgerMenuIconItem.Tag>
                     </local:HamburgerMenuIconItem>
 
-                    <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=Help}"
-                                                 Label="About">
+                    <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=Database}"
+                                                 Label="My Repositories"
+                                                 IsEnabled="False">
+                        <local:HamburgerMenuIconItem.Tag>
+                            <views:PrivateView />
+                        </local:HamburgerMenuIconItem.Tag>
+                    </local:HamburgerMenuIconItem>
+                    
+                    <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=SettingsBox}"
+                                                 Label="Settings"
+                                                 IsEnabled="False">
                         <local:HamburgerMenuIconItem.Tag>
                             <views:AboutView />
                         </local:HamburgerMenuIconItem.Tag>

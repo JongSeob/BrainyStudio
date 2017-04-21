@@ -90,6 +90,17 @@ namespace HamburgerMenuApp.V3
             _engine.ExpressivSetTrainingControl(0, EdkDll.EE_ExpressivTrainingControl_t.EXP_START);
         }
 
+        public void ToggleFlyout(int index)
+        {
+            var flyout = this.Flyouts.Items[index] as Flyout;
+            if (flyout == null)
+            {
+                return;
+            }
+
+            flyout.IsOpen = !flyout.IsOpen;
+        }
+
 
         #region Basic Events
 
@@ -137,6 +148,7 @@ namespace HamburgerMenuApp.V3
 
             try
             {
+
                 if (this._data != null)
                 {
                     //If recording is enabled...
@@ -163,6 +175,11 @@ namespace HamburgerMenuApp.V3
                     }
                 }
             }
+            
+
+           
+
+
             catch
             { }
         }
@@ -320,5 +337,10 @@ namespace HamburgerMenuApp.V3
 
 
         #endregion Basic Events
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ToggleFlyout(1);
+        }
     }
 }

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\App.xaml
-51147076801
+51085830871
 
-121129209124
+12739915128
 241846375223
-MainWindow.xaml;Views\AboutView.xaml;Views\HomeView.xaml;Views\PrivateView.xaml;Views\SettingsView.xaml;
+MainWindow.xaml;Views\LiveView.xaml;Views\HomeView.xaml;Views\PrivateView.xaml;Views\SettingsView.xaml;
 
 False
 
