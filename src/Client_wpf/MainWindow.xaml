@@ -16,7 +16,7 @@
                       Height="581.333"
                       Width="1109.333"
                       ShowIconOnTitleBar="False"
-                      WindowTitleBrush="#FF1E1E1E" Background="#FF1E1E1E" controls:ControlsHelper.ContentCharacterCasing="Lower" Icon="icon.ico">
+                      WindowTitleBrush="#FF1E1E1E" Background="#FF1E1E1E" controls:ControlsHelper.ContentCharacterCasing="Lower" Icon="icon.ico" MinWidth="900" MinHeight="550">
     <controls:MetroWindow.Effect>
         <DropShadowEffect/>
     </controls:MetroWindow.Effect>

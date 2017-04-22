@@ -3,14 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls" x:Class="HamburgerMenuApp.V3.Views.SettingsView"
+             xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks" x:Class="HamburgerMenuApp.V3.Views.SettingsView"
              mc:Ignorable="d"
                 d:DesignHeight="581.333"
              d:DesignWidth="1109.333">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="320*"/>
-            <RowDefinition Height="261*"/>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="41*"/>
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -19,48 +20,110 @@
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
         <GroupBox Header="Recording Metadata" Margin="10,10,10.333,10" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="#FF2D2D30">
-            <Grid Margin="-6,0,-2,-5.333">
-                <TextBox Height="5" Margin="10,37,10,0" TextWrapping="Wrap" Text="New Recording" VerticalAlignment="Top" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30"/>
-                <Label Content="Recording Name" HorizontalAlignment="Left" Height="37" Margin="2,0,0,0" VerticalAlignment="Top" Width="526" Foreground="White" FontSize="16"/>
-                <ComboBox Margin="10,179,10,0" VerticalAlignment="Top" RenderTransformOrigin="-2.529,0.135" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="White"/>
-                <CheckBox Content="Upload to repository:" Height="38" Margin="10,136,13.333,0" VerticalAlignment="Top" Foreground="White" IsChecked="True" BorderBrush="#FF2D2D30" Background="#FF2D2D30" FontSize="16"/>
-                <TextBox Height="5" Margin="10,105,10,0" TextWrapping="Wrap" Text="This id description of my new recording." VerticalAlignment="Top" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30"/>
-                <Label Content="Description" HorizontalAlignment="Left" Height="37" Margin="2,68,0,0" VerticalAlignment="Top" Width="526" Foreground="White" FontSize="16"/>
+            <Grid Margin="10,0,11.333,-5.667">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="73*"/>
+                    <RowDefinition Height="81*"/>
+                    <RowDefinition Height="80*"/>
+                </Grid.RowDefinitions>
+                <TextBox Height="26"  Margin="10,32,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.Row="1" Custom:TextBoxHelper.Watermark="My Recording"/>
+                <iconPacks:PackIconMaterial Kind="FileChart" RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="10,5,0,0" Foreground="White" Grid.Row="1" />
+                <Label Content="Recording Name" HorizontalAlignment="Left" Height="32" Margin="37,0,-11,0" VerticalAlignment="Top" Width="476" Foreground="White" FontSize="16" Grid.Row="1"/>
+                <ComboBox Margin="10,31.333,10,0" VerticalAlignment="Top" RenderTransformOrigin="-2.529,0.135" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="White" Grid.Row="3" Height="26" Custom:TextBoxHelper.Watermark="&lt;Sample Repository&gt;">
+                    <ListBoxItem/>
+                    <ListBoxItem/>
+                    <ListBoxItem/>
+                    <ListBoxItem/>
+                    <ListBoxItem/>
+                </ComboBox>
+                <TextBox Height="26" Margin="10,35.667,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.Row="2" Custom:TextBoxHelper.Watermark="This is a description of my recording."/>
+                <Label Content="Description" HorizontalAlignment="Left" Height="29" Margin="35,1.667,-9,0" VerticalAlignment="Top" Width="476" Foreground="White" FontSize="16" Grid.Row="2"/>
+                <iconPacks:PackIconMaterial Kind="FileDocument" RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="10,8.667,0,0" Foreground="White" Grid.Row="2" />
+                <iconPacks:PackIconMaterial Kind="Database"  RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="10,4.333,0,0" Foreground="White" Grid.Row="3" />
+                <Label Content="Select Repository" HorizontalAlignment="Left" Height="32" Margin="35,2.333,-9,0" VerticalAlignment="Top" Width="476" Foreground="White" FontSize="16" Grid.Row="3"/>
             </Grid>
         </GroupBox>
         <GroupBox Header="Recording Properities" Margin="9.667,10,10.333,10" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="#FF2D2D30" Grid.Column="1">
-            <Grid Margin="0,-8,-1,0">
+            <Grid Margin="10,0,11,0.333">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="74*"/>
+                    <RowDefinition Height="73*"/>
+                    <RowDefinition Height="82*"/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="151*"/>
-                    <ColumnDefinition Width="110*"/>
-                    <ColumnDefinition Width="162*"/>
-                    <ColumnDefinition Width="99*"/>
+                    <ColumnDefinition Width="114*"/>
+                    <ColumnDefinition Width="135*"/>
+                    <ColumnDefinition Width="116*"/>
+                    <ColumnDefinition Width="137*"/>
                     <ColumnDefinition Width="0*"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox Content="Raw Sensor Data" Height="38" Margin="6,37,0.333,0" VerticalAlignment="Top" Foreground="White" IsChecked="True" BorderBrush="#FF2D2D30" Background="#FF2D2D30"/>
-                <Slider Height="28" Margin="6,117,5.667,0" VerticalAlignment="Top" Maximum="128" Value="60" AutoToolTipPlacement="TopLeft" Grid.ColumnSpan="4"/>
-                <CheckBox Content="Emotions" Height="38" Margin="5.667,37,4.333,0" VerticalAlignment="Top" Foreground="White" IsChecked="True" BorderBrush="#FF2D2D30" Background="#FF2D2D30" Grid.Column="1"/>
-                <CheckBox Content="Facial Expressions" Height="38" Margin="13.667,37,6.333,0" VerticalAlignment="Top" Foreground="White" BorderBrush="#FF2D2D30" Background="#FF2D2D30" Grid.Column="2" IsEnabled="False"/>
-                <CheckBox Content="Markers" Height="38" Margin="9.667,37,8.667,0" VerticalAlignment="Top" Foreground="White" IsChecked="True" BorderBrush="#FF2D2D30" Background="#FF2D2D30" Grid.Column="3"/>
-                <Label HorizontalAlignment="Left" Height="37" Margin="0,10,-3.333,0" VerticalAlignment="Top" Width="526" Foreground="White" FontSize="16" Content="Data Selection" Grid.ColumnSpan="5"/>
-                <Label Content="Raw Sampling Rate" HorizontalAlignment="Left" Height="37" Margin="3,80,0,0" VerticalAlignment="Top" Width="516" Foreground="White" FontSize="16" Grid.ColumnSpan="4"/>
-                <Slider Height="28" Margin="6,187,5.667,0" VerticalAlignment="Top" Maximum="3" Value="60" Grid.ColumnSpan="4" SmallChange="1" AutoToolTipPlacement="BottomRight"/>
-                <Label Content="Emotions Snapshot Rate" HorizontalAlignment="Left" Height="37" Margin="3,150,-6.333,0" VerticalAlignment="Top" Width="526" Foreground="White" FontSize="16" Grid.ColumnSpan="5"/>
+                <CheckBox Content="Raw" Height="38" Margin="6,26.667,1,0" VerticalAlignment="Top" Foreground="White" IsChecked="True" BorderBrush="#FF2D2D30" Background="#FF2D2D30" Grid.Row="1"/>
+                <Slider Height="28" Margin="6,38.667,5.333,0" VerticalAlignment="Top" Maximum="128" Value="60" AutoToolTipPlacement="TopLeft" Grid.ColumnSpan="4" Grid.Row="2"/>
+                <CheckBox Content="Emotions" Height="38" Margin="5,26.667,3.667,0" VerticalAlignment="Top" Foreground="White" IsChecked="True" BorderBrush="#FF2D2D30" Background="#FF2D2D30" Grid.Column="1" Grid.Row="1"/>
+                <CheckBox Content="Expressions" Height="38" Margin="0.333,26.667,97.333,0" VerticalAlignment="Top" Foreground="White" BorderBrush="#FF2D2D30" Background="#FF2D2D30" Grid.Column="2" IsEnabled="False" Grid.Row="1" Grid.ColumnSpan="2"/>
+                <CheckBox Content="Markers" Height="38" Margin="9.333,26.667,-72.667,0" VerticalAlignment="Top" Foreground="White" IsChecked="True" BorderBrush="#FF2D2D30" Background="#FF2D2D30" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2"/>
+                <Label HorizontalAlignment="Left" Height="37" Margin="31,0.667,-24.667,0" VerticalAlignment="Top" Width="495" Foreground="White" FontSize="16" Content="Data Selection" Grid.ColumnSpan="5" Grid.Row="1"/>
+                <Label Content="Sampling Rate (Hz)" HorizontalAlignment="Left" Height="28" Margin="31,0.667,-17.667,0" VerticalAlignment="Top" Width="488" Foreground="White" FontSize="16" Grid.ColumnSpan="5" Grid.Row="2"/>
+                <Slider Height="28" Margin="6,38.333,5.333,0" VerticalAlignment="Top" Maximum="3" Value="60" Grid.ColumnSpan="4" SmallChange="1" AutoToolTipPlacement="BottomRight" Grid.Row="3"/>
+                <Label Content="Emotions Snapshot Rate (Hz)" HorizontalAlignment="Left" Height="37" Margin="31,1.333,-20.667,0" VerticalAlignment="Top" Width="491" Foreground="White" FontSize="16" Grid.ColumnSpan="5" Grid.Row="3"/>
+                <iconPacks:PackIconMaterial Kind="DatabasePlus"  RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="6,6.667,0,0" Foreground="White" Grid.Row="1" />
+                <iconPacks:PackIconMaterial Kind="Beta"  RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="6,8.667,0,0" Foreground="White" Grid.Row="2" ToolTip="Number of sensor samples recorded per second." />
+                <iconPacks:PackIconMaterial Kind="Face"  RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="6,10.333,0,0" Foreground="White" Grid.Row="3" />
             </Grid>
         </GroupBox>
-        <GroupBox Header="Subject Profile" Margin="10,10,10.333,10.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="#FF2D2D30" Grid.Row="1">
-            <Grid Margin="-6,0,-2,-4.333">
+        <GroupBox Header="Subject Profile" Margin="10,10,10.333,50.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="#FF2D2D30" Grid.Row="1">
+            <Grid Margin="10,0,11.333,-4.333">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="97*"/>
+                    <RowDefinition Height="98*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100*"/>
-                    <ColumnDefinition Width="79*"/>
+                    <ColumnDefinition Width="245*"/>
+                    <ColumnDefinition Width="257*"/>
                 </Grid.ColumnDefinitions>
-                <TextBox Height="5" Margin="10,118,10,0" TextWrapping="Wrap" Text="New Recording" VerticalAlignment="Top" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.ColumnSpan="2" Visibility="Hidden"/>
-                <DatePicker Height="22" Margin="10,162,10,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Foreground="White" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Visibility="Hidden"/>
-                <RadioButton Content="Male" HorizontalAlignment="Left" Height="56" Margin="15,185,0,0" VerticalAlignment="Top" Width="289" Background="White" Foreground="White" Grid.ColumnSpan="2" Visibility="Hidden"/>
-                <RadioButton Content="Female" HorizontalAlignment="Left" Height="56" Margin="9.667,185,-62,0" VerticalAlignment="Top" Width="289" Background="White" Foreground="White" Grid.Column="1" Visibility="Hidden"/>
-                <ComboBox Margin="10,43,10,0" VerticalAlignment="Top" RenderTransformOrigin="-2.529,0.135" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="White" Grid.ColumnSpan="2"/>
-                <CheckBox Content="Saved subject:" Height="38" Margin="10,0,13.333,0" VerticalAlignment="Top" Foreground="White" IsChecked="True" BorderBrush="#FF2D2D30" Background="#FF2D2D30" FontSize="16" Grid.ColumnSpan="2"/>
+                <TextBox Height="26" Margin="10,26.667,10,0" TextWrapping="Wrap" Text="New Recording" VerticalAlignment="Top" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.ColumnSpan="2" Visibility="Hidden" Grid.Row="2"/>
+                <DatePicker Height="26" Margin="10,1.667,10,-22.333" VerticalAlignment="Top" Grid.ColumnSpan="2" Foreground="White" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Visibility="Hidden" Grid.Row="3"/>
+                <RadioButton Content="Male" HorizontalAlignment="Left" Height="56" Margin="15,16.667,0,-67.333" VerticalAlignment="Top" Width="289" Background="White" Foreground="White" Grid.ColumnSpan="2" Visibility="Hidden" Grid.Row="3"/>
+                <RadioButton Content="Female" HorizontalAlignment="Left" Height="56" Margin="9.333,16.667,-41,-67.333" VerticalAlignment="Top" Width="289" Background="White" Foreground="White" Grid.Column="1" Visibility="Hidden" Grid.Row="3"/>
+                <ComboBox Margin="10,49,10,0" VerticalAlignment="Top" RenderTransformOrigin="-2.529,0.135" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="White" Grid.ColumnSpan="2" Grid.Row="1" Height="26" Custom:TextBoxHelper.Watermark="&lt;Jane Doe&gt;"/>
+                <iconPacks:PackIconMaterial Kind="AccountMultiple"  RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="10,24,0,0" Foreground="White" Grid.Row="1" />
+
+                <Button
+                    Content="Guest Mode"
+                    Style="{DynamicResource AccentedSquareButtonStyle}" Margin="10,16.667,9.667,0" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.Row="2" Custom:ControlsHelper.ContentCharacterCasing="Normal" Height="32" VerticalAlignment="Top" FontWeight="Normal" FontFamily="Calibri Light" />
+
+                <Button
+            Content="Retrain Subject"
+            Style="{DynamicResource AccentedSquareButtonStyle}" Margin="9.333,16.667,11,0" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Custom:ControlsHelper.ContentCharacterCasing="Normal" Grid.Row="2" Height="32" VerticalAlignment="Top" FontWeight="Normal" FontFamily="Calibri Light" Grid.Column="1" />
+                <Label Content="Select Subject" HorizontalAlignment="Left" Height="32" Margin="35,17,0,0" VerticalAlignment="Top" Width="456" Foreground="White" FontSize="16" Grid.ColumnSpan="2" Grid.Row="1"/>
+
             </Grid>
         </GroupBox>
+        <GroupBox Header="Storage" Margin="8.667,10,10.333,50.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="#FF2D2D30" Grid.Row="1" Grid.Column="1">
+            <Grid Margin="10,0,11.333,-4.333">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="97*"/>
+                    <RowDefinition Height="98*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="245*"/>
+                    <ColumnDefinition Width="257*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Height="26" Margin="10,26.667,10,0" TextWrapping="Wrap" Text="New Recording" VerticalAlignment="Top" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.ColumnSpan="2" Visibility="Hidden" Grid.Row="2"/>
+                <DatePicker Height="26" Margin="10,1.667,10,-22.333" VerticalAlignment="Top" Grid.ColumnSpan="2" Foreground="White" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Visibility="Hidden" Grid.Row="3"/>
+                <RadioButton Content="Male" HorizontalAlignment="Left" Height="56" Margin="15,16.667,0,-67.333" VerticalAlignment="Top" Width="289" Background="White" Foreground="White" Grid.ColumnSpan="2" Visibility="Hidden" Grid.Row="3"/>
+                <RadioButton Content="Female" HorizontalAlignment="Left" Height="56" Margin="9.333,16.667,-41,-67.333" VerticalAlignment="Top" Width="289" Background="White" Foreground="White" Grid.Column="1" Visibility="Hidden" Grid.Row="3"/>
+
+            </Grid>
+        </GroupBox>
+        <Button
+                    Content="Start Recording"
+                    Style="{DynamicResource AccentedSquareButtonStyle}" Margin="306.667,0,10.333,10.333" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Custom:ControlsHelper.ContentCharacterCasing="Upper" Height="32" VerticalAlignment="Bottom" FontWeight="Normal" FontFamily="Calibri Light" Grid.Column="1" Grid.Row="1" />
     </Grid>
 </UserControl>
