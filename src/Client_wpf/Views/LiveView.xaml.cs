@@ -1,16 +1,12 @@
-﻿using System;
-using System.Windows.Controls;
+﻿using Emotiv;
 using LiveCharts;
 using LiveCharts.Configurations;
-using LiveCharts.Wpf;
-using System.Windows.Media;
-using System.Windows;
-using Emotiv;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
 using WPFapp;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace HamburgerMenuApp.V3.Views
 {
@@ -29,8 +25,7 @@ namespace HamburgerMenuApp.V3.Views
         public double AxisStep { get; set; }
         public double AxisUnit { get; set; }
 
-
-        System.Windows.Threading.DispatcherTimer HeartBeat = new System.Windows.Threading.DispatcherTimer();
+        private System.Windows.Threading.DispatcherTimer HeartBeat = new System.Windows.Threading.DispatcherTimer();
 
         public AboutView()
         {
@@ -41,7 +36,6 @@ namespace HamburgerMenuApp.V3.Views
             HeartBeat.Interval = new TimeSpan(0, 0, 0, 0, 500);
             HeartBeat.Start();
 
-
             //To handle live data easily, in this case we built a specialized type
             //the MeasureModel class, it only contains 2 properties
             //DateTime and Value
@@ -50,7 +44,7 @@ namespace HamburgerMenuApp.V3.Views
             //that LiveCharts learns to plot MeasureModel and will use this config every time
             //a IChartValues instance uses this type.
             //this code ideally should only run once
-            //you can configure series in many ways, learn more at 
+            //you can configure series in many ways, learn more at
             //http://lvcharts.net/App/examples/v1/wpf/Types%20and%20Configuration
 
             var mapper = Mappers.Xy<MeasureModel>()
@@ -81,7 +75,6 @@ namespace HamburgerMenuApp.V3.Views
             DataContext = this;
         }
 
-  
         public double AxisMax
         {
             get { return _axisMax; }
@@ -91,6 +84,7 @@ namespace HamburgerMenuApp.V3.Views
                 OnPropertyChanged("AxisMax");
             }
         }
+
         public double AxisMin
         {
             get { return _axisMin; }
@@ -103,11 +97,10 @@ namespace HamburgerMenuApp.V3.Views
 
         public bool IsReading { get; set; }
 
-
         private void SetAxisLimits(DateTime now)
         {
-            AxisMax = now.Ticks + TimeSpan.FromSeconds(5).Ticks; 
-            AxisMin = now.Ticks - TimeSpan.FromSeconds(20).Ticks; 
+            AxisMax = now.Ticks + TimeSpan.FromSeconds(5).Ticks;
+            AxisMin = now.Ticks - TimeSpan.FromSeconds(20).Ticks;
         }
 
         #region INotifyPropertyChanged implementation
@@ -120,8 +113,7 @@ namespace HamburgerMenuApp.V3.Views
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        #endregion
-
+        #endregion INotifyPropertyChanged implementation
 
         private void HeartBeat_Tick(object sender, EventArgs e)
         {
@@ -138,7 +130,7 @@ namespace HamburgerMenuApp.V3.Views
                     {
                         DateTime = now,
                         Value = data[EdkDll.EE_DataChannel_t.F8][0]
-                     });
+                    });
 
                     SetAxisLimits(now);
 
@@ -148,9 +140,10 @@ namespace HamburgerMenuApp.V3.Views
             }
             catch
             { }
-
         }
 
-  
+        private void CartesianChart_Loaded(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }

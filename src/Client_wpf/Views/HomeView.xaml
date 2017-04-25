@@ -7,8 +7,7 @@
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks" x:Class="HamburgerMenuApp.V3.Views.HomeView"
              mc:Ignorable="d"
              d:DesignHeight="581.333"
-             d:DesignWidth="1109.333">
-
+             d:DesignWidth="1200">
 
     <UserControl.Resources>
         <Thickness x:Key="ControlMargin">0 0 0 40</Thickness>
@@ -18,43 +17,49 @@
     </UserControl.Resources>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="240*"/>
-            <ColumnDefinition Width="869*"/>
-            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*" />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition Width="0*" />
         </Grid.ColumnDefinitions>
-        <GroupBox Header="Headset Status" Margin="10,10,0,10.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="220">
-            <Grid Margin="0,0,-6,-1.667">
-                <Image Height="210" VerticalAlignment="Top" Source="/WPFapp;component/Resources/brain_status.png" Margin="0,26,0,0"/>
+
+        <GroupBox Header="Sensors Placement" Margin="9.333,10,10,10" Background="#FF2D2D30" BorderBrush="#FF2D2D30" FontFamily="Segoe UI Light" Foreground="#FF1B1B1B" Grid.Column="2">
+            <Grid Margin="-6,2,-2,-5.333">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="132*" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
             </Grid>
         </GroupBox>
-
-
-        <GroupBox Header="General Settings" Margin="10,10,10.333,0" Background="#FF2D2D30" BorderBrush="#FF2D2D30" FontFamily="Segoe UI Light" Foreground="#FF1B1B1B" Height="281" VerticalAlignment="Top" Grid.Column="1">
-            <StackPanel Orientation="Vertical"  Margin="10,0,0,0">
-                <StackPanel Orientation="Vertical" />
-
-                <StackPanel/>
-                <StackPanel Orientation="Horizontal" />
-
-
-                <StackPanel Orientation="Vertical" />
-
-                <StackPanel Orientation="Vertical" />
-            </StackPanel>
+        <GroupBox Header="Headset Status" Margin="10,10,10.667,10" Background="#FF2D2D30" BorderBrush="#FF2D2D30" FontFamily="Segoe UI Light" Foreground="#FF1B1B1B" Grid.Column="1">
+            <Grid Margin="0,0,-2,-2.667">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="91*" />
+                    <RowDefinition Height="70*" />
+                    <RowDefinition Height="73*" />
+                </Grid.RowDefinitions>
+                <ComboBox Margin="9,47,10.333,0" VerticalAlignment="Top" RenderTransformOrigin="-2.529,0.135" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="White" Height="26" Custom:TextBoxHelper.Watermark="No Headsets Found">
+                    <ListBoxItem />
+                    <ListBoxItem />
+                    <ListBoxItem />
+                    <ListBoxItem />
+                    <ListBoxItem />
+                </ComboBox>
+                <iconPacks:PackIconMaterial Kind="Database"  RenderTransformOrigin="2.188,1.5" Height="20" Width="27" Margin="9,12,0,0" Foreground="White" />
+                <Label Content="Select Headset" HorizontalAlignment="Left" Height="32" Margin="43,10,-114.667,0" VerticalAlignment="Top" Width="641" Foreground="White" FontSize="16" />
+                <Custom:MetroProgressBar Height="6" Margin="9,46.667,10.333,0" VerticalAlignment="Top" Maximum="128" Value="60" Grid.Row="1" />
+                <Label Content="Battery" HorizontalAlignment="Left" Height="33" Margin="43,8.667,0,0" VerticalAlignment="Top" Width="488" Foreground="White" FontSize="16" Grid.Row="1" />
+                <Custom:MetroProgressBar Height="7" Margin="9,44.667,10.333,0" VerticalAlignment="Top" Maximum="3" Value="60" SmallChange="1" Grid.Row="2" />
+                <Label Content="Signal Quality" HorizontalAlignment="Left" Height="38" Margin="43,6.667,0,0" VerticalAlignment="Top" Width="477" Foreground="White" FontSize="16" Grid.Row="2" />
+                <iconPacks:PackIconMaterial Kind="Battery"  RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="9,11.667,0,0" Foreground="White" ToolTip="Number of sensor samples recorded per second." Grid.Row="1" />
+                <iconPacks:PackIconMaterial Kind="Signal"  RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="9,9.667,0,0" Foreground="White" Grid.Row="2" />
+            </Grid>
         </GroupBox>
-        <GroupBox Header="Recording Settings" Margin="10,305,10.333,10.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" FontFamily="Segoe UI Light" Foreground="#FF1B1B1B" Grid.Column="1">
-            <StackPanel Orientation="Vertical"  Margin="10,0,0,0">
-                <StackPanel Orientation="Vertical" />
-
-                <StackPanel/>
-                <StackPanel Orientation="Horizontal" />
-
-
-                <StackPanel Orientation="Vertical" />
-
-                <StackPanel Orientation="Vertical" />
-            </StackPanel>
-        </GroupBox>
+        <GroupBox Header="Log" Margin="10,10,10,10.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" FontFamily="Segoe UI Light" Foreground="#FF1B1B1B" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" />
     </Grid>
 </UserControl>

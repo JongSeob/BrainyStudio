@@ -1,10 +1,10 @@
-﻿using System.Windows;
+﻿using Emotiv;
 using MahApps.Metro.Controls;
-using Emotiv;
-using System.Diagnostics;
 using Sdk.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Windows;
 
 namespace HamburgerMenuApp.V3
 {
@@ -15,19 +15,22 @@ namespace HamburgerMenuApp.V3
     {
         /// Main EmoEngine and EmoState instances
         public EmoEngine _engine = EmoEngine.Instance;
+
         public EmoState _es;
         public Dictionary<EdkDll.EE_DataChannel_t, double[]> _data;
         private int _userID;
 
+        //Temporary recording.
+        public Recording temp = new Recording();
+
         // Recorder stopwatch
-        Stopwatch _stopwatch = new Stopwatch();
+        private Stopwatch _stopwatch = new Stopwatch();
+
+        //Is recording enabled?
         public bool _recording;
 
-        // Sample recording
-        public Recording _ondra = new Recording("Test", DateTime.Now);
-
         //Heartbeat dispatchtimer
-        System.Windows.Threading.DispatcherTimer HeartBeat = new System.Windows.Threading.DispatcherTimer();
+        private System.Windows.Threading.DispatcherTimer HeartBeat = new System.Windows.Threading.DispatcherTimer();
 
         /// <summary>
         /// Main tick for fetching data from emoengine (1000ms)
@@ -35,6 +38,24 @@ namespace HamburgerMenuApp.V3
         private void HeartBeat_Tick(object sender, EventArgs e)
         {
             _engine.ProcessEvents();
+        }
+
+        public void StartNewRecording()
+        {
+            //Reset
+            _recording = false;
+            _stopwatch.Reset();
+            temp = new Recording();
+
+            //Start Recording
+            _recording = true;
+            _stopwatch.Start();
+            Main.Title = Main.Title + " (Recording)";
+            ToggleFlyout(1);
+
+            //Set window glowcolor ?
+            //var converter = new System.Windows.Media.BrushConverter();
+            //((MainWindow)Application.Current.MainWindow).Main.GlowBrush = (Brush)converter.ConvertFromString("#FF1377A7");
         }
 
         /// <summary>
@@ -90,6 +111,10 @@ namespace HamburgerMenuApp.V3
             _engine.ExpressivSetTrainingControl(0, EdkDll.EE_ExpressivTrainingControl_t.EXP_START);
         }
 
+        /// <summary>
+        /// Function for opening metro flyouts.
+        /// </summary>
+        /// <param name="index"></param>
         public void ToggleFlyout(int index)
         {
             var flyout = this.Flyouts.Items[index] as Flyout;
@@ -101,7 +126,6 @@ namespace HamburgerMenuApp.V3
             flyout.IsOpen = !flyout.IsOpen;
         }
 
-
         #region Basic Events
 
         /// <summary>
@@ -109,7 +133,6 @@ namespace HamburgerMenuApp.V3
         /// </summary>
         private void engine_UserRemoved(object sender, EmoEngineEventArgs e)
         {
-
         }
 
         /// <summary>
@@ -117,7 +140,6 @@ namespace HamburgerMenuApp.V3
         /// </summary>
         private void engine_EmoEngineDisconnected(object sender, EmoEngineEventArgs e)
         {
-
         }
 
         /// <summary>
@@ -148,7 +170,6 @@ namespace HamburgerMenuApp.V3
 
             try
             {
-
                 if (this._data != null)
                 {
                     //If recording is enabled...
@@ -157,7 +178,7 @@ namespace HamburgerMenuApp.V3
                         for (int i = 0; i < _data[EdkDll.EE_DataChannel_t.F3].Length; i++)
                         {
                             //Append raw sensor data (The whole buffer)
-                            _ondra.AppendRawData(_data[EdkDll.EE_DataChannel_t.AF3][i],
+                            temp.AppendRawData(_data[EdkDll.EE_DataChannel_t.AF3][i],
                             _data[EdkDll.EE_DataChannel_t.F7][i],
                             _data[EdkDll.EE_DataChannel_t.F3][i],
                             _data[EdkDll.EE_DataChannel_t.FC5][i],
@@ -171,15 +192,13 @@ namespace HamburgerMenuApp.V3
                             _data[EdkDll.EE_DataChannel_t.F4][i],
                             _data[EdkDll.EE_DataChannel_t.F8][i],
                             _data[EdkDll.EE_DataChannel_t.AF4][i]);
+
+                            //Update time display
+                            Time_Label.Content = _stopwatch.Elapsed.Seconds.ToString();
                         }
                     }
                 }
             }
-            
-
-           
-
-
             catch
             { }
         }
@@ -198,7 +217,6 @@ namespace HamburgerMenuApp.V3
         private void engine_ExpressivTrainingSucceeded(object sender, EmoEngineEventArgs e)
         {
             _engine.ExpressivSetTrainingControl(0, EdkDll.EE_ExpressivTrainingControl_t.EXP_ACCEPT);
-
         }
 
         /// <summary>
@@ -206,7 +224,6 @@ namespace HamburgerMenuApp.V3
         /// </summary>
         private void engine_ExpressivTrainingStarted(object sender, EmoEngineEventArgs e)
         {
-
         }
 
         /// <summary>
@@ -214,7 +231,6 @@ namespace HamburgerMenuApp.V3
         /// </summary>
         private void engine_AffectivEmoStateUpdated(object sender, EmoStateUpdatedEventArgs e)
         {
-
             EmoState es = e.emoState;
             EdkDll.EE_AffectivAlgo_t[] affAlgoList = {
                                                       EdkDll.EE_AffectivAlgo_t.AFF_ENGAGEMENT_BOREDOM,
@@ -257,7 +273,6 @@ namespace HamburgerMenuApp.V3
                 {
                     scaledScoreEc = (rawScoreEc - minScaleEc) / (maxScaleEc - minScaleEc);
                 }
-
             }
 
             // Short Engagaement
@@ -321,7 +336,7 @@ namespace HamburgerMenuApp.V3
             if (this._recording)
             {
                 //Append SCALED affectiv values
-                _ondra.AppendAffectivData(_stopwatch.Elapsed.TotalSeconds, scaledScoreEc,
+                temp.AppendAffectivData(_stopwatch.Elapsed.TotalSeconds, scaledScoreEc,
                 scaledScoreEg, scaledScoreMd, scaledScoreFt);
             }
         }
@@ -331,10 +346,7 @@ namespace HamburgerMenuApp.V3
         /// </summary>
         private void engine_ExpressivEmoStateUpdated(object sender, EmoStateUpdatedEventArgs e)
         {
-
-
         }
-
 
         #endregion Basic Events
 

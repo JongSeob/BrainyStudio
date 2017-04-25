@@ -1,5 +1,4 @@
 ﻿using System.Windows.Controls;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace HamburgerMenuApp.V3.Views
 {

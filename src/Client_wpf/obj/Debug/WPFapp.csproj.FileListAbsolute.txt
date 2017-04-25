@@ -29,9 +29,6 @@ C:\Users\Ondra\Desktop\code-samples-master\MahAppsMetroHamburgerMenu\HamburgerMe
 C:\Users\Ondra\Desktop\code-samples-master\MahAppsMetroHamburgerMenu\HamburgerMenuApp.V3\obj\Debug\WPFapp.exe
 C:\Users\Ondra\Desktop\code-samples-master\MahAppsMetroHamburgerMenu\HamburgerMenuApp.V3\obj\Debug\WPFapp.pdb
 C:\Users\Ondra\Desktop\code-samples-master\MahAppsMetroHamburgerMenu\HamburgerMenuApp.V3\obj\Debug\WPFapp.csprojResolveAssemblyReference.cache
-E:\GitHub\Emotiv-Epoc\src\Client_wpf\bin\Debug\WPFapp.exe.config
-E:\GitHub\Emotiv-Epoc\src\Client_wpf\bin\Debug\WPFapp.exe
-E:\GitHub\Emotiv-Epoc\src\Client_wpf\bin\Debug\WPFapp.pdb
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\bin\Debug\MahApps.Metro.pdb
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\bin\Debug\MahApps.Metro.xml
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\bin\Debug\MahApps.Metro.IconPacks.pdb
@@ -47,14 +44,9 @@ E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\Views\PrivateView.g.cs
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\Views\SettingsView.g.cs
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\App.g.cs
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\GeneratedInternalTypeHelper.g.cs
-E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\WPFapp_MarkupCompile.cache
-E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\WPFapp_MarkupCompile.lref
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\MainWindow.baml
-E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\WPFapp.g.resources
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\WPFapp.Properties.Resources.resources
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\WPFapp.csproj.GenerateResource.Cache
-E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\WPFapp.exe
-E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\WPFapp.pdb
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\bin\Debug\LiveCharts.dll
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\bin\Debug\LiveCharts.Wpf.dll
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\bin\Debug\MahApps.Metro.dll
@@ -73,3 +65,11 @@ E:\GitHub\Emotiv-Epoc\src\Client_wpf\bin\Debug\Sdk.pdb
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\bin\Debug\Newtonsoft.Json.xml
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\Views\LiveView.baml
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\Views\LiveView.g.cs
+E:\GitHub\Emotiv-Epoc\src\Client_wpf\bin\Debug\ra.exe.config
+E:\GitHub\Emotiv-Epoc\src\Client_wpf\bin\Debug\ra.exe
+E:\GitHub\Emotiv-Epoc\src\Client_wpf\bin\Debug\ra.pdb
+E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\ra_MarkupCompile.cache
+E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\ra_MarkupCompile.lref
+E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\ra.g.resources
+E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\ra.exe
+E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\ra.pdb

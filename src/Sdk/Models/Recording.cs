@@ -46,6 +46,10 @@ namespace Sdk.Models
         [JsonProperty("Markers")]
         public List<Mark> _markers = new List<Mark>();
 
+
+        public Recording()
+        {}
+
         /// <summary>
         /// Construct a new EEG Recording
         /// </summary>
