@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Emotiv;
+﻿using System.Collections.Generic;
 
 namespace EmoEngineClientLibrary
 {
@@ -13,13 +7,12 @@ namespace EmoEngineClientLibrary
     /// </summary>
     public class EmotivStateBuffer : List<EmotivState>
     {
-
-        public EmotivStateBuffer( int capacity ) : base( capacity )
+        public EmotivStateBuffer(int capacity) : base(capacity)
         {
             this.FrameCount = capacity;
         }
 
-        public EmotivStateBuffer( EmotivStateBuffer buffer ) : base( buffer )
+        public EmotivStateBuffer(EmotivStateBuffer buffer) : base(buffer)
         {
             this.FrameCount = buffer.FrameCount;
         }
@@ -30,24 +23,24 @@ namespace EmoEngineClientLibrary
             private set;
         }
 
-        public new void Add( EmotivState state )
+        public new void Add(EmotivState state)
         {
-            if( this.Count < this.FrameCount )
+            if (this.Count < this.FrameCount)
             {
-                base.Add( state );
+                base.Add(state);
                 this.CurrentSampleIndex++;
             }
             else
             {
                 this.CurrentSampleIndex = 0;
 
-                EmotivStateBufferFilledEventArgs bfea = new EmotivStateBufferFilledEventArgs( this );
-                this.OnBufferFilled( bfea );
+                EmotivStateBufferFilledEventArgs bfea = new EmotivStateBufferFilledEventArgs(this);
+                this.OnBufferFilled(bfea);
 
                 this.Clear();
 
-                base.Add( state );
-            }            
+                base.Add(state);
+            }
         }
 
         public int CurrentSampleIndex
@@ -57,19 +50,19 @@ namespace EmoEngineClientLibrary
         }
 
         ///////////////////////////////////////////////////////////////////////
+
         #region Implementation
 
         public event EmotivStateBufferFilledEventHandler BufferFilled;
 
-        protected virtual void OnBufferFilled( EmotivStateBufferFilledEventArgs bfea )
+        protected virtual void OnBufferFilled(EmotivStateBufferFilledEventArgs bfea)
         {
-            if( BufferFilled != null )
+            if (BufferFilled != null)
             {
-                BufferFilled( this, bfea );
+                BufferFilled(this, bfea);
             }
         }
 
-        #endregion
-        
+        #endregion Implementation
     }
 }

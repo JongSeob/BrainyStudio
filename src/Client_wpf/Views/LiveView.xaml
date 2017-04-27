@@ -31,6 +31,12 @@
                                 StrokeThickness="2"
                                 Stroke="#F34336"
                                 Fill="Transparent" />
+                    <lvc:LineSeries Values="{Binding ChartValues2}"
+                                PointGeometry="{x:Null}"
+                                LineSmoothness="20"
+                                StrokeThickness="2"
+                                Stroke="Blue"
+                                Fill="Transparent" />
                 </lvc:CartesianChart.Series>
                 <lvc:CartesianChart.AxisX>
                     <lvc:Axis LabelFormatter="{Binding DateTimeFormatter}"

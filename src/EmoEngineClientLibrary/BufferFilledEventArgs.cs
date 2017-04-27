@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace EmoEngineClientLibrary
 {
-    public delegate void BufferFilledEventHandler( object sender, BufferFilledEventArgs bfea );
+    public delegate void BufferFilledEventHandler(object sender, BufferFilledEventArgs bfea);
 
-    public class BufferFilledEventArgs : EventArgs 
+    public class BufferFilledEventArgs : EventArgs
     {
-        public BufferFilledEventArgs( SampleBufferDictionary buffer )
+        public BufferFilledEventArgs(SampleBufferDictionary buffer)
         {
             // Defensive copy.
-            this.Buffer = new SampleBufferDictionary( buffer );
+            this.Buffer = new SampleBufferDictionary(buffer);
         }
 
         public SampleBufferDictionary Buffer

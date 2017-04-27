@@ -1,16 +1,12 @@
 ﻿using Emotiv;
-using Newtonsoft.Json;
 using rtChart;
+using Sdk.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Net.Sockets;
 using System.Threading;
 using System.Windows.Forms;
-using Sdk.Models;
-using EmoEngineClientLibrary;
-using System.Drawing;
 
 namespace Client
 {
@@ -18,14 +14,14 @@ namespace Client
     {
         /// Main EmoEngine and EmoState instances
         private EmoEngine _engine = EmoEngine.Instance;
-        EmoState _es;
+
+        private EmoState _es;
         private int _userID;
 
         // Recorder stopwatch
-        Stopwatch _stopwatch = new Stopwatch();
-        public bool _recording;
+        private Stopwatch _stopwatch = new Stopwatch();
 
-        
+        public bool _recording;
 
         #region Raw sensor data charts
 
@@ -58,16 +54,13 @@ namespace Client
 
             if (this._recording)
                 timeLabel.Text = _stopwatch.Elapsed.ToString();
-
         }
-
 
         /// <summary>
         /// Initilzation function
         /// </summary>
         public RecorderForm()
         {
-
             InitializeComponent();
             statusBar.Text = "Ready";
 
@@ -77,7 +70,7 @@ namespace Client
             _engine.EmoStateUpdated +=
              new EmoEngine.EmoStateUpdatedEventHandler(engine_EmoStateUpdated);
 
-            _engine.UserAdded += 
+            _engine.UserAdded +=
                 new EmoEngine.UserAddedEventHandler(engine_UserAdded_Event);
 
             _engine.EmoEngineDisconnected +=
@@ -92,7 +85,7 @@ namespace Client
             _engine.ExpressivEmoStateUpdated +=
                 new EmoEngine.ExpressivEmoStateUpdatedEventHandler(engine_ExpressivEmoStateUpdated);
 
-            _engine.ExpressivTrainingStarted+=
+            _engine.ExpressivTrainingStarted +=
                new EmoEngine.ExpressivTrainingStartedEventEventHandler(engine_ExpressivTrainingStarted);
 
             _engine.ExpressivTrainingSucceeded +=
@@ -101,13 +94,11 @@ namespace Client
             _engine.ExpressivTrainingFailed +=
                  new EmoEngine.ExpressivTrainingFailedEventHandler(engine_ExpressivTrainingFailed);
 
-
             //Connect to headset
             statusBar.Text = "EMOTIV Dongle not found.";
             statusBox.Enabled = false;
             statusStrip.BackColor = System.Drawing.Color.DarkRed;
             _engine.Connect();
-
         }
 
         private void ExpressionTraining(EdkDll.EE_ExpressivAlgo_t action)
@@ -319,7 +310,6 @@ namespace Client
         {
             MessageBox.Show(_engine.ExpressivGetTrainingAction(0) + " training accepted and saved.");
             _engine.ExpressivSetTrainingControl(0, EdkDll.EE_ExpressivTrainingControl_t.EXP_ACCEPT);
-
         }
 
         /// <summary>
@@ -330,13 +320,11 @@ namespace Client
             statusBar.Text = _engine.ExpressivGetTrainingAction(0) + " training started";
         }
 
-
         /// <summary>
         /// Main update event for AFFECTION data
         /// </summary>
         private void engine_AffectivEmoStateUpdated(object sender, EmoStateUpdatedEventArgs e)
         {
-
             EmoState es = e.emoState;
             EdkDll.EE_AffectivAlgo_t[] affAlgoList = {
                                                       EdkDll.EE_AffectivAlgo_t.AFF_ENGAGEMENT_BOREDOM,
@@ -379,7 +367,6 @@ namespace Client
                 {
                     scaledScoreEc = (rawScoreEc - minScaleEc) / (maxScaleEc - minScaleEc);
                 }
-
             }
 
             // Short Engagaement
@@ -454,10 +441,7 @@ namespace Client
         private void engine_ExpressivEmoStateUpdated(object sender, EmoStateUpdatedEventArgs e)
         {
             label4.Text = _es.ExpressivGetLowerFaceAction().ToString();
-
-
         }
-
 
         #endregion Basic Events
 
@@ -474,7 +458,6 @@ namespace Client
 
             // Begin timing.
             _stopwatch.Start();
-            
         }
 
         private void pause_Click(object sender, EventArgs e)
@@ -508,8 +491,6 @@ namespace Client
             this._recording = false;
         }
 
-
-
         #endregion Recording
 
         private void button1_Click(object sender, EventArgs e)
@@ -530,7 +511,6 @@ namespace Client
 
         private void label4_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

@@ -1,10 +1,5 @@
-﻿using Emotiv;
-using System;
-using System.Collections.Generic;
-using System.Threading;
+﻿using System;
 using System.Windows.Forms;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
 
 namespace Client
 {

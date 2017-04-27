@@ -26,7 +26,7 @@
         <controls:FlyoutsControl>
 
             <!--  Headset Connected Flyout -->
-            <controls:Flyout Header="Headset Connected"
+            <controls:Flyout Header="EMOTIV Dongle Connected"
                              Theme="Inverse"
                              Position="Right" Width="355" FontFamily="Segoe UI Light" AnimateOpacity="True">
 
@@ -61,18 +61,18 @@
                     </Button>
                 </StackPanel>
             </controls:Flyout>
-
-            <!--  Headset Added Flyout -->
-            <controls:Flyout Name="HeaddetConnectedFlyout" Header="Headset Connected" AutoCloseInterval="3000"
-                             CloseButtonVisibility="Collapsed" Theme="Inverse"
-                             Position="Bottom" Width="900" FontFamily="Segoe UI Light" AnimateOpacity="True" Height="50">
-            </controls:Flyout>
         </controls:FlyoutsControl>
     </controls:MetroWindow.Flyouts>
 
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
-            <Button Click="Button_Click" Content="Ondrejrehacek@gmail.com" />
+
+            <Button Click="Button_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Label x:Name="ProfileName_label" Content="Sign In" VerticalAlignment="Center" Foreground="White" />
+                    <iconPacks:PackIconMaterial Kind="Account" Padding="0,0,5,0" VerticalAlignment="Center" Foreground="White" />
+                </StackPanel>
+            </Button>
         </controls:WindowCommands>
     </controls:MetroWindow.RightWindowCommands>
 

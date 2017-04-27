@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Web;
+﻿using System.Security.Principal;
 
 namespace api.Security
 {
@@ -17,6 +13,7 @@ namespace api.Security
 
         public string UserName { get; set; }
         public IIdentity Identity { get; set; }
+
         public bool IsInRole(string role)
         {
             if (role.Equals("user"))

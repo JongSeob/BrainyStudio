@@ -2,8 +2,6 @@
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
 
 namespace Sdk.Models
 {
@@ -32,7 +30,7 @@ namespace Sdk.Models
         //Recorded Subject Information
         [JsonProperty("Subject")]
         public Subject _subject = new Subject();
-        
+
         //Full Data
         [JsonProperty("Raw")]
         public Raw _raw = new Raw();
@@ -46,9 +44,8 @@ namespace Sdk.Models
         [JsonProperty("Markers")]
         public List<Mark> _markers = new List<Mark>();
 
-
         public Recording()
-        {}
+        { }
 
         /// <summary>
         /// Construct a new EEG Recording
@@ -88,8 +85,6 @@ namespace Sdk.Models
             _configuration._software = software;
         }
 
-
-
         /// <summary>
         /// Append a new Marker
         /// </summary>
@@ -125,8 +120,8 @@ namespace Sdk.Models
         /// <summary>
         /// Append affectiv values
         /// </summary>
-        public void AppendAffectivData(Double Timing, Double Excitement, Double Engagement, Double Meditation, 
-            Double Frustration )
+        public void AppendAffectivData(Double Timing, Double Excitement, Double Engagement, Double Meditation,
+            Double Frustration)
         {
             _emotions.Timing.Add(Timing);
             _emotions.Excitement.Add(Excitement);

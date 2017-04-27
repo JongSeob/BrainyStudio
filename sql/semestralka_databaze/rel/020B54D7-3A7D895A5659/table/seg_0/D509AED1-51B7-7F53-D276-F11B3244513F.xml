@@ -103,51 +103,19 @@
 <autoIncrementCycle>false</autoIncrementCycle>
 <notNullConstraintName>NNC_Recording_Date</notNullConstraintName>
 </Column>
-<Column name="Subject_Name" id="114B1498-6AB6-54A9-2F59-688F88C5BB96">
-<createdBy>olire</createdBy>
-<createdTime>2017-01-30 13:14:08 UTC</createdTime>
-<ownerDesignName>semestralka_databaze</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-<notNullConstraintName>NNC_Recording_Subject_Name</notNullConstraintName>
-</Column>
-<Column name="Subject_Gender" id="53524FF9-E08D-96BD-A6B7-16B3F37F5BD9">
-<createdBy>olire</createdBy>
-<createdTime>2017-01-30 13:15:10 UTC</createdTime>
+<Column name="Subject_ID" id="B0B25E18-2103-7B05-D5E0-C9173218767A">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-04-25 06:59:35 UTC</createdTime>
 <ownerDesignName>semestralka_databaze</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
-<notNullConstraintName>NNC_Recording_Subject_Gender</notNullConstraintName>
-</Column>
-<Column name="Subject_Age" id="7ED83E3C-CA84-F9DB-76D1-2C9F6F1641CA">
-<createdBy>olire</createdBy>
-<createdTime>2017-01-30 13:15:10 UTC</createdTime>
-<ownerDesignName>semestralka_databaze</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-<notNullConstraintName>NNC_Recording_Subject_Age</notNullConstraintName>
-</Column>
-<Column name="Subject_Description" id="112D0543-C52E-3AA2-1392-7364D9D6139C">
-<createdBy>olire</createdBy>
-<createdTime>2017-01-30 13:15:10 UTC</createdTime>
-<ownerDesignName>semestralka_databaze</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>1000</dataTypeSize>
-<ownDataTypeParameters>1000,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-<notNullConstraintName>NNC_Recording_Subject_Description</notNullConstraintName>
+<associations>
+<colAssociation fkAssociation="EC5C47AF-EDF3-CBF9-97ED-C99450B9E328" referredColumn="8697C639-DE4B-AF3C-0532-1D63E66EE307"/>
+</associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -190,6 +158,16 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="0DEA3FDC-2447-73ED-F436-BD56D1A68FA4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="80EE6916-28C5-BA74-0A70-B4A27A83D956" name="Recorded_on_subject">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-04-25 06:59:35 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B0B25E18-2103-7B05-D5E0-C9173218767A"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

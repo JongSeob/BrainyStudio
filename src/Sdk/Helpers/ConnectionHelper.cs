@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sdk.Helpers
+﻿namespace Sdk.Helpers
 {
-    class ConnectionHelper
+    internal class ConnectionHelper
     {
-
-
     }
 }

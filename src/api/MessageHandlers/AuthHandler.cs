@@ -1,7 +1,5 @@
 ﻿using api.Security;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -14,7 +12,7 @@ namespace api.MessageHandlers
 {
     public class AuthHandler : DelegatingHandler
     {
-        string _userName = "";
+        private string _userName = "";
 
         //Method to validate credentials from Authorization
         //header value

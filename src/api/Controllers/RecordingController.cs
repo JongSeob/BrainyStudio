@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using Newtonsoft.Json;
-using api;
-using System.Data.SqlClient;
-using api.Helpers;
+﻿using api.Helpers;
 using Sdk.Models;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Web.Http;
 
 namespace api.Controllers
 {
     public class RecordingController : ApiController
     {
-
-        DatabaseHelper connection = new DatabaseHelper();
-        SerializationHelper s = new SerializationHelper();
+        private DatabaseHelper connection = new DatabaseHelper();
+        private SerializationHelper s = new SerializationHelper();
 
         // GET: api/Record
         public IEnumerable<string> Get()

@@ -1,14 +1,11 @@
-﻿// Copyright © 2010 James Galasyn 
-
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿// Copyright © 2010 James Galasyn
 
 using Emotiv;
 using MathNet.Numerics;
 using MathNet.Numerics.IntegralTransforms;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace EmoEngineClientLibrary
 {
@@ -17,43 +14,43 @@ namespace EmoEngineClientLibrary
     /// </summary>
     /// <remarks>
     /// <para>
-    /// Use the <see cref="SampleBufferDictionary"/> class to buffer realtime electrode data 
-    /// from the Emotiv neuroheadset. The <see cref="SampleBufferDictionary"/> class is a 
-    /// dictionary that maps the <see cref="EmoEngine"/> data channels enum to electrode data 
-    /// from the neuroheadset.  
+    /// Use the <see cref="SampleBufferDictionary"/> class to buffer realtime electrode data
+    /// from the Emotiv neuroheadset. The <see cref="SampleBufferDictionary"/> class is a
+    /// dictionary that maps the <see cref="EmoEngine"/> data channels enum to electrode data
+    /// from the neuroheadset.
     /// </para>
     /// <para>
-    /// Data channels are denoted throughout the <see cref="EmoEngineClientLibrary"/> by 
-    /// using the <see cref="EdkDll.EE_DataChannel_t"/> enumeration. Realtime data samples from the 
+    /// Data channels are denoted throughout the <see cref="EmoEngineClientLibrary"/> by
+    /// using the <see cref="EdkDll.EE_DataChannel_t"/> enumeration. Realtime data samples from the
     /// neuroheadset arrive in arrays of type <c>double</c>. A data frame comprises
-    /// all of the channels defined in the <see cref="EdkDll.EE_DataChannel_t"/> enumeration mapped 
+    /// all of the channels defined in the <see cref="EdkDll.EE_DataChannel_t"/> enumeration mapped
     /// to corresponding arrays of sample data.
     /// </para>
     /// <para>
-    /// The <see cref="SampleBufferDictionary"/> class implements a circular buffer that holds 
+    /// The <see cref="SampleBufferDictionary"/> class implements a circular buffer that holds
     /// data frames. You specify the size of the buffer in the <see cref="SampleBufferDictionary"/>
-    /// constructor. Access the size of the buffer, in data frames, by using the 
-    /// <see cref="FrameCapacity"/> property. Access the size of the buffer, in data samples, 
-    /// by using the <see cref="BufferSize"/> property. 
+    /// constructor. Access the size of the buffer, in data frames, by using the
+    /// <see cref="FrameCapacity"/> property. Access the size of the buffer, in data samples,
+    /// by using the <see cref="BufferSize"/> property.
     /// </para>
     /// Synchronize access to the <see cref="SampleBufferDictionary"/> class by using
-    /// the <c>lock</c> statement and the <see cref="SyncRoot"/> property. 
+    /// the <c>lock</c> statement and the <see cref="SyncRoot"/> property.
     /// <para>
-    /// Call the <see cref="Add"/> method to insert a data frame into the dictionary. 
-    /// Synchronization is automatic, so you do not need to synchronize calls to the 
-    /// <see cref="Add"/> method explicitly.  
+    /// Call the <see cref="Add"/> method to insert a data frame into the dictionary.
+    /// Synchronization is automatic, so you do not need to synchronize calls to the
+    /// <see cref="Add"/> method explicitly.
     /// </para>
     /// <para>
     /// Simple signal processing is supported, such as removing DC bias and computing
-    /// Fast Fourier Transform (FFT) for a channel. 
+    /// Fast Fourier Transform (FFT) for a channel.
     /// </para>
     /// <para>
-    /// If the <see cref="ChannelContext"/> for a data channel has "RemoveDCBias" 
+    /// If the <see cref="ChannelContext"/> for a data channel has "RemoveDCBias"
     /// set to <c>true</c>, the corresponding value in the <see cref="ChannelAverages"/>
     /// dictionary is subtracted from each of the channel's new samples.
     /// </para>
     /// <para>
-    /// If the <see cref="ChannelContext"/> for a data channel has "ComputeFFT" 
+    /// If the <see cref="ChannelContext"/> for a data channel has "ComputeFFT"
     /// set to <c>true</c>, the corresponding value in the <see cref="FastFourierTransforms"/>
     /// dictionary is calculated for the channel's buffer, including the channel's new samples.
     /// </para>
@@ -61,23 +58,24 @@ namespace EmoEngineClientLibrary
     public class SampleBufferDictionary : Dictionary<EdkDll.EE_DataChannel_t, double[]>
     {
         ///////////////////////////////////////////////////////////////////////
+
         #region Construction and Initialization
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SampleBufferDictionary"/> class that
         /// contains the specified number of data frames.
         /// </summary>
-        /// <param name="frameCapacity">The number of data frames that 
+        /// <param name="frameCapacity">The number of data frames that
         /// the <see cref="SampleBufferDictionary"/> contains.</param>
-        public SampleBufferDictionary( int frameCapacity )
+        public SampleBufferDictionary(int frameCapacity)
         {
-            if( frameCapacity > 0 )
+            if (frameCapacity > 0)
             {
                 this.FrameCapacity = frameCapacity;
             }
             else
             {
-                throw new ArgumentException( "must be greater than 0", "frameCapacity" );
+                throw new ArgumentException("must be greater than 0", "frameCapacity");
             }
         }
 
@@ -86,22 +84,22 @@ namespace EmoEngineClientLibrary
         /// of the specified <see cref="SampleBufferDictionary"/> instance.
         /// </summary>
         /// <param name="dictionary">The <see cref="SampleBufferDictionary"/> to copy.</param>
-        public SampleBufferDictionary( SampleBufferDictionary dictionary ) : base( dictionary )
-        {   
+        public SampleBufferDictionary(SampleBufferDictionary dictionary) : base(dictionary)
+        {
             this.FrameCapacity = dictionary.FrameCapacity;
             this.TotalFrames = dictionary.TotalFrames;
             this.BufferSize = dictionary.BufferSize;
             //this.TotalSamples = dictionary.TotalSamples;
-
         }
 
-        #endregion
+        #endregion Construction and Initialization
 
         ///////////////////////////////////////////////////////////////////////
+
         #region Public Properties
 
         /// <summary>
-        /// Gets the size of the buffer, in data frames. 
+        /// Gets the size of the buffer, in data frames.
         /// </summary>
         public int FrameCapacity
         {
@@ -119,7 +117,7 @@ namespace EmoEngineClientLibrary
         }
 
         /// <summary>
-        /// Gets the index of the current frame. 
+        /// Gets the index of the current frame.
         /// </summary>
         public int CurrentFrameIndex
         {
@@ -128,7 +126,7 @@ namespace EmoEngineClientLibrary
         }
 
         /// <summary>
-        /// /// Gets the index of the current sample. 
+        /// /// Gets the index of the current sample.
         /// </summary>
         /// <remarks>
         /// The <see cref="Add"/> method inserts a new data frame at this index.
@@ -144,7 +142,7 @@ namespace EmoEngineClientLibrary
         /// call to the <see cref="Add"/> method.
         /// </summary>
         /// <remarks>
-        /// The <see cref="TotalFrames"/> property is used to compute the 
+        /// The <see cref="TotalFrames"/> property is used to compute the
         /// running average for each data channel.
         /// </remarks>
         public long TotalFrames
@@ -167,7 +165,7 @@ namespace EmoEngineClientLibrary
         }
 
         /// <summary>
-        /// Gets an object that can be used to synchronize access to 
+        /// Gets an object that can be used to synchronize access to
         /// the <see cref="SampleBufferDictionary"/>.
         /// </summary>
         public object SyncRoot
@@ -199,7 +197,7 @@ namespace EmoEngineClientLibrary
         {
             get
             {
-                if( this._channelAverages == null )
+                if (this._channelAverages == null)
                 {
                     this._channelAverages = new Dictionary<EdkDll.EE_DataChannel_t, double>();
                 }
@@ -224,13 +222,14 @@ namespace EmoEngineClientLibrary
         //    }
         //}
 
-        #endregion
+        #endregion Public Properties
 
         ///////////////////////////////////////////////////////////////////////
+
         #region Public Methods
 
         /// <summary>
-        /// Adds a new data frame to the <see cref="SampleBufferDictionary"/>. 
+        /// Adds a new data frame to the <see cref="SampleBufferDictionary"/>.
         /// </summary>
         /// <param name="dataFrame">A dictionary that contains the new sample data.</param>
         /// <remarks>
@@ -238,74 +237,71 @@ namespace EmoEngineClientLibrary
         /// Access to the <see cref="SampleBufferDictionary"/> is synchronized.
         /// </para>
         /// <para>
-        /// The <paramref name="dataFrame"/> parameter is assumed to originate from the 
+        /// The <paramref name="dataFrame"/> parameter is assumed to originate from the
         /// <see cref="EmoEngine"/>, which means that all data channels from the neuroheadset
-        /// are present. 
+        /// are present.
         /// </para>
         /// <para>
-        /// Only data channels with the "AddToBuffer" <see cref="ChannelContext"/> set 
-        /// to <c>true</c> are added. Usually, signals that are not electrode data 
-        /// are excluded, but some signals, such as <see cref="EdkDll.EE_DataChannel_t.COUNTER"/>, 
+        /// Only data channels with the "AddToBuffer" <see cref="ChannelContext"/> set
+        /// to <c>true</c> are added. Usually, signals that are not electrode data
+        /// are excluded, but some signals, such as <see cref="EdkDll.EE_DataChannel_t.COUNTER"/>,
         /// are usually included for diagnostic purposes.
         /// </para>
         /// </remarks>
-        public void Add( Dictionary<EdkDll.EE_DataChannel_t, double[]> dataFrame )
+        public void Add(Dictionary<EdkDll.EE_DataChannel_t, double[]> dataFrame)
         {
             // Return if there is no data frame.
-            if( dataFrame != null )
+            if (dataFrame != null)
             {
                 // Get the number of samples in the new data frame. This number is assumed
-                // to be the same for all channels.  
+                // to be the same for all channels.
                 // TBD: picked this channel at random (first in Intellisense list).
                 int sampleCount = dataFrame[EdkDll.EE_DataChannel_t.AF3].Length;
 
                 // Track whether the samples in the new data frame will
                 // wrap from the end to the beginning of the buffer.
                 //bool wrapped = false;
-                
+
                 // Synchronize access to the dictionary.
-                lock( this._lockThis )
+                lock (this._lockThis)
                 {
                     // If this is the first frame, set the buffer size.
-                    if( this.Count == 0 )
+                    if (this.Count == 0)
                     {
                         this.BufferSize = sampleCount * this.FrameCapacity;
                     }
 
-
-                    // Compute the number of samples between the current sample and the end of the buffer. 
+                    // Compute the number of samples between the current sample and the end of the buffer.
                     int samplesToBufferEnd = this.BufferSize - this.CurrentSampleIndex;
 
                     bool wrapped = samplesToBufferEnd < sampleCount ? true : false;
 
-                    // Not enough space, so compute how many samples to wrap to the 
+                    // Not enough space, so compute how many samples to wrap to the
                     // start of the buffer.
                     int samplesToWrap = sampleCount - samplesToBufferEnd;
 
                     var wrapDictionary = new Dictionary<EdkDll.EE_DataChannel_t, double[]>();
 
-
-
                     // Iterate through all of the channels in the data frame and copy each array of new
                     // samples to the corresponding buffer.
-                    foreach( KeyValuePair<EdkDll.EE_DataChannel_t, double[]> kvp in dataFrame )
+                    foreach (KeyValuePair<EdkDll.EE_DataChannel_t, double[]> kvp in dataFrame)
                     {
                         bool addToBuffer = (bool)EmoEngineClient.ChannelContexts[kvp.Key]["AddToBuffer"];
-                        if( addToBuffer )
+                        if (addToBuffer)
                         {
                             Emotiv.EdkDll.EE_DataChannel_t channel = kvp.Key;
 
-                            // If the dictionary entry for the channel doesn't exist, create it. 
-                            if( !this.ContainsKey( channel ) )
+                            // If the dictionary entry for the channel doesn't exist, create it.
+                            if (!this.ContainsKey(channel))
                             {
-                                // Create a dictionary entry for the channel. 
+                                // Create a dictionary entry for the channel.
                                 this[channel] = null;
                             }
 
-                            // If the dictionary entry for the channel average value doesn't exist, create it. 
-                            if( !this.ChannelAverages.ContainsKey( channel ) )
+                            // If the dictionary entry for the channel average value doesn't exist, create it.
+                            if (!this.ChannelAverages.ContainsKey(channel))
                             {
-                                // Create a dictionary entry for the channel average. 
+                                // Create a dictionary entry for the channel average.
                                 this.ChannelAverages[channel] = 0;
                             }
 
@@ -315,71 +311,73 @@ namespace EmoEngineClientLibrary
                             // Compute the average of the new samples.
                             double newSampleAverage = newSamples.Sum() / newSamples.Length;
 
-                            // Determine whether to remove DC bias from this channel. 
+                            // Determine whether to remove DC bias from this channel.
                             bool removeDCBias = (bool)EmoEngineClient.ChannelContexts[channel]["RemoveDCBias"];
 
-                            // Determine whether to compute the FFT for the channel. 
+                            // Determine whether to compute the FFT for the channel.
                             bool computeFFT = (bool)EmoEngineClient.ChannelContexts[channel]["ComputeFFT"];
 
-                            // Get or create the buffer for the current channel. 
+                            // Get or create the buffer for the current channel.
                             double[] currentBuffer = this[channel];
-                            if( currentBuffer == null )
+                            if (currentBuffer == null)
                             {
                                 currentBuffer = new double[this.BufferSize];
                                 this[channel] = currentBuffer;
                             }
 
                             ///////////////////////////////////////
+
                             #region Remove DC bias from new samples
 
                             // Compute the running average for the current channel.
-                            this.ChannelAverages[kvp.Key] = ( this.TotalFrames * this.ChannelAverages[kvp.Key] + newSampleAverage ) / ( this.TotalFrames + 1 );
+                            this.ChannelAverages[kvp.Key] = (this.TotalFrames * this.ChannelAverages[kvp.Key] + newSampleAverage) / (this.TotalFrames + 1);
 
                             // Remove the DC bias, if the channel context specifies it.
-                            if( removeDCBias )
+                            if (removeDCBias)
                             {
-                                // Subtract the average value for the channel. 
-                                var newSamplesMinusDCBias = newSamples.Select( d => d - this.ChannelAverages[kvp.Key] );
+                                // Subtract the average value for the channel.
+                                var newSamplesMinusDCBias = newSamples.Select(d => d - this.ChannelAverages[kvp.Key]);
                                 newSamples = newSamplesMinusDCBias.ToArray();
                             }
 
                             // Special case for the COUNTER channel.
-                            if( kvp.Key == EdkDll.EE_DataChannel_t.COUNTER )
+                            if (kvp.Key == EdkDll.EE_DataChannel_t.COUNTER)
                             {
-                                // Subtract the median value for the channel. 
-                                var newSamplesMinusDCBias = newSamples.Select( d => d - 64.0d );
+                                // Subtract the median value for the channel.
+                                var newSamplesMinusDCBias = newSamples.Select(d => d - 64.0d);
                                 newSamples = newSamplesMinusDCBias.ToArray();
                             }
 
-                            #endregion
+                            #endregion Remove DC bias from new samples
 
                             ////////////////////////////////////////
+
                             #region Commit new samples to the buffer
 
-                            // Compute the number of samples between the current sample and the end of the buffer. 
-                           // int samplesToBufferEnd = this.BufferSize - this.CurrentSampleIndex;
+                            // Compute the number of samples between the current sample and the end of the buffer.
+                            // int samplesToBufferEnd = this.BufferSize - this.CurrentSampleIndex;
 
                             // If there is enough space, copy the new samples into the buffer.
                             //if( samplesToBufferEnd >= newSamples.Length )
-                            if( !wrapped )
+                            if (!wrapped)
                             {
-                                newSamples.CopyTo( currentBuffer, this.CurrentSampleIndex );
+                                newSamples.CopyTo(currentBuffer, this.CurrentSampleIndex);
                             }
                             else
                             {
-                                // Not enough space, so compute how many samples to wrap to the 
+                                // Not enough space, so compute how many samples to wrap to the
                                 // start of the buffer.
                                 //int samplesToWrap = newSamples.Length - samplesToBufferEnd;
 
-                                double[] wrap = new double[newSamples.Length]; 
+                                double[] wrap = new double[newSamples.Length];
                                 Array.Copy(
                                     newSamples,
                                     samplesToBufferEnd,
                                     wrap,
                                     0,
-                                    samplesToWrap );
+                                    samplesToWrap);
 
-                                wrapDictionary.Add( channel, wrap );
+                                wrapDictionary.Add(channel, wrap);
 
                                 // Copy new samples to the end of the buffer.
                                 //Array.Copy(
@@ -406,9 +404,12 @@ namespace EmoEngineClientLibrary
                                 //wrapped = true;
                             }
 
-                            #endregion 
+                            #endregion Commit new samples to the buffer
+
+
 
                             ////////////////////////////////////////////
+
                             #region Compute Fast Fourier Transform (FFT)
 
                             // Optionally compute the FFT for the channel.
@@ -418,16 +419,16 @@ namespace EmoEngineClientLibrary
                             //    this.FastFourierTransforms[kvp.Key] = ComputeRealFourierTransform( kvp.Key );
                             //}
 
-                            #endregion
+                            #endregion Compute Fast Fourier Transform (FFT)
                         }
                     }
 
-                    if( wrapped )
+                    if (wrapped)
                     {
-                        BufferFilledEventArgs bfea = new BufferFilledEventArgs( this );
-                        this.OnBufferFilled( bfea );
+                        BufferFilledEventArgs bfea = new BufferFilledEventArgs(this);
+                        this.OnBufferFilled(bfea);
 
-                        foreach( KeyValuePair<EdkDll.EE_DataChannel_t, double[]> kvp in wrapDictionary )
+                        foreach (KeyValuePair<EdkDll.EE_DataChannel_t, double[]> kvp in wrapDictionary)
                         {
                             // Copy the wrapped new samples to the beginning of the buffer.
                             Array.Copy(
@@ -435,7 +436,7 @@ namespace EmoEngineClientLibrary
                                 0,
                                 this[kvp.Key],
                                 this.CurrentSampleIndex,
-                                samplesToBufferEnd );
+                                samplesToBufferEnd);
                         }
                     }
 
@@ -443,27 +444,27 @@ namespace EmoEngineClientLibrary
                     this.TotalFrames++;
 
                     // Increment the current frame index, modulo the buffer capacity (in frames).
-                    this.CurrentFrameIndex = ( this.CurrentFrameIndex + 1 ) % this.FrameCapacity;
+                    this.CurrentFrameIndex = (this.CurrentFrameIndex + 1) % this.FrameCapacity;
 
                     // Increment the current sample index, modulo the buffer capacity (in samples).
-                    this.CurrentSampleIndex = ( this.CurrentSampleIndex + sampleCount ) % this.BufferSize;
+                    this.CurrentSampleIndex = (this.CurrentSampleIndex + sampleCount) % this.BufferSize;
                 }
             }
         }
 
-        #endregion
+        #endregion Public Methods
 
         ///////////////////////////////////////////////////////////////////////
+
         #region Implementation
 
         public event BufferFilledEventHandler BufferFilled;
 
-        protected virtual void OnBufferFilled( BufferFilledEventArgs bfea )
+        protected virtual void OnBufferFilled(BufferFilledEventArgs bfea)
         {
-            if( BufferFilled != null )
-                BufferFilled( this, bfea );
+            if (BufferFilled != null)
+                BufferFilled(this, bfea);
         }
-
 
         /// <summary>
         /// Calculates the real discrete Fourier transform for the specified data channel.
@@ -473,73 +474,73 @@ namespace EmoEngineClientLibrary
         /// of the real time-domain signal in <paramref name="channel"/>.</returns>
         /// <remarks>
         /// The <see cref="ComputeRealFourierTransform"/> method calls the <see cref="ComputeFourierTransform"/> method
-        /// and extracts the real part of the transformed signal from the returned <see cref="Complex"/> array. The real 
-        /// part is computed by using the <see cref="Complex.Magnitude"/> property. The <see cref="Complex.Phase"/> is 
-        /// ignored. The first N / 2 samples are returned, which comprise the positive frequencies.   
+        /// and extracts the real part of the transformed signal from the returned <see cref="Complex"/> array. The real
+        /// part is computed by using the <see cref="Complex.Magnitude"/> property. The <see cref="Complex.Phase"/> is
+        /// ignored. The first N / 2 samples are returned, which comprise the positive frequencies.
         /// </remarks>
-        public double[] ComputeRealFourierTransform( EdkDll.EE_DataChannel_t channel )
+        public double[] ComputeRealFourierTransform(EdkDll.EE_DataChannel_t channel)
         {
-            Complex[] complexDataArray = this.ComputeFourierTransform( channel );
+            Complex[] complexDataArray = this.ComputeFourierTransform(channel);
 
-            var magnitudes = complexDataArray.Select( c => c.Magnitude ).Take( complexDataArray.Length / 2 );
+            var magnitudes = complexDataArray.Select(c => c.Magnitude).Take(complexDataArray.Length / 2);
 
             return magnitudes.ToArray<double>();
         }
 
-        private static Complex[] ComputeFourierTransform( EdkDll.EE_DataChannel_t channel, double[] data )
+        private static Complex[] ComputeFourierTransform(EdkDll.EE_DataChannel_t channel, double[] data)
         {
-            var complexData = data.Select( d => new Complex( d, 0 ) );
+            var complexData = data.Select(d => new Complex(d, 0));
             Complex[] complexDataArray = complexData.ToArray<Complex>();
 
-            Transform.FourierForward( complexDataArray );
+            Transform.FourierForward(complexDataArray);
 
             return complexDataArray;
         }
 
-        public Complex[] ComputeFourierTransform( EdkDll.EE_DataChannel_t channel )
+        public Complex[] ComputeFourierTransform(EdkDll.EE_DataChannel_t channel)
         {
-            return ( ComputeFourierTransform( channel, this[channel] ) );
+            return (ComputeFourierTransform(channel, this[channel]));
         }
 
         /// <summary>
         /// Calculates the real discrete inverse Fourier transform for the specified array of frequencies.
         /// </summary>
         /// <param name="complexDataArray">The frequencies to transform.</param>
-        /// <returns>An array that contains the real discrete inverse Fourier transform that corresponds 
+        /// <returns>An array that contains the real discrete inverse Fourier transform that corresponds
         /// with <paramref name="complexDataArray"/>. </returns>
         /// <remarks>
-        /// The <paramref name="complexDataArray"/> is usually returned by a call to 
+        /// The <paramref name="complexDataArray"/> is usually returned by a call to
         /// the <see cref="ComputeFourierTransform"/> method.
         /// </remarks>
-        public static double[] ComputeRealInverseFourierTransform( Complex[] complexDataArray )
+        public static double[] ComputeRealInverseFourierTransform(Complex[] complexDataArray)
         {
-            Complex[] inverseFourierArray = ComputeInverseFourierTransform( complexDataArray );
+            Complex[] inverseFourierArray = ComputeInverseFourierTransform(complexDataArray);
 
-            var doubleData = complexDataArray.Select( c => c.Real ).Take( inverseFourierArray.Length / 2 );
+            var doubleData = complexDataArray.Select(c => c.Real).Take(inverseFourierArray.Length / 2);
 
             var doubleData2 = doubleData.Reverse();
 
-            var invFFT = doubleData.Concat( doubleData2 );
+            var invFFT = doubleData.Concat(doubleData2);
 
             return invFFT.ToArray<double>();
         }
 
-        private static Complex[] ComputeInverseFourierTransform( Complex[] complexDataArray )
+        private static Complex[] ComputeInverseFourierTransform(Complex[] complexDataArray)
         {
             Complex[] inverseFourierArray = null;
-            complexDataArray.CopyTo( inverseFourierArray, 0 );
+            complexDataArray.CopyTo(inverseFourierArray, 0);
 
-            Transform.FourierInverse( inverseFourierArray );
+            Transform.FourierInverse(inverseFourierArray);
 
             return inverseFourierArray;
         }
 
-        #endregion
-
+        #endregion Implementation
 
         ///////////////////////////////////////////////////////////////////////
+
         #region Private Fields
-        
+
         /// <summary>
         /// The synchronization object that backs the <see cref="SyncRoot"/> property.
         /// </summary>
@@ -555,6 +556,6 @@ namespace EmoEngineClientLibrary
         /// </summary>
         //private Dictionary<EdkDll.EE_DataChannel_t, double[]> _FFTs;
 
-        #endregion
+        #endregion Private Fields
     }
 }

@@ -1,11 +1,8 @@
-﻿// Copyright © 2010 James Galasyn 
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿// Copyright © 2010 James Galasyn
 
 using Emotiv;
+using System;
+using System.Collections.Generic;
 
 namespace EmoEngineClientLibrary
 {
@@ -14,7 +11,7 @@ namespace EmoEngineClientLibrary
     /// </summary>
     /// <remarks>
     /// <para>
-    /// Use the <see cref="ChannelContext"/> class to specify properties 
+    /// Use the <see cref="ChannelContext"/> class to specify properties
     /// that apply to realtime electrode data channels. The <see cref="ChannelContext"/> class
     /// is a simple property bag implementation that maps a property name to an
     /// object. The property value can be a value type, but boxing semantics apply.
@@ -31,8 +28,8 @@ namespace EmoEngineClientLibrary
     /// </list>
     /// </para>
     /// <para>
-    /// Type safety is not a fgeature of this class; it should probably be re-implemented with the 
-    /// new <c>dynamic</c> keyword, which enables building "expando" types, with dynamically created properties. 
+    /// Type safety is not a fgeature of this class; it should probably be re-implemented with the
+    /// new <c>dynamic</c> keyword, which enables building "expando" types, with dynamically created properties.
     /// </para>
     /// </remarks>
     public class ChannelContext : Dictionary<string, object>
@@ -42,17 +39,16 @@ namespace EmoEngineClientLibrary
         /// </summary>
         public ChannelContext()
         {
-
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ChannelContext"/> class with the specified dictionary.
         /// </summary>
-        public ChannelContext( Dictionary<string, object> properties )
+        public ChannelContext(Dictionary<string, object> properties)
         {
-            foreach( KeyValuePair<string, object> kvp in properties )
+            foreach (KeyValuePair<string, object> kvp in properties)
             {
-                this.Add( kvp.Key, kvp.Value );
+                this.Add(kvp.Key, kvp.Value);
             }
         }
 
@@ -63,9 +59,9 @@ namespace EmoEngineClientLibrary
         /// <param name="initialValue">The initial value of the property.</param>
         public void AddBooleanProperty(
             string name,
-            bool initialValue )
+            bool initialValue)
         {
-            this.Add( name, initialValue );
+            this.Add(name, initialValue);
         }
 
         /// <summary>
@@ -75,9 +71,9 @@ namespace EmoEngineClientLibrary
         /// <param name="initialValue">The initial value of the property.</param>
         public void AddDoubleProperty(
             string name,
-            double initialValue )
+            double initialValue)
         {
-            this.Add( name, initialValue );
+            this.Add(name, initialValue);
         }
 
         /// <summary>
@@ -87,9 +83,9 @@ namespace EmoEngineClientLibrary
         /// <param name="initialValue">The initial value of the property.</param>
         public void AddIntegerProperty(
             string name,
-            int initialValue )
+            int initialValue)
         {
-            this.Add( name, initialValue );
+            this.Add(name, initialValue);
         }
 
         /// <summary>
@@ -99,9 +95,9 @@ namespace EmoEngineClientLibrary
         /// <param name="initialValue">The initial value of the property.</param>
         public void AddTypeProperty(
             string name,
-            Type initialValue )
+            Type initialValue)
         {
-            this.Add( name, initialValue );
+            this.Add(name, initialValue);
         }
     }
 }

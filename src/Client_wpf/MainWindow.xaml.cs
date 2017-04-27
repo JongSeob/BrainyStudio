@@ -147,6 +147,9 @@ namespace HamburgerMenuApp.V3
         /// </summary>
         private void engine_UserAdded_Event(object sender, EmoEngineEventArgs e)
         {
+            //Show Notification
+            ToggleFlyout(1);
+
             // record the user
             _userID = (int)e.userId;
 
@@ -179,22 +182,22 @@ namespace HamburgerMenuApp.V3
                         {
                             //Append raw sensor data (The whole buffer)
                             temp.AppendRawData(_data[EdkDll.EE_DataChannel_t.AF3][i],
-                            _data[EdkDll.EE_DataChannel_t.F7][i],
-                            _data[EdkDll.EE_DataChannel_t.F3][i],
-                            _data[EdkDll.EE_DataChannel_t.FC5][i],
-                            _data[EdkDll.EE_DataChannel_t.T7][i],
-                            _data[EdkDll.EE_DataChannel_t.P7][i],
-                            _data[EdkDll.EE_DataChannel_t.O1][i],
-                            _data[EdkDll.EE_DataChannel_t.O2][i],
-                            _data[EdkDll.EE_DataChannel_t.P8][i],
-                            _data[EdkDll.EE_DataChannel_t.T8][i],
-                            _data[EdkDll.EE_DataChannel_t.FC6][i],
-                            _data[EdkDll.EE_DataChannel_t.F4][i],
-                            _data[EdkDll.EE_DataChannel_t.F8][i],
-                            _data[EdkDll.EE_DataChannel_t.AF4][i]);
+                        _data[EdkDll.EE_DataChannel_t.F7][i],
+                        _data[EdkDll.EE_DataChannel_t.F3][i],
+                        _data[EdkDll.EE_DataChannel_t.FC5][i],
+                        _data[EdkDll.EE_DataChannel_t.T7][i],
+                        _data[EdkDll.EE_DataChannel_t.P7][i],
+                        _data[EdkDll.EE_DataChannel_t.O1][i],
+                        _data[EdkDll.EE_DataChannel_t.O2][i],
+                        _data[EdkDll.EE_DataChannel_t.P8][i],
+                        _data[EdkDll.EE_DataChannel_t.T8][i],
+                        _data[EdkDll.EE_DataChannel_t.FC6][i],
+                        _data[EdkDll.EE_DataChannel_t.F4][i],
+                        _data[EdkDll.EE_DataChannel_t.F8][i],
+                        _data[EdkDll.EE_DataChannel_t.AF4][i]);
 
                             //Update time display
-                            Time_Label.Content = _stopwatch.Elapsed.Seconds.ToString();
+                            Time_Label.Content = _stopwatch.Elapsed.ToString("mm\\:ss");
                         }
                     }
                 }

@@ -1,40 +1,36 @@
-﻿// Copyright © 2009 James Galasyn 
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿// Copyright © 2009 James Galasyn
 
 using Emotiv;
-using System.Diagnostics;
+using System;
+using System.Collections.Generic;
 
 namespace EmoEngineClientLibrary
-{   
+{
     /// <summary>
     /// Provides property wrappers around the <see cref="EmoState"/> methods.
     /// </summary>
     /// <remarks>
-    /// The <see cref="EmotivState"/> class wraps <see cref="EmoState"/> methods 
+    /// The <see cref="EmotivState"/> class wraps <see cref="EmoState"/> methods
     /// with CLR properties, which enables data binding in the visualization layer.
     /// </remarks>
     public class EmotivState
     {
-        EmoState _emoState;
+        private EmoState _emoState;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EmotivState"/> class.
         /// </summary>
         /// <param name="emoState">An <see cref="EmoState"/> to back the <see cref="EmotivState"/> properties.</param>
-        public EmotivState( EmoState emoState )
+        public EmotivState(EmoState emoState)
         {
-            if( emoState != null )
+            if (emoState != null)
             {
                 // Cache a copy.
                 this._emoState = emoState.Clone() as EmoState;
             }
             else
             {
-                throw new ArgumentNullException( "emoState", "must be assigned" );
+                throw new ArgumentNullException("emoState", "must be assigned");
             }
         }
 
@@ -158,7 +154,7 @@ namespace EmoEngineClientLibrary
                 float leftEye;
                 float rightEye;
 
-                this._emoState.ExpressivGetEyelidState( out leftEye, out rightEye );
+                this._emoState.ExpressivGetEyelidState(out leftEye, out rightEye);
 
                 return leftEye;
             }
@@ -174,7 +170,7 @@ namespace EmoEngineClientLibrary
                 float leftEye;
                 float rightEye;
 
-                this._emoState.ExpressivGetEyelidState( out leftEye, out rightEye );
+                this._emoState.ExpressivGetEyelidState(out leftEye, out rightEye);
 
                 return rightEye;
             }
@@ -376,7 +372,7 @@ namespace EmoEngineClientLibrary
             {
                 int batteryChargeLevel;
                 int maxChargeLevel;
-                this._emoState.GetBatteryChargeLevel( out batteryChargeLevel, out maxChargeLevel );
+                this._emoState.GetBatteryChargeLevel(out batteryChargeLevel, out maxChargeLevel);
 
                 return batteryChargeLevel;
             }
@@ -391,7 +387,7 @@ namespace EmoEngineClientLibrary
             {
                 int batteryChargeLevel;
                 int maxChargeLevel;
-                this._emoState.GetBatteryChargeLevel( out batteryChargeLevel, out maxChargeLevel );
+                this._emoState.GetBatteryChargeLevel(out batteryChargeLevel, out maxChargeLevel);
 
                 return maxChargeLevel;
             }
@@ -412,108 +408,108 @@ namespace EmoEngineClientLibrary
         {
             get
             {
-                if( _inputChannelToDataChannelMap == null )
+                if (_inputChannelToDataChannelMap == null)
                 {
                     _inputChannelToDataChannelMap = new Dictionary<EdkDll.EE_InputChannels_t, EdkDll.EE_DataChannel_t>();
                     _inputChannelIndexToDataChannelMap = new Dictionary<int, EdkDll.EE_DataChannel_t>();
 
-                    Array inputChannels = Enum.GetValues( typeof( EdkDll.EE_InputChannels_t ) );
+                    Array inputChannels = Enum.GetValues(typeof(EdkDll.EE_InputChannels_t));
 
-                    for( int i = 0; i < inputChannels.Length; i++ )
+                    for (int i = 0; i < inputChannels.Length; i++)
                     {
-                        EdkDll.EE_InputChannels_t inputChannel = (EdkDll.EE_InputChannels_t)inputChannels.GetValue( i );
+                        EdkDll.EE_InputChannels_t inputChannel = (EdkDll.EE_InputChannels_t)inputChannels.GetValue(i);
 
-                        switch( inputChannel )
+                        switch (inputChannel)
                         {
                             case EdkDll.EE_InputChannels_t.EE_CHAN_AF3:
-                            {
-                                _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.AF3;
-                                _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.AF3;
-                                break;
-                            }
+                                {
+                                    _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.AF3;
+                                    _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.AF3;
+                                    break;
+                                }
                             case EdkDll.EE_InputChannels_t.EE_CHAN_AF4:
-                            {
-                                _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.AF4;
-                                _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.AF4;
-                                break;
-                            }
+                                {
+                                    _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.AF4;
+                                    _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.AF4;
+                                    break;
+                                }
                             case EdkDll.EE_InputChannels_t.EE_CHAN_F3:
-                            {
-                                _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.F3;
-                                _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.F3;
-                                break;
-                            }
+                                {
+                                    _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.F3;
+                                    _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.F3;
+                                    break;
+                                }
                             case EdkDll.EE_InputChannels_t.EE_CHAN_F4:
-                            {
-                                _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.F4;
-                                _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.F3;
-                                break;
-                            }
+                                {
+                                    _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.F4;
+                                    _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.F3;
+                                    break;
+                                }
                             case EdkDll.EE_InputChannels_t.EE_CHAN_F7:
-                            {
-                                _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.F7;
-                                _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.F7;
-                                break;
-                            }
+                                {
+                                    _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.F7;
+                                    _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.F7;
+                                    break;
+                                }
                             case EdkDll.EE_InputChannels_t.EE_CHAN_F8:
-                            {
-                                _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.F8;
-                                _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.F8;
-                                break;
-                            }
+                                {
+                                    _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.F8;
+                                    _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.F8;
+                                    break;
+                                }
                             case EdkDll.EE_InputChannels_t.EE_CHAN_FC5:
-                            {
-                                _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.FC5;
-                                _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.FC5;
-                                break;
-                            }
+                                {
+                                    _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.FC5;
+                                    _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.FC5;
+                                    break;
+                                }
                             case EdkDll.EE_InputChannels_t.EE_CHAN_FC6:
-                            {
-                                _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.FC6;
-                                _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.FC6;
-                                break;
-                            }
+                                {
+                                    _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.FC6;
+                                    _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.FC6;
+                                    break;
+                                }
                             case EdkDll.EE_InputChannels_t.EE_CHAN_O1:
-                            {
-                                _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.O1;
-                                _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.O1;
-                                break;
-                            }
+                                {
+                                    _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.O1;
+                                    _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.O1;
+                                    break;
+                                }
                             case EdkDll.EE_InputChannels_t.EE_CHAN_O2:
-                            {
-                                _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.O2;
-                                _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.O2;
-                                break;
-                            }
+                                {
+                                    _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.O2;
+                                    _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.O2;
+                                    break;
+                                }
                             case EdkDll.EE_InputChannels_t.EE_CHAN_P7:
-                            {
-                                _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.P7;
-                                _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.P7;
-                                break;
-                            }
+                                {
+                                    _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.P7;
+                                    _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.P7;
+                                    break;
+                                }
                             case EdkDll.EE_InputChannels_t.EE_CHAN_P8:
-                            {
-                                _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.P8;
-                                _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.P8;
-                                break;
-                            }
+                                {
+                                    _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.P8;
+                                    _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.P8;
+                                    break;
+                                }
                             case EdkDll.EE_InputChannels_t.EE_CHAN_T7:
-                            {
-                                _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.T7;
-                                _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.T7;
-                                break;
-                            }
+                                {
+                                    _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.T7;
+                                    _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.T7;
+                                    break;
+                                }
                             case EdkDll.EE_InputChannels_t.EE_CHAN_T8:
-                            {
-                                _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.T8;
-                                _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.T8;
-                                break;
-                            }
+                                {
+                                    _inputChannelToDataChannelMap[inputChannel] = EdkDll.EE_DataChannel_t.T8;
+                                    _inputChannelIndexToDataChannelMap[i] = EdkDll.EE_DataChannel_t.T8;
+                                    break;
+                                }
 
                             default:
-                            {
-                                break;
-                            }
+                                {
+                                    break;
+                                }
                         }
                     }
                 }
@@ -535,9 +531,9 @@ namespace EmoEngineClientLibrary
 
                 EdkDll.EE_EEG_ContactQuality_t[] contactQualityArray = this._emoState.GetContactQualityFromAllChannels();
 
-                for( int i = 0; i < contactQualityArray.Length; i++ )
+                for (int i = 0; i < contactQualityArray.Length; i++)
                 {
-                    if( InputChannelIndexToDataChannelMap.ContainsKey( i ) )
+                    if (InputChannelIndexToDataChannelMap.ContainsKey(i))
                     {
                         EdkDll.EE_DataChannel_t channel = InputChannelIndexToDataChannelMap[i];
 
@@ -549,13 +545,12 @@ namespace EmoEngineClientLibrary
             }
         }
 
-
         public List<EdkDll.EE_EEG_ContactQuality_t> ContactQualityFromElectrodeChannels
         {
             get
             {
                 //Array inputChannelEnums = Enum.GetValues( typeof( EdkDll.EE_InputChannels_t ) );
-                
+
                 //EdkDll.EE_EEG_ContactQuality_t[] contactQualityArray = this._emoState.GetContactQualityFromAllChannels();
 
                 //// TBD: There really has to be a more elegant way of doing this with LINQ.
@@ -570,7 +565,6 @@ namespace EmoEngineClientLibrary
                 return null;
             }
         }
-
 
         //public List<EdkDll.EE_EEG_ContactQuality_t> ContactQualityFromAllChannels
         //{
@@ -588,7 +582,6 @@ namespace EmoEngineClientLibrary
         private static Dictionary<EdkDll.EE_InputChannels_t, EdkDll.EE_DataChannel_t> _inputChannelToDataChannelMap;
         private static Dictionary<int, EdkDll.EE_DataChannel_t> _inputChannelIndexToDataChannelMap;
 
-        #endregion
-
+        #endregion Private Fields
     }
 }

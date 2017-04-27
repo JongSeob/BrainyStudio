@@ -56,6 +56,20 @@
 <ownDataTypeParameters>200,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="User_ID" id="1B916B15-2386-3EEE-488C-5371A0483B1E">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-04-25 07:04:33 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="576DAD5E-72EA-6D0B-4169-ACBEF805A2DF" referredColumn="8355FA53-4A31-A4D8-50FC-C03A8C623FF6"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="EA9B9CAC-A436-7E6E-1776-E5497AF0D0F0" name="Repository_PK">
@@ -67,6 +81,16 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="FA2FB507-2014-4779-C2A1-9369AAE79C8C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="517C6CF6-757A-D955-746C-B85024301971" name="Owner_FK">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-04-25 07:04:33 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1B916B15-2386-3EEE-488C-5371A0483B1E"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

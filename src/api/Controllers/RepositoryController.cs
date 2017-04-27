@@ -1,10 +1,10 @@
 ﻿using api.Helpers;
+using Sdk.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.Http;
-using Sdk.Models;
 
 namespace api.Controllers
 {
@@ -13,6 +13,7 @@ namespace api.Controllers
     {
         /// Global helpers for Database configuration, connection and data serialization
         private static DatabaseHelper _DBconfig = new DatabaseHelper();
+
         private SqlConnection _myConnection = new SqlConnection(_DBconfig.ConnString());
         private SerializationHelper _serializer = new SerializationHelper();
 
@@ -71,7 +72,7 @@ namespace api.Controllers
             }
         }
 
-        // POST NEW 
+        // POST NEW
         // POST: api/Repository
         public void Post([FromBody]Repository value)
         {
