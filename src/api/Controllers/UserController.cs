@@ -1,10 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using api.Helpers;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Web.Http;
 
 namespace api.Controllers
 {
     public class UserController : ApiController
     {
+
+        /// Global helpers for Database configuration, connection and data serialization
+        private static DatabaseHelper _DBconfig = new DatabaseHelper();
+
+        private SqlConnection _myConnection = new SqlConnection(_DBconfig.ConnString());
+        private SerializationHelper _serializer = new SerializationHelper();
+
+
         // GET: api/User
         public IEnumerable<string> Get()
         {

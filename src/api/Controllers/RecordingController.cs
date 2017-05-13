@@ -9,8 +9,11 @@ namespace api.Controllers
 {
     public class RecordingController : ApiController
     {
-        private DatabaseHelper connection = new DatabaseHelper();
-        private SerializationHelper s = new SerializationHelper();
+        /// Global helpers for Database configuration, connection and data serialization
+        private static DatabaseHelper _DBconfig = new DatabaseHelper();
+
+        private SqlConnection _myConnection = new SqlConnection(_DBconfig.ConnString());
+        private SerializationHelper _serializer = new SerializationHelper();
 
         // GET: api/Record
         public IEnumerable<string> Get()
@@ -21,18 +24,13 @@ namespace api.Controllers
         // GET: api/Record/5
         public Recording Get(int id)
         {
-            Recording test = new Recording("Test", DateTime.Now);
-            test._name = "hey";
-            return test;
+            return null;
         }
 
         // POST: api/Record
         public void Post([FromBody]Recording value)
         {
-            SqlConnection myConnection = new SqlConnection(connection.ConnString());
-
-            string test = s.Ser<Raw>(value._raw);
-            Raw test2 = s.Deser<Raw>(test);
+          
         }
 
         // PUT: api/Record/5

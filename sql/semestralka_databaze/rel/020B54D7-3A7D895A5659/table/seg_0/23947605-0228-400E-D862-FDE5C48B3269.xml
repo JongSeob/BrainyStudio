@@ -29,9 +29,9 @@
 <ownDataTypeParameters>200,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Subject_ID" id="A2C4FAC8-86D7-A925-C75E-1EC118AC6CFF">
+<Column name="Subject_ID" id="01B4BBA9-CFD6-CE59-7408-87A23B7DB985">
 <createdBy>Ondra</createdBy>
-<createdTime>2017-04-25 07:01:52 UTC</createdTime>
+<createdTime>2017-04-27 10:06:16 UTC</createdTime>
 <ownerDesignName>semestralka_databaze</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -40,7 +40,7 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="93FA99A3-84B1-E6C0-BC50-EE135D987F91" referredColumn="8697C639-DE4B-AF3C-0532-1D63E66EE307"/>
+<colAssociation fkAssociation="A40270D3-3745-ED29-0827-DA45267FCCB0" referredColumn="8697C639-DE4B-AF3C-0532-1D63E66EE307"/>
 </associations>
 </Column>
 </columns>
@@ -56,14 +56,14 @@
 <colUsage columnID="33A2FB0C-267A-0854-A869-991989B230DF"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="D465677E-90D6-A6CC-3E47-FF08C0D48992" name="For_Subject_FK">
+<ind_PK_UK id="B39CDBE0-CD2B-A471-729D-42303A95BD1D" name="Training_Data_FK">
 <createdBy>Ondra</createdBy>
-<createdTime>2017-04-25 07:01:52 UTC</createdTime>
+<createdTime>2017-04-27 10:06:16 UTC</createdTime>
 <ownerDesignName>semestralka_databaze</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="A2C4FAC8-86D7-A925-C75E-1EC118AC6CFF"/>
+<colUsage columnID="01B4BBA9-CFD6-CE59-7408-87A23B7DB985"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

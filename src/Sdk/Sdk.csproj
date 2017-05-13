@@ -45,11 +45,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\ConnectionHelper.cs" />
-    <Compile Include="Models\Configuration.cs" />
-    <Compile Include="Models\Emotions.cs" />
-    <Compile Include="Models\Expressions.cs" />
+    <Compile Include="Models\Recording\Configuration.cs" />
+    <Compile Include="Models\Recording\Emotions.cs" />
+    <Compile Include="Models\Recording\Expressions.cs" />
     <Compile Include="Models\Mark.cs" />
-    <Compile Include="Models\Raw.cs" />
+    <Compile Include="Models\Recording\Raw.cs" />
     <Compile Include="Models\Recording.cs" />
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Models\Subject.cs" />

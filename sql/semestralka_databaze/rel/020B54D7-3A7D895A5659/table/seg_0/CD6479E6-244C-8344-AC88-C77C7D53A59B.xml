@@ -63,20 +63,6 @@
 <ownDataTypeParameters>1000,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Training_Data_ID" id="8E808BD7-E1B8-20DF-54B2-1F97C492392F">
-<createdBy>Ondra</createdBy>
-<createdTime>2017-04-25 07:01:58 UTC</createdTime>
-<ownerDesignName>semestralka_databaze</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="8B890EA2-9A91-B4CD-4955-043CB44C263D" referredColumn="33A2FB0C-267A-0854-A869-991989B230DF"/>
-</associations>
-</Column>
 <Column name="User_ID" id="87706B9A-1DCC-4A65-E047-4AB3C0EF7773">
 <createdBy>Ondra</createdBy>
 <createdTime>2017-04-25 07:03:26 UTC</createdTime>
@@ -102,16 +88,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="8697C639-DE4B-AF3C-0532-1D63E66EE307"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="ADF6746B-E3C6-2E8B-F377-9537D0DEDE57" name="Training_Data_FK">
-<createdBy>Ondra</createdBy>
-<createdTime>2017-04-25 07:01:58 UTC</createdTime>
-<ownerDesignName>semestralka_databaze</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="8E808BD7-E1B8-20DF-54B2-1F97C492392F"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="30ACD959-DDB8-03A7-56C4-29156F0CF768" name="Owner_FKv2">

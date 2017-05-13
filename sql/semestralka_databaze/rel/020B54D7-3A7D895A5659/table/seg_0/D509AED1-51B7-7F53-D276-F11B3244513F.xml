@@ -54,20 +54,6 @@
 <colAssociation fkAssociation="E664934A-72B7-623D-0875-DA8F6580D01A" referredColumn="8355FA53-4A31-A4D8-50FC-C03A8C623FF6"/>
 </associations>
 </Column>
-<Column name="Data_ID" id="0DEA3FDC-2447-73ED-F436-BD56D1A68FA4">
-<createdBy>olire</createdBy>
-<createdTime>2017-02-01 15:08:49 UTC</createdTime>
-<ownerDesignName>semestralka_databaze</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="C309F1A2-3A6D-5C5A-8B3D-64D95EFC7DDC" referredColumn="ABD1C214-6FD8-7B41-6930-A4242F330A85"/>
-</associations>
-</Column>
 <Column name="Name" id="21AB548B-1107-5C81-264C-01A4636A05FC">
 <createdBy>olire</createdBy>
 <createdTime>2017-01-05 11:56:54 UTC</createdTime>
@@ -117,6 +103,20 @@
 <colAssociation fkAssociation="EC5C47AF-EDF3-CBF9-97ED-C99450B9E328" referredColumn="8697C639-DE4B-AF3C-0532-1D63E66EE307"/>
 </associations>
 </Column>
+<Column name="Data_ID" id="8E3110DF-F038-6BB8-BAE0-7A8D19F41E5B">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-04-27 10:04:57 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B9364275-55B9-4A53-B486-131979B5F781" referredColumn="ABD1C214-6FD8-7B41-6930-A4242F330A85"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="5AA47AE5-FE65-DB50-65C9-485443F03884" name="Recording_PK">
@@ -150,16 +150,6 @@
 <colUsage columnID="C585F3E0-0F2C-BEE7-99E2-36F00E713D2A"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="26D56CD1-4BBC-A86A-F340-D37054D87F1B" name="Data_of_recording">
-<createdBy>olire</createdBy>
-<createdTime>2017-02-01 15:08:49 UTC</createdTime>
-<ownerDesignName>semestralka_databaze</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="0DEA3FDC-2447-73ED-F436-BD56D1A68FA4"/>
-</indexColumnUsage>
-</ind_PK_UK>
 <ind_PK_UK id="80EE6916-28C5-BA74-0A70-B4A27A83D956" name="Recorded_on_subject">
 <createdBy>Ondra</createdBy>
 <createdTime>2017-04-25 06:59:35 UTC</createdTime>
@@ -168,6 +158,16 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="B0B25E18-2103-7B05-D5E0-C9173218767A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D8BF4A79-3149-38E1-C986-036824871544" name="Recording_Data_FK">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-04-27 10:04:57 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8E3110DF-F038-6BB8-BAE0-7A8D19F41E5B"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

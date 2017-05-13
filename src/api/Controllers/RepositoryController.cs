@@ -4,6 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Web;
 using System.Web.Http;
 
 namespace api.Controllers
@@ -21,14 +25,21 @@ namespace api.Controllers
         // GET: api/Repository
         public IEnumerable<Repository> Get()
         {
+
+            // Get User ID from the authentication.
+            int UserID = _DBconfig.GetUserIDFromHeader(this.Request.Headers.GetValues("Authorization"));
+
+
             _myConnection.Open();
-            string strSQL = "SELECT * FROM Repository";
+            string strSQL = "SELECT * FROM Repository WHERE User_ID = @userID";
             List<Repository> result = new List<Repository>();
 
             using (_myConnection)
             {
                 using (SqlCommand cmd = new SqlCommand(strSQL, _myConnection))
                 {
+                    cmd.Parameters.AddWithValue("@userID", UserID);
+
                     SqlDataAdapter parser = new SqlDataAdapter(cmd);
                     DataTable datatable = new DataTable();
                     parser.Fill(datatable);
@@ -49,6 +60,7 @@ namespace api.Controllers
         // GET: api/Repository/5
         public Repository Get(int id)
         {
+            // Work
             _myConnection.Open();
             Repository result = new Repository();
             string strSQL = "SELECT * FROM Repository WHERE Id = @userID";
@@ -58,6 +70,7 @@ namespace api.Controllers
                 using (SqlCommand cmd = new SqlCommand(strSQL, _myConnection))
                 {
                     cmd.Parameters.AddWithValue("@userID", id);
+
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
@@ -76,8 +89,13 @@ namespace api.Controllers
         // POST: api/Repository
         public void Post([FromBody]Repository value)
         {
+            // Get User ID from the authentication.
+            int UserID = _DBconfig.GetUserIDFromHeader(this.Request.Headers.GetValues("Authorization"));
+
+            // Open connection
             _myConnection.Open();
-            String strSQL = "INSERT INTO Repository (Name,Description,Picture) VALUES (@name,@description,@picture)";
+            String strSQL = "INSERT INTO Repository (Name,Description,User_ID) VALUES (@name,@description,@UserId)";
+
 
             using (_myConnection)
             {
@@ -85,7 +103,7 @@ namespace api.Controllers
                 {
                     sql_command.Parameters.Add("@name", value.Name);
                     sql_command.Parameters.Add("@description", value.Description);
-                    sql_command.Parameters.Add("@picture", value.Picture);
+                    sql_command.Parameters.Add("@UserId", UserID);
                     sql_command.ExecuteNonQuery();
                 }
             }
@@ -95,14 +113,19 @@ namespace api.Controllers
         // PUT: api/Repository/5
         public void Put(int id, [FromBody]Repository value)
         {
+            // Get User ID from the authentication.
+            int UserID = _DBconfig.GetUserIDFromHeader(this.Request.Headers.GetValues("Authorization"));
+
+
             _myConnection.Open();
-            String strSQL = "UPDATE Repository SET Name = @name, Description = @description , Picture = @picture WHERE Id = @id;";
+            String strSQL = "UPDATE Repository SET Name = @name, Description = @description , Picture = @picture WHERE Id = @id AND User_ID = @UserID;";
 
             using (_myConnection)
             {
                 using (SqlCommand sql_command = new SqlCommand(strSQL, _myConnection))
                 {
                     sql_command.Parameters.Add("@id", id);
+                    sql_command.Parameters.Add("@UserID", UserID);
                     sql_command.Parameters.Add("@name", value.Name);
                     sql_command.Parameters.Add("@description", value.Description);
                     sql_command.Parameters.Add("@picture", value.Picture);
@@ -115,14 +138,19 @@ namespace api.Controllers
         // DELETE: api/Repository/5
         public void Delete(int id)
         {
+            // Get User ID from the authentication.
+            int UserID = _DBconfig.GetUserIDFromHeader(this.Request.Headers.GetValues("Authorization"));
+
+
             _myConnection.Open();
-            String strSQL = "DELETE FROM Repository WHERE Id = @id;";
+            String strSQL = "DELETE FROM Repository WHERE Id = @id AND User_ID = @UserID;";
 
             using (_myConnection)
             {
                 using (SqlCommand sql_command = new SqlCommand(strSQL, _myConnection))
                 {
                     sql_command.Parameters.Add("@id", id);
+                    sql_command.Parameters.Add("@UserID", UserID);
                     sql_command.ExecuteNonQuery();
                 }
             }

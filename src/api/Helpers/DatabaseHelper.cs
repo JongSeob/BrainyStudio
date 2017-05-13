@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
 
 namespace api.Helpers
 {
@@ -53,6 +56,41 @@ namespace api.Helpers
                 Console.WriteLine("ERROR: Can not open database connection.");
             }
             Console.WriteLine();
+        }
+
+        /// <summary>
+        /// Returns UserID from Database based on HTTP request webauth
+        /// </summary>
+        public int GetUserIDFromHeader(IEnumerable<string> headerValues)
+        {
+
+            string[] decodedCredentials
+                   = Encoding.ASCII.GetString(Convert.FromBase64String(
+                   headerValues.Last().Substring("Basic ".Length).Trim()))
+                   .Split(new[] { ':' });
+
+
+            SqlConnection _myConnection = new SqlConnection(ConnString());
+            _myConnection.Open();
+            string strSQL = "SELECT * FROM [User] WHERE Nickname = @userId AND Password = @userPass";
+
+            using (_myConnection)
+            {
+                using (SqlCommand cmd = new SqlCommand(strSQL, _myConnection))
+                {
+                    cmd.Parameters.AddWithValue("@userId", decodedCredentials[0]);
+                    cmd.Parameters.AddWithValue("@userPass", decodedCredentials[1]);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                          return Int32.Parse(reader["ID"].ToString());
+                        }
+                    }
+                }
+                return 0;
+            }
         }
     }
 }

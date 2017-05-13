@@ -18,20 +18,6 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Recording_ID" id="6B00D974-2218-99DB-F0D5-0D0712556AB9">
-<createdBy>olire</createdBy>
-<createdTime>2017-02-01 15:04:56 UTC</createdTime>
-<ownerDesignName>semestralka_databaze</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="5462CAA2-30AA-C402-D7E6-89A38707D826" referredColumn="5C46F47D-C0CF-658E-B88D-0ED3E3D79D1D"/>
-</associations>
-</Column>
 <Column name="Path" id="B6969907-F629-A9A9-FFA5-497DC6B502FA">
 <createdBy>olire</createdBy>
 <createdTime>2017-02-01 14:47:08 UTC</createdTime>
@@ -54,16 +40,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="ABD1C214-6FD8-7B41-6930-A4242F330A85"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="0660ABAC-3D4C-1A7D-5F59-97228F92C855" name="From_recording">
-<createdBy>olire</createdBy>
-<createdTime>2017-02-01 15:04:56 UTC</createdTime>
-<ownerDesignName>semestralka_databaze</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="6B00D974-2218-99DB-F0D5-0D0712556AB9"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
