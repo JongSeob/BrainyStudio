@@ -10,7 +10,7 @@ namespace Sdk.Models
         [JsonProperty("FirstName")]
         private string FirstName;
 
-        [JsonProperty("FLastName")]
+        [JsonProperty("LastName")]
         private string LastName;
 
         [JsonProperty("Age")]

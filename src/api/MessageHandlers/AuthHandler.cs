@@ -1,5 +1,7 @@
-﻿using api.Security;
+﻿using api.Helpers;
+using api.Security;
 using System;
+using System.Data.SqlClient;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -7,12 +9,15 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
+using Sdk.Models;
 
 namespace api.MessageHandlers
 {
     public class AuthHandler : DelegatingHandler
     {
-        private string _userName = "";
+        private static DatabaseHelper _DBconfig = new DatabaseHelper();
+        private SqlConnection _myConnection = new SqlConnection(_DBconfig.ConnString());
+        private User _userId;
 
         //Method to validate credentials from Authorization
         //header value
@@ -32,14 +37,15 @@ namespace api.MessageHandlers
                     //username and decodedCredentials[1] will
                     //contain password.
 
-                    if (decodedCredentials[0].Equals("username")
-                    && decodedCredentials[1].Equals("password"))
+                    User UserID = _DBconfig.GetUserFromHeader(authenticationHeaderVal);
+
+                    if (UserID != null)
                     {
-                        _userName = "John Doe";
-                        return true;//request authenticated.
+                        _userId = UserID;
+                        return true; //request authenticated.
                     }
                 }
-                return false;//request not authenticated.
+                return false; //request not authenticated.
             }
             catch
             {
@@ -53,9 +59,10 @@ namespace api.MessageHandlers
             //set CurrentPrincipal and Current.User
             if (ValidateCredentials(request.Headers.Authorization))
             {
-                Thread.CurrentPrincipal = new APIPrincipal(_userName);
-                HttpContext.Current.User = new APIPrincipal(_userName);
+                Thread.CurrentPrincipal = new APIPrincipal(_userId);
+                HttpContext.Current.User = new APIPrincipal(_userId);
             }
+
             //Execute base.SendAsync to execute default
             //actions and once it is completed,
             //capture the response object and add

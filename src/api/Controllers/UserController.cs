@@ -7,7 +7,6 @@ namespace api.Controllers
 {
     public class UserController : ApiController
     {
-
         /// Global helpers for Database configuration, connection and data serialization
         private static DatabaseHelper _DBconfig = new DatabaseHelper();
 

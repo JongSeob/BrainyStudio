@@ -1,4 +1,5 @@
 ﻿using api.Helpers;
+using api.Security;
 using Sdk.Models;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading;
 using System.Web;
 using System.Web.Http;
 
@@ -23,22 +25,23 @@ namespace api.Controllers
 
         // GET ALL
         // GET: api/Repository
+        [Authorize(Roles = "Admin")]
         public IEnumerable<Repository> Get()
         {
+            //Get UserID
+            int UserId = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
 
-            // Get User ID from the authentication.
-            int UserID = _DBconfig.GetUserIDFromHeader(this.Request.Headers.GetValues("Authorization"));
-
-
+            //User or admin ?
+            bool IsUser = HttpContext.Current.User.IsInRole("User");
+            
             _myConnection.Open();
-            string strSQL = "SELECT * FROM Repository WHERE User_ID = @userID";
+            string strSQL = "SELECT * FROM Repository";
             List<Repository> result = new List<Repository>();
 
             using (_myConnection)
             {
                 using (SqlCommand cmd = new SqlCommand(strSQL, _myConnection))
                 {
-                    cmd.Parameters.AddWithValue("@userID", UserID);
 
                     SqlDataAdapter parser = new SqlDataAdapter(cmd);
                     DataTable datatable = new DataTable();
@@ -58,6 +61,7 @@ namespace api.Controllers
 
         // GET BY ID
         // GET: api/Repository/5
+        [Authorize]
         public Repository Get(int id)
         {
             // Work
@@ -87,10 +91,10 @@ namespace api.Controllers
 
         // POST NEW
         // POST: api/Repository
+        [Authorize]
         public void Post([FromBody]Repository value)
         {
-            // Get User ID from the authentication.
-            int UserID = _DBconfig.GetUserIDFromHeader(this.Request.Headers.GetValues("Authorization"));
+
 
             // Open connection
             _myConnection.Open();
@@ -103,7 +107,7 @@ namespace api.Controllers
                 {
                     sql_command.Parameters.Add("@name", value.Name);
                     sql_command.Parameters.Add("@description", value.Description);
-                    sql_command.Parameters.Add("@UserId", UserID);
+                    //sql_command.Parameters.Add("@UserId", UserID);
                     sql_command.ExecuteNonQuery();
                 }
             }
@@ -111,10 +115,10 @@ namespace api.Controllers
 
         // MODIFY BY ID
         // PUT: api/Repository/5
+        [Authorize]
         public void Put(int id, [FromBody]Repository value)
         {
-            // Get User ID from the authentication.
-            int UserID = _DBconfig.GetUserIDFromHeader(this.Request.Headers.GetValues("Authorization"));
+
 
 
             _myConnection.Open();
@@ -125,7 +129,7 @@ namespace api.Controllers
                 using (SqlCommand sql_command = new SqlCommand(strSQL, _myConnection))
                 {
                     sql_command.Parameters.Add("@id", id);
-                    sql_command.Parameters.Add("@UserID", UserID);
+                    //sql_command.Parameters.Add("@UserID", UserID);
                     sql_command.Parameters.Add("@name", value.Name);
                     sql_command.Parameters.Add("@description", value.Description);
                     sql_command.Parameters.Add("@picture", value.Picture);
@@ -136,10 +140,9 @@ namespace api.Controllers
 
         // DELETE BY ID
         // DELETE: api/Repository/5
+        [Authorize]
         public void Delete(int id)
         {
-            // Get User ID from the authentication.
-            int UserID = _DBconfig.GetUserIDFromHeader(this.Request.Headers.GetValues("Authorization"));
 
 
             _myConnection.Open();
@@ -150,7 +153,7 @@ namespace api.Controllers
                 using (SqlCommand sql_command = new SqlCommand(strSQL, _myConnection))
                 {
                     sql_command.Parameters.Add("@id", id);
-                    sql_command.Parameters.Add("@UserID", UserID);
+                    //sql_command.Parameters.Add("@UserID", UserID);
                     sql_command.ExecuteNonQuery();
                 }
             }

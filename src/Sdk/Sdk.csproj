@@ -44,15 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enum\UserRole.cs" />
     <Compile Include="Helpers\ConnectionHelper.cs" />
     <Compile Include="Models\Recording\Configuration.cs" />
     <Compile Include="Models\Recording\Emotions.cs" />
     <Compile Include="Models\Recording\Expressions.cs" />
-    <Compile Include="Models\Mark.cs" />
+    <Compile Include="Models\Recording\Mark.cs" />
     <Compile Include="Models\Recording\Raw.cs" />
     <Compile Include="Models\Recording.cs" />
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Models\Subject.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,9 +66,7 @@
       <Name>Lib</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Enum\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
