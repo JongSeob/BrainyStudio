@@ -46,11 +46,13 @@
   <ItemGroup>
     <Compile Include="Enum\UserRole.cs" />
     <Compile Include="Helpers\ConnectionHelper.cs" />
-    <Compile Include="Models\Recording\Configuration.cs" />
-    <Compile Include="Models\Recording\Emotions.cs" />
-    <Compile Include="Models\Recording\Expressions.cs" />
-    <Compile Include="Models\Recording\Mark.cs" />
-    <Compile Include="Models\Recording\Raw.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\EegData\EegData.cs" />
+    <Compile Include="Models\EegData\Configuration.cs" />
+    <Compile Include="Models\EegData\Emotions.cs" />
+    <Compile Include="Models\EegData\Expressions.cs" />
+    <Compile Include="Models\EegData\Mark.cs" />
+    <Compile Include="Models\EegData\Raw.cs" />
     <Compile Include="Models\Recording.cs" />
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Models\Subject.cs" />

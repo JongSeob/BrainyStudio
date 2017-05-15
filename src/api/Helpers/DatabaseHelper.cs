@@ -43,8 +43,7 @@ namespace api.Helpers
         /// </summary>
         private void Validate()
         {
-            SqlConnection databaseConn;
-            databaseConn = new SqlConnection();
+            var databaseConn = new SqlConnection();
             databaseConn.ConnectionString = ConnString();
 
             try
@@ -74,11 +73,11 @@ namespace api.Helpers
 
             SqlConnection _myConnection = new SqlConnection(ConnString());
             _myConnection.Open();
-            string strSQL = "SELECT * FROM [User] WHERE Nickname = @userId AND Password = @userPass";
+            string strSql = "SELECT * FROM [User] WHERE Nickname = @userId AND Password = @userPass";
 
             using (_myConnection)
             {
-                using (SqlCommand cmd = new SqlCommand(strSQL, _myConnection))
+                using (SqlCommand cmd = new SqlCommand(strSql, _myConnection))
                 {
                     cmd.Parameters.AddWithValue("@userId", decodedCredentials[0]);
                     cmd.Parameters.AddWithValue("@userPass", decodedCredentials[1]);

@@ -473,9 +473,9 @@ namespace Client
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            _ondra._length = _stopwatch.Elapsed.TotalMilliseconds;
+            _ondra.Length = _stopwatch.Elapsed.TotalMilliseconds;
             _ondra.AppendConfig(Int32.Parse(_engine.DataGetSamplingRate(0).ToString()), 4, _engine.HardwareGetVersion(0).ToString(), "1.0");
-            _ondra._subject = new Subject("Petra", "Řeháčková", 11, "Female", "Toto je tesovací subjekt");
+            _ondra.Subject = new Subject("Petra", "Řeháčková", 11, "Female", "Toto je tesovací subjekt");
 
             string jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(_ondra);
 

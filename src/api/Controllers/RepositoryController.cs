@@ -18,102 +18,114 @@ namespace api.Controllers
     public class RepositoryController : ApiController
     {
         /// Global helpers for Database configuration, connection and data serialization
-        private static DatabaseHelper _DBconfig = new DatabaseHelper();
+        private static readonly DatabaseHelper DbConfig = new DatabaseHelper();
+        private static readonly SqlConnection DatabaseConnection = new SqlConnection(DbConfig.ConnString());
 
-        private SqlConnection _myConnection = new SqlConnection(_DBconfig.ConnString());
-        private SerializationHelper _serializer = new SerializationHelper();
-
-        // GET ALL
+        // Get all Repositories of the user (Requires Authorization)
         // GET: api/Repository
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         public IEnumerable<Repository> Get()
         {
-            //Get UserID
-            int UserId = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
+            //Get User ID and form SQL Comand
+            int userId = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
+            string strSql = "SELECT * FROM Repository WHERE User_ID = @userId";
 
-            //User or admin ?
-            bool IsUser = HttpContext.Current.User.IsInRole("User");
-            
-            _myConnection.Open();
-            string strSQL = "SELECT * FROM Repository";
-            List<Repository> result = new List<Repository>();
-
-            using (_myConnection)
+            //If user is admin list all repositories no matter what user is the owner
+            if (HttpContext.Current.User.IsInRole("Administrator"))
             {
-                using (SqlCommand cmd = new SqlCommand(strSQL, _myConnection))
-                {
+                strSql = "SELECT * FROM Repository";
+            }
 
+            //Open MSSQL Connection and obtain data
+            DatabaseConnection.Open();
+            List<Repository> results = new List<Repository>();
+            using (DatabaseConnection)
+            {
+                using (SqlCommand cmd = new SqlCommand(strSql, DatabaseConnection))
+                {
+                    cmd.Parameters.AddWithValue("@userId", userId);
                     SqlDataAdapter parser = new SqlDataAdapter(cmd);
                     DataTable datatable = new DataTable();
                     parser.Fill(datatable);
 
                     foreach (DataRow row in datatable.Rows)
-                        result.Add(new Repository(
+                        results.Add(new Repository(
                             row.Field<int>(0),
                             row.Field<string>(1),
                             row.Field<string>(2),
                             row.Field<string>(3)
                             ));
                 }
-                return result;
+                return results;
             }
         }
 
-        // GET BY ID
+
+        // Get certain repository by id (Requires Authorization)
         // GET: api/Repository/5
         [Authorize]
         public Repository Get(int id)
         {
-            // Work
-            _myConnection.Open();
-            Repository result = new Repository();
-            string strSQL = "SELECT * FROM Repository WHERE Id = @userID";
+            //Get User ID and form SQL Comand
+            int userId = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
+            string strSql = "SELECT * FROM Repository WHERE Id = @repositoryId AND User_ID = @userId";
 
-            using (_myConnection)
+            //If user is admin list all repositories no matter what user is the owner
+            if (HttpContext.Current.User.IsInRole("Administrator"))
             {
-                using (SqlCommand cmd = new SqlCommand(strSQL, _myConnection))
+                strSql = "SELECT * FROM Repository WHERE Id = @repositoryId";
+            }
+
+            //Open MSSQL Connection and obtain data
+            DatabaseConnection.Open();
+            Repository results = new Repository();
+            using (DatabaseConnection)
+            {
+                using (SqlCommand cmd = new SqlCommand(strSql, DatabaseConnection))
                 {
-                    cmd.Parameters.AddWithValue("@userID", id);
+                    cmd.Parameters.AddWithValue("@userId", id);
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            result = new Repository(Int32.Parse(reader["Id"].ToString()),
+                            results = new Repository(Int32.Parse(reader["Id"].ToString()),
                                 reader["Name"].ToString(), reader["Description"].ToString(),
                                 reader["Picture"].ToString());
                         }
                     }
                 }
-                return result;
+                return results;
             }
         }
 
-        // POST NEW
+
+        // Post a new repository (Requires Authorization)
         // POST: api/Repository
         [Authorize]
         public void Post([FromBody]Repository value)
         {
-
+            //Get User ID and form SQL Comand
+            value.OwnerId = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
+            String strSQL = "INSERT INTO Repository (Name,Description,Image_URL,User_ID) VALUES (@Name,@Description,@ImageUrl,@UserId)";
 
             // Open connection
-            _myConnection.Open();
-            String strSQL = "INSERT INTO Repository (Name,Description,User_ID) VALUES (@name,@description,@UserId)";
-
-
-            using (_myConnection)
+            DatabaseConnection.Open();
+            using (DatabaseConnection)
             {
-                using (SqlCommand sql_command = new SqlCommand(strSQL, _myConnection))
+                using (SqlCommand sql_command = new SqlCommand(strSQL, DatabaseConnection))
                 {
                     sql_command.Parameters.Add("@name", value.Name);
                     sql_command.Parameters.Add("@description", value.Description);
-                    //sql_command.Parameters.Add("@UserId", UserID);
+                    sql_command.Parameters.Add("@ImageUrl", value.Picture);
+                    sql_command.Parameters.Add("@UserId", value.OwnerId);
                     sql_command.ExecuteNonQuery();
                 }
             }
         }
 
-        // MODIFY BY ID
+
+        // Modify repository by id (Requires Authorization)
         // PUT: api/Repository/5
         [Authorize]
         public void Put(int id, [FromBody]Repository value)
@@ -121,12 +133,12 @@ namespace api.Controllers
 
 
 
-            _myConnection.Open();
+            DatabaseConnection.Open();
             String strSQL = "UPDATE Repository SET Name = @name, Description = @description , Picture = @picture WHERE Id = @id AND User_ID = @UserID;";
 
-            using (_myConnection)
+            using (DatabaseConnection)
             {
-                using (SqlCommand sql_command = new SqlCommand(strSQL, _myConnection))
+                using (SqlCommand sql_command = new SqlCommand(strSQL, DatabaseConnection))
                 {
                     sql_command.Parameters.Add("@id", id);
                     //sql_command.Parameters.Add("@UserID", UserID);
@@ -138,22 +150,30 @@ namespace api.Controllers
             }
         }
 
-        // DELETE BY ID
+
+        // Delete repository by id (Requires Authorization)
         // DELETE: api/Repository/5
         [Authorize]
         public void Delete(int id)
         {
+            //Get User ID and form SQL Comand
+            int userId = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
+            string strSql = "DELETE FROM Repository WHERE Id = @RepositoryId AND User_ID = @UserId";
 
-
-            _myConnection.Open();
-            String strSQL = "DELETE FROM Repository WHERE Id = @id AND User_ID = @UserID;";
-
-            using (_myConnection)
+            //If user is admin list all repositories no matter what user is the owner
+            if (HttpContext.Current.User.IsInRole("Administrator"))
             {
-                using (SqlCommand sql_command = new SqlCommand(strSQL, _myConnection))
+                strSql = "DELETE FROM Repository WHERE Id = @RepositoryId";
+            }
+
+            //Open MSSQL Connection and delete data
+            DatabaseConnection.Open();
+            using (DatabaseConnection)
+            {
+                using (SqlCommand sql_command = new SqlCommand(strSql, DatabaseConnection))
                 {
-                    sql_command.Parameters.Add("@id", id);
-                    //sql_command.Parameters.Add("@UserID", UserID);
+                    sql_command.Parameters.Add("@RepositoryId", id);
+                    sql_command.Parameters.Add("@UserId", userId);
                     sql_command.ExecuteNonQuery();
                 }
             }

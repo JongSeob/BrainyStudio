@@ -19,15 +19,19 @@ namespace Sdk.Models
         [JsonProperty("Picture")]
         public string Picture;
 
+        [JsonProperty("OwnerId")]
+        public int OwnerId;
+
         public Repository()
         { }
 
-        public Repository(int Id, string Name, string Description, string Picture)
+        public Repository(int id, string name, string description, string picture, int ownerid)
         {
-            this.Id = Id;
-            this.Name = Name;
-            this.Description = Description;
-            this.Picture = Picture;
+            this.Id = id;
+            this.Name = name;
+            this.Description = description;
+            this.Picture = picture;
+            this.OwnerId = ownerid;
         }
     }
 }

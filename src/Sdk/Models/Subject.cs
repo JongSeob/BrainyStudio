@@ -7,32 +7,37 @@ namespace Sdk.Models
     [JsonObject(MemberSerialization.OptIn)]
     public class Subject
     {
-        [JsonProperty("FirstName")]
-        private string FirstName;
+        [JsonProperty("Id")]
+        public int Id;
 
-        [JsonProperty("LastName")]
-        private string LastName;
-
-        [JsonProperty("Age")]
-        private int Age;
+        [JsonProperty("Name")]
+        public string Name;
 
         [JsonProperty("Gender")]
-        private string Gender;
+        public string Gender;
 
-        [JsonProperty("Notes")]
-        private string Notes;
+        [JsonProperty("Age")]
+        public int Age;
+
+        [JsonProperty("Description")]
+        public string Description;
+
+        [JsonProperty("OwnerId")]
+        public int OwnerId;
 
         public Subject()
         {
+
         }
 
-        public Subject(string FirstName, string LastName, int Age, string Gender, string Notes)
+        public Subject(int id, string name,  int age, string gender, string description, int ownerid)
         {
-            this.FirstName = FirstName;
-            this.LastName = LastName;
-            this.Age = Age;
-            this.Gender = Gender;
-            this.Notes = Notes;
+            this.Id = id;
+            this.Name = name;
+            this.Gender = gender;
+            this.Age = age;
+            this.Description = description;
+            this.OwnerId = ownerid;
         }
     }
 }

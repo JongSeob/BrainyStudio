@@ -9,40 +9,49 @@ namespace Sdk.Models
     [JsonObject(MemberSerialization.OptIn)]
     public class Recording
     {
-        //Recording meta data
+        /// <summary>
+        /// META DATA ONLY
+        /// </summary>
+
+        [JsonProperty("Id")]
+        public int Id;
+
+        [JsonProperty("RepositoryId")]
+        public int RepositoryId;
+
+        [JsonProperty("OwnerId")]
+        public int OwnerId;
+
         [JsonProperty("Name")]
-        public string _name;
+        public string Name;
 
         [JsonProperty("Description")]
-        public string _description;
-
-        [JsonProperty("Length")]
-        public Double _length = new Double();
+        public string Description;
 
         [JsonProperty("Date")]
         [JsonConverter(typeof(JavaScriptDateTimeConverter))]
-        public DateTime _date;
+        public DateTime Date;
 
-        //Recording Enviroment Configuration
-        [JsonProperty("Configuration")]
-        public Configuration _configuration = new Configuration();
+        [JsonProperty("SubjectId")]
+        public int SubjectId;
 
-        //Recorded Subject Information
+
+        /// <summary>
+        /// FULL RECORDING
+        /// </summary>
+
+        // (Optional) Complete Subject Data
         [JsonProperty("Subject")]
-        public Subject _subject = new Subject();
+        public Subject Subject = new Subject();
 
-        //Full Data
-        [JsonProperty("Raw")]
-        public Raw _raw = new Raw();
+        // (Optional) Complete Owner Data
+        [JsonProperty("Owner")]
+        public User Owner = new User();
 
-        [JsonProperty("Emotions")]
-        public Affectiv _emotions = new Affectiv();
+        // (Optional) Complete EEG Data
+        [JsonProperty("Data")]
+        public EegData Data = new EegData();
 
-        [JsonProperty("Expressions")]
-        public Expressions _expressions = new Expressions();
-
-        [JsonProperty("Markers")]
-        public List<Mark> _markers = new List<Mark>();
 
         public Recording()
         { }
@@ -50,84 +59,85 @@ namespace Sdk.Models
         /// <summary>
         /// Construct a new EEG Recording
         /// </summary>
-        /// <param name="Id">ID of the new recording</param>
-        /// <param name="Name">Name of the recording</param>
-        public Recording(string Name, DateTime Date)
+        /// <param name="name">Name of the recording</param>
+        /// <param name="date"></param>
+        public Recording(string name, DateTime date)
         {
-            _name = Name;
-            _date = Date;
+            this.Name = name;
+            this.Date = date;
         }
 
         /// <summary>
         /// Construct a new EEG Recording
         /// </summary>
-        /// <param name="Id">ID of the new recording</param>
-        /// <param name="Name">Name of the recording</param>
-        /// <param name="Description">Notes about the recording</param>
-        public Recording(string Name, string Description, DateTime Date)
+        /// <param name="name">Name of the recording</param>
+        /// <param name="description">Notes about the recording</param>
+        /// <param name="date"></param>
+        public Recording(string name, string description, DateTime date)
         {
-            _name = Name;
-            _description = Description;
-            _date = Date;
+            this.Name = name;
+            this.Description = description;
+            this.Date = date;
         }
 
         /// <summary>
         /// Construct a new EEG Recording
         /// </summary>
-        /// <param name="Id">ID of the new recording</param>
-        /// <param name="Name">Name of the recording</param>
-        /// <param name="Description">Notes about the recording</param>
+        /// <param name="rawFrequency"></param>
+        /// <param name="snapshots"></param>
+        /// <param name="hardware"></param>
+        /// <param name="software"></param>
         public void AppendConfig(int rawFrequency, int snapshots, string hardware, string software)
         {
-            _configuration._frequency = rawFrequency;
-            _configuration._snapshots = snapshots;
-            _configuration._hardware = hardware;
-            _configuration._software = software;
+            Data.Configuration.Frequency = rawFrequency;
+            Data.Configuration.Snapshots = snapshots;
+            Data.Configuration.Hardware = hardware;
+            Data.Configuration.Software = software;
         }
 
         /// <summary>
         /// Append a new Marker
         /// </summary>
-        /// <param name="Caption">Contains of the mark</param>
-        /// <param name="Time">Timestamp in the recording</param>
-        public void AppendMark(string Caption, Double Time)
+        /// <param name="caption">Contains of the mark</param>
+        /// <param name="time">Timestamp in the recording</param>
+        public void AppendMark(string caption, double time)
         {
-            _markers.Add(new Mark(Time, Caption));
+            Data.Markers.Add(new Mark(time, caption));
         }
 
         /// <summary>
         /// Append new raw sensor values into recording
         /// </summary>
-        public void AppendRawData(Double AF3, Double F7, Double F3, Double FC5, Double T7, Double P7, Double O1,
-            Double O2, Double P8, Double T8, Double FC6, Double F4, Double F8, Double AF42)
+        public void AppendRawData(double AF3, double F7, double F3, double FC5, double T7, double P7, double O1,
+            double O2, double P8, double T8, double FC6, double F4, double F8, double AF42)
         {
-            _raw.AF3.Add(AF3);
-            _raw.F7.Add(F7);
-            _raw.F3.Add(F3);
-            _raw.FC5.Add(FC5);
-            _raw.T7.Add(T7);
-            _raw.P7.Add(P7);
-            _raw.O1.Add(O1);
-            _raw.O2.Add(O2);
-            _raw.P8.Add(P8);
-            _raw.T8.Add(T8);
-            _raw.FC6.Add(FC6);
-            _raw.F4.Add(F4);
-            _raw.F8.Add(F8);
-            _raw.AF42.Add(AF42);
+            Data.Raw.AF3.Add(AF3);
+            Data.Raw.F7.Add(F7);
+            Data.Raw.F3.Add(F3);
+            Data.Raw.FC5.Add(FC5);
+            Data.Raw.T7.Add(T7);
+            Data.Raw.P7.Add(P7);
+            Data.Raw.O1.Add(O1);
+            Data.Raw.O2.Add(O2);
+            Data.Raw.P8.Add(P8);
+            Data.Raw.T8.Add(T8);
+            Data.Raw.FC6.Add(FC6);
+            Data.Raw.F4.Add(F4);
+            Data.Raw.F8.Add(F8);
+            Data.Raw.AF42.Add(AF42);
         }
 
         /// <summary>
         /// Append affectiv values
         /// </summary>
-        public void AppendAffectivData(Double Timing, Double Excitement, Double Engagement, Double Meditation,
-            Double Frustration)
+        public void AppendAffectivData(double timing, double excitement, double engagement, double meditation,
+            double frustration)
         {
-            _emotions.Timing.Add(Timing);
-            _emotions.Excitement.Add(Excitement);
-            _emotions.Engagement.Add(Engagement);
-            _emotions.Meditation.Add(Meditation);
-            _emotions.Frustration.Add(Frustration);
+            Data.Emotions.Timing.Add(timing);
+            Data.Emotions.Excitement.Add(excitement);
+            Data.Emotions.Engagement.Add(engagement);
+            Data.Emotions.Meditation.Add(meditation);
+            Data.Emotions.Frustration.Add(frustration);
         }
     }
 }

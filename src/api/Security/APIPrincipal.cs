@@ -8,24 +8,17 @@ namespace api.Security
         public User AuthUser {get; set; }
 
         //Constructor
-        public APIPrincipal(User Auth)
+        public APIPrincipal(User auth)
         {
-            AuthUser = Auth;
-            Identity = new GenericIdentity(AuthUser._id.ToString());
+            AuthUser = auth;
+            Identity = new GenericIdentity(AuthUser.Id.ToString());
         }
 
         public IIdentity Identity { get; set; }
 
         public bool IsInRole(string role)
         {
-            if (role.Equals(AuthUser._Role))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return role.Equals(AuthUser.Role);
         }
 
     }

@@ -12,32 +12,43 @@ namespace Sdk.Models
     public class User
     {
         [JsonProperty("Id")]
-        public int _id;
+        public int Id;
 
         [JsonProperty("Nickname")]
-        public string _Nickname;
+        public string Nickname;
 
         [JsonProperty("Name")]
-        public string _Name;
+        public string Name;
 
         [JsonProperty("Avatar_URL")]
-        public string _Avatar_URL;
+        public string AvatarUrl;
 
         [JsonProperty("Notes")]
-        public string _Notes;
+        public string Notes;
 
         [JsonProperty("URL")]
-        public string _Url;
+        public string Url;
 
         [JsonProperty("Role")]
-        public string _Role ="User";
+        public string Role;
 
-        private string _Password;
+        //private string Password;
 
-        public User(int id, string nickname)
+
+        public User()
         {
-            _id = id;
-            _Nickname = nickname;
+
+        }
+
+        public User(int id, string nickname, string name, string avatarurl, string notes, string url, string role)
+        {
+            this.Id = id;
+            this.Nickname = nickname;
+            this.Name = name;
+            this.AvatarUrl = avatarurl;
+            this.Notes = notes;
+            this.Url = url;
+            this.Role = role;
         }
 
     }
