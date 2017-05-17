@@ -37,6 +37,17 @@
 <autoIncrementCycle>false</autoIncrementCycle>
 <notNullConstraintName>NNC_User_Nickname</notNullConstraintName>
 </Column>
+<Column name="Role" id="91FD8CB3-BEB3-F7F6-102A-9C01216F9EFD">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-05-15 03:22:40 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 <Column name="Name" id="FF010D29-B249-447F-FC80-B2D04110230E">
 <createdBy>olire</createdBy>
 <createdTime>2017-01-05 12:10:02 UTC</createdTime>

@@ -11,9 +11,9 @@ namespace api.Controllers
 {
     public class UserController : ApiController
     {
-        /// Global helpers for Database configuration, connection and data serialization
-        private static readonly DatabaseHelper DbConfig = new DatabaseHelper();
-        private static readonly SqlConnection DatabaseConnection = new SqlConnection(DbConfig.ConnString());
+        ///Database configuration and connection
+        private static DatabaseHelper _databaseConfig = new DatabaseHelper();
+        private SqlConnection _databaseConnection = new SqlConnection(_databaseConfig.ConnString());
 
 
         // Get profile of logged user (Requires Authorization)
@@ -23,29 +23,33 @@ namespace api.Controllers
         {
             //Get User ID and form SQL Comand
             int userId = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
-            string strSql = "SELECT * FROM User WHERE Id = @userId";
+            string strSql = "SELECT * FROM [User] WHERE Id = @userId";
 
             //Open MSSQL Connection and obtain data
-            DatabaseConnection.Open();
-            User results = new User();
+            _databaseConnection.Open();
+            User userResult = new User();
 
-            using (DatabaseConnection)
+            using (_databaseConnection)
             {
-                using (SqlCommand cmd = new SqlCommand(strSql, DatabaseConnection))
+                using (SqlCommand sqlCommand = new SqlCommand(strSql, _databaseConnection))
                 {
-                    cmd.Parameters.AddWithValue("@userId", userId);
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    sqlCommand.Parameters.AddWithValue("@userId", userId);
+                    using (SqlDataReader reader = sqlCommand.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            results = new User(Int32.Parse(reader["Id"].ToString()), reader["Nickname"].ToString(), 
-                                reader["Name"].ToString(), reader["Avatar_URL"].ToString(), reader["Notes"].ToString(),
-                                reader["Url"].ToString(), reader["Role"].ToString());
+                            userResult = new User(
+                                Int32.Parse(reader["Id"].ToString()),
+                                reader["Nickname"].ToString(),
+                                reader["Role"].ToString(),
+                                reader["Name"].ToString(),
+                                reader["Avatar_URL"].ToString(),
+                                reader["Notes"].ToString(),
+                                reader["Url"].ToString());
                         }
                     }
                 }
-                return results;
+                return userResult;
             }
         }
 
@@ -53,9 +57,36 @@ namespace api.Controllers
         // Get profile of user by Id (Requires Authorization)
         // GET: api/User/5
         [Authorize]
-        public string Get(int id)
+        public User Get(int id)
         {
-            return "value";
+            //Get User ID and form SQL Comand
+            string strSql = "SELECT * FROM [User] WHERE Id = @userId";
+
+            //Open MSSQL Connection and obtain data
+            _databaseConnection.Open();
+            User resultUser = new User();
+            using (_databaseConnection)
+            {
+                using (SqlCommand sqlCommand = new SqlCommand(strSql, _databaseConnection))
+                {
+                    sqlCommand.Parameters.AddWithValue("@userId", id);
+
+                    using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            resultUser.Id = Convert.ToInt32(reader["Id"]);
+                            resultUser.Nickname = reader["Nickname"].ToString();
+                            resultUser.Role = reader["Role"].ToString();
+                            resultUser.Name = reader["Name"].ToString();
+                            resultUser.AvatarUrl = reader["Avatar_URL"].ToString();
+                            resultUser.Notes = reader["Notes"].ToString();
+                            resultUser.Url = reader["Url"].ToString();
+                        }
+                    }
+                }
+                return resultUser;
+            }
         }
 
 
@@ -80,16 +111,16 @@ namespace api.Controllers
         [Authorize(Roles = "Administrator")]
         public void Delete(int id)
         {
-            string strSql = "DELETE FROM User WHERE Id = @UserId";
+            string strSql = "DELETE FROM [User] WHERE Id = @UserId";
             
             //Open MSSQL Connection and delete data
-            DatabaseConnection.Open();
-            using (DatabaseConnection)
+            _databaseConnection.Open();
+            using (_databaseConnection)
             {
-                using (SqlCommand sql_command = new SqlCommand(strSql, DatabaseConnection))
+                using (SqlCommand sqlCommand = new SqlCommand(strSql, _databaseConnection))
                 {
-                    sql_command.Parameters.Add("@UserId", id);
-                    sql_command.ExecuteNonQuery();
+                    sqlCommand.Parameters.Add("@UserId", id);
+                    sqlCommand.ExecuteNonQuery();
                 }
             }
         }

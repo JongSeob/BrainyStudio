@@ -121,7 +121,9 @@ namespace api.Helpers
                     {
                         while (reader.Read())
                         {
-                            User output = new User(Convert.ToInt32(reader["ID"]), reader["Nickname"].ToString());
+                            User output = new User(Convert.ToInt32(reader["ID"]), reader["Nickname"].ToString(), reader["Name"].ToString()
+                                , reader["Avatar_URL"].ToString(), reader["Notes"].ToString(), reader["Url"].ToString(),
+                                reader["Role"].ToString());
                             return output;
                         }
                     }
