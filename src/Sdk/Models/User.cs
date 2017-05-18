@@ -32,7 +32,7 @@ namespace Sdk.Models
         [JsonProperty("Role")]
         public string Role;
 
-        //private string Password;
+        public string Password;
 
 
         public User()

@@ -15,8 +15,9 @@ namespace api.MessageHandlers
 {
     public class AuthHandler : DelegatingHandler
     {
-        private static DatabaseHelper _DBconfig = new DatabaseHelper();
-        private SqlConnection _myConnection = new SqlConnection(_DBconfig.ConnString());
+        ///Database configuration and connection
+        private static DatabaseHelper _databaseConfig = new DatabaseHelper();
+        private SqlConnection _databaseConnection = new SqlConnection(_databaseConfig.ConnString());
         private User _userId;
 
         //Method to validate credentials from Authorization
@@ -37,11 +38,11 @@ namespace api.MessageHandlers
                     //username and decodedCredentials[1] will
                     //contain password.
 
-                    User UserID = _DBconfig.GetUserFromHeader(authenticationHeaderVal);
+                    User userId = _databaseConfig.GetUserFromHeader(authenticationHeaderVal);
 
-                    if (UserID != null)
+                    if (userId != null)
                     {
-                        _userId = UserID;
+                        _userId = userId;
                         return true; //request authenticated.
                     }
                 }

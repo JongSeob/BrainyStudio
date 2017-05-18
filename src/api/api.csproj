@@ -168,13 +168,16 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ApplicationUser.cs" />
     <Compile Include="Controllers\CommentController.cs" />
-    <Compile Include="Controllers\RecordingController.cs" />
-    <Compile Include="Controllers\RepositoryController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\Recording\RecordingCommentController.cs" />
+    <Compile Include="Controllers\Recording\RecordingController.cs" />
+    <Compile Include="Controllers\Repository\RepositoryController.cs" />
+    <Compile Include="Controllers\Repository\RepositoryRecordingController.cs" />
+    <Compile Include="Controllers\User\UserCommentController.cs" />
+    <Compile Include="Controllers\User\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\APIKeyGenerator.cs" />
+    <Compile Include="Helpers\APIKeyHelper.cs" />
     <Compile Include="Helpers\DatabaseHelper.cs" />
     <Compile Include="Helpers\SerializationHelper.cs" />
     <Compile Include="MessageHandlers\APIKeyHandler.cs" />

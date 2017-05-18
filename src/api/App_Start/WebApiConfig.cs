@@ -21,6 +21,18 @@ namespace api
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            config.Routes.MapHttpRoute(
+                name: "CommentsForRecording",
+                routeTemplate: "api/Recording/{id}/Comments/{param}",
+                defaults: new { controller = "RecordingComments", param = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "CommentsForUser",
+                routeTemplate: "api/User/{id}/Comments/{param}",
+                defaults: new { controller = "UserComments", param = RouteParameter.Optional }
+            );
+
             //Switch to JSON instead of XML
             config.Formatters.JsonFormatter.SupportedMediaTypes
     .Add(new MediaTypeHeaderValue("text/html"));

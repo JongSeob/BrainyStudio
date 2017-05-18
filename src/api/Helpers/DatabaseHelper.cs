@@ -35,7 +35,8 @@ namespace api.Helpers
         /// <returns></returns>
         public string ConnString()
         {
-            return "Data Source=" + DbServer + ";Database=" + DbDatabase + ";User ID=" + DbUser + ";Password=" + DbPassword + ";Integrated Security=True";
+            return "Data Source=" + DbServer + ";Database=" + DbDatabase + ";User ID=" + DbUser + ";Password=" 
+                + DbPassword + ";Integrated Security=True";
         }
 
         /// <summary>
@@ -62,35 +63,34 @@ namespace api.Helpers
         /// <summary>
         /// Returns UserID from Database based on HTTP request webauth
         /// </summary>
-        public int GetUserIDFromHeader(AuthenticationHeaderValue headerValues)
+        public int GetUserIdFromHeader(AuthenticationHeaderValue headerValues)
         {
-
             string[] decodedCredentials
                     = Encoding.ASCII.GetString(Convert.FromBase64String(
                     headerValues.Parameter))
                     .Split(new[] { ':' });
 
 
-            SqlConnection _myConnection = new SqlConnection(ConnString());
-            _myConnection.Open();
-            string strSql = "SELECT * FROM [User] WHERE Nickname = @userId AND Password = @userPass";
+            SqlConnection myConnection = new SqlConnection(ConnString());
+            myConnection.Open();
+            string strSql = "SELECT Id FROM [User] WHERE Nickname = @userId AND Password = @userPass";
 
-            using (_myConnection)
+            using (myConnection)
             {
-                using (SqlCommand cmd = new SqlCommand(strSql, _myConnection))
+                using (SqlCommand sqlCommand = new SqlCommand(strSql, myConnection))
                 {
-                    cmd.Parameters.AddWithValue("@userId", decodedCredentials[0]);
-                    cmd.Parameters.AddWithValue("@userPass", decodedCredentials[1]);
+                    sqlCommand.Parameters.AddWithValue("@userId", decodedCredentials[0]);
+                    sqlCommand.Parameters.AddWithValue("@userPass", decodedCredentials[1]);
 
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (SqlDataReader reader = sqlCommand.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            return Int32.Parse(reader["ID"].ToString());
+                            return Int32.Parse(reader["Id"].ToString()); // Return ID of the User
                         }
                     }
                 }
-                return -1;
+                return -1; // User does not exist.
             }
         }
 
@@ -99,36 +99,41 @@ namespace api.Helpers
         /// </summary>
         public User GetUserFromHeader(AuthenticationHeaderValue headerValues)
         {
-
             string[] decodedCredentials
                     = Encoding.ASCII.GetString(Convert.FromBase64String(
                     headerValues.Parameter))
                     .Split(new[] { ':' });
 
 
-            SqlConnection _myConnection = new SqlConnection(ConnString());
-            _myConnection.Open();
-            string strSQL = "SELECT * FROM [User] WHERE Nickname = @userId AND Password = @userPass";
+            SqlConnection myConnection = new SqlConnection(ConnString());
+            myConnection.Open();
+            string strSql = "SELECT * FROM [User] WHERE Nickname = @userId AND Password = @userPass";
 
-            using (_myConnection)
+            using (myConnection)
             {
-                using (SqlCommand cmd = new SqlCommand(strSQL, _myConnection))
+                using (SqlCommand sqlCommand = new SqlCommand(strSql, myConnection))
                 {
-                    cmd.Parameters.AddWithValue("@userId", decodedCredentials[0]);
-                    cmd.Parameters.AddWithValue("@userPass", decodedCredentials[1]);
+                    sqlCommand.Parameters.AddWithValue("@userId", decodedCredentials[0]);
+                    sqlCommand.Parameters.AddWithValue("@userPass", decodedCredentials[1]);
 
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (SqlDataReader reader = sqlCommand.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            User output = new User(Convert.ToInt32(reader["ID"]), reader["Nickname"].ToString(), reader["Name"].ToString()
-                                , reader["Avatar_URL"].ToString(), reader["Notes"].ToString(), reader["Url"].ToString(),
-                                reader["Role"].ToString());
-                            return output;
+                            User userResult = new User(
+                                Int32.Parse(reader["Id"].ToString()),
+                                reader["Nickname"].ToString(),
+                                reader["Role"].ToString(),
+                                reader["Name"].ToString(),
+                                reader["Avatar_URL"].ToString(),
+                                reader["Notes"].ToString(),
+                                reader["Url"].ToString());
+
+                            return userResult;
                         }
                     }
                 }
-                return null;
+                return null; // User does not exist.
             }
         }
     }
