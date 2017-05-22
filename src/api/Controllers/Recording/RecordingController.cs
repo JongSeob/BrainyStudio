@@ -3,6 +3,7 @@ using Sdk.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Web;
 using System.Web.Http;
 
 namespace api.Controllers
@@ -25,10 +26,32 @@ namespace api.Controllers
             return null;
         }
 
+
         // POST: api/Record
-        public void Post([FromBody]Recording value)
+        public void Post()
         {
-          
+            // Open connection
+            // Recieve the file and save it to the temporary folder
+            var request = HttpContext.Current.Request;
+            var filePath = "/recordings/" + request.Headers["filename"];
+            using (var fs = new System.IO.FileStream(filePath, System.IO.FileMode.Create))
+            {
+                request.InputStream.CopyTo(fs);
+            }
+
+            // Close connection
+
+            // ASYNC:
+
+            // If compressed unzip the temporary file first
+
+            // Read a first 100kb of the file to get metadata
+
+            // Form a metadata and input them into database
+
+            // Move file into particular folder
+
+            // Delete temporary data
         }
 
         // PUT: api/Record/5
