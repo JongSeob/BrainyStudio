@@ -73,3 +73,4 @@ E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\ra.exe
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\ra.pdb
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\Views\RecordingView.baml
 E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\Views\RecordingView.g.cs
+E:\GitHub\Emotiv-Epoc\src\Client_wpf\bin\Debug\LiveCharts.Geared.dll

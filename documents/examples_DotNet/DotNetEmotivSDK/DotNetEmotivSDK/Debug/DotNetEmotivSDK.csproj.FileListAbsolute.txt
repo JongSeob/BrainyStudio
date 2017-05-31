@@ -1,0 +1,5 @@
+C:\Users\Asus\Desktop\examples_DotNet\build\Debug\DotNetEmotivSDK.dll
+C:\Users\Asus\Desktop\examples_DotNet\build\Debug\DotNetEmotivSDK.pdb
+C:\Users\Asus\Desktop\examples_DotNet\DotNetEmotivSDK\DotNetEmotivSDK\Debug\ResolveAssemblyReference.cache
+C:\Users\Asus\Desktop\examples_DotNet\DotNetEmotivSDK\DotNetEmotivSDK\Debug\DotNetEmotivSDK.dll
+C:\Users\Asus\Desktop\examples_DotNet\DotNetEmotivSDK\DotNetEmotivSDK\Debug\DotNetEmotivSDK.pdb

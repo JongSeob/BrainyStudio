@@ -1,0 +1,46 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="46E225AE-2A7B-49DE-EEBB-A03166BBDA0E" name="Data">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-24 00:12:09 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<ordsAlias>table_8</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="ABD1C214-6FD8-7B41-6930-A4242F330A85">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-30 13:01:02 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Path" id="B6969907-F629-A9A9-FFA5-497DC6B502FA">
+<createdBy>olire</createdBy>
+<createdTime>2017-02-01 14:47:08 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200</dataTypeSize>
+<ownDataTypeParameters>200,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="823B0B88-37D7-F76B-5DEA-F3867E20E41A" name="Raw_PK">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-30 13:01:21 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="ABD1C214-6FD8-7B41-6930-A4242F330A85"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

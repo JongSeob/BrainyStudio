@@ -1,0 +1,130 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="303BC958-A048-DFA3-4AD4-A4EB9BF953F4" name="User">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:08:57 UTC</createdTime>
+<comment>USER&lt;br/&gt;A user of the system.</comment>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<ordsAlias>table_6</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="8355FA53-4A31-A4D8-50FC-C03A8C623FF6">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:09:46 UTC</createdTime>
+<comment>ID Of the User.&lt;br/&gt;</comment>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementGenerateAlways>true</autoIncrementGenerateAlways>
+<autoIncrementCycle>false</autoIncrementCycle>
+<notNullConstraintName>NNC_User_Id</notNullConstraintName>
+</Column>
+<Column name="Nickname" id="0149FFF7-F135-21F4-F7FF-B0D7B9515DB8">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:09:46 UTC</createdTime>
+<comment>Nickname assigned to user ID.&lt;br/&gt;</comment>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<notNullConstraintName>NNC_User_Nickname</notNullConstraintName>
+</Column>
+<Column name="Role" id="91FD8CB3-BEB3-F7F6-102A-9C01216F9EFD">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-05-15 03:22:40 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Name" id="FF010D29-B249-447F-FC80-B2D04110230E">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:10:02 UTC</createdTime>
+<comment>Real name of the user.&lt;br/&gt;</comment>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Avatar_URL" id="4A1392A5-564F-0248-EC3A-5264A4205F07">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:10:02 UTC</createdTime>
+<comment>URL to avatar used by user.&lt;br/&gt;</comment>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Notes" id="69C66AE6-CBDF-0E05-F396-86339F0D7FDF">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:10:22 UTC</createdTime>
+<comment>About me section of the user.</comment>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1000</dataTypeSize>
+<ownDataTypeParameters>1000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Url" id="E5A806B7-5C04-1E8A-866A-1F406DDB6B57">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:13:43 UTC</createdTime>
+<comment>Web link shown in user profile.&lt;br/&gt;</comment>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Password" id="D8F95910-6D8E-3605-A8A6-3D7DADC5C779">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:19:33 UTC</createdTime>
+<comment>Password in base64 format.</comment>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<notNullConstraintName>NNC_User_Password</notNullConstraintName>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0A15FB6E-9E34-E087-955A-811CD614652C" name="User_PK">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:10:22 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8355FA53-4A31-A4D8-50FC-C03A8C623FF6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

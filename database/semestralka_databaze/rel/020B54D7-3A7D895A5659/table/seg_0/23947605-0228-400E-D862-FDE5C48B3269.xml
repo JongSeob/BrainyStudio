@@ -1,0 +1,70 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="23947605-0228-400E-D862-FDE5C48B3269" name="Training_Data">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-04-25 07:00:50 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<ordsAlias>table_10</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="33A2FB0C-267A-0854-A869-991989B230DF">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-04-25 07:01:16 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Path" id="F54B3C1B-FB05-6611-666B-39720A656257">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-04-25 07:01:38 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200</dataTypeSize>
+<ownDataTypeParameters>200,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Subject_ID" id="01B4BBA9-CFD6-CE59-7408-87A23B7DB985">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-04-27 10:06:16 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A40270D3-3745-ED29-0827-DA45267FCCB0" referredColumn="8697C639-DE4B-AF3C-0532-1D63E66EE307"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E952F71B-6FCC-11B3-6572-9D86351EF69E" name="Training_Data_PK">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-04-25 07:01:16 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="33A2FB0C-267A-0854-A869-991989B230DF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B39CDBE0-CD2B-A471-729D-42303A95BD1D" name="Training_Data_FK">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-04-27 10:06:16 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="01B4BBA9-CFD6-CE59-7408-87A23B7DB985"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

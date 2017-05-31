@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F78B4E78-EE42-2EAA-1C28-7F0E39C06CCE" name="Comment">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:21:31 UTC</createdTime>
+<comment>COMMENTS&lt;br/&gt;Comments by users assigned to recordings.</comment>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<ordsAlias>table_15</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="435B9D3F-C05E-6374-E736-E3DD79B47C9C">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:22:22 UTC</createdTime>
+<comment>ID of the comment.&lt;br/&gt;</comment>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementGenerateAlways>true</autoIncrementGenerateAlways>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="User_ID" id="47FEA62D-F36F-94C6-288F-89276FE97AAB">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:22:28 UTC</createdTime>
+<comment>ID of the commentator.</comment>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D2C83876-4734-557A-831F-F16341C1398A" referredColumn="8355FA53-4A31-A4D8-50FC-C03A8C623FF6"/>
+</associations>
+</Column>
+<Column name="Recording_ID" id="32910EE7-531D-CED0-34D7-3FA33CA73EB7">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:22:41 UTC</createdTime>
+<comment>ID of the recording that comment belongs to.&lt;br/&gt;</comment>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="06B8AE7C-0C2B-6B64-5EF3-077F5DD0C5C7" referredColumn="5C46F47D-C0CF-658E-B88D-0ED3E3D79D1D"/>
+</associations>
+</Column>
+<Column name="Text" id="94760B87-7FAF-4BCC-E303-2170FCA9DCEF">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:22:22 UTC</createdTime>
+<comment>Text of the comment in 140 characters (twitter-like)</comment>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1000</dataTypeSize>
+<ownDataTypeParameters>1000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Timestamp" id="6A03C5C0-6035-2BF5-8E64-607928617933">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:22:22 UTC</createdTime>
+<comment>Timestamp of the comment.&lt;br/&gt;</comment>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C7454238-A55D-FD70-8318-D6911C9B5C17" name="Comment_PK">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:24:27 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="435B9D3F-C05E-6374-E736-E3DD79B47C9C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="ADE76790-8FE9-37C3-A4A3-D40288060FEA" name="Comment_From">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:22:28 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="47FEA62D-F36F-94C6-288F-89276FE97AAB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0B4869C1-AE95-ED1F-BD42-5AFC1719CE7C" name="Comment_To">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:22:41 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="32910EE7-531D-CED0-34D7-3FA33CA73EB7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

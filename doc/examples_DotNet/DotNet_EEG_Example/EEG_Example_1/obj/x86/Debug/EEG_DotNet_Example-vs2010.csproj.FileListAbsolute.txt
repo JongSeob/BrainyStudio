@@ -1,6 +1,0 @@
-C:\Users\olire\Documents\GitHub\Emotiv-Epoc\doc\examples_DotNet\build\Debug\EEG_DotNet_Example-vs2010.exe.config
-C:\Users\olire\Documents\GitHub\Emotiv-Epoc\doc\examples_DotNet\build\Debug\EEG_DotNet_Example-vs2010.exe
-C:\Users\olire\Documents\GitHub\Emotiv-Epoc\doc\examples_DotNet\build\Debug\EEG_DotNet_Example-vs2010.pdb
-C:\Users\olire\Documents\GitHub\Emotiv-Epoc\doc\examples_DotNet\DotNet_EEG_Example\EEG_Example_1\obj\x86\Debug\EEG_DotNet_Example-vs2010.exe
-C:\Users\olire\Documents\GitHub\Emotiv-Epoc\doc\examples_DotNet\DotNet_EEG_Example\EEG_Example_1\obj\x86\Debug\EEG_DotNet_Example-vs2010.pdb
-C:\Users\olire\Documents\GitHub\Emotiv-Epoc\doc\examples_DotNet\DotNet_EEG_Example\EEG_Example_1\obj\x86\Debug\EEG_DotNet_Example-vs2010.csprojResolveAssemblyReference.cache

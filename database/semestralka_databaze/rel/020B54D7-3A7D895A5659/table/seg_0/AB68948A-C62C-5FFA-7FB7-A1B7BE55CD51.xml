@@ -1,0 +1,88 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="AB68948A-C62C-5FFA-7FB7-A1B7BE55CD51" name="API_Key">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-06 18:03:37 UTC</createdTime>
+<comment>API KEYS&lt;br/&gt;A collection of API Keys that enables acces into system API.</comment>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<ordsAlias>table_7</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Key" id="0A4C418E-1178-73AF-8562-2C1C235EFB28">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-06 18:04:35 UTC</createdTime>
+<comment>Generated API Key.&lt;br/&gt;</comment>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>25</dataTypeSize>
+<ownDataTypeParameters>25,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Name" id="A42B2730-E615-1F6F-853C-423986C04AB5">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-06 18:04:35 UTC</createdTime>
+<comment>name of the software.&lt;br/&gt;</comment>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Description" id="CBFB882A-EB4B-EFEA-C7AB-D8F7287A9445">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-30 14:46:42 UTC</createdTime>
+<comment>Description of the software.</comment>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1000</dataTypeSize>
+<ownDataTypeParameters>1000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Owner_ID" id="2F834ADA-E182-08ED-BEF8-AFAE2B093D98">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-06 18:05:17 UTC</createdTime>
+<comment>ID of the owner of the software.</comment>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1015BEC8-7B27-33C3-2C55-9C9FA772332D" referredColumn="8355FA53-4A31-A4D8-50FC-C03A8C623FF6"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="AB56E74D-2FFD-442A-AC1E-863032527C98" name="API_Key_PK">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-06 18:05:04 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0A4C418E-1178-73AF-8562-2C1C235EFB28"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3E60AF99-44AC-C357-F77D-8544259816B9" name="Owner_of_API_Key">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-06 18:05:17 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2F834ADA-E182-08ED-BEF8-AFAE2B093D98"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

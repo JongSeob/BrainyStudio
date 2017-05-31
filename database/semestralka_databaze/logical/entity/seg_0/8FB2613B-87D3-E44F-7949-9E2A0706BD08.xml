@@ -1,0 +1,66 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="8FB2613B-87D3-E44F-7949-9E2A0706BD08" name="Contributor">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-30 15:03:16 UTC</createdTime>
+<generatorID>208A6DD8-E81A-B5F1-5725-777ED2DB531D</generatorID>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<engineerTo>
+<item key="020B54D7-5D56-6395-DCDF-3A7D895A5659" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="User ID" id="B81531C1-1884-22DE-B9C6-0C458D325F09">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-30 15:03:16 UTC</createdTime>
+<comment>ID of the contributor.</comment>
+<generatorID>A0F2B2D7-E581-972B-C307-87F283D90D43</generatorID>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<engineerTo>
+<item key="020B54D7-5D56-6395-DCDF-3A7D895A5659" value="true"/>
+</engineerTo>
+<referedAttribute>2B340092-3363-9456-D1C7-E558D2E16F41</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Repository ID" id="9CE3B0DA-0B11-5D14-09DE-E42CF05F34B1">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-30 15:03:16 UTC</createdTime>
+<comment>ID of the repository that contributor contibutes to.&lt;br/&gt;</comment>
+<generatorID>325D56E8-A699-4ADE-4DFF-CF09F8D4605E</generatorID>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<engineerTo>
+<item key="020B54D7-5D56-6395-DCDF-3A7D895A5659" value="true"/>
+</engineerTo>
+<referedAttribute>212F650E-74C8-1A96-1B17-0076AA8B2960</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="C406F740-4DAE-C948-06DA-A4D4440B451E" name="Contributor PK">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-30 15:03:16 UTC</createdTime>
+<generatorID>01021B00-8514-AF29-56CC-811BBF46FAD8</generatorID>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<engineerTo>
+<item key="020B54D7-5D56-6395-DCDF-3A7D895A5659" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>B81531C1-1884-22DE-B9C6-0C458D325F09</attributeRef>
+<attributeRef>9CE3B0DA-0B11-5D14-09DE-E42CF05F34B1</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

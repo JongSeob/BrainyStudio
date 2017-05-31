@@ -1,0 +1,97 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="189A02F6-F494-A483-8FCC-39161CF73C4E" name="Repository">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:06:31 UTC</createdTime>
+<comment>REPOSITORY&lt;br/&gt;A group of recordings.</comment>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<ordsAlias>table_3</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="FA2FB507-2014-4779-C2A1-9369AAE79C8C">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:07:15 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementGenerateAlways>true</autoIncrementGenerateAlways>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Name" id="C1B6A27B-3882-3EF9-208F-2CB2152A6A3C">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:07:15 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Description" id="019797DA-762E-5501-B4D8-E64D2FF7C5A9">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:07:15 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1000</dataTypeSize>
+<ownDataTypeParameters>1000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Image_URL" id="9266DA67-D703-7E84-E8A8-7B6409AB8416">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-30 14:44:53 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200</dataTypeSize>
+<ownDataTypeParameters>200,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="User_ID" id="1B916B15-2386-3EEE-488C-5371A0483B1E">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-04-25 07:04:33 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="576DAD5E-72EA-6D0B-4169-ACBEF805A2DF" referredColumn="8355FA53-4A31-A4D8-50FC-C03A8C623FF6"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="EA9B9CAC-A436-7E6E-1776-E5497AF0D0F0" name="Repository_PK">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:07:15 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FA2FB507-2014-4779-C2A1-9369AAE79C8C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="517C6CF6-757A-D955-746C-B85024301971" name="Owner_FK">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-04-25 07:04:33 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1B916B15-2386-3EEE-488C-5371A0483B1E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="B88EF797-2977-DC98-D61C-FE410CCC3337" containerWithKeyObject="D509AED1-51B7-7F53-D276-F11B3244513F" localFKIndex="11D52F68-9803-BC76-4019-D8C962A3380A" name="Part_of_repository">
+<createdBy>olire</createdBy>
+<createdTime>2017-01-05 12:08:11 UTC</createdTime>
+<comment>Recording belongs into certain repository.</comment>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<referredTableLongName>Repository</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>189A02F6-F494-A483-8FCC-39161CF73C4E</referredTableID>
+<keyObject>EA9B9CAC-A436-7E6E-1776-E5497AF0D0F0</keyObject>
+<referredKeyID>EA9B9CAC-A436-7E6E-1776-E5497AF0D0F0</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

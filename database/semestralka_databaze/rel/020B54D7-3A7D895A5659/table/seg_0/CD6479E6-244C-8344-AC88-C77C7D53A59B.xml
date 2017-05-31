@@ -1,0 +1,104 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="CD6479E6-244C-8344-AC88-C77C7D53A59B" name="Subject">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-04-25 06:57:18 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<ordsAlias>table_9</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="8697C639-DE4B-AF3C-0532-1D63E66EE307">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-04-25 06:58:08 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Name" id="ADE3CF6B-1971-C1BF-BDB8-28BE8C04F367">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-04-25 06:58:08 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Gender" id="FA81CED5-9989-57EB-1FFE-B95E5AB2BD95">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-04-25 06:58:08 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Age" id="057E88F9-01B3-193F-6994-48D5115DC2D3">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-04-25 06:58:08 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Description" id="AFDD71CB-2A3B-FFB1-BFC9-217687574A93">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-04-25 06:58:08 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1000</dataTypeSize>
+<ownDataTypeParameters>1000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="User_ID" id="87706B9A-1DCC-4A65-E047-4AB3C0EF7773">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-04-25 07:03:26 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A9FA7DB2-C3C2-96D7-EB5E-E994D08204A4" referredColumn="8355FA53-4A31-A4D8-50FC-C03A8C623FF6"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1437D7BE-7CFE-9B55-CC0A-7B836E7674C4" name="Subject_PK">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-04-25 06:59:17 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8697C639-DE4B-AF3C-0532-1D63E66EE307"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="30ACD959-DDB8-03A7-56C4-29156F0CF768" name="Owner_FKv2">
+<createdBy>Ondra</createdBy>
+<createdTime>2017-04-25 07:03:26 UTC</createdTime>
+<ownerDesignName>semestralka_databaze</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="87706B9A-1DCC-4A65-E047-4AB3C0EF7773"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

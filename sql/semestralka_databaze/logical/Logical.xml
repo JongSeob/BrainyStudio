@@ -1,7 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="776641C8-1651-6B51-1D60-28590E6997DB" mainViewID="A78F396C-C64E-F853-FCF7-17BC0E3273AF">
-<createdBy>olire</createdBy>
-<createdTime>2017-01-05 11:53:36 UTC</createdTime>
-<ownerDesignName>semestralka_databaze</ownerDesignName>
-<shouldBeOpen>false</shouldBeOpen>
-</LogicalDesign>

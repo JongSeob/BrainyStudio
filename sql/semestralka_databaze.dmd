@@ -1,9 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="semestralka_databaze" id="2F15CAF2-B631-BDB9-D260-1EBB74BE47FD" version="3.5">
-<createdBy>olire</createdBy>
-<createdTime>2017-01-05 11:53:36 UTC</createdTime>
-<comment>A SQL Database design for EEG project.</comment>
-<ownerDesignName>semestralka_databaze</ownerDesignName>
-<capitalNames>false</capitalNames>
-<designId>2F15CAF2-B631-BDB9-D260-1EBB74BE47FD</designId>
-</OSDM_Design>
