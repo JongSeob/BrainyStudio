@@ -22,7 +22,7 @@ An C#/WPF application that implements all of the functions provided by the serve
 ASP.NET based client that implements functions provided by the server. Used primarly for data viewing, visualisation and slight data manipulation and analysis.
 
 
-# Wiki
+# Important notes
 
-![API Documentation](test)
-![The EEG recording file structure](test)
+### File Structure
+Across the board the system works with standard JSON file structure. All of the recordings are stored as JSON structured file and all of the responses and requests for API should be formatted as such.
