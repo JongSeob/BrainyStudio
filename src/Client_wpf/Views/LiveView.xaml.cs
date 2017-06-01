@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using LiveCharts.Geared;
 using WPFapp;
 
 namespace HamburgerMenuApp.V3.Views
@@ -56,6 +57,7 @@ namespace HamburgerMenuApp.V3.Views
 
             //the values property will store our values array
             ChartValues = new ChartValues<MeasureModel>();
+            ChartValues2 = new ChartValues<MeasureModel>();
 
             //lets set how to display the X Labels
             DateTimeFormatter = value => new DateTime((long)value).ToString("mm:ss");
@@ -80,7 +82,7 @@ namespace HamburgerMenuApp.V3.Views
             get { return _axisMax; }
             set
             {
-                _axisMax = value + 5000;
+                _axisMax = value + 10000;
                 OnPropertyChanged("AxisMax");
             }
         }
@@ -90,7 +92,7 @@ namespace HamburgerMenuApp.V3.Views
             get { return _axisMin; }
             set
             {
-                _axisMin = value + 5000;
+                _axisMin = value + 10000;
                 OnPropertyChanged("AxisMin");
             }
         }
@@ -99,8 +101,8 @@ namespace HamburgerMenuApp.V3.Views
 
         private void SetAxisLimits(DateTime now)
         {
-            AxisMax = now.Ticks + TimeSpan.FromSeconds(5).Ticks;
-            AxisMin = now.Ticks - TimeSpan.FromSeconds(20).Ticks;
+            AxisMax = now.Ticks + TimeSpan.FromSeconds(1).Ticks;
+            AxisMin = now.Ticks - TimeSpan.FromSeconds(3).Ticks;
         }
 
         #region INotifyPropertyChanged implementation
@@ -132,10 +134,22 @@ namespace HamburgerMenuApp.V3.Views
                         Value = data[EdkDll.EE_DataChannel_t.F8][0]
                     });
 
+
+                    ChartValues2.Add(new MeasureModel
+                    {
+                        DateTime = now,
+                        Value = data[EdkDll.EE_DataChannel_t.FC6][0]
+                    });
+
+
                     SetAxisLimits(now);
 
                     //lets only use the last 150 values
-                    if (ChartValues.Count > 200) ChartValues.RemoveAt(0);
+                    if (ChartValues.Count > 20)
+                    {
+                        ChartValues.RemoveAt(0);
+                        ChartValues2.RemoveAt(0);
+                    }
                 }
             }
             catch

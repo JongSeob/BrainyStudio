@@ -44,10 +44,6 @@ namespace Sdk.Models
         [JsonProperty("Subject")]
         public Subject Subject = new Subject();
 
-        // (Optional) Complete Owner Data
-        [JsonProperty("Owner")]
-        public User Owner = new User();
-
         // (Optional) Complete EEG Data
         [JsonProperty("Data")]
         public EegData Data = new EegData();

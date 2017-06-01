@@ -22,21 +22,22 @@
             <ColumnDefinition Width="0*" />
         </Grid.ColumnDefinitions>
         <!--Here we disable tooltips and hovering to get a better performance-->
-        <GroupBox Header="Raw Sensor Data" Margin="11,10,10,10.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Upper" Controls:ControlsHelper.HeaderFontWeight="Thin">
-            <lvc:CartesianChart AnimationsSpeed="0:0:0.5" Hoverable="True" DataTooltip="{x:Null}" Margin="4,-6,-2,3" BorderBrush="#2d2d30">
+        <GroupBox Header="Raw Data" Margin="11,10,10.333,9.667" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Upper" Controls:ControlsHelper.HeaderFontWeight="Thin" Grid.ColumnSpan="2">
+            <lvc:CartesianChart AnimationsSpeed="0:0:0.5" Hoverable="False"  Margin="4,-6,-2,3" BorderBrush="#2d2d30">
                 <lvc:CartesianChart.Series>
+
                     <lvc:LineSeries Values="{Binding ChartValues}"
                                 PointGeometry="{x:Null}"
-                                LineSmoothness="20"
                                 StrokeThickness="2"
                                 Stroke="#F34336"
                                 Fill="Transparent" />
+
                     <lvc:LineSeries Values="{Binding ChartValues2}"
-                                PointGeometry="{x:Null}"
-                                LineSmoothness="20"
+                                    PointGeometry="{x:Null}"
                                 StrokeThickness="2"
                                 Stroke="Blue"
                                 Fill="Transparent" />
+
                 </lvc:CartesianChart.Series>
                 <lvc:CartesianChart.AxisX>
                     <lvc:Axis LabelFormatter="{Binding DateTimeFormatter}"
@@ -50,29 +51,7 @@
                 </lvc:CartesianChart.AxisX>
             </lvc:CartesianChart>
         </GroupBox>
-        <GroupBox Header="Emotions" Margin="10,10,6.333,10.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Upper" Controls:ControlsHelper.HeaderFontWeight="Thin" Grid.Column="1">
-            <lvc:CartesianChart AnimationsSpeed="0:0:0.5" Hoverable="True" DataTooltip="{x:Null}" Margin="4,-6,-2,3" Loaded="CartesianChart_Loaded">
-                <lvc:CartesianChart.Series>
-                    <lvc:LineSeries Values="{Binding ChartValues}"
-                                PointGeometry="{x:Null}"
-                                LineSmoothness="20"
-                                StrokeThickness="2"
-                                Stroke="#F34336"
-                                Fill="Transparent" />
-                </lvc:CartesianChart.Series>
-                <lvc:CartesianChart.AxisX>
-                    <lvc:Axis LabelFormatter="{Binding DateTimeFormatter}"
-                          MaxValue="{Binding AxisMax}"
-                          MinValue="{Binding AxisMin}"
-                          Unit="{Binding AxisUnit}">
-                        <lvc:Axis.Separator>
-                            <lvc:Separator Step="{Binding AxisStep}" />
-                        </lvc:Axis.Separator>
-                    </lvc:Axis>
-                </lvc:CartesianChart.AxisX>
-            </lvc:CartesianChart>
-        </GroupBox>
-        <GroupBox Header="Expression / Cogniton" Margin="11,9.667,10,10.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Upper" Controls:ControlsHelper.HeaderFontWeight="Thin" Grid.Row="1" />
-        <GroupBox Header="Custom Markers" Margin="10,9.667,10.333,10.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Upper" Controls:ControlsHelper.HeaderFontWeight="Thin" Grid.Column="1" Grid.Row="1" />
+        <GroupBox Header="Emotions" Margin="11,9.667,10,10.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Upper" Controls:ControlsHelper.HeaderFontWeight="Thin" Grid.Row="1" />
+        <GroupBox Header="Expressions / Cognition" Margin="10,9.667,10.333,10.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Upper" Controls:ControlsHelper.HeaderFontWeight="Thin" Grid.Column="1" Grid.Row="1" />
     </Grid>
 </UserControl>

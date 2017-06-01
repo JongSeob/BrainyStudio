@@ -51,16 +51,37 @@
                     <Label Name="Time_Label" Content="00:00:00" Margin="0,0,30,0" FontWeight="Thin" FontSize="20" FontFamily="Calibri Light" VerticalAlignment="Center" />
 
                     <Button Name="ToggleRecording_Button"
-                    Style="{DynamicResource AccentedSquareButtonStyle}"  Margin="0,0,5,0" FontSize="16" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Height="32" VerticalAlignment="Center" FontWeight="Normal" FontFamily="Calibri Light">
+                    Style="{DynamicResource AccentedSquareButtonStyle}"  Click = "ToggleRecording_Button_OnClick" Margin="0,0,5,0" FontSize="16" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Height="32" VerticalAlignment="Center" FontWeight="Normal" FontFamily="Calibri Light">
                         <iconPacks:PackIconMaterial Kind="Pause"  RenderTransformOrigin="2.188,1.5" Height="15" Width="15" Foreground="DarkSeaGreen" />
                     </Button>
 
                     <Button Name="StopRecording_Button"
-                    Style="{DynamicResource AccentedSquareButtonStyle}" Margin="0,0,5,0" FontSize="16" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Height="32" VerticalAlignment="Center" FontWeight="Normal" FontFamily="Calibri Light">
+                    Style="{DynamicResource AccentedSquareButtonStyle}" Click = "StopRecording_Button_OnClickRecording" Margin="0,0,5,0" FontSize="16" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Height="32" VerticalAlignment="Center" FontWeight="Normal" FontFamily="Calibri Light">
                         <iconPacks:PackIconMaterial Kind="Stop"  RenderTransformOrigin="2.188,1.5" Height="15" Width="15" Foreground="DarkRed" />
                     </Button>
                 </StackPanel>
             </controls:Flyout>
+
+
+            <!--  Dongle Connected Flyout -->
+            <controls:Flyout
+                CloseButtonVisibility="Collapsed"
+                Position="Top" Width="250" BorderThickness="1" BorderBrush="#FF2D2D30" Background="#1e1e1e" FontFamily="Segoe UI Light" AnimateOpacity="True" Height="77" AutoCloseInterval="3000" IsAutoCloseEnabled="True">
+                <StackPanel Orientation="Horizontal">
+                    <Label Name="Connected_Label" Content="New Dongle Connected" Margin="0,0,30,0" FontWeight="Thin" FontSize="20" FontFamily="Calibri Light" VerticalAlignment="Center" />
+                </StackPanel>
+            </controls:Flyout>
+
+            <!--  Dongle Disconnected Flyout -->
+            <controls:Flyout
+                CloseButtonVisibility="Collapsed"
+                Position="Top" Width="250" BorderThickness="1" BorderBrush="#FF2D2D30" Background="#1e1e1e" FontFamily="Segoe UI Light" AnimateOpacity="True" Height="77" AutoCloseInterval="3000" IsAutoCloseEnabled="True">
+                <StackPanel Orientation="Horizontal">
+                    <Label Name="Disconnected_Label" Content="Dongle Disconnected" Margin="0,0,30,0" FontWeight="Thin" FontSize="20" FontFamily="Calibri Light" VerticalAlignment="Center" />
+                </StackPanel>
+            </controls:Flyout>
+
+
         </controls:FlyoutsControl>
     </controls:MetroWindow.Flyouts>
 

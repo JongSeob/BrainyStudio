@@ -4,7 +4,10 @@ using Sdk.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Windows;
+using Microsoft.Win32;
+using Newtonsoft.Json;
 
 namespace HamburgerMenuApp.V3
 {
@@ -40,13 +43,30 @@ namespace HamburgerMenuApp.V3
             _engine.ProcessEvents();
         }
 
-        public void StartNewRecording()
+        public void StartNewRecording(string Name, string Description)
         {
             //Reset
             _recording = false;
             _stopwatch.Reset();
             temp = new Recording();
 
+            //Test subject
+            Subject test = new Subject();
+            test.Name = "Marius Georgescu";
+            test.Age = 22;
+            test.Description = "Friend from Romania";
+            test.Gender = "Male";
+            test.Id = 1;
+            test.OwnerId = 1;
+
+            //Basic Info
+            temp.Date = DateTime.Now;
+            temp.Name = Name;
+            temp.Description = Description;
+            temp.AppendConfig(Convert.ToInt32(_engine.DataGetSamplingRate(0)), 4, _engine.HardwareGetVersion(0).ToString(), "1.0");
+            temp.Subject = test;
+
+            
             //Start Recording
             _recording = true;
             _stopwatch.Start();
@@ -133,6 +153,8 @@ namespace HamburgerMenuApp.V3
         /// </summary>
         private void engine_UserRemoved(object sender, EmoEngineEventArgs e)
         {
+            //Show Notification
+            ToggleFlyout(3);
         }
 
         /// <summary>
@@ -140,6 +162,7 @@ namespace HamburgerMenuApp.V3
         /// </summary>
         private void engine_EmoEngineDisconnected(object sender, EmoEngineEventArgs e)
         {
+
         }
 
         /// <summary>
@@ -148,7 +171,7 @@ namespace HamburgerMenuApp.V3
         private void engine_UserAdded_Event(object sender, EmoEngineEventArgs e)
         {
             //Show Notification
-            ToggleFlyout(1);
+            ToggleFlyout(2);
 
             // record the user
             _userID = (int)e.userId;
@@ -357,5 +380,47 @@ namespace HamburgerMenuApp.V3
         {
             ToggleFlyout(1);
         }
+
+        private void StopRecording_Button_OnClickRecording(object sender, RoutedEventArgs e)
+        {
+            //Stop recording
+            _recording = true;
+            _stopwatch.Stop();
+            Main.Title = Main.Title.Substring(0,Main.Title.IndexOf("(Recording"));
+            ToggleFlyout(1);
+
+
+            //Serialize JSON
+            JsonSerializer serializer = new JsonSerializer();
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.ShowDialog();
+
+            using (StreamWriter sw = new StreamWriter(saveFileDialog.FileName))
+            using (JsonWriter writer = new JsonTextWriter(sw))
+                {
+                    serializer.Serialize(writer, temp);
+                }
+
+            //Clear temporary recoring
+            temp = new Recording();
+        }
+
+        private void ToggleRecording_Button_OnClick(object sender, RoutedEventArgs e)
+        {
+            if(_recording)
+            {
+            _recording = false;
+            _stopwatch.Stop();
+            Main.Title = Main.Title.Replace("(Recording)", "(Paused)");
+            StopRecording_Button.IsEnabled = false;
+            }
+            else
+            {
+            _recording = true;
+            _stopwatch.Start();
+            Main.Title = Main.Title.Replace("(Paused)", "(Recording)");
+            StopRecording_Button.IsEnabled = true;
+            }
+    }
     }
 }
