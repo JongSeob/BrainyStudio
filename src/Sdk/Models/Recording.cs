@@ -105,7 +105,7 @@ namespace Sdk.Models
         /// Append new raw sensor values into recording
         /// </summary>
         public void AppendRawData(double AF3, double F7, double F3, double FC5, double T7, double P7, double O1,
-            double O2, double P8, double T8, double FC6, double F4, double F8, double AF42)
+            double O2, double P8, double T8, double FC6, double F4, double F8, double AF4)
         {
             Data.Raw.AF3.Add(AF3);
             Data.Raw.F7.Add(F7);
@@ -120,7 +120,7 @@ namespace Sdk.Models
             Data.Raw.FC6.Add(FC6);
             Data.Raw.F4.Add(F4);
             Data.Raw.F8.Add(F8);
-            Data.Raw.AF42.Add(AF42);
+            Data.Raw.AF4.Add(AF4);
         }
 
         /// <summary>

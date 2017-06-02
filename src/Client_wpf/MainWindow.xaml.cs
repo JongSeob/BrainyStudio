@@ -1,13 +1,13 @@
 ﻿using Emotiv;
 using MahApps.Metro.Controls;
+using Microsoft.Win32;
+using Newtonsoft.Json;
 using Sdk.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
-using Microsoft.Win32;
-using Newtonsoft.Json;
 
 namespace HamburgerMenuApp.V3
 {
@@ -66,7 +66,6 @@ namespace HamburgerMenuApp.V3
             temp.AppendConfig(Convert.ToInt32(_engine.DataGetSamplingRate(0)), 4, _engine.HardwareGetVersion(0).ToString(), "1.0");
             temp.Subject = test;
 
-            
             //Start Recording
             _recording = true;
             _stopwatch.Start();
@@ -162,7 +161,6 @@ namespace HamburgerMenuApp.V3
         /// </summary>
         private void engine_EmoEngineDisconnected(object sender, EmoEngineEventArgs e)
         {
-
         }
 
         /// <summary>
@@ -386,9 +384,8 @@ namespace HamburgerMenuApp.V3
             //Stop recording
             _recording = true;
             _stopwatch.Stop();
-            Main.Title = Main.Title.Substring(0,Main.Title.IndexOf("(Recording"));
+            Main.Title = Main.Title.Substring(0, Main.Title.IndexOf("(Recording"));
             ToggleFlyout(1);
-
 
             //Serialize JSON
             JsonSerializer serializer = new JsonSerializer();
@@ -397,9 +394,9 @@ namespace HamburgerMenuApp.V3
 
             using (StreamWriter sw = new StreamWriter(saveFileDialog.FileName))
             using (JsonWriter writer = new JsonTextWriter(sw))
-                {
-                    serializer.Serialize(writer, temp);
-                }
+            {
+                serializer.Serialize(writer, temp);
+            }
 
             //Clear temporary recoring
             temp = new Recording();
@@ -407,20 +404,20 @@ namespace HamburgerMenuApp.V3
 
         private void ToggleRecording_Button_OnClick(object sender, RoutedEventArgs e)
         {
-            if(_recording)
+            if (_recording)
             {
-            _recording = false;
-            _stopwatch.Stop();
-            Main.Title = Main.Title.Replace("(Recording)", "(Paused)");
-            StopRecording_Button.IsEnabled = false;
+                _recording = false;
+                _stopwatch.Stop();
+                Main.Title = Main.Title.Replace("(Recording)", "(Paused)");
+                StopRecording_Button.IsEnabled = false;
             }
             else
             {
-            _recording = true;
-            _stopwatch.Start();
-            Main.Title = Main.Title.Replace("(Paused)", "(Recording)");
-            StopRecording_Button.IsEnabled = true;
+                _recording = true;
+                _stopwatch.Start();
+                Main.Title = Main.Title.Replace("(Paused)", "(Recording)");
+                StopRecording_Button.IsEnabled = true;
             }
-    }
+        }
     }
 }

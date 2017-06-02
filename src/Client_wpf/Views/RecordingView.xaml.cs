@@ -22,10 +22,9 @@ namespace HamburgerMenuApp.V3.Views
         {
             //Set up and start Recording
             ((MainWindow)Application.Current.MainWindow).StartNewRecording(RecordingName.Text, RecordingDescription.Text);
-
             //Disable controls during the recording
-            RecordButton.IsEnabled = false;
-            SubjectProfile.IsEnabled = false;
+            //RecordButton.IsEnabled = false;
+            //SubjectProfile.IsEnabled = false;
         }
     }
 }

@@ -30,7 +30,7 @@
                 <TextBox x:Name="RecordingName" Height="26"  Margin="10,32,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.Row="1" Custom:TextBoxHelper.Watermark="My Recording" />
                 <iconPacks:PackIconMaterial Kind="FileChart" RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="10,5,0,0" Foreground="White" Grid.Row="1" />
                 <Label x:Name="RecordingName_label" Content="Recording Name" HorizontalAlignment="Left" Height="32" Margin="37,0,-11,0" VerticalAlignment="Top" Width="476" Foreground="White" FontSize="16" Grid.Row="1" />
-                <ComboBox x:Name="RecordingRepository" Margin="10,31.333,10,0" VerticalAlignment="Top" RenderTransformOrigin="-2.529,0.135" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="White" Grid.Row="3" Height="26" Custom:TextBoxHelper.Watermark="&lt;Sample Repository&gt;">
+                <ComboBox x:Name="RecordingRepository" Margin="10,31.333,10,0" VerticalAlignment="Top" RenderTransformOrigin="-2.529,0.135" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="White" Grid.Row="3" Height="26" Custom:TextBoxHelper.Watermark="&lt;Sample Repository&gt;" IsEnabled="False">
                     <ListBoxItem />
                     <ListBoxItem />
                     <ListBoxItem />
@@ -87,7 +87,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBox Height="26" Margin="10,26.667,10,0" TextWrapping="Wrap" Text="New Recording" VerticalAlignment="Top" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.ColumnSpan="2" Visibility="Hidden" Grid.Row="2" />
                 <DatePicker Height="26" Margin="10,1.667,10,-22.333" VerticalAlignment="Top" Grid.ColumnSpan="2" Foreground="White" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Visibility="Hidden" Grid.Row="3" />
-                <ComboBox x:Name="RecordingSubject" Margin="10,49,10,0" VerticalAlignment="Top" RenderTransformOrigin="-2.529,0.135" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="White" Grid.ColumnSpan="2" Grid.Row="1" Height="26" Custom:TextBoxHelper.Watermark="&lt;Jane Doe&gt;" />
+                <ComboBox x:Name="RecordingSubject" Margin="10,49,10,0" VerticalAlignment="Top" RenderTransformOrigin="-2.529,0.135" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="White" Grid.ColumnSpan="2" Grid.Row="1" Height="26" Custom:TextBoxHelper.Watermark="&lt;Jane Doe&gt;" IsEnabled="False" />
                 <iconPacks:PackIconMaterial Kind="AccountMultiple"  RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="10,24,0,0" Foreground="White" Grid.Row="1" />
 
                 <Button x:Name="GuestModeButton"

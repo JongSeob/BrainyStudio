@@ -21,24 +21,133 @@
             <ColumnDefinition Width="0*" />
             <ColumnDefinition Width="0*" />
         </Grid.ColumnDefinitions>
+
         <!--Here we disable tooltips and hovering to get a better performance-->
-        <GroupBox Header="Raw Data" Margin="11,10,10.333,9.667" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Upper" Controls:ControlsHelper.HeaderFontWeight="Thin" Grid.ColumnSpan="2">
-            <lvc:CartesianChart AnimationsSpeed="0:0:0.5" Hoverable="False"  Margin="4,-6,-2,3" BorderBrush="#2d2d30">
+        <GroupBox x:Name="RawData" Header="Raw Data" Margin="11,10,10.333,9.667" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Upper" Controls:ControlsHelper.HeaderFontWeight="Thin" Grid.ColumnSpan="2" MouseDoubleClick="RawData_MouseDoubleClick">
+            <lvc:CartesianChart x:Name="CartChart" AnimationsSpeed="0:0:0.5"  Margin="0,-6,-2,3" BorderBrush="#2d2d30" Pan="None" LegendLocation="Bottom" Foreground="#FFB0B0B0" IsManipulationEnabled="False" OverridesDefaultStyle="True">
                 <lvc:CartesianChart.Series>
 
-                    <lvc:LineSeries Values="{Binding ChartValues}"
+                    <lvc:LineSeries Values="{Binding ChartAF3}"
+                                   Title="AF3"
                                 PointGeometry="{x:Null}"
                                 StrokeThickness="2"
-                                Stroke="#F34336"
-                                Fill="Transparent" />
+                                Stroke="Red"
+                                Fill="Transparent"
+                                    Visibility="Visible" />
 
-                    <lvc:LineSeries Values="{Binding ChartValues2}"
+                    <lvc:LineSeries Values="{Binding ChartF7}"
                                     PointGeometry="{x:Null}"
+                                    Title="F7"
                                 StrokeThickness="2"
                                 Stroke="Blue"
-                                Fill="Transparent" />
+                                Fill="Transparent"
+                                    Visibility="Hidden" />
 
+                    <lvc:LineSeries Values="{Binding ChartF3}"
+                                    PointGeometry="{x:Null}"
+                                    Title="F3"
+                                    StrokeThickness="2"
+                                    Stroke="Green"
+                                    Fill="Transparent"
+                                    Visibility="Visible" />
+
+                    <lvc:LineSeries Values="{Binding ChartFC5}"
+                                    Title="FC5"
+                                    PointGeometry="{x:Null}"
+                                    StrokeThickness="2"
+                                    Stroke="Yellow"
+                                    Fill="Transparent"
+                                    Visibility="Hidden" />
+
+                    <lvc:LineSeries Values="{Binding ChartT7}"
+                                    Title="T7"
+                                    PointGeometry="{x:Null}"
+                                    StrokeThickness="2"
+                                    Stroke="Orange"
+                                    Fill="Transparent"
+                                    Visibility="Hidden" />
+
+                    <lvc:LineSeries Values="{Binding ChartP7}"
+                                    Title="P7"
+                                    PointGeometry="{x:Null}"
+                                    StrokeThickness="2"
+                                    Stroke="MediumAquamarine"
+                                    Fill="Transparent"
+                                    Visibility="Visible" />
+
+                    <lvc:LineSeries Values="{Binding ChartO1}"
+                                    Title="O1"
+                                    PointGeometry="{x:Null}"
+                                    StrokeThickness="2"
+                                    Stroke="Salmon"
+                                    Fill="Transparent"
+                                    Visibility="Hidden" />
+
+                    <lvc:LineSeries Values="{Binding ChartO2}"
+                                    Title="O2"
+                                    PointGeometry="{x:Null}"
+                                    StrokeThickness="2"
+                                    Stroke="DeepPink"
+                                    Fill="Transparent"
+                                    Visibility="Hidden" />
+
+                    <lvc:LineSeries Values="{Binding ChartP8}"
+                                    Title="P8"
+                                    PointGeometry="{x:Null}"
+                                    StrokeThickness="2"
+                                    Stroke="Chocolate"
+                                    Fill="Transparent"
+                                    Visibility="Hidden" />
+
+                    <lvc:LineSeries Values="{Binding ChartT8}"
+                                    Title="T8"
+                                    PointGeometry="{x:Null}"
+                                    StrokeThickness="2"
+                                    Stroke="Chartreuse"
+                                    Fill="Transparent"
+                                    Visibility="Hidden" />
+
+                    <lvc:LineSeries Values="{Binding ChartFC6}"
+                                    Title="FC6"
+                                    PointGeometry="{x:Null}"
+                                    StrokeThickness="2"
+                                    Stroke="Gold"
+                                    Fill="Transparent"
+                                    Visibility="Hidden" />
+
+                    <lvc:LineSeries Values="{Binding ChartF4}"
+                                    Title="F4"
+                                    PointGeometry="{x:Null}"
+                                    StrokeThickness="2"
+                                    Stroke="MediumVioletRed"
+                                    Fill="Transparent"
+                                    Visibility="Hidden" />
+
+                    <lvc:LineSeries Values="{Binding ChartF8}"
+                                    Title="F8"
+                                    PointGeometry="{x:Null}"
+                                    StrokeThickness="2"
+                                    Stroke="DeepSkyBlue"
+                                    Fill="Transparent"
+                                    Visibility="Hidden" />
+
+                    <lvc:LineSeries Values="{Binding ChartAF4}"
+                                    Title="AF4"
+                                    PointGeometry="{x:Null}"
+                                    StrokeThickness="2"
+                                    Stroke="OliveDrab"
+                                    Fill="Transparent"
+                                    Visibility="Hidden" />
                 </lvc:CartesianChart.Series>
+
+                <lvc:CartesianChart.AxisY>
+                    <lvc:Axis
+                              MaxValue="10000"
+                              MinValue="0"
+                              Unit="{Binding AxisUnit}">
+                    </lvc:Axis>
+                </lvc:CartesianChart.AxisY>
+
                 <lvc:CartesianChart.AxisX>
                     <lvc:Axis LabelFormatter="{Binding DateTimeFormatter}"
                           MaxValue="{Binding AxisMax}"
@@ -51,7 +160,8 @@
                 </lvc:CartesianChart.AxisX>
             </lvc:CartesianChart>
         </GroupBox>
-        <GroupBox Header="Emotions" Margin="11,9.667,10,10.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Upper" Controls:ControlsHelper.HeaderFontWeight="Thin" Grid.Row="1" />
+        <GroupBox Header="Emotions" Margin="11,9.667,10,10.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Upper" Controls:ControlsHelper.HeaderFontWeight="Thin" Grid.Row="1">
+        </GroupBox>
         <GroupBox Header="Expressions / Cognition" Margin="10,9.667,10.333,10.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Upper" Controls:ControlsHelper.HeaderFontWeight="Thin" Grid.Column="1" Grid.Row="1" />
     </Grid>
 </UserControl>

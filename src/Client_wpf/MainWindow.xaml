@@ -62,7 +62,6 @@
                 </StackPanel>
             </controls:Flyout>
 
-
             <!--  Dongle Connected Flyout -->
             <controls:Flyout
                 CloseButtonVisibility="Collapsed"
@@ -80,8 +79,6 @@
                     <Label Name="Disconnected_Label" Content="Dongle Disconnected" Margin="0,0,30,0" FontWeight="Thin" FontSize="20" FontFamily="Calibri Light" VerticalAlignment="Center" />
                 </StackPanel>
             </controls:Flyout>
-
-
         </controls:FlyoutsControl>
     </controls:MetroWindow.Flyouts>
 

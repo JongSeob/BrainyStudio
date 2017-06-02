@@ -19,7 +19,7 @@ namespace Sdk.Models
         public List<double> FC6 = new List<double>();
         public List<double> F4 = new List<double>();
         public List<double> F8 = new List<double>();
-        public List<double> AF42 = new List<double>();
+        public List<double> AF4 = new List<double>();
 
         public Raw()
         {
