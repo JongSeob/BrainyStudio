@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Web;
 using System.Web.Http;
+using Newtonsoft.Json;
 
 namespace api.Controllers
 {
@@ -31,27 +32,40 @@ namespace api.Controllers
         // POST: api/Record
         public void Post()
         {
-            // Recieve the file and save it to the temporary folder
-            var request = HttpContext.Current.Request;
-            var filePath = "E:/temp_" + DateTime.Now.Millisecond.ToString();
-            using (var fs = new System.IO.FileStream(filePath, System.IO.FileMode.Create))
+            // TODO: I know its pretty bad - This is just a temporary solution !
+            StreamReader reader = new StreamReader(HttpContext.Current.Request.InputStream);
+            string requestFromPost = reader.ReadToEnd();
+            Recording value = JsonConvert.DeserializeObject<Recording>(requestFromPost);
+
+            //Get User ID from request
+            value.OwnerId = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
+            value.RepositoryId = 1;
+            // Form a filename for the data storage
+            string filename = "recording_" + DateTime.UtcNow.ToFileTimeUtc();
+
+            //Form SQL Comand
+            String strSql = "INSERT INTO [Recording] (Repository_ID,Owner_ID,Name,Description,Date,Subject_ID,Data_ID) VALUES (@repositoryId,@ownerId,@name,@description,@date,@subjectId,@fileName)";
+
+            // Open connection and save metadata to database
+            _databaseConnection.Open();
+            using (_databaseConnection)
             {
-                request.InputStream.CopyTo(fs);
+                using (SqlCommand sqlCommand = new SqlCommand(strSql, _databaseConnection))
+                {
+                    sqlCommand.Parameters.Add("@repositoryId", value.RepositoryId);
+                    sqlCommand.Parameters.Add("@ownerId", value.OwnerId);
+                    sqlCommand.Parameters.Add("@name", value.Name);
+                    sqlCommand.Parameters.Add("@description", value.Description);
+                    sqlCommand.Parameters.Add("@date", value.Date);
+                    sqlCommand.Parameters.Add("@subjectId", value.SubjectId);
+                    sqlCommand.Parameters.Add("@fileName", 1); // TODO: Fix filename in database
+
+                    sqlCommand.ExecuteNonQuery();
+                }
             }
 
-            // ASYNC:
-
-            // Form a metadata and input them into database
-
-
-            // Move file into particular folder
-
-
-            // Delete temporary data
-            if (File.Exists(filePath))
-            {
-                File.Delete(filePath);
-            }
+            // Create a data file to write data.
+            File.WriteAllText(filename, requestFromPost);
         }
 
         // TODO

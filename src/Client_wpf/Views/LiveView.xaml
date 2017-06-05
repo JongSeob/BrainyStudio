@@ -140,13 +140,7 @@
                                     Visibility="Hidden" />
                 </lvc:CartesianChart.Series>
 
-                <lvc:CartesianChart.AxisY>
-                    <lvc:Axis
-                              MaxValue="10000"
-                              MinValue="0"
-                              Unit="{Binding AxisUnit}">
-                    </lvc:Axis>
-                </lvc:CartesianChart.AxisY>
+              
 
                 <lvc:CartesianChart.AxisX>
                     <lvc:Axis LabelFormatter="{Binding DateTimeFormatter}"

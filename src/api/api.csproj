@@ -172,6 +172,7 @@
     <Compile Include="Controllers\Recording\RecordingController.cs" />
     <Compile Include="Controllers\Repository\RepositoryController.cs" />
     <Compile Include="Controllers\Repository\RepositoryRecordingController.cs" />
+    <Compile Include="Controllers\Subject\SubjectController.cs" />
     <Compile Include="Controllers\User\UserCommentController.cs" />
     <Compile Include="Controllers\User\UserController.cs" />
     <Compile Include="Global.asax.cs">
