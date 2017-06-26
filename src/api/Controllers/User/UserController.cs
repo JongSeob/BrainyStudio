@@ -1,11 +1,9 @@
-﻿using System;
-using api.Helpers;
-using System.Collections.Generic;
-using System.Data;
+﻿using api.Helpers;
+using Sdk.Models;
+using System;
 using System.Data.SqlClient;
 using System.Web;
 using System.Web.Http;
-using Sdk.Models;
 
 namespace api.Controllers
 {
@@ -13,8 +11,8 @@ namespace api.Controllers
     {
         ///Database configuration and connection
         private static DatabaseHelper _databaseConfig = new DatabaseHelper();
-        private SqlConnection _databaseConnection = new SqlConnection(_databaseConfig.ConnString());
 
+        private SqlConnection _databaseConnection = new SqlConnection(_databaseConfig.ConnString());
 
         // Get profile of logged user (Requires Authorization)
         // GET: api/User
@@ -53,7 +51,6 @@ namespace api.Controllers
             }
         }
 
-
         // Get profile of user by Id (Requires Authorization)
         // GET: api/User/5
         [Authorize]
@@ -89,7 +86,6 @@ namespace api.Controllers
             }
         }
 
-
         // Create a new user account (Anonymous access permited)
         // POST: api/User
         [AllowAnonymous]
@@ -120,9 +116,7 @@ namespace api.Controllers
                     sqlCommand.ExecuteNonQuery();
                 }
             }
-
         }
-
 
         // Edit profile of logged user (Requires Authorization)
         // PUT: api/User/5
@@ -161,14 +155,13 @@ namespace api.Controllers
             }
         }
 
-
         // Delete user by Id (Requires Authorization as an Admin)
         // DELETE: api/User/5
         [Authorize(Roles = "Administrator")]
         public void Delete(int id)
         {
             string strSql = "DELETE FROM [User] WHERE Id = @UserId";
-            
+
             //Open MSSQL Connection and delete data
             _databaseConnection.Open();
             using (_databaseConnection)

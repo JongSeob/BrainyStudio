@@ -16,10 +16,12 @@ namespace Sdk.Models
 
         //Upper Face
         public List<double> BrowRaise = new List<double>();
+
         public List<double> BrowFurrow = new List<double>();
 
         //Lower Face
         public List<double> Smile = new List<double>();
+
         public List<double> Clench = new List<double>();
         public List<double> SmirkRight = new List<double>();
         public List<double> SmirkLeft = new List<double>();

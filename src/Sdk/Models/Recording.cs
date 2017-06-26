@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
-using System.Collections.Generic;
 
 namespace Sdk.Models
 {
@@ -35,7 +34,6 @@ namespace Sdk.Models
         [JsonProperty("SubjectId")]
         public int SubjectId;
 
-
         /// <summary>
         /// FULL RECORDING
         /// </summary>
@@ -47,7 +45,6 @@ namespace Sdk.Models
         // (Optional) Complete EEG Data
         [JsonProperty("Data")]
         public EegData Data = new EegData();
-
 
         public Recording()
         { }

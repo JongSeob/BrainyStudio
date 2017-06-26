@@ -1,9 +1,10 @@
-﻿using api.Helpers;
-using Sdk.Models;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Web;
 using System.Web.Http;
+using api.Helpers;
+using Sdk.Models;
 
 namespace api.Controllers
 {
@@ -11,7 +12,6 @@ namespace api.Controllers
     {
         ///Database configuration and connection
         private static DatabaseHelper _databaseConfig = new DatabaseHelper();
-
         private SqlConnection _databaseConnection = new SqlConnection(_databaseConfig.ConnString());
 
         // GET: api/Comment/5
@@ -35,7 +35,7 @@ namespace api.Controllers
                         while (reader.Read())
                         {
                             resultComment.Id = Convert.ToInt32(reader["Id"]);
-                            resultComment.OwnerId = Convert.ToInt32(reader["User_ID"]);
+                            resultComment.OwnerId= Convert.ToInt32(reader["User_ID"]);
                             resultComment.RecordingId = Convert.ToInt32(reader["Recording_ID"]);
                             resultComment.Text = reader["Text"].ToString();
                             resultComment.Timestamp = DateTime.Parse(reader["Timestamp"].ToString());
@@ -45,6 +45,7 @@ namespace api.Controllers
                 return resultComment;
             }
         }
+
 
         // POST: api/Comment
         [Authorize(Roles = "Administrator")]
@@ -69,8 +70,9 @@ namespace api.Controllers
             }
         }
 
+
         // DELETE: api/Comment/5
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public void Delete(int id)
         {
             //Get User ID and form SQL Comand

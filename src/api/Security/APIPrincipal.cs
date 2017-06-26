@@ -1,11 +1,11 @@
-﻿using System.Security.Principal;
-using Sdk.Models;
+﻿using Sdk.Models;
+using System.Security.Principal;
 
 namespace api.Security
 {
     public class APIPrincipal : IPrincipal
     {
-        public User AuthUser {get; set; }
+        public User AuthUser { get; set; }
 
         //Constructor
         public APIPrincipal(User auth)
@@ -20,6 +20,5 @@ namespace api.Security
         {
             return role.Equals(AuthUser.Role);
         }
-
     }
 }

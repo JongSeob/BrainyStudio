@@ -5,13 +5,13 @@ VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib", "DotNetEmotivSDK\Lib.csproj", "{23B51742-EFCA-4343-A43B-263B5A3EAB22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api", "api\api.csproj", "{2D36632C-402F-4E7B-9EBB-0A1A784BCC3E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "api\Api.csproj", "{2D36632C-402F-4E7B-9EBB-0A1A784BCC3E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdk", "Sdk\Sdk.csproj", "{88BE0FFC-39E1-4D40-BB79-B9E84E91D29F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmoEngineClientLibrary", "EmoEngineClientLibrary\EmoEngineClientLibrary.csproj", "{630D8A3E-6592-4648-B30E-02A38AD85F96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFapp", "Client_wpf\WPFapp.csproj", "{CDDC6A53-3649-47E0-A507-8CE97A0AB676}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsClient", "Client_wpf\WindowsClient.csproj", "{CDDC6A53-3649-47E0-A507-8CE97A0AB676}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

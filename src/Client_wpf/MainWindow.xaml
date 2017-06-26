@@ -79,6 +79,30 @@
                     <Label Name="Disconnected_Label" Content="Dongle Disconnected" Margin="0,0,30,0" FontWeight="Thin" FontSize="20" FontFamily="Calibri Light" VerticalAlignment="Center" />
                 </StackPanel>
             </controls:Flyout>
+
+            <!--  Login Flyout -->
+            <controls:Flyout
+                Position="Right" Width="250" BorderThickness="1" BorderBrush="#FF2D2D30" Background="#1e1e1e" FontFamily="Segoe UI Light" AnimateOpacity="True">
+                <StackPanel Orientation="Vertical" Margin="5,10,5,0">
+                    <TextBox x:Name="ServerIp" Height="26" Margin="0,0,0,10" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.Row="2" controls:TextBoxHelper.Watermark="192.168.168.1:80" />
+                    <TextBox x:Name="UserLogin" Height="26" Margin="0,0,0,10" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.Row="2" controls:TextBoxHelper.Watermark="Login" />
+                    <PasswordBox x:Name="UserPassword" Height="26" Margin="0,0,0,20" VerticalAlignment="Top" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.Row="2" controls:TextBoxHelper.Watermark="Password" />
+
+                    <Button x:Name="LoginButton"
+                            Content="Log In"
+                            Style="{DynamicResource AccentedSquareButtonStyle}" Margin="0,0,0,10" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.Row="2" controls:ControlsHelper.ContentCharacterCasing="Normal" Height="32" VerticalAlignment="Top" FontWeight="Normal" FontFamily="Calibri Light" />
+
+                    <Button x:Name="RegisterButton"
+                            Content="Sign Up"
+                            Style="{DynamicResource AccentedSquareButtonStyle}" Margin="0,0,0,10" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.Row="2" controls:ControlsHelper.ContentCharacterCasing="Normal" Height="32" VerticalAlignment="Top" FontWeight="Normal" FontFamily="Calibri Light" />
+
+                    <TextBlock x:Name="InfoLabel" TextWrapping="WrapWithOverflow"  HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="230" Foreground="DarkGray" FontSize="12" >
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </TextBlock>
+                </StackPanel>
+            </controls:Flyout>
+
+            
         </controls:FlyoutsControl>
     </controls:MetroWindow.Flyouts>
 

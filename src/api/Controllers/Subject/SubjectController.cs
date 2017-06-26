@@ -1,14 +1,10 @@
-﻿using System;
+﻿using api.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web;
 using System.Web.Http;
-using api.Helpers;
-using Sdk.Models;
 
 namespace api.Controllers.Subject
 {
@@ -16,10 +12,11 @@ namespace api.Controllers.Subject
     {
         ///Database configuration and connection
         private static DatabaseHelper _databaseConfig = new DatabaseHelper();
+
         private SqlConnection _databaseConnection = new SqlConnection(_databaseConfig.ConnString());
 
-
         // GET: api/Subject
+        // Get all subjects owned by signed in user
         [Authorize]
         public IEnumerable<Sdk.Models.Subject> Get()
         {
@@ -62,6 +59,7 @@ namespace api.Controllers.Subject
         }
 
         // GET: api/Subject/5
+        // Get a particular subject by id
         [Authorize]
         public Sdk.Models.Subject Get(int id)
         {
@@ -103,6 +101,7 @@ namespace api.Controllers.Subject
         }
 
         // POST: api/Subject
+        // Create a new subject
         [Authorize]
         public void Post([FromBody]Sdk.Models.Subject value)
         {
@@ -127,6 +126,7 @@ namespace api.Controllers.Subject
         }
 
         // PUT: api/Subject/5
+        // Edit a subject information
         [Authorize]
         public void Put(int id, [FromBody]Sdk.Models.Subject value)
         {
@@ -151,6 +151,7 @@ namespace api.Controllers.Subject
         }
 
         // DELETE: api/Subject/5
+        // Delete a subject from the database
         [Authorize]
         public void Delete(int id)
         {

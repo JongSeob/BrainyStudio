@@ -10,7 +10,7 @@ namespace api.MessageHandlers
     public class APIKeyHandler : DelegatingHandler
     {
         //set a default API key
-        private const string yourApiKey = "X-some-key";
+        private const string yourApiKey = "secretkey";
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {

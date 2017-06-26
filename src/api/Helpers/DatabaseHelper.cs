@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Sdk.Models;
+using System;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
-using Sdk.Models;
 
 namespace api.Helpers
 {
@@ -35,7 +33,7 @@ namespace api.Helpers
         /// <returns></returns>
         public string ConnString()
         {
-            return "Data Source=" + DbServer + ";Database=" + DbDatabase + ";User ID=" + DbUser + ";Password=" 
+            return "Data Source=" + DbServer + ";Database=" + DbDatabase + ";User ID=" + DbUser + ";Password="
                 + DbPassword + ";Integrated Security=True";
         }
 
@@ -70,7 +68,6 @@ namespace api.Helpers
                     headerValues.Parameter))
                     .Split(new[] { ':' });
 
-
             SqlConnection myConnection = new SqlConnection(ConnString());
             myConnection.Open();
             string strSql = "SELECT Id FROM [User] WHERE Nickname = @userId AND Password = @userPass";
@@ -103,7 +100,6 @@ namespace api.Helpers
                     = Encoding.ASCII.GetString(Convert.FromBase64String(
                     headerValues.Parameter))
                     .Split(new[] { ':' });
-
 
             SqlConnection myConnection = new SqlConnection(ConnString());
             myConnection.Open();

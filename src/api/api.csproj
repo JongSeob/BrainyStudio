@@ -170,10 +170,11 @@
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\Recording\RecordingCommentController.cs" />
     <Compile Include="Controllers\Recording\RecordingController.cs" />
+    <Compile Include="Controllers\Recording\RecordingDataController.cs" />
+    <Compile Include="Controllers\Recording\RecordingMarkController.cs" />
     <Compile Include="Controllers\Repository\RepositoryController.cs" />
     <Compile Include="Controllers\Repository\RepositoryRecordingController.cs" />
     <Compile Include="Controllers\Subject\SubjectController.cs" />
-    <Compile Include="Controllers\User\UserCommentController.cs" />
     <Compile Include="Controllers\User\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -5,6 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d"
-             d:DesignHeight="1000"
-             d:DesignWidth="1000">
+             d:DesignHeight="581.333"
+             d:DesignWidth="1109.333">
+    <Grid Margin="0,0,10.333,10.333">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="320*"/>
+            <ColumnDefinition Width="495*"/>
+            <ColumnDefinition Width="284*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox Grid.Column="1" Height="40" Margin="64,195,76.333,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Background="#FF515151"/>
+        <TextBox Grid.Column="1" Height="40" Margin="64,260,74.333,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+        <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Height="45" Margin="64,325,0,0" VerticalAlignment="Top" Width="355"/>
+    </Grid>
 </UserControl>

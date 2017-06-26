@@ -1,15 +1,9 @@
 ﻿using api.Helpers;
-using api.Security;
 using Sdk.Models;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading;
 using System.Web;
 using System.Web.Http;
 
@@ -20,8 +14,8 @@ namespace api.Controllers
     {
         ///Database configuration and connection
         private static DatabaseHelper _databaseConfig = new DatabaseHelper();
-        private SqlConnection _databaseConnection = new SqlConnection(_databaseConfig.ConnString());
 
+        private SqlConnection _databaseConnection = new SqlConnection(_databaseConfig.ConnString());
 
         // Get all Repositories of the user (Requires authorization)
         // GET: api/Repository
@@ -52,19 +46,18 @@ namespace api.Controllers
 
                     foreach (DataRow row in datatable.Rows)
                     {
-                       Repository tempRepository = new Repository();
-                       tempRepository.Id = Convert.ToInt32(row["Id"]);
-                       tempRepository.Name = row["Name"].ToString();
-                       tempRepository.Description = row["Description"].ToString();
-                       tempRepository.Picture = row["Image_URL"].ToString();
-                       tempRepository.OwnerId = Convert.ToInt32(row["User_ID"]);
-                       resultsRepositories.Add(tempRepository);
+                        Repository tempRepository = new Repository();
+                        tempRepository.Id = Convert.ToInt32(row["Id"]);
+                        tempRepository.Name = row["Name"].ToString();
+                        tempRepository.Description = row["Description"].ToString();
+                        tempRepository.Picture = row["Image_URL"].ToString();
+                        tempRepository.OwnerId = Convert.ToInt32(row["User_ID"]);
+                        resultsRepositories.Add(tempRepository);
                     }
                 }
                 return resultsRepositories;
             }
         }
-
 
         // Get certain repository by id (Requires authorization)
         // GET: api/Repository/5
@@ -107,7 +100,6 @@ namespace api.Controllers
             }
         }
 
-
         // Post a new repository (Requires authorization)
         // POST: api/Repository
         [Authorize]
@@ -131,7 +123,6 @@ namespace api.Controllers
                 }
             }
         }
-
 
         // Modify repository by id (Requires authorization)
         // PUT: api/Repository/5
@@ -158,7 +149,6 @@ namespace api.Controllers
             }
         }
 
-
         // Delete repository by id (Requires authorization)
         // DELETE: api/Repository/5
         [Authorize]
@@ -184,7 +174,5 @@ namespace api.Controllers
                 }
             }
         }
-
-
     }
 }

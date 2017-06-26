@@ -1,15 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace Sdk.Models
 {
     public class EegData
     {
-
         /// <summary>
         /// DATA
         /// </summary>
@@ -32,9 +27,6 @@ namespace Sdk.Models
 
         public EegData()
         {
-
         }
-
-
     }
 }

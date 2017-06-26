@@ -140,8 +140,6 @@
                                     Visibility="Hidden" />
                 </lvc:CartesianChart.Series>
 
-              
-
                 <lvc:CartesianChart.AxisX>
                     <lvc:Axis LabelFormatter="{Binding DateTimeFormatter}"
                           MaxValue="{Binding AxisMax}"

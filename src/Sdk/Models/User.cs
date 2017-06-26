@@ -1,9 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sdk.Models
 {
@@ -34,10 +30,8 @@ namespace Sdk.Models
 
         public string Password;
 
-
         public User()
         {
-
         }
 
         public User(int id, string nickname, string name, string avatarurl, string notes, string url, string role)
@@ -50,6 +44,5 @@ namespace Sdk.Models
             this.Url = url;
             this.Role = role;
         }
-
     }
 }

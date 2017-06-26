@@ -1,5 +1,6 @@
 ﻿using api.Helpers;
 using api.Security;
+using Sdk.Models;
 using System;
 using System.Data.SqlClient;
 using System.Net;
@@ -9,7 +10,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
-using Sdk.Models;
 
 namespace api.MessageHandlers
 {
@@ -17,6 +17,7 @@ namespace api.MessageHandlers
     {
         ///Database configuration and connection
         private static DatabaseHelper _databaseConfig = new DatabaseHelper();
+
         private SqlConnection _databaseConnection = new SqlConnection(_databaseConfig.ConnString());
         private User _userId;
 

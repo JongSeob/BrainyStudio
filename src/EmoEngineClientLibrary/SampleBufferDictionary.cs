@@ -406,8 +406,6 @@ namespace EmoEngineClientLibrary
 
                             #endregion Commit new samples to the buffer
 
-
-
                             ////////////////////////////////////////////
 
                             #region Compute Fast Fourier Transform (FFT)

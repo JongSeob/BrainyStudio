@@ -376,7 +376,7 @@ namespace HamburgerMenuApp.V3
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ToggleFlyout(1);
+            ToggleFlyout(4);
         }
 
         private void StopRecording_Button_OnClickRecording(object sender, RoutedEventArgs e)

@@ -27,10 +27,9 @@ namespace Sdk.Models
 
         public Subject()
         {
-
         }
 
-        public Subject(int id, string name,  int age, string gender, string description, int ownerid)
+        public Subject(int id, string name, int age, string gender, string description, int ownerid)
         {
             this.Id = id;
             this.Name = name;
