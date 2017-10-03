@@ -1,5 +1,5 @@
+![Logo](https://s1.postimg.org/4uvhrumirj/logo.png)
 # Brainy Studio
-
 Software suite for EEG (Electroencephalography) data recording, viewing and storing data on server with manipulation using REST webAPI. 
 Whole suite consists of **(Server application with ASP.NET WebAPI)**, **(MSSQL Database)**, **(Client software for Windows 10/WPF)** and **(OS-independent web client)** for data viewing.
 Users can record subject's EEG activity levels using EMOTIV EEG headsets, categorize them into repositories and store theese data on the remote server. Data can later be accessed and manipulated with any client that communicates with server's webAPI.
