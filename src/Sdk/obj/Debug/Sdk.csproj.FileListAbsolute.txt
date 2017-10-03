@@ -17,3 +17,4 @@ E:\GitHub\Emotiv-Epoc\src\Sdk\bin\Debug\Newtonsoft.Json.xml
 E:\GitHub\Emotiv-Epoc\src\Sdk\obj\Debug\Sdk.csprojResolveAssemblyReference.cache
 E:\GitHub\Emotiv-Epoc\src\Sdk\obj\Debug\Sdk.dll
 E:\GitHub\Emotiv-Epoc\src\Sdk\obj\Debug\Sdk.pdb
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\Sdk\bin\Debug\DotNetEmotivSDK-vs2010.dll.config

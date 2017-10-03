@@ -38,8 +38,8 @@
                     <RowDefinition Height="70*" />
                     <RowDefinition Height="73*" />
                 </Grid.RowDefinitions>
-                <iconPacks:PackIconMaterial Kind="Database"  RenderTransformOrigin="2.188,1.5" Height="20" Width="27" Margin="9,12,0,0" Foreground="White" />
-                <Label Content="Hardware S/N" HorizontalAlignment="Left" Height="32" Margin="43,9,-114.667,0" VerticalAlignment="Top" Width="641" Foreground="White" FontSize="16" />
+                <iconPacks:PackIconMaterial Kind="Cached"  RenderTransformOrigin="2.188,1.5" Height="20" Width="27" Margin="9,12,0,0" Foreground="White" />
+                <Label Content="Status" HorizontalAlignment="Left" Height="32" Margin="43,9,-114.667,0" VerticalAlignment="Top" Width="641" Foreground="White" FontSize="16" />
                 <Custom:MetroProgressBar x:Name="BatteryLevel" Height="6" Margin="9,46.667,10.333,0" VerticalAlignment="Top" Grid.Row="1" />
                 <Label Content="Battery" HorizontalAlignment="Left" Height="33" Margin="43,8.667,0,0" VerticalAlignment="Top" Width="488" Foreground="White" FontSize="16" Grid.Row="1" />
                 <Custom:MetroProgressBar x:Name="SignalLevel" Height="0" Margin="9,45.667,10.333,0" VerticalAlignment="Top" Maximum="3" SmallChange="1" Grid.Row="2" RenderTransformOrigin="0.5,0.5">
@@ -55,9 +55,11 @@
                 <Label Content="Signal Quality" HorizontalAlignment="Left" Height="38" Margin="43,6.667,0,0" VerticalAlignment="Top" Width="477" Foreground="White" FontSize="16" Grid.Row="2" />
                 <iconPacks:PackIconMaterial Kind="Battery"  RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="9,11.667,0,0" Foreground="White" ToolTip="Number of sensor samples recorded per second." Grid.Row="1" />
                 <iconPacks:PackIconMaterial Kind="Signal"  RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="9,9.667,0,0" Foreground="White" Grid.Row="2" />
-                <Label x:Name="HeadsetVersion" Content="Not Connected" Margin="9,41,10.333,0" Foreground="White" FontSize="18" FontWeight="Bold" FontFamily="Segoe UI Light" Background="{x:Null}" Height="50" VerticalAlignment="Top" />
+                <Label x:Name="HeadsetVersion" Content="Dongle Not Connected" Margin="9,41,10.333,0" Foreground="White" FontSize="18" FontFamily="Segoe UI Light" Background="{x:Null}" Height="50" VerticalAlignment="Top" FontWeight="Bold" />
             </Grid>
         </GroupBox>
-        <GroupBox Header="Log" Margin="10,10,10,10.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" FontFamily="Segoe UI Light" Foreground="#FF1B1B1B" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" />
+        <GroupBox Header="Console" Margin="10,10,10,10.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" FontFamily="Segoe UI Light" Foreground="#FF1B1B1B" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" >
+            <Image Margin="240,10,220,21" Source="/ra;component/Resources/logo.png" Opacity="0.05"/>
+        </GroupBox>
     </Grid>
 </UserControl>

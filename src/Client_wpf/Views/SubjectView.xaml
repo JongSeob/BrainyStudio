@@ -1,0 +1,82 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:Custom="http://metro.mahapps.com/winfx/xaml/iconpacks" x:Class="HamburgerMenuApp.V3.Views.SubjectView"
+             mc:Ignorable="d"
+             d:DesignHeight="581.333"
+             d:DesignWidth="1109.333" Loaded="UserControl_Loaded">
+
+
+    <Grid Margin="0,0,0.333,0.333">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="524*"/>
+            <RowDefinition Height="57*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="114*"/>
+            <ColumnDefinition Width="192*"/>
+            <ColumnDefinition Width="792*"/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="listBox" ItemsSource="{Binding}" Margin="10,10,0.333,10" Background="#FF2D2D30" Grid.ColumnSpan="3" SelectionChanged="listBox_SelectionChanged"/>
+        <Grid Grid.Column="3" Margin="9.667,10,10.333,10.333" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="409*"/>
+                <ColumnDefinition Width="281*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="125.333"/>
+                <RowDefinition Height="134"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <GroupBox x:Name="RecordingMetadata" Header="Subject" Margin="0,0,-0.667,0" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="#FF2D2D30" Grid.RowSpan="2" Grid.ColumnSpan="2" Height="258" VerticalAlignment="Top">
+                <Grid Margin="10,0,-2.333,-5.333">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="362*"/>
+                        <ColumnDefinition Width="0*"/>
+                        <ColumnDefinition Width="191*"/>
+                        <ColumnDefinition Width="0*"/>
+                        <ColumnDefinition Width="99*"/>
+                        <ColumnDefinition Width="98*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="6*" />
+                        <RowDefinition Height="67*" />
+                        <RowDefinition Height="104*" />
+                        <RowDefinition Height="47*" />
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="SubjectName"  Margin="1.667,33,0.333,5.667" TextWrapping="Wrap" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.Row="1" controls:TextBoxHelper.Watermark="Name" Grid.Column="1" />
+                    <Custom:PackIconMaterial Kind="Database" RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="1.667,6,0,0" Foreground="White" Grid.Row="1" Grid.Column="1" />
+                    <Label x:Name="RecordingName_label" Content="Subject Name" HorizontalAlignment="Left" Height="32" Margin="22.667,1,0,0" VerticalAlignment="Top" Width="476" Foreground="White" FontSize="16" Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="1" />
+                    <TextBox x:Name="SubjectDescription" Margin="1.667,37.333,10.667,13.667" TextWrapping="Wrap" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.Row="2" controls:TextBoxHelper.Watermark="This is a description of my recording." Grid.ColumnSpan="6" Grid.Column="1" />
+                    <Label x:Name="RecordingDescription_Label" Content="Description" HorizontalAlignment="Left" Height="29" Margin="22.667,3.333,0,0" VerticalAlignment="Top" Width="476" Foreground="White" FontSize="16" Grid.Row="2" Grid.ColumnSpan="3" Grid.Column="1" />
+                    <Custom:PackIconMaterial Kind="MessageText" RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="1.667,10.333,0,0" Foreground="White" Grid.Row="2" Grid.Column="1" />
+                    <Custom:PackIconMaterial Kind="FormatListNumbers" RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="18,6,0,0" Foreground="White" Grid.Row="1" Grid.Column="5" />
+                    <Label x:Name="RecordingName_label_Copy" Content="Gender" HorizontalAlignment="Left" Height="32" Margin="43,0,0,0" VerticalAlignment="Top" Width="140" Foreground="White" FontSize="16" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="2" />
+                    <Button x:Name="GuestModeButton_Copy"
+            Content="Save Changes"
+            Style="{DynamicResource AccentedSquareButtonStyle}" Margin="18,9.333,10.667,13" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" controls:ControlsHelper.ContentCharacterCasing="Normal" FontWeight="Normal" FontFamily="Calibri Light" Grid.Column="5" Grid.Row="3" IsEnabled="False" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="SubjectAge"  Margin="15.667,33,6,5.667" TextWrapping="Wrap" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.Row="1" controls:TextBoxHelper.Watermark="Age" Grid.Column="3" />
+                    <Custom:PackIconMaterial Kind="FormatListNumbers" RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="15.667,6,0,0" Foreground="White" Grid.Row="1" Grid.Column="3" />
+                    <Label x:Name="RecordingName_label_Copy1" Content="Age" HorizontalAlignment="Left" Height="32" Margin="40.667,0,0,0" VerticalAlignment="Top" Width="140" Foreground="White" FontSize="16" Grid.Row="1" Grid.Column="3" />
+                    <RadioButton x:Name="SubjectIsMale" Content="Male" Grid.Column="5" HorizontalAlignment="Left" Height="32" Margin="18,31,0,0" Grid.Row="1" VerticalAlignment="Top" Width="81" RenderTransformOrigin="1.913,0.547" Background="White" Foreground="White" Grid.ColumnSpan="2"/>
+                    <RadioButton x:Name="SubjectIsFemale" Content="Female" Grid.Column="6" HorizontalAlignment="Left" Height="32" Margin="10.333,31,0,0" Grid.Row="1" VerticalAlignment="Top" Width="81" RenderTransformOrigin="1.913,0.547" Background="White" Foreground="White"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox x:Name="RecordingMetadata_Copy" Header="Training Data" Margin="0,10.667,-0.667,0.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="#FF2D2D30" Grid.Row="2" Grid.ColumnSpan="2">
+                <Label Content="TODO" HorizontalAlignment="Left" Height="27" Margin="10,0,0,0" VerticalAlignment="Top" Width="45" Foreground="White"/>
+            </GroupBox>
+        </Grid>
+        <Button x:Name="GuestModeButton"
+            Content="Create new Subject"
+            Style="{DynamicResource AccentedSquareButtonStyle}" Margin="8.667,10,10.333,8.333" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" controls:ControlsHelper.ContentCharacterCasing="Normal" FontWeight="Normal" FontFamily="Calibri Light" Grid.Column="2" Grid.Row="1" />
+        <Button x:Name="GuestModeButton_Copy1"
+            Content="Delete"
+            Style="{DynamicResource AccentedSquareButtonStyle}" Margin="9.667,10,11.333,8.333" Background="#FF252525" Foreground="White" BorderBrush="#FF2D2D30" controls:ControlsHelper.ContentCharacterCasing="Normal" FontWeight="Normal" FontFamily="Calibri Light" Grid.Row="1" Grid.Column="1" />
+    </Grid>
+</UserControl>

@@ -8,3 +8,13 @@ E:\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\bin\x86\Debug\DotNetEmotivSDK-v
 E:\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\obj\x86\Debug\EmoEngineClientLibrary.csprojResolveAssemblyReference.cache
 E:\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\obj\x86\Debug\EmoEngineClientLibrary.dll
 E:\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\obj\x86\Debug\EmoEngineClientLibrary.pdb
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\bin\x86\Debug\MathNet.Numerics.dll
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\bin\x86\Debug\EmoEngineClientLibrary.dll
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\bin\x86\Debug\EmoEngineClientLibrary.pdb
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\bin\x86\Debug\EmoEngineClientLibrary.XML
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\bin\x86\Debug\DotNetEmotivSDK-vs2010.dll
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\bin\x86\Debug\DotNetEmotivSDK-vs2010.pdb
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\bin\x86\Debug\DotNetEmotivSDK-vs2010.dll.config
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\obj\x86\Debug\EmoEngineClientLibrary.csprojResolveAssemblyReference.cache
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\obj\x86\Debug\EmoEngineClientLibrary.dll
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\EmoEngineClientLibrary\obj\x86\Debug\EmoEngineClientLibrary.pdb

@@ -1,0 +1,75 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:Custom="http://metro.mahapps.com/winfx/xaml/iconpacks" x:Class="HamburgerMenuApp.V3.Views.RepositoryView"
+             mc:Ignorable="d"
+             d:DesignHeight="581.333"
+             d:DesignWidth="1109.333" Loaded="UserControl_Loaded">
+
+
+    <Grid Margin="0,0,0.333,0.333">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="524*"/>
+            <RowDefinition Height="57*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="114*"/>
+            <ColumnDefinition Width="192*"/>
+            <ColumnDefinition Width="792*"/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="listBox" ItemsSource="{Binding}" Margin="10,10,0.333,10" Background="#FF2D2D30" Grid.ColumnSpan="3" SelectionChanged="listBox_SelectionChanged"/>
+        <Grid Grid.Column="3" Margin="9.667,10,10.333,10.333" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="409*"/>
+                <ColumnDefinition Width="281*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="125.333"/>
+                <RowDefinition Height="134"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <GroupBox x:Name="RecordingMetadata" Header="Repository" Margin="0,0,-0.667,0" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="#FF2D2D30" Grid.RowSpan="2" Grid.ColumnSpan="2" Height="258" VerticalAlignment="Top">
+                <Grid Margin="10,0,-2.333,-5.333">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="375*"/>
+                        <ColumnDefinition Width="193*"/>
+                        <ColumnDefinition Width="178*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="6*" />
+                        <RowDefinition Height="67*" />
+                        <RowDefinition Height="104*" />
+                        <RowDefinition Height="47*" />
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="RepositoryName"  Margin="1,33,10.667,5.667" TextWrapping="Wrap" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.Row="1" controls:TextBoxHelper.Watermark="Repository " Grid.Column="1" Grid.ColumnSpan="2" />
+                    <Custom:PackIconMaterial Kind="Database" RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="1,6,0,0" Foreground="White" Grid.Row="1" Grid.Column="1" />
+                    <Label x:Name="RecordingName_label" Content="Repository Name" HorizontalAlignment="Left" Height="32" Margin="22,1,0,0" VerticalAlignment="Top" Width="476" Foreground="White" FontSize="16" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="1" />
+                    <TextBox x:Name="RepositoryDescription" Margin="1,37.333,10.667,13.667" TextWrapping="Wrap" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.Row="2" controls:TextBoxHelper.Watermark="This is a description of my recording." Grid.ColumnSpan="3" Grid.Column="1" />
+                    <Label x:Name="RecordingDescription_Label" Content="Description" HorizontalAlignment="Left" Height="29" Margin="22,3.333,0,0" VerticalAlignment="Top" Width="476" Foreground="White" FontSize="16" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="1" />
+                    <Custom:PackIconMaterial Kind="MessageText" RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="1,10.333,0,0" Foreground="White" Grid.Row="2" Grid.Column="1" />
+                    <TextBox x:Name="RepositoryId"  Margin="8.333,33,9.667,5.667" TextWrapping="Wrap" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.Row="1" controls:TextBoxHelper.Watermark="ID" Grid.Column="3" IsReadOnlyCaretVisible="True" IsReadOnly="True" FontWeight="Bold" />
+                    <Custom:PackIconMaterial Kind="FormatListNumbers" RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="8.333,6,0,0" Foreground="White" Grid.Row="1" Grid.Column="3" />
+                    <Label x:Name="RecordingName_label_Copy" Content="Repository ID" HorizontalAlignment="Left" Height="32" Margin="33.333,1,0,0" VerticalAlignment="Top" Width="140" Foreground="White" FontSize="16" Grid.Row="1" Grid.Column="3" />
+                    <Button x:Name="GuestModeButton_Copy"
+            Content="Save Changes"
+            Style="{DynamicResource AccentedSquareButtonStyle}" Margin="9.333,9.333,10.667,13" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" controls:ControlsHelper.ContentCharacterCasing="Normal" FontWeight="Normal" FontFamily="Calibri Light" Grid.Column="3" Grid.Row="3" IsEnabled="False" />
+                </Grid>
+            </GroupBox>
+            <GroupBox x:Name="RecordingMetadata_Copy" Header="Commits" Margin="0,10.667,-0.667,0.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="#FF2D2D30" Grid.Row="2" Grid.ColumnSpan="2">
+                <Label Content="TODO" HorizontalAlignment="Left" Height="27" Margin="10,0,0,0" VerticalAlignment="Top" Width="45" Foreground="White" RenderTransformOrigin="-6.489,-3.395"/>
+            </GroupBox>
+        </Grid>
+        <Button x:Name="GuestModeButton"
+            Content="Create new Repository"
+            Style="{DynamicResource AccentedSquareButtonStyle}" Margin="8.667,10,10.333,8.333" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" controls:ControlsHelper.ContentCharacterCasing="Normal" FontWeight="Normal" FontFamily="Calibri Light" Grid.Column="2" Grid.Row="1" />
+        <Button x:Name="GuestModeButton_Copy1"
+            Content="Delete"
+            Style="{DynamicResource AccentedSquareButtonStyle}" Margin="9.667,10,11.333,8.333" Background="#FF252525" Foreground="White" BorderBrush="#FF2D2D30" controls:ControlsHelper.ContentCharacterCasing="Normal" FontWeight="Normal" FontFamily="Calibri Light" Grid.Row="1" Grid.Column="1" />
+    </Grid>
+</UserControl>

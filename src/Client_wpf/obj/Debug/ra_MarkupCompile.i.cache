@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\Client_wpf\obj\Debug\
 WPFapp
 none
 false
 DEBUG;TRACE
-E:\GitHub\Emotiv-Epoc\src\Client_wpf\App.xaml
-5-978988780
+C:\Users\olire\Documents\GitHub\Emotiv-Epoc\src\Client_wpf\App.xaml
+6488955593
 
-16-984988808
-26-257207624
-MainWindow.xaml;Views\LiveView.xaml;Views\HomeView.xaml;Views\PrivateView.xaml;Views\RecordingView.xaml;
+1864895886
+27-1202777259
+MainWindow.xaml;Views\LiveView.xaml;Views\HomeView.xaml;Views\SubjectView.xaml;Views\RepositoryView.xaml;Views\RecordingView.xaml;
 
-True
+False
 

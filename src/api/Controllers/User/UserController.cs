@@ -39,11 +39,11 @@ namespace api.Controllers
                             userResult = new User(
                                 Int32.Parse(reader["Id"].ToString()),
                                 reader["Nickname"].ToString(),
-                                reader["Role"].ToString(),
                                 reader["Name"].ToString(),
                                 reader["Avatar_URL"].ToString(),
                                 reader["Notes"].ToString(),
-                                reader["Url"].ToString());
+                                reader["Url"].ToString(),
+                                reader["Role"].ToString());
                         }
                     }
                 }

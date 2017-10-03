@@ -25,6 +25,9 @@
         <!--Here we disable tooltips and hovering to get a better performance-->
         <GroupBox x:Name="RawData" Header="Raw Data" Margin="11,10,10.333,9.667" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Upper" Controls:ControlsHelper.HeaderFontWeight="Thin" Grid.ColumnSpan="2" MouseDoubleClick="RawData_MouseDoubleClick">
             <lvc:CartesianChart x:Name="CartChart" AnimationsSpeed="0:0:0.5"  Margin="0,-6,-2,3" BorderBrush="#2d2d30" Pan="None" LegendLocation="Bottom" Foreground="#FFB0B0B0" IsManipulationEnabled="False" OverridesDefaultStyle="True">
+                <lvc:CartesianChart.Background>
+                    <ImageBrush ImageSource="/ra;component/Resources/logo.png" Opacity="0.03" Stretch="Uniform"/>
+                </lvc:CartesianChart.Background>
                 <lvc:CartesianChart.Series>
 
                     <lvc:LineSeries Values="{Binding ChartAF3}"
@@ -152,8 +155,54 @@
                 </lvc:CartesianChart.AxisX>
             </lvc:CartesianChart>
         </GroupBox>
-        <GroupBox Header="Emotions" Margin="11,9.667,10,10.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Upper" Controls:ControlsHelper.HeaderFontWeight="Thin" Grid.Row="1">
+        <GroupBox Header="Emotions / Expression" Margin="11,9.667,10,10.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Upper" Controls:ControlsHelper.HeaderFontWeight="Thin" Grid.Row="1">
+            <Label Content="TODO" HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="45" Foreground="White"/>
         </GroupBox>
-        <GroupBox Header="Expressions / Cognition" Margin="10,9.667,10.333,10.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Upper" Controls:ControlsHelper.HeaderFontWeight="Thin" Grid.Column="1" Grid.Row="1" />
+        <GroupBox Header="Marking Tools" Margin="10,9.667,10.333,10.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Upper" Controls:ControlsHelper.HeaderFontWeight="Thin" Grid.Column="1" Grid.Row="1" >
+            <Grid Margin="10,0,0.667,-1">
+                <Grid HorizontalAlignment="Left" Height="314" Margin="545,735,-545,-735" VerticalAlignment="Top" Width="554">
+                    <Button x:Name="GuestModeButton_Copy4"
+                    Content="Delete"
+                    Style="{DynamicResource AccentedSquareButtonStyle}" Margin="10,10,431,209" Background="#FF252525" Foreground="White" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontWeight="Normal" FontFamily="Calibri Light" />
+                    <Button x:Name="GuestModeButton_Copy5"
+                    Content="Delete"
+                    Style="{DynamicResource AccentedSquareButtonStyle}" Margin="155,10,286,209" Background="#FF252525" Foreground="White" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontWeight="Normal" FontFamily="Calibri Light" />
+                    <Button x:Name="GuestModeButton_Copy6"
+                    Content="Delete"
+                    Style="{DynamicResource AccentedSquareButtonStyle}" Margin="293,10,148,209" Background="#FF252525" Foreground="White" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontWeight="Normal" FontFamily="Calibri Light" />
+                    <Button x:Name="GuestModeButton_Copy7"
+                    Content="Delete"
+                    Style="{DynamicResource AccentedSquareButtonStyle}" Margin="431,10,10,209" Background="#FF252525" Foreground="White" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontWeight="Normal" FontFamily="Calibri Light" />
+                </Grid>
+                <Button x:Name="Mark1Btn"
+                Content="1"
+                Style="{DynamicResource AccentedSquareButtonStyle}" Margin="15,0,426,0" Background="#FF252525" Foreground="White" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontWeight="Normal" FontFamily="Calibri Light" Height="66" VerticalAlignment="Top" Click="Mark1Btn_Click" />
+                <Button x:Name="Mark2Btn"
+                Content="2"
+                Style="{DynamicResource AccentedSquareButtonStyle}" Margin="147,0,294,0" Background="#FF252525" Foreground="White" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontWeight="Normal" FontFamily="Calibri Light" Height="66" VerticalAlignment="Top" Click="Mark2Btn_Click" />
+                <Button x:Name="Mark3Btn"
+                Content="3"
+                Style="{DynamicResource AccentedSquareButtonStyle}" Margin="283,0,159,0" Background="#FF252525" Foreground="White" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontWeight="Normal" FontFamily="Calibri Light" Height="66" VerticalAlignment="Top" Click="Mark3Btn_Click" />
+                <Button x:Name="Mark4Btn"
+                Content="4"
+                Style="{DynamicResource AccentedSquareButtonStyle}" Margin="421,0,20,0" Background="#FF252525" Foreground="White" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontWeight="Normal" FontFamily="Calibri Light" Height="66" VerticalAlignment="Top" Click="Mark4Btn_Click" />
+                <Button x:Name="Mark5Btn"
+                Content="5"
+                Style="{DynamicResource AccentedSquareButtonStyle}" Margin="15,82,426,0" Background="#FF252525" Foreground="White" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontWeight="Normal" FontFamily="Calibri Light" Height="66" VerticalAlignment="Top" Click="Mark5Btn_Click" />
+                <Button x:Name="Mark6Btn"
+                Content="6"
+                Style="{DynamicResource AccentedSquareButtonStyle}" Margin="147,82,294,0" Background="#FF252525" Foreground="White" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontWeight="Normal" FontFamily="Calibri Light" Height="66" VerticalAlignment="Top" Click="Mark6Btn_Click" />
+                <Button x:Name="Mark7Btn"
+                Content="7"
+                Style="{DynamicResource AccentedSquareButtonStyle}" Margin="283,82,158,0" Background="#FF252525" Foreground="White" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontWeight="Normal" FontFamily="Calibri Light" Height="66" VerticalAlignment="Top" Click="Mark7Btn_Click" />
+                <Button x:Name="Mark8Btn"
+                Content="8"
+                Style="{DynamicResource AccentedSquareButtonStyle}" Margin="421,82,20,0" Background="#FF252525" Foreground="White" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontWeight="Normal" FontFamily="Calibri Light" Height="66" VerticalAlignment="Top" IsManipulationEnabled="True" Click="Mark8Btn_Click" />
+                <TextBox x:Name="CustomMark"  Margin="15,160,159,0" TextWrapping="Wrap" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Controls:TextBoxHelper.Watermark="Repository " Text="Custom Marker&#xA;" Height="41" VerticalAlignment="Top" />
+                <Button x:Name="Mark8Btn_Copy"
+                Content="Add Custom"
+                Style="{DynamicResource AccentedSquareButtonStyle}" Margin="368,157,20,0" Background="#FF252525" Foreground="White" BorderBrush="#FF2D2D30" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontWeight="Normal" FontFamily="Calibri Light" RenderTransformOrigin="0.136,0.416" Height="44" VerticalAlignment="Top" Click="Mark8Btn_Copy_Click" />
+            </Grid>
+        </GroupBox>
     </Grid>
 </UserControl>

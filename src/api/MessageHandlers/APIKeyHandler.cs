@@ -10,7 +10,7 @@ namespace api.MessageHandlers
     public class APIKeyHandler : DelegatingHandler
     {
         //set a default API key
-        private const string yourApiKey = "secretkey";
+        private const string yourApiKey = "mytestappkey";
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
@@ -18,7 +18,7 @@ namespace api.MessageHandlers
             IEnumerable<string> lsHeaders;
             //Validate that the api key exists
 
-            var checkApiKeyExists = request.Headers.TryGetValues("API_KEY", out lsHeaders);
+            var checkApiKeyExists = request.Headers.TryGetValues("api_key", out lsHeaders);
 
             if (checkApiKeyExists)
             {

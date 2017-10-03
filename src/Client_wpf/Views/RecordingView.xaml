@@ -7,7 +7,7 @@
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks" x:Class="HamburgerMenuApp.V3.Views.SettingsView"
              mc:Ignorable="d"
                 d:DesignHeight="581.333"
-             d:DesignWidth="1109.333">
+             d:DesignWidth="1109.333" Loaded="UserControl_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -30,7 +30,7 @@
                 <TextBox x:Name="RecordingName" Height="26"  Margin="10,32,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.Row="1" Custom:TextBoxHelper.Watermark="My Recording" />
                 <iconPacks:PackIconMaterial Kind="FileChart" RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="10,5,0,0" Foreground="White" Grid.Row="1" />
                 <Label x:Name="RecordingName_label" Content="Recording Name" HorizontalAlignment="Left" Height="32" Margin="37,0,-11,0" VerticalAlignment="Top" Width="476" Foreground="White" FontSize="16" Grid.Row="1" />
-                <ComboBox x:Name="RecordingRepository" Margin="10,31.333,10,0" VerticalAlignment="Top" RenderTransformOrigin="-2.529,0.135" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="White" Grid.Row="3" Height="26" Custom:TextBoxHelper.Watermark="&lt;Sample Repository&gt;" IsEnabled="False">
+                <ComboBox x:Name="RecordingRepository" Margin="10,31.333,10,0" VerticalAlignment="Top" RenderTransformOrigin="-2.529,0.135" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="White" Grid.Row="3" Height="26" Custom:TextBoxHelper.Watermark="&lt;Select Repository&gt;">
                     <ListBoxItem />
                     <ListBoxItem />
                     <ListBoxItem />
@@ -60,13 +60,13 @@
                     <ColumnDefinition Width="0*" />
                 </Grid.ColumnDefinitions>
                 <CheckBox x:Name="IsRecordingRaw" Content="Raw" Height="38" Margin="6,26.667,1,0" VerticalAlignment="Top" Foreground="White" IsChecked="True" BorderBrush="#FF2D2D30" Background="#FF2D2D30" Grid.Row="1" IsEnabled="False" />
-                <Slider x:Name="RecordingSamplingRate" Height="28" Margin="6,38.667,5.333,0" VerticalAlignment="Top" Maximum="128" Value="60" AutoToolTipPlacement="TopLeft" Grid.ColumnSpan="4" Grid.Row="2" IsEnabled="False" />
+                <Slider x:Name="RecordingSamplingRate" Height="28" Margin="6,38.667,5.333,0" VerticalAlignment="Top" Maximum="128" Value="60" AutoToolTipPlacement="TopLeft" Grid.ColumnSpan="4" Grid.Row="2" />
                 <CheckBox x:Name="IsRecordingEmotions" Content="Emotions" Height="38" Margin="5,26.667,4,0" VerticalAlignment="Top" Foreground="White" IsChecked="True" BorderBrush="#FF2D2D30" Background="#FF2D2D30" Grid.Column="1" Grid.Row="1" IsEnabled="False" />
                 <CheckBox x:Name="IsRecrodingExpressions" Content="Expressions" Height="38" Margin="0,26.333,0.667,0" VerticalAlignment="Top" Foreground="White" BorderBrush="#FF2D2D30" Background="#FF2D2D30" Grid.Column="2" IsEnabled="False" Grid.Row="1" />
                 <CheckBox x:Name="IsRecordingMarkers" Content="Cognitive" Height="38" Margin="9.333,26.667,-72.667,0" VerticalAlignment="Top" Foreground="White" BorderBrush="#FF2D2D30" Background="#FF2D2D30" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" IsEnabled="False" />
                 <Label x:Name="DataSelection_Label" HorizontalAlignment="Left" Height="37" Margin="31,0.667,-24.667,0" VerticalAlignment="Top" Width="495" Foreground="White" FontSize="16" Content="Data Selection" Grid.ColumnSpan="5" Grid.Row="1" />
                 <Label x:Name="SamplingRate_Label" Content="Sampling Rate (Hz)" HorizontalAlignment="Left" Height="28" Margin="31,0.667,-17.667,0" VerticalAlignment="Top" Width="488" Foreground="White" FontSize="16" Grid.ColumnSpan="5" Grid.Row="2" />
-                <Slider x:Name="RecordingEmotionsSnapshotRate" Height="28" Margin="6,38.333,5.333,0" VerticalAlignment="Top" Maximum="3" Value="60" Grid.ColumnSpan="4" SmallChange="1" AutoToolTipPlacement="BottomRight" Grid.Row="3" IsEnabled="False" />
+                <Slider x:Name="RecordingEmotionsSnapshotRate" Height="28" Margin="6,38.333,5.333,0" VerticalAlignment="Top" Maximum="3" Value="60" Grid.ColumnSpan="4" SmallChange="1" AutoToolTipPlacement="BottomRight" Grid.Row="3" />
                 <Label x:Name="EmotionsSnapshot_Label" Content="Emotions Snapshot Rate (Hz)" HorizontalAlignment="Left" Height="38" Margin="31,0.333,-20.667,0" VerticalAlignment="Top" Width="491" Foreground="White" FontSize="16" Grid.ColumnSpan="5" Grid.Row="3" />
                 <iconPacks:PackIconMaterial Kind="DatabasePlus"  RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="6,6.667,0,0" Foreground="White" Grid.Row="1" />
                 <iconPacks:PackIconMaterial Kind="Beta"  RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="6,8.667,0,0" Foreground="White" Grid.Row="2" ToolTip="Number of sensor samples recorded per second." />
@@ -87,22 +87,14 @@
                 </Grid.ColumnDefinitions>
                 <TextBox Height="26" Margin="10,26.667,10,0" TextWrapping="Wrap" Text="New Recording" VerticalAlignment="Top" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.ColumnSpan="2" Visibility="Hidden" Grid.Row="2" />
                 <DatePicker Height="26" Margin="10,1.667,10,-22.333" VerticalAlignment="Top" Grid.ColumnSpan="2" Foreground="White" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Visibility="Hidden" Grid.Row="3" />
-                <ComboBox x:Name="RecordingSubject" Margin="10,49,10,0" VerticalAlignment="Top" RenderTransformOrigin="-2.529,0.135" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="White" Grid.ColumnSpan="2" Grid.Row="1" Height="26" Custom:TextBoxHelper.Watermark="&lt;Jane Doe&gt;" IsEnabled="False" />
+                <ComboBox x:Name="RecordingSubject" Margin="10,49,10,0" VerticalAlignment="Top" RenderTransformOrigin="-2.529,0.135" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="White" Grid.ColumnSpan="2" Grid.Row="1" Height="26" Custom:TextBoxHelper.Watermark="&lt;Select Subject&gt;" />
                 <iconPacks:PackIconMaterial Kind="AccountMultiple"  RenderTransformOrigin="2.188,1.5" Height="20" Width="20" Margin="10,24,0,0" Foreground="White" Grid.Row="1" />
-
-                <Button x:Name="GuestModeButton"
-                    Content="Guest Mode"
-                    Style="{DynamicResource AccentedSquareButtonStyle}" Margin="10,16.667,9.667,0" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.Row="2" Custom:ControlsHelper.ContentCharacterCasing="Normal" Height="32" VerticalAlignment="Top" FontWeight="Normal" FontFamily="Calibri Light" />
-
-                <Button x:Name="RetrainButton"
-            Content="New / Retrain Subject"
-            Style="{DynamicResource AccentedSquareButtonStyle}" Margin="9.333,16.667,11,0" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Custom:ControlsHelper.ContentCharacterCasing="Normal" Grid.Row="2" Height="32" VerticalAlignment="Top" FontWeight="Normal" FontFamily="Calibri Light" Grid.Column="1" />
                 <Label x:Name="RecordingSubject_Label" Content="Select Subject" HorizontalAlignment="Left" Height="32" Margin="35,17,0,0" VerticalAlignment="Top" Width="456" Foreground="White" FontSize="16" Grid.ColumnSpan="2" Grid.Row="1" />
             </Grid>
         </GroupBox>
         <Button x:Name="RecordButton"
-                    Content="Start Recording"
-                    Style="{DynamicResource AccentedSquareButtonStyle}" Margin="306.667,0,10.333,10.333" Background="#FF362626" Foreground="White" BorderBrush="#FF362626" Custom:ControlsHelper.ContentCharacterCasing="Upper" Height="32" VerticalAlignment="Bottom" FontWeight="Normal" FontFamily="Calibri Light" Grid.Column="1" Grid.Row="1" Click="RecordButton_Click" RenderTransformOrigin="0.501,0.5" />
+                    Content="RECORD"
+                    Style="{DynamicResource AccentedSquareButtonStyle}" Margin="306.667,0,10.333,10.333" Background="#FFD12D2D" Foreground="White" BorderBrush="#FF362626" Custom:ControlsHelper.ContentCharacterCasing="Upper" Height="32" VerticalAlignment="Bottom" FontWeight="Normal" FontFamily="Calibri Light" Grid.Column="1" Grid.Row="1" Click="RecordButton_Click" RenderTransformOrigin="0.501,0.5" />
         <GroupBox x:Name="StorageProperities" Header="Storage Properities" Margin="9.667,10,10.333,50.333" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="#FF2D2D30" Grid.Column="1" Grid.Row="1">
             <Grid Margin="10,0,11,0.333">
                 <Grid.RowDefinitions>

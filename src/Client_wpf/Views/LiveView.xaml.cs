@@ -206,5 +206,58 @@ namespace HamburgerMenuApp.V3.Views
         private void RawData_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
         }
+
+        private void Mark1Btn_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).temp.AppendMark("Mark Button 1", ((MainWindow)Application.Current.MainWindow)._stopwatch.Elapsed.TotalMilliseconds);
+        }
+
+        private void Mark2Btn_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).temp.AppendMark("Mark Button 2", ((MainWindow)Application.Current.MainWindow)._stopwatch.Elapsed.TotalMilliseconds);
+
+        }
+
+        private void Mark3Btn_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).temp.AppendMark("Mark Button 3", ((MainWindow)Application.Current.MainWindow)._stopwatch.Elapsed.TotalMilliseconds);
+
+        }
+
+        private void Mark4Btn_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).temp.AppendMark("Mark Button 4", ((MainWindow)Application.Current.MainWindow)._stopwatch.Elapsed.TotalMilliseconds);
+
+        }
+
+        private void Mark8Btn_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).temp.AppendMark(CustomMark.Text, ((MainWindow)Application.Current.MainWindow)._stopwatch.Elapsed.TotalMilliseconds);
+
+        }
+
+        private void Mark5Btn_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).temp.AppendMark("Mark Button 5", ((MainWindow)Application.Current.MainWindow)._stopwatch.Elapsed.TotalMilliseconds);
+
+        }
+
+        private void Mark6Btn_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).temp.AppendMark("Mark Button 6", ((MainWindow)Application.Current.MainWindow)._stopwatch.Elapsed.TotalMilliseconds);
+
+        }
+
+        private void Mark7Btn_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).temp.AppendMark("Mark Button 7", ((MainWindow)Application.Current.MainWindow)._stopwatch.Elapsed.TotalMilliseconds);
+
+        }
+
+        private void Mark8Btn_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).temp.AppendMark("Mark Button 8", ((MainWindow)Application.Current.MainWindow)._stopwatch.Elapsed.TotalMilliseconds);
+
+        }
     }
 }

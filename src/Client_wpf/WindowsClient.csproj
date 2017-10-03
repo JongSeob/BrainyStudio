@@ -57,6 +57,9 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -84,6 +87,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\ApiConnection.cs" />
     <Compile Include="MeasureModel.cs" />
     <Compile Include="SelectedItemToContentConverter.cs" />
     <Compile Include="Views\LiveView.xaml.cs">
@@ -92,8 +96,11 @@
     <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PrivateView.xaml.cs">
-      <DependentUpon>PrivateView.xaml</DependentUpon>
+    <Compile Include="Views\SubjectView.xaml.cs">
+      <DependentUpon>SubjectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RepositoryView.xaml.cs">
+      <DependentUpon>RepositoryView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RecordingView.xaml.cs">
       <DependentUpon>RecordingView.xaml</DependentUpon>
@@ -119,7 +126,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\PrivateView.xaml">
+    <Page Include="Views\SubjectView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RepositoryView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -171,6 +182,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\brain_status.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\no_photo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\logo_color.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,96 @@
+﻿@using System.Diagnostics
+@using Newtonsoft.Json;
+@using Sdk.Models;
+
+@functions{
+    public string CsVconverter()
+    {
+        string contents = File.ReadAllText(@"D:\test.json");
+        File.Delete(Server.MapPath("~/temp.csv"));
+        Recording reposlist = JsonConvert.DeserializeObject<Recording>(contents);
+        StreamWriter csv= new StreamWriter(Server.MapPath("~/temp.csv"), true);
+        Stopwatch watch = new Stopwatch();
+        watch.Start();
+        csv.WriteLine("Date,F3,F4,AF3,AF4,F7,F8,FC5,FC6,O1,O2,P7,P8,T7,T8");
+        int counter = 0;
+
+        foreach (double record in  reposlist.Data.Raw.F3)
+        {
+            csv.WriteLine(counter + "," + record 
+                + "," + reposlist.Data.Raw.F4[counter]
+                + "," + reposlist.Data.Raw.AF3[counter]
+                + "," + reposlist.Data.Raw.AF4[counter]
+                + "," + reposlist.Data.Raw.F7[counter]
+                + "," + reposlist.Data.Raw.F8[counter]
+                + "," + reposlist.Data.Raw.FC5[counter]
+                + "," + reposlist.Data.Raw.FC6[counter]
+                + "," + reposlist.Data.Raw.O1[counter]
+                + "," + reposlist.Data.Raw.O2[counter]
+                + "," + reposlist.Data.Raw.P7[counter]
+                + "," + reposlist.Data.Raw.P8[counter]
+                + "," + reposlist.Data.Raw.T7[counter]
+                + "," + reposlist.Data.Raw.T8[counter]);
+            counter++;
+        }
+        watch.Stop();
+        csv.Close();
+        return "Converted and plotted in: " + watch.Elapsed.Milliseconds.ToString() + "ms";
+    }
+}
+
+<div class="main">
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="container-fluid">
+            <!-- GRAPH -->
+            <div class="panel panel-headline">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Recording - RAW Data</h3>
+                </div>
+                <div class="panel-body">
+                    @CsVconverter()
+                    <div id="graphdiv2"
+                         style="width:100%;"></div>
+                    <script type="text/javascript">
+                        g2 = new Dygraph(
+                            document.getElementById("graphdiv2"),
+                            "temp.csv", // path to CSV file
+                            {
+                                rollPeriod: 7,
+                                showRoller: true,
+                                showRangeSelector: true,
+                                rangeSelectorPlotFillColor: 'MediumSlateBlue',
+                                rangeSelectorPlotFillGradientColor: 'rgba(123, 104, 238, 0)',
+                                colorValue: 0.9,
+                                fillAlpha: 0.4
+                            }          // options
+                        );
+                    </script>
+                </div>              
+               
+            </div>
+            <!-- END GRAPH -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">New Marker</h3>
+                            <div class="right">
+                                <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+                                <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+                            </div>
+                            </div>
+                            <div class="panel-body">
+                                <input type="text" class="form-control" placeholder="00:00.00">
+                                <textarea class="form-control" placeholder="Text" rows="4"></textarea>
+                                <button type="button" class="btn btn-success">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                   
+                </div>
+            </div>
+        </div>
+    </div>

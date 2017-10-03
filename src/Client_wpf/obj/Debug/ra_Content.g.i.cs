@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/brain_status.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/logo_color.png")]
 
 

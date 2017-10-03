@@ -8,6 +8,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
+using RestSharp;
+using RestSharp.Authenticators;
+using WPFapp.Helpers;
+
 
 namespace HamburgerMenuApp.V3
 {
@@ -27,13 +31,18 @@ namespace HamburgerMenuApp.V3
         public Recording temp = new Recording();
 
         // Recorder stopwatch
-        private Stopwatch _stopwatch = new Stopwatch();
+        public Stopwatch _stopwatch = new Stopwatch();
 
         //Is recording enabled?
         public bool _recording;
 
         //Heartbeat dispatchtimer
         private System.Windows.Threading.DispatcherTimer HeartBeat = new System.Windows.Threading.DispatcherTimer();
+
+        //API Connection
+        public ApiConnection Api = new ApiConnection();
+        public User CurrentUser = new User();
+        public bool IsUserLoggedIn = false;
 
         /// <summary>
         /// Main tick for fetching data from emoengine (1000ms)
@@ -43,38 +52,29 @@ namespace HamburgerMenuApp.V3
             _engine.ProcessEvents();
         }
 
-        public void StartNewRecording(string Name, string Description)
+        public void StartNewRecording(string Name, string Description, Subject Sub, int RepoId)
         {
             //Reset
             _recording = false;
             _stopwatch.Reset();
             temp = new Recording();
 
-            //Test subject
-            Subject test = new Subject();
-            test.Name = "Marius Georgescu";
-            test.Age = 22;
-            test.Description = "Friend from Romania";
-            test.Gender = "Male";
-            test.Id = 1;
-            test.OwnerId = 1;
-
             //Basic Info
             temp.Date = DateTime.Now;
             temp.Name = Name;
             temp.Description = Description;
             temp.AppendConfig(Convert.ToInt32(_engine.DataGetSamplingRate(0)), 4, _engine.HardwareGetVersion(0).ToString(), "1.0");
-            temp.Subject = test;
+
+            //Subject, Repo, Owner info
+            temp.Subject = Sub;
+            temp.RepositoryId = RepoId;
+            temp.OwnerId = CurrentUser.Id;
 
             //Start Recording
             _recording = true;
             _stopwatch.Start();
             Main.Title = Main.Title + " (Recording)";
             ToggleFlyout(1);
-
-            //Set window glowcolor ?
-            //var converter = new System.Windows.Media.BrushConverter();
-            //((MainWindow)Application.Current.MainWindow).Main.GlowBrush = (Brush)converter.ConvertFromString("#FF1377A7");
         }
 
         /// <summary>
@@ -119,6 +119,7 @@ namespace HamburgerMenuApp.V3
                  new EmoEngine.ExpressivTrainingFailedEventHandler(engine_ExpressivTrainingFailed);
 
             _engine.Connect();
+
         }
 
         /// <summary>
@@ -129,6 +130,7 @@ namespace HamburgerMenuApp.V3
             _engine.ExpressivSetTrainingAction(0, action);
             _engine.ExpressivSetTrainingControl(0, EdkDll.EE_ExpressivTrainingControl_t.EXP_START);
         }
+
 
         /// <summary>
         /// Function for opening metro flyouts.
@@ -154,6 +156,7 @@ namespace HamburgerMenuApp.V3
         {
             //Show Notification
             ToggleFlyout(3);
+
         }
 
         /// <summary>
@@ -179,6 +182,9 @@ namespace HamburgerMenuApp.V3
 
             // ask for up to 1 second of buffered data
             _engine.EE_DataSetBufferSizeInSec(1);
+
+
+          
         }
 
         /// <summary>
@@ -192,6 +198,7 @@ namespace HamburgerMenuApp.V3
             //Fetch latest sensor data from engine
             _data = _engine.GetData((uint)_userID);
 
+            //If recording is enabled...
             try
             {
                 if (this._data != null)
@@ -419,5 +426,53 @@ namespace HamburgerMenuApp.V3
                 StopRecording_Button.IsEnabled = true;
             }
         }
+
+
+
+        #region API Connection
+
+        /// <summary>
+        /// User Login and API Connection 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void ConnectToApi(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                //Setup New Login
+                Api = new ApiConnection(ServerIp.Text, UserLogin.Text, UserPassword.Password);
+
+                //Obtain User data and close login panel
+                CurrentUser = JsonConvert.DeserializeObject<User>(Api.Request("api/User/", Method.GET));
+
+                //User Exits
+                if(CurrentUser.Name != null)
+                {
+                ProfileName_label.Content = CurrentUser.Name + " (" + CurrentUser.Role + ")";
+                IsUserLoggedIn = true;
+                ToggleFlyout(4);
+
+                    //Hello Message
+                    Logged_Label.Content = "Hello " + CurrentUser.Name;
+                    ToggleFlyout(5);
+                }
+                else
+                {
+                    //Hello Message
+                    Logged_Label.Content = "User does not exist";
+                    ToggleFlyout(5);
+                }           
+            }
+            catch (Exception exception)
+            {
+                //Error Message
+                Logged_Label.Content = "An error occurred while connecting.";
+                ToggleFlyout(5);
+            }
+            
+        }
+
+        #endregion API Conection
     }
 }

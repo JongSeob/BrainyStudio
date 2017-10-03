@@ -10,7 +10,7 @@
                       xmlns:local="clr-namespace:HamburgerMenuApp.V3"
                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                       mc:Ignorable="d"
-                      Title="Noe Studio 2017"
+                      Title="Brainy Studio 2017"
                       GlowBrush="#FF1E1E1E"
                       WindowTransitionsEnabled="True"
                       WindowStartupLocation="CenterScreen"
@@ -20,6 +20,7 @@
                       WindowTitleBrush="#FF1E1E1E" Background="#FF1E1E1E" controls:ControlsHelper.ContentCharacterCasing="Lower" Icon="icon.ico" MinWidth="900" MinHeight="550">
     <controls:MetroWindow.Effect>
         <DropShadowEffect />
+        
     </controls:MetroWindow.Effect>
 
     <controls:MetroWindow.Flyouts>
@@ -84,11 +85,12 @@
             <controls:Flyout
                 Position="Right" Width="250" BorderThickness="1" BorderBrush="#FF2D2D30" Background="#1e1e1e" FontFamily="Segoe UI Light" AnimateOpacity="True">
                 <StackPanel Orientation="Vertical" Margin="5,10,5,0">
-                    <TextBox x:Name="ServerIp" Height="26" Margin="0,0,0,10" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.Row="2" controls:TextBoxHelper.Watermark="192.168.168.1:80" />
+                    <Image  Source="/ra;component/Resources/logo_color.png"  Margin="0,0,0,20" Opacity="0.30"/>
+                    <TextBox x:Name="ServerIp" Height="26" Margin="0,0,0,10" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.Row="2" controls:TextBoxHelper.Watermark="http://localhost:62110/" Text="http://localhost:62110/"/>
                     <TextBox x:Name="UserLogin" Height="26" Margin="0,0,0,10" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.Row="2" controls:TextBoxHelper.Watermark="Login" />
                     <PasswordBox x:Name="UserPassword" Height="26" Margin="0,0,0,20" VerticalAlignment="Top" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.Row="2" controls:TextBoxHelper.Watermark="Password" />
 
-                    <Button x:Name="LoginButton"
+                    <Button Click="ConnectToApi" x:Name="LoginButton"
                             Content="Log In"
                             Style="{DynamicResource AccentedSquareButtonStyle}" Margin="0,0,0,10" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.Row="2" controls:ControlsHelper.ContentCharacterCasing="Normal" Height="32" VerticalAlignment="Top" FontWeight="Normal" FontFamily="Calibri Light" />
 
@@ -96,13 +98,24 @@
                             Content="Sign Up"
                             Style="{DynamicResource AccentedSquareButtonStyle}" Margin="0,0,0,10" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF2D2D30" Grid.Row="2" controls:ControlsHelper.ContentCharacterCasing="Normal" Height="32" VerticalAlignment="Top" FontWeight="Normal" FontFamily="Calibri Light" />
 
-                    <TextBlock x:Name="InfoLabel" TextWrapping="WrapWithOverflow"  HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="230" Foreground="DarkGray" FontSize="12" >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    <TextBlock x:Name="InfoLabel" TextWrapping="WrapWithOverflow"  HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="230" Foreground="DarkGray" FontSize="11" Opacity="0.50" >
+                        Connect to Brainy Studio Server API to share, store and view your EEG recordings anywhere in the world on any device. 
+                        You can also annotate your recording on the fly, do data analysis using Shiny framework and expor your recordings to multiple
+                        formats. If You are not yet registered, please click on the Sign Up button. By signing up, you agree to our terms of use, privacy policy, and cookie policy. or. 
+                        Log in with Facebook. We'll never post anything on Facebook without your permision.
                     </TextBlock>
                 </StackPanel>
             </controls:Flyout>
 
-            
+            <!--  Dongle Connected Flyout -->
+            <controls:Flyout
+                CloseButtonVisibility="Collapsed"
+                Position="Top" Width="300" BorderThickness="1" BorderBrush="#FF2D2D30" Background="#1e1e1e" FontFamily="Segoe UI Light" AnimateOpacity="True" Height="77" AutoCloseInterval="3000" IsAutoCloseEnabled="True">
+                <StackPanel Orientation="Horizontal">
+                    <Label Name="Logged_Label" Content="Log In" Margin="0,0,30,0" FontWeight="Thin" FontSize="20" FontFamily="Calibri Light" VerticalAlignment="Center" />
+                </StackPanel>
+            </controls:Flyout>
+
         </controls:FlyoutsControl>
     </controls:MetroWindow.Flyouts>
 
@@ -149,12 +162,14 @@
 
         <controls:HamburgerMenu x:Name="HamburgerMenuControl"
                                 Foreground="White"
+                                SelectedIndex="0"
                                 PaneBackground="#2d2d30"
                                 IsPaneOpen="False"
                                 ItemTemplate="{StaticResource MenuItemTemplate}"
                                 OptionsItemTemplate="{StaticResource MenuItemTemplate}"
-                                DisplayMode="CompactInline" FontFamily="Segoe UI Light" d:IsLocked="True">
+                                DisplayMode="CompactInline" FontFamily="Segoe UI Light" >
 
+            
             <controls:HamburgerMenu.Content>
                 <MultiBinding Converter="{StaticResource SelectedItemToContentConverter}">
                     <Binding RelativeSource="{RelativeSource Self}"
@@ -169,21 +184,21 @@
             <!--  Items  -->
             <controls:HamburgerMenu.ItemsSource>
                 <controls:HamburgerMenuItemCollection>
-                    <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=HeadphonesSettings}"
-                                                 Label="Set Up">
+                    <local:HamburgerMenuIconItem x:Name="HomeViewButton" Icon="{iconPacks:PackIconMaterial Kind=ViewDashboard}"
+                                                 Label="Dashboard">
                         <local:HamburgerMenuIconItem.Tag>
                             <views:HomeView />
                         </local:HamburgerMenuIconItem.Tag>
                     </local:HamburgerMenuIconItem>
 
-                    <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=Monitor}"
-                                                 Label="Monitor">
+                    <local:HamburgerMenuIconItem x:Name="MonitorViewButton" Icon="{iconPacks:PackIconMaterial Kind=Monitor}"
+                                                 Label="Monitor" >
                         <local:HamburgerMenuIconItem.Tag>
                             <views:AboutView />
                         </local:HamburgerMenuIconItem.Tag>
                     </local:HamburgerMenuIconItem>
 
-                    <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=RecordRec}"
+                    <local:HamburgerMenuIconItem x:Name="RecordingViewButton"  Icon="{iconPacks:PackIconMaterial Kind=RecordRec}"
                                                  Label="Recording">
                         <local:HamburgerMenuIconItem.Tag>
                             <views:SettingsView />
@@ -195,25 +210,22 @@
             <!--  Options  -->
             <controls:HamburgerMenu.OptionsItemsSource>
                 <controls:HamburgerMenuItemCollection>
-                    <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=Account}"
-                                                 Label="My Subjects"
-                                                 IsEnabled="False">
+                    <local:HamburgerMenuIconItem x:Name="SubjectsButton" Icon="{iconPacks:PackIconMaterial Kind=Account}"
+                                                 Label="My Subjects">
                         <local:HamburgerMenuIconItem.Tag>
-                            <views:PrivateView />
+                            <views:SubjectView />
                         </local:HamburgerMenuIconItem.Tag>
                     </local:HamburgerMenuIconItem>
 
-                    <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=Database}"
-                                                 Label="My Repositories"
-                                                 IsEnabled="False">
+                    <local:HamburgerMenuIconItem x:Name="RepositoriesButton" Icon="{iconPacks:PackIconMaterial Kind=Database}"
+                                                 Label="My Repositories">
                         <local:HamburgerMenuIconItem.Tag>
-                            <views:PrivateView />
+                            <views:RepositoryView />
                         </local:HamburgerMenuIconItem.Tag>
                     </local:HamburgerMenuIconItem>
 
                     <local:HamburgerMenuIconItem Icon="{iconPacks:PackIconMaterial Kind=SettingsBox}"
-                                                 Label="Settings"
-                                                 IsEnabled="False">
+                                                 Label="Settings">
                         <local:HamburgerMenuIconItem.Tag>
                             <views:AboutView />
                         </local:HamburgerMenuIconItem.Tag>
@@ -242,10 +254,11 @@
                                         Grid.Row="1"
                                         Focusable="False"
                                         Foreground="{DynamicResource BlackBrush}"
-                                        Content="{Binding Tag}" />
+                                        Content="{Binding Tag}"/>
                     </Grid>
                 </DataTemplate>
             </controls:HamburgerMenu.ContentTemplate>
         </controls:HamburgerMenu>
+        <Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </controls:MetroWindow>
