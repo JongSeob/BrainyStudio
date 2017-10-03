@@ -1,4 +1,4 @@
-# EMOTIV Epoc Software Project
+# Brainy Studio
 
 Software suite for EEG (Electroencephalography) data recording, viewing and storing data on server with manipulation using REST webAPI. 
 Whole suite consists of **(Server application with ASP.NET WebAPI)**, **(MSSQL Database)**, **(Client software for Windows 10/WPF)** and **(OS-independent web client)** for data viewing.
